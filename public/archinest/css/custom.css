@@ -1,0 +1,553 @@
+/* ============================================================
+   CARICS-TOGO — Design system
+   Recherche – Innovation – Action
+   ============================================================ */
+
+:root{
+  /* Couleurs */
+  --ink:        #16344F;   /* navy profond — texte fort, footer */
+  --primary:    #1A5276;   /* navy — fonds hero, navbar active */
+  --accent:     #2E86AB;   /* teal — boutons, liens, accents */
+  --accent-soft:#EAF3F8;   /* teal très clair — fonds badges */
+  --ochre:      #C7872E;   /* ocre savane — accent rare */
+  --ochre-soft: #FBF1E1;
+  --bg:         #FBFAF7;   /* blanc cassé chaleureux */
+  --bg-alt:     #F2F5F6;   /* gris-bleu très clair */
+  --line:       #E1E7EA;
+  --text:       #1C2833;
+  --muted:      #6B7A89;
+  --success:    #1E8449;
+  --success-soft:#E7F4EC;
+  --warning:    #B7950B;
+  --warning-soft:#FBF3DD;
+  --white:      #FFFFFF;
+
+  /* Typo */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+  /* Motifs de courbes topographiques (Savanes) */
+  --contour-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120' viewBox='0 0 400 120'%3E%3Cpath d='M-20 18 Q 30 4 80 18 T 180 18 T 280 18 T 380 18 T 480 18' stroke='%23FFFFFF' stroke-opacity='0.10' stroke-width='1' fill='none'/%3E%3Cpath d='M-20 50 Q 30 33 80 50 T 180 50 T 280 50 T 380 50 T 480 50' stroke='%23FFFFFF' stroke-opacity='0.07' stroke-width='1' fill='none'/%3E%3Cpath d='M-20 82 Q 30 64 80 82 T 180 82 T 280 82 T 380 82 T 480 82' stroke='%23FFFFFF' stroke-opacity='0.05' stroke-width='1' fill='none'/%3E%3Cpath d='M-20 112 Q 30 96 80 112 T 180 112 T 280 112 T 380 112 T 480 112' stroke='%23FFFFFF' stroke-opacity='0.04' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  --contour-dark:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120' viewBox='0 0 400 120'%3E%3Cpath d='M-20 18 Q 30 4 80 18 T 180 18 T 280 18 T 380 18 T 480 18' stroke='%232E86AB' stroke-opacity='0.14' stroke-width='1' fill='none'/%3E%3Cpath d='M-20 50 Q 30 33 80 50 T 180 50 T 280 50 T 380 50 T 480 50' stroke='%232E86AB' stroke-opacity='0.10' stroke-width='1' fill='none'/%3E%3Cpath d='M-20 82 Q 30 64 80 82 T 180 82 T 280 82 T 380 82 T 480 82' stroke='%232E86AB' stroke-opacity='0.08' stroke-width='1' fill='none'/%3E%3Cpath d='M-20 112 Q 30 96 80 112 T 180 112 T 280 112 T 380 112 T 480 112' stroke='%232E86AB' stroke-opacity='0.06' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+/* html{ scroll-behavior:smooth; } */
+
+/* body{
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  font-size: 1rem;
+  line-height: 1.7;
+} */
+
+/* h1,h2,h3,h4,
+.font-display{ font-family: var(--font-display); letter-spacing:-0.01em; }
+
+h1{ font-weight:600; }
+h2{ font-weight:600; }
+h3{ font-weight:600; } */
+
+/* .font-mono{ font-family: var(--font-mono); } */
+
+/* a{ color: var(--accent); text-decoration:none; }
+a:hover{ color: var(--primary); } */
+
+.text-ink{ color: var(--ink) !important; }
+.text-accent{ color: var(--accent) !important; }
+.text-ochre{ color: var(--ochre) !important; }
+.text-muted-2{ color: var(--muted) !important; }
+.bg-bg-alt{ background: var(--bg-alt) !important; }
+.bg-primary-custom{ background: var(--primary) !important; }
+.bg-ink{ background: var(--ink) !important; }
+.bg-accent-soft{ background: var(--accent-soft) !important; }
+
+/* ============================================================
+   Eyebrow — notation "FIG. / TABLEAU" façon publication scientifique
+   ============================================================ */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: var(--accent);
+  margin-bottom: .75rem;
+}
+.eyebrow::before{
+  content:"";
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+  display:inline-block;
+}
+.eyebrow.light{ color: rgba(255,255,255,.75); }
+.eyebrow.light::before{ background: rgba(255,255,255,.55); }
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+.navbar-carics{
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  padding-top:.85rem; padding-bottom:.85rem;
+  transition: box-shadow .25s ease;
+}
+.navbar-carics.is-scrolled{ box-shadow: 0 4px 18px rgba(20,40,60,.06); }
+
+.navbar-carics .navbar-brand{
+  font-family: var(--font-display);
+  font-weight:700;
+  font-size: 1.35rem;
+  color: var(--ink);
+  display:flex; align-items:center; gap:.5rem;
+}
+.navbar-carics .navbar-brand .mark{
+  display:inline-flex; align-items:center; justify-content:center;
+  width: 34px; height:34px; border-radius:8px;
+  background: var(--primary);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: .85rem; font-weight:700; letter-spacing:0;
+}
+.navbar-carics .navbar-brand .sub{ color: var(--accent); font-weight:600; }
+
+.navbar-carics .nav-link{
+  font-size:.92rem; font-weight:500; color: var(--ink);
+  padding: .55rem .9rem; position:relative;
+}
+.navbar-carics .nav-link::after{
+  content:""; position:absolute; left:.9rem; right:.9rem; bottom:.3rem; height:2px;
+  background: var(--accent); transform: scaleX(0); transform-origin:left;
+  transition: transform .2s ease;
+}
+.navbar-carics .nav-link:hover::after,
+.navbar-carics .nav-link.active::after{ transform: scaleX(1); }
+.navbar-carics .nav-link.active{ color: var(--primary); font-weight:600; }
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn-cta{
+  background: var(--accent); border:1.5px solid var(--accent);
+  color: var(--white); font-weight:600; font-size:.92rem;
+  padding:.6rem 1.4rem; border-radius:7px; letter-spacing:.01em;
+  transition: all .2s ease;
+}
+.btn-cta:hover{ background: var(--primary); border-color: var(--primary); color:var(--white); }
+
+.btn-cta-outline{
+  background: transparent; border:1.5px solid var(--accent);
+  color: var(--accent); font-weight:600; font-size:.92rem;
+  padding:.6rem 1.4rem; border-radius:7px;
+  transition: all .2s ease;
+}
+.btn-cta-outline:hover{ background: var(--accent-soft); color: var(--primary); border-color: var(--primary); }
+
+.btn-cta-light{
+  background: var(--white); border:1.5px solid var(--white);
+  color: var(--primary); font-weight:600; font-size:.92rem;
+  padding:.6rem 1.4rem; border-radius:7px;
+  transition: all .2s ease;
+}
+.btn-cta-light:hover{ background: transparent; color: var(--white); }
+
+.btn-cta-outline-light{
+  background: transparent; border:1.5px solid rgba(255,255,255,.55);
+  color: var(--white); font-weight:600; font-size:.92rem;
+  padding:.6rem 1.4rem; border-radius:7px;
+  transition: all .2s ease;
+}
+.btn-cta-outline-light:hover{ background: rgba(255,255,255,.12); border-color: var(--white); }
+
+.btn-cta-sm{ font-size:.82rem; padding:.4rem 1rem; }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{
+  background: linear-gradient(165deg, var(--primary) 0%, var(--ink) 100%);
+  background-image: var(--contour-light), linear-gradient(165deg, var(--primary) 0%, var(--ink) 100%);
+  background-size: 480px auto, cover;
+  background-repeat: repeat, no-repeat;
+  color: var(--white);
+  padding: 6.5rem 0 5rem;
+  position:relative;
+}
+.hero h1{ color: var(--white); font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height:1.18; }
+.hero p.lead{ color: rgba(255,255,255,.82); font-size:1.15rem; max-width:42rem; }
+
+.hero-sm{
+  background: linear-gradient(165deg, var(--primary) 0%, var(--ink) 100%);
+  background-image: var(--contour-light), linear-gradient(165deg, var(--primary) 0%, var(--ink) 100%);
+  background-size: 480px auto, cover;
+  background-repeat: repeat, no-repeat;
+  color: var(--white);
+  padding: 3.2rem 0 2.6rem;
+}
+.hero-sm h1{ color:var(--white); font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom:.4rem; }
+.hero-sm p.lead{ color: rgba(255,255,255,.80); font-size:1.02rem; max-width:42rem; margin-bottom:0; }
+
+.breadcrumb-carics{
+  font-family: var(--font-mono); font-size:.78rem; letter-spacing:.04em;
+  color: rgba(255,255,255,.65); margin-bottom:1rem;
+}
+.breadcrumb-carics a{ color: rgba(255,255,255,.85); }
+.breadcrumb-carics a:hover{ color:var(--white); }
+.breadcrumb-carics .sep{ margin:0 .4rem; color: rgba(255,255,255,.4); }
+
+.breadcrumb-light{
+  font-family: var(--font-mono); font-size:.78rem; letter-spacing:.04em;
+  color: var(--muted); margin-bottom:1rem;
+}
+.breadcrumb-light a{ color: var(--accent); }
+.breadcrumb-light .sep{ margin:0 .4rem; color: var(--line); }
+.breadcrumb-light .current{ color: var(--ink); }
+
+.scroll-cue{
+  position:absolute; bottom: 1.6rem; left:50%; transform:translateX(-50%);
+  width:30px; height:46px; border:1.5px solid rgba(255,255,255,.4); border-radius:16px;
+  display:flex; justify-content:center; padding-top:8px;
+}
+.scroll-cue span{
+  width:4px; height:8px; border-radius:2px; background:rgba(255,255,255,.7);
+  animation: scrollcue 1.8s ease infinite;
+}
+@keyframes scrollcue{
+  0%{ transform:translateY(0); opacity:1;}
+  60%{ transform:translateY(10px); opacity:0;}
+  100%{ transform:translateY(0); opacity:0;}
+}
+
+/* ============================================================
+   Section helpers
+   ============================================================ */
+.section{ padding: 4.5rem 0; }
+.section-sm{ padding: 3rem 0; }
+.section-title{ font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--ink); margin-bottom: .6rem; }
+.section-lead{ color: var(--muted); max-width: 46rem; }
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.card-soft{
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.6rem;
+  height:100%;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.card-soft:hover{ box-shadow: 0 10px 28px rgba(20,40,60,.08); transform: translateY(-2px); }
+
+.icon-tile{
+  width:46px; height:46px; border-radius:10px;
+  background: var(--accent-soft); color: var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; margin-bottom: 1rem;
+}
+.icon-tile.ochre{ background: var(--ochre-soft); color: var(--ochre); }
+.icon-tile.ink{ background: rgba(255,255,255,.12); color: var(--white); }
+
+.card-pillar{
+  background: var(--white); border:1px solid var(--line); border-radius:14px;
+  padding: 2rem 1.6rem; height:100%; text-align:left;
+  border-top: 3px solid var(--accent);
+}
+.card-pillar .pillar-step{
+  font-family: var(--font-mono); font-size:.78rem; color: var(--accent);
+  letter-spacing:.12em; margin-bottom:.6rem; display:block;
+}
+.card-pillar .pillar-result{
+  margin-top:1rem; padding-top:.85rem; border-top:1px dashed var(--line);
+  font-size:.85rem; color: var(--muted);
+}
+.card-pillar .pillar-result strong{ color: var(--ink); font-weight:600; }
+
+/* Stat / chiffre */
+.stat-card{
+  background: var(--white); border:1px solid var(--line); border-radius:12px;
+  padding: 1.6rem 1.4rem; text-align:left; height:100%;
+}
+.stat-number{
+  font-family: var(--font-mono); font-weight:700; font-size: 2.6rem; color: var(--accent);
+  line-height:1; letter-spacing:-.02em;
+}
+.stat-number .eq{ color: var(--muted); font-weight:400; font-size:1.4rem; margin-right:.25rem; }
+.stat-label{ color: var(--muted); font-size:.92rem; margin-top:.4rem; }
+
+/* Project highlight */
+.project-highlight{
+  background: var(--white); border:1px solid var(--line); border-radius:16px;
+  overflow:hidden;
+}
+.project-highlight .ph-head{
+  background: linear-gradient(120deg, var(--primary), var(--accent));
+  background-image: var(--contour-dark), linear-gradient(120deg, var(--primary), var(--accent));
+  background-size: 480px auto, cover;
+  color:var(--white); padding: 1.8rem 2rem;
+}
+.project-highlight .ph-body{ padding: 1.8rem 2rem; }
+
+/* Badges de statut */
+.badge-status{
+  font-family: var(--font-mono); font-size:.72rem; letter-spacing:.06em;
+  text-transform:uppercase; padding:.32rem .65rem; border-radius:5px; font-weight:600;
+}
+.badge-status.ongoing{ background: var(--success-soft); color: var(--success); }
+.badge-status.upcoming{ background: var(--warning-soft); color: var(--warning); }
+.badge-status.archived{ background: var(--bg-alt); color: var(--muted); }
+.badge-status.light{ background: rgba(255,255,255,.18); color: var(--white); }
+
+/* Tags / catégories */
+.tag{
+  display:inline-block; font-size:.8rem; padding:.32rem .75rem; border-radius:5px;
+  background: var(--accent-soft); color: var(--primary); font-weight:600;
+  text-decoration:none; border: 1px solid transparent;
+}
+.tag:hover{ background: var(--accent); color: var(--white); }
+.tag.is-active{ background: var(--accent); color: var(--white); }
+.tag-ghost{
+  display:inline-block; font-size:.85rem; padding:.4rem .85rem; border-radius:6px;
+  background: var(--white); border:1px solid var(--line); color: var(--ink); font-weight:500;
+}
+
+/* Catégorie de blog (couleurs) */
+.cat-recherche{ background: var(--accent-soft); color: var(--primary); }
+.cat-projets{ background: var(--ochre-soft); color: var(--ochre); }
+.cat-communautaire{ background: var(--success-soft); color: var(--success); }
+.cat-politiques{ background: #F1ECF8; color:#6C4FA3; }
+.cat-innovation{ background: #E7F0FB; color:#2E5FA3; }
+.cat-terrain{ background: var(--bg-alt); color: var(--muted); }
+
+/* ============================================================
+   Blog cards
+   ============================================================ */
+.blog-card{
+  background: var(--white); border:1px solid var(--line); border-radius:12px;
+  overflow:hidden; height:100%; display:flex; flex-direction:column;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.blog-card:hover{ box-shadow: 0 12px 30px rgba(20,40,60,.08); transform: translateY(-2px); }
+.blog-card .thumb{
+  height: 160px; display:flex; align-items:center; justify-content:center;
+  background: var(--bg-alt);
+  background-image: var(--contour-dark);
+  background-size: 380px auto;
+  position:relative;
+}
+.blog-card .thumb .thumb-icon{ font-size:2.1rem; color: var(--accent); opacity:.55; }
+.blog-card .body{ padding:1.25rem 1.4rem; display:flex; flex-direction:column; flex:1; }
+.blog-card h3{ font-size:1.05rem; line-height:1.4; margin:.6rem 0 .5rem; }
+.blog-card .excerpt{ color: var(--muted); font-size:.92rem; flex:1; }
+.blog-card .meta{
+  display:flex; align-items:center; gap:.6rem; margin-top:1rem; padding-top:.85rem;
+  border-top:1px solid var(--line); font-size:.8rem; color: var(--muted);
+}
+.author-avatar{
+  width:28px; height:28px; border-radius:50%; background: var(--accent);
+  color:var(--white); display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-mono); font-size:.7rem; font-weight:700; flex-shrink:0;
+}
+
+/* ============================================================
+   Profils (gouvernance / auteurs)
+   ============================================================ */
+.profile-card{
+  background: var(--white); border:1px solid var(--line); border-radius:12px;
+  padding: 1.5rem; height:100%;
+}
+.profile-avatar{
+  width:58px; height:58px; border-radius:50%; background: var(--primary);
+  color:var(--white); display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-mono); font-weight:700; font-size:1rem; margin-bottom:1rem;
+}
+
+/* ============================================================
+   Accordion (custom)
+   ============================================================ */
+.accordion-carics .accordion-item{ border:1px solid var(--line); border-radius:10px !important; margin-bottom:.7rem; overflow:hidden; }
+.accordion-carics .accordion-button{
+  font-family: var(--font-display); font-weight:600; color: var(--ink);
+  background: var(--white); font-size:1.02rem;
+}
+.accordion-carics .accordion-button:not(.collapsed){
+  background: var(--accent-soft); color: var(--primary); box-shadow:none;
+}
+.accordion-carics .accordion-button:focus{ box-shadow:none; border-color: var(--line); }
+.accordion-carics .accordion-button::after{ flex-shrink:0; }
+
+/* ============================================================
+   Empty state (ressources / opportunités)
+   ============================================================ */
+.empty-state{
+  border:1px dashed var(--line); border-radius:12px; background: var(--bg-alt);
+  padding: 1.4rem 1.6rem; text-align:left;
+}
+.empty-state .badge-status{ margin-bottom:.6rem; }
+
+/* ============================================================
+   Forms
+   ============================================================ */
+.form-carics label{ font-weight:600; font-size:.88rem; color: var(--ink); margin-bottom:.35rem; }
+.form-carics .form-control,
+.form-carics .form-select{
+  border:1px solid var(--line); border-radius:8px; padding:.6rem .85rem; font-size:.95rem;
+}
+.form-carics .form-control:focus,
+.form-carics .form-select:focus{
+  border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.form-carics textarea.form-control{ min-height:140px; }
+
+/* ============================================================
+   Tableau "Notre approche"
+   ============================================================ */
+.table-approche thead th{
+  background: var(--primary); color:var(--white); font-weight:600;
+  border:none; padding:.9rem 1.1rem; font-size:.92rem;
+}
+.table-approche td{ padding:1rem 1.1rem; vertical-align:top; border-color:var(--line); }
+.table-approche tbody tr:nth-of-type(odd){ background: var(--bg-alt); }
+.table-approche td.pillar-name{ font-weight:700; color: var(--primary); white-space:nowrap; }
+
+/* ============================================================
+   Article (blog) typography
+   ============================================================ */
+.article-prose h2{
+  font-size:1.5rem; color: var(--ink); margin-top:2.2rem; margin-bottom:.8rem;
+  padding-bottom:.5rem; border-bottom:1px solid var(--line);
+}
+.article-prose h3{ font-size:1.18rem; color: var(--ink); margin-top:1.6rem; margin-bottom:.6rem; }
+.article-prose p{ margin-bottom:1.1rem; color:#2C3A47; }
+.article-prose blockquote{
+  border-left:3px solid var(--accent); padding:.4rem 0 .4rem 1.1rem;
+  color: var(--ink); font-family: var(--font-display); font-size:1.1rem; margin:1.6rem 0;
+}
+.article-prose figure{ margin: 1.8rem 0; }
+.article-prose figcaption{ font-size:.85rem; color:var(--muted); margin-top:.5rem; }
+.article-prose .figure-frame{
+  border:1px solid var(--line); border-radius:10px; background: var(--bg-alt);
+  background-image: var(--contour-dark); background-size:380px auto;
+  min-height:220px; display:flex; align-items:center; justify-content:center; color:var(--accent); font-size:2rem;
+}
+
+.toc-card{
+  border:1px solid var(--line); border-radius:10px; padding:1.2rem 1.3rem; background:var(--white);
+}
+.toc-card .toc-title{ font-family: var(--font-mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.7rem; }
+.toc-card ul{ list-style:none; padding-left:0; margin:0; font-size:.88rem; }
+.toc-card li{ margin-bottom:.5rem; }
+.toc-card a{ color: var(--ink); }
+.toc-card a:hover{ color: var(--accent); }
+
+.share-rail{ display:flex; flex-direction:column; gap:.6rem; }
+.share-btn{
+  width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--white);
+  display:flex; align-items:center; justify-content:center; color: var(--ink); font-size:1rem;
+  transition: all .2s ease;
+}
+.share-btn:hover{ background: var(--accent); color:var(--white); border-color:var(--accent); }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.site-footer{ background: var(--ink); color: rgba(255,255,255,.78); padding: 3.5rem 0 1.5rem; }
+.site-footer h6{ color:var(--white); font-family:var(--font-mono); font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:1.1rem; }
+.site-footer a{ color: rgba(255,255,255,.72); }
+.site-footer a:hover{ color: var(--white); }
+.site-footer ul{ list-style:none; padding-left:0; }
+.site-footer li{ margin-bottom:.55rem; font-size:.92rem; }
+.site-footer .brand{ font-family: var(--font-display); font-weight:700; font-size:1.3rem; color:var(--white); }
+.site-footer .slogan{ font-family: var(--font-mono); font-size:.78rem; letter-spacing:.1em; color: var(--accent); text-transform:uppercase; margin-top:.4rem; }
+.footer-social{ display:flex; gap:.6rem; margin-top:1.2rem; }
+.footer-social a{
+  width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.18);
+  display:flex; align-items:center; justify-content:center; font-size:.95rem;
+}
+/* .footer-social a:hover{ background: var(--accent); border-color: var(--accent); color:var(--white); }
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1); margin-top:2.6rem; padding-top:1.4rem;
+  font-size:.82rem; color: rgba(255,255,255,.5);
+  display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between;
+}
+.footer-bottom a{ color: rgba(255,255,255,.6); }
+.footer-bottom .legal-links a{ margin-left:1.2rem; }
+.footer-bottom .legal-links a:first-child{ margin-left:0; } */
+
+.newsletter-form .form-control{
+  background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); color:var(--white);
+  border-radius:7px 0 0 7px;
+}
+.newsletter-form .form-control::placeholder{ color: rgba(255,255,255,.45); }
+.newsletter-form .btn{ border-radius:0 7px 7px 0; }
+
+/* ============================================================
+   Map placeholder (contact / fiche projet)
+   ============================================================ */
+.map-frame{
+  border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  background: var(--bg-alt); background-image: var(--contour-dark); background-size: 480px auto;
+  min-height: 260px; display:flex; align-items:center; justify-content:center; color:var(--accent);
+  text-align:center; padding:1.5rem;
+}
+
+/* ============================================================
+   Tabs (Actualités)
+   ============================================================ */
+.nav-carics .nav-link{
+  font-weight:600; color: var(--muted); border:none; border-bottom:3px solid transparent;
+  padding: .75rem 1.1rem; border-radius:0;
+}
+.nav-carics .nav-link.active{ color: var(--primary); border-bottom-color: var(--accent); background:transparent; }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.divider-dot{ width:6px; height:6px; border-radius:50%; background: var(--accent); display:inline-block; margin: 0 .6rem; vertical-align:middle; }
+.rounded-pill-sm{ border-radius:6px; }
+.shadow-soft{ box-shadow: 0 10px 30px rgba(20,40,60,.06); }
+
+@media (max-width: 991.98px){
+  .hero, .hero-sm{ text-align:left; }
+  .share-rail{ flex-direction:row; }
+}
+
+
+
+
+/* 1. Style de base : Mobile (< 768px) */
+.partenaire-content {
+  padding: 0 15px;
+  font-size: 18px;
+  text-align: justify;
+}
+
+/* 2. Tablettes (>= 768px) */
+@media (min-width: 768px) {
+  .partenaire-content {
+    padding: 0 20px;
+    font-size: 20px; /* Le texte passe à 20px ici */
+  }
+}
+
+/* 3. Ordinateurs portables (>= 992px) */
+@media (min-width: 992px) {
+  .partenaire-content {
+    padding: 0 60px; 
+  }
+}
+
+/* 4. Grands écrans de bureau (>= 1400px) */
+@media (min-width: 1400px) {
+  .partenaire-content {
+    padding: 0 320px; /* Le grand padding s'applique uniquement aux grands écrans */
+  }
+}
+

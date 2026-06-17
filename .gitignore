@@ -22,3 +22,14 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+/resources/css/archinix
+/resources/css/archpix
+
+/resources/js/archinix
+/resources/js/archpix
+
+
+/resources/views/archinix/
+/resources/views/archpix/
+/resources/views/carenix/
