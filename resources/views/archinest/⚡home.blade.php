@@ -764,7 +764,7 @@ new #[Layout('layouts::archinest')] class extends Component {
     </section>
     <!-- End Partenaires Section-->
 
-    <!-- News Section -->
+    {{-- <!-- News Section -->
     <section class="news-section-four">
         <div class="container">
             <div class="sec-title-box">
@@ -859,7 +859,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             </div>
         </div>
     </section>
-    <!-- End News Section -->
+    <!-- End News Section --> --}}
 
 
 </div>
