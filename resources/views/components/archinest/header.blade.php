@@ -30,7 +30,7 @@
                     <!-- Main box -->
                     <div class="main-box">
                         <div class="logo-box">
-                            <div class="logo"><a href="{{ route('home2') }}"><img src="{{ asset('logo.jpeg') }}"
+                            <div class="logo"><a href="{{ route('home2') }}"><img src="{{ asset('logo_resize.png') }}"
                                         alt="Logo"></a>
                             </div>
                         </div>

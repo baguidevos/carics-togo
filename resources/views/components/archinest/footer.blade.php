@@ -12,20 +12,20 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="footer-logo">
-                    <div class="{{ route('home2') }}"><a href="index.html"><img src="{{ asset('logo.jpeg') }}"
+                    <div class="{{ route('home2') }}"><a href="index.html"><img src="{{ asset('logo_resize.png') }}"
                                 alt=""></a></div>
                 </div>
                 <div class="widgets-section">
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6 footer-column">
                             <div class="footer-widget links-widget">
-                                <h4 class="widget-title">Liens Utils</h4>
+                                <h4 class="widget-title">Liens Utiles</h4>
                                 <div class="widget-content">
                                     <ul class="user-links">
                                         <li><a href="index.html">Accueil</a></li>
                                         <li><a href="page-about.html">A propos</a></li>
-                                        <li><a href="page-service.html">Rcherche & Projets</a></li>
-                                        <li><a href="page-pricing.html">Ressources & Publication</a></li>
+                                        <li><a href="page-service.html">Recherche & Projets</a></li>
+                                        <li><a href="page-pricing.html">Ressources & Publications</a></li>
                                         <li><a href="page-team.html">Actualités & Opportunités</a></li>
                                     </ul>
                                 </div>

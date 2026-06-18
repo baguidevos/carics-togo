@@ -743,7 +743,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="claint-outer">
                         <div>
                             <a href="news-grid.html" class="theme-btn btn-style-one">
-                                <span class="btn-title">Découvrir Nos Traveaux</span>
+                                <span class="btn-title">Découvrir nos travaux</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>
                                 </span>
@@ -751,7 +751,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         </div>
                         <div>
                             <a href="news-grid.html" class="theme-btn btn-style-one">
-                                <span class="btn-title">Devenir Partenaire</span>
+                                <span class="btn-title">Devenir partenaire</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>
                                 </span>

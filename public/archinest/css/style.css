@@ -54,6 +54,7 @@
   --theme-color-black-rgb: 0, 0, 0;
   /* --theme-color-dark: #111111; */
   --theme-color-dark: #0b337b;
+  --theme-color-dark: #0b337b;
   --gradient-1: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgb(217, 244, 95) 100%);
   --text-color: #525252;
   --text-color-rgb: 82, 82, 82;
@@ -4105,7 +4106,7 @@ Main Header
 }
 .header-style-one .header-lower .logo-box .logo {
   width: 182px;
-  height: 38px;
+  /* height: 38px; */
 }
 .header-style-one .header-lower .action-box {
   display: -webkit-box;
@@ -5826,7 +5827,7 @@ sec-title-style-three
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(0, 0, 0, 0.6); */
 }
 .banner-section-three .bg-image img {
   width: 100%;
@@ -7027,7 +7028,7 @@ sec-title-style-three
   left: 0;
   top: 0;
   z-index: -1;
-  background-color: var(--theme-color-dark);
+  /* background-color: var(--theme-color-dark); */
   -webkit-transform-origin: top right;
           transform-origin: top right;
   -webkit-transform-origin: bottom right;
@@ -15759,17 +15760,18 @@ claint-section-home-two
   color: var(--theme-color2);
 }
 .footer-style-one .big-title {
-  -webkit-mask: -webkit-gradient(linear, left top, left bottom, color-stop(7.84%, rgba(255, 255, 255, 0.1)), color-stop(55.43%, rgba(255, 255, 255, 0.4)), color-stop(86.27%, rgba(255, 255, 255, 0.3)));
+  /* -webkit-mask: -webkit-gradient(linear, left top, left bottom, color-stop(7.84%, rgba(255, 255, 255, 0.1)), color-stop(55.43%, rgba(255, 255, 255, 0.4)), color-stop(86.27%, rgba(255, 255, 255, 0.3)));
   -webkit-mask: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 7.84%, rgba(255, 255, 255, 0.4) 55.43%, rgba(255, 255, 255, 0.3) 86.27%);
           mask: -webkit-gradient(linear, left top, left bottom, color-stop(7.84%, rgba(255, 255, 255, 0.1)), color-stop(55.43%, rgba(255, 255, 255, 0.4)), color-stop(86.27%, rgba(255, 255, 255, 0.3)));
-          mask: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 7.84%, rgba(255, 255, 255, 0.4) 55.43%, rgba(255, 255, 255, 0.3) 86.27%);
+          mask: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 7.84%, rgba(255, 255, 255, 0.4) 55.43%, rgba(255, 255, 255, 0.3) 86.27%); */
   font-size: 160px;
-  font-weight: 800;
+  font-weight: bold;
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #E7E7E7;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #00bc4f;
+  /* -webkit-text-stroke-color: #E7E7E7; */
   color: transparent;
   margin-top: 32px;
   padding-bottom: 24px;
