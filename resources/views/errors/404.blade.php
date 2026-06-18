@@ -17,7 +17,7 @@
                                 <button type="submit"><i class="lnr lnr-icon-magnifier"></i></button>
                             </div>
                         </form>
-                        <a href="{{ route('home2') }}" class="theme-btn btn-style-one shop-now"><span class="btn-title">
+                        <a href="{{ route('home') }}" class="theme-btn btn-style-one shop-now"><span class="btn-title">
                                 Retour à l'accueil
                             </span></a>
                     </div>

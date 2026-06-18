@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 // 
-Route::livewire('/1', 'pages::home')->name('home');
-Route::livewire('/', 'archinest::home')->name('home2');
+Route::livewire('/1', 'pages::home')->name('home2');
+Route::livewire('/', 'archinest::home')->name('home');
 Route::livewire('/a-propos', 'archinest::about-us')->name('about');
 Route::livewire('/recherche-expertize-projet', 'archinest::research_expertize_project')->name('recherche-expertize-projet');
 Route::livewire('/ressource-publication', 'archinest::ressource-publication')->name('ressource-publication');

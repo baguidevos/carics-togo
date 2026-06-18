@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="footer-logo">
-                    <div class="{{ route('home2') }}"><a href="index.html"><img src="{{ asset('logo_resize.png') }}"
+                    <div class="{{ route('home') }}"><a href="index.html"><img src="{{ asset('logo_resize.png') }}"
                                 alt=""></a></div>
                 </div>
                 <div class="widgets-section">

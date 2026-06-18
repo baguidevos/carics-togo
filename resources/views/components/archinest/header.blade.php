@@ -30,7 +30,7 @@
                     <!-- Main box -->
                     <div class="main-box">
                         <div class="logo-box">
-                            <div class="logo"><a href="{{ route('home2') }}"><img src="{{ asset('logo_resize.png') }}"
+                            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('logo_resize.png') }}"
                                         alt="Logo"></a>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="nav-outer">
                             <nav class="nav main-menu mx-auto">
                                 <ul class="navigation">
-                                    <li class="current dropdown"><a href="{{ route('home2') }}" wire:current>Acceuil</a>
+                                    <li class="current dropdown"><a href="{{ route('home') }}" wire:current>Acceuil</a>
                                     </li>
                                     <li class="dropdown"><a href="{{ route('about') }}">A propos</a>
                                     </li>
@@ -78,7 +78,7 @@
         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
         <nav class="menu-box">
             <div class="upper-box">
-                <div class="nav-logo"><a href="{{ route('home2') }}"><img src="{{ asset('logo.jpeg') }}" alt=""></a>
+                <div class="nav-logo"><a href="{{ route('home') }}"><img src="{{ asset('logo.jpeg') }}" alt=""></a>
                 </div>
                 <div class="close-btn"><i class="icon fa fa-times"></i></div>
             </div>
@@ -114,7 +114,7 @@
         <button class="close-search"><span class="fa fa-times"></span></button>
 
         <div class="search-inner">
-            <form method="post" action="{{ route('home2') }}">
+            <form method="post" action="{{ route('home') }}">
                 <div class="form-group">
                     <input type="search" name="search-field" value="" placeholder="Search..." required="">
                     <button type="submit"><i class="fa fa-search"></i></button>
@@ -130,7 +130,7 @@
             <div class="inner-container">
                 <!--Logo-->
                 <div class="logo">
-                    <a href="{{ route('home2') }}"><img src="{{ asset('logo.jpeg') }}" alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('logo.jpeg') }}" alt=""></a>
                 </div>
 
                 <!--Right Col-->

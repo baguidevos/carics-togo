@@ -15,7 +15,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="title-outer text-center">
                 <h1 class="title">A Propos de Nous</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home2') }}">Accueil</a></li>
+                    <li><a href="{{ route('home') }}">Accueil</a></li>
                     <li>A Propos de Nous</li>
                 </ul>
             </div>
