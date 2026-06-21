@@ -127,6 +127,13 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-lg-4">
                         <div class="sticky-lg-top" style="top:5.5rem;">
 
+                            <!-- PHOTO DU MEMBRE -->
+                            <div class="card-soft mb-4 p-0 overflow-hidden">
+                                <div class="team-photo">
+                                    <img src="{{ asset('images/equipes/' . $member['imageName']) }}" alt="{{ $member['fullName'] }}">
+                                </div>
+                            </div>
+
                             <!-- EXPERTISES CLÉS -->
                             <div class="card-soft mb-4" style="background:var(--bg-alt);">
                                 <div class="eyebrow mb-3">Expertises clés</div>
