@@ -53,6 +53,9 @@
                                     <li>
                                         <a href="{{ route('actu-opportunites') }}">Actualités & Opportunités</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('equipe') }}">Gouvernance</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
