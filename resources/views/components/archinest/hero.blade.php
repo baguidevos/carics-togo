@@ -12,10 +12,11 @@
                                     <h1 class="title text-reveal-anim">Données probantes.<br>Action. Santé.
                                     </h1>
                                     <div class="bottom-box">
-                                        {{-- <div class="banner-icon"><img src="archinest/images/icons/banner-h3-icon1.png" alt="">
+                                        {{-- <div class="banner-icon"><img
+                                                src="archinest/images/icons/banner-h3-icon1.png" alt="">
                                         </div> --}}
                                         <div class="content">
-                                            <div class="text">Leader de l'innovation médicale au Togo. Nous
+                                            <div class="text">Nous
                                                 transformons la
                                                 recherche de pointe en solutions concrètes pour les défis de santé
                                                 publique en Afrique de l'Ouest.</div>
