@@ -2,9 +2,15 @@
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use App\Data\TeamData;
 
 new #[Layout('layouts::archinest')] class extends Component {
-    //
+    public function with(): array
+    {
+        return [
+            'members' => TeamData::all(),
+        ];
+    }
 };
 ?>
 
@@ -48,86 +54,25 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                 <div class="row g-4">
 
-                    <!-- Membre 1 : Dr Gountante KOMBATE -->
+                    @foreach ($members as $member)
                     <div class="col-md-6 col-lg-3">
-                        <a href="{{ route('team-detail') }}" class="text-decoration-none text-reset d-block h-100">
+                        <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}" class="text-decoration-none text-reset d-block h-100">
                             <div class="team-card h-100">
                                 <div class="team-photo">
-                                    <img src="{{ asset('images/equipes/Kombate.jpg') }}" alt="Dr Gountante KOMBATE">
+                                    <img src="{{ asset('images/equipes/' . $member['imageName']) }}" alt="{{ $member['fullName'] }}">
                                 </div>
                                 <div class="team-body">
-                                    <h3 class="h6 mb-1">Dr Gountante KOMBATE</h3>
-                                    <div class="team-role">Président</div>
+                                    <h3 class="h6 mb-1">{{ $member['fullName'] }}</h3>
+                                    <div class="team-role">{{ $member['roleTitle'] }}</div>
                                     <p class="team-excerpt">
-                                        Épidémiologiste et chercheur en santé mondiale, PhD de l&rsquo;Université
-                                        d&rsquo;Utrecht.
-                                        Lauréat du Early Career Grant 2025 de la RSTMH.
+                                        {{ $member['bioShort'] }}
                                     </p>
                                     <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
                                 </div>
                             </div>
                         </a>
                     </div>
-
-                    <!-- Membre 2 : Berthilde NIKIEMA KOMBATE -->
-                    <div class="col-md-6 col-lg-3">
-                        <a href="{{ route('team-detail') }}" class="text-decoration-none text-reset d-block h-100">
-                            <div class="team-card h-100">
-                                <div class="team-photo">
-                                    <img src="{{ asset('images/equipes/berthilde.png') }}" alt="Berthilde W. NIKIEMA KOMBATE">
-                                </div>
-                                <div class="team-body">
-                                    <h3 class="h6 mb-1">Berthilde W. NIKIEMA KOMBATE</h3>
-                                    <div class="team-role">Secrétaire Générale</div>
-                                    <p class="team-excerpt">
-                                        Juriste conseil spécialisée en droit public, gouvernance institutionnelle et
-                                        commande publique.
-                                    </p>
-                                    <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Membre 3 : Abdoul Rassidou SEDOGO -->
-                    <div class="col-md-6 col-lg-3">
-                        <a href="{{ route('team-detail') }}" class="text-decoration-none text-reset d-block h-100">
-                            <div class="team-card h-100">
-                                <div class="team-photo">
-                                    <img src="{{ asset('images/equipes/sedogo.jpg') }}" alt="Abdoul Rassidou SEDOGO">
-                                </div>
-                                <div class="team-body">
-                                    <h3 class="h6 mb-1">Abdoul Rassidou SEDOGO</h3>
-                                    <div class="team-role">Trésorier Général</div>
-                                    <p class="team-excerpt">
-                                        Gestionnaire financier senior, plus de 13 ans d&rsquo;expérience en gestion
-                                        financière de programmes de santé internationaux.
-                                    </p>
-                                    <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Membre 4 : Dr Komi Ameko AZIANU -->
-                    <div class="col-md-6 col-lg-3">
-                        <a href="{{ route('team-detail') }}" class="text-decoration-none text-reset d-block h-100">
-                            <div class="team-card h-100">
-                                <div class="team-photo">
-                                    <img src="{{ asset('images/equipes/azianu.png') }}" alt="Komi Ameko AZIANU">
-                                </div>
-                                <div class="team-body">
-                                    <h3 class="h6 mb-1">Komi Ameko AZIANU</h3>
-                                    <div class="team-role">Directeur des Programmes &amp; de la Recherche</div>
-                                    <p class="team-excerpt">
-                                        Démographe, doctorant en Démographie à l&rsquo;ISSP, lauréat de la bourse Chaire
-                                        UNESCO 2023.
-                                    </p>
-                                    <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>

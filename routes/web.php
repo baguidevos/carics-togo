@@ -10,7 +10,7 @@ Route::livewire('/recherche-expertize-projet', 'archinest::research_expertize_pr
 Route::livewire('/ressource-publication', 'archinest::ressource-publication')->name('ressource-publication');
 Route::livewire('/actu-opportunites', 'archinest::actu-opportunites')->name('actu-opportunites');
 Route::livewire('/equipe', 'archinest::team')->name('equipe');
-Route::livewire('/equipe-detail', 'archinest::team-detail')->name('team-detail');
+Route::livewire('/equipe/{slug}', 'archinest::team-detail')->name('team-detail');
 
 // Route::get('/about', 'about')->name('about');
 // Route::get('/contact', 'contact')->name('contact');
