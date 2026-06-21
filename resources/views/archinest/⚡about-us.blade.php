@@ -2,9 +2,15 @@
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use App\Data\TeamData;
 
 new #[Layout('layouts::archinest')] class extends Component {
-    //
+    public function with(): array
+    {
+        return [
+            'members' => TeamData::all(),
+        ];
+    }
 };
 ?>
 
@@ -250,7 +256,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="sec-title-box">
                 <div class="sec-title-style-three">
                     <h6 class="sub-title">// Nos Membres //</h6>
-                    <h2 class="title text-reveal-anim">Gouvernance et <br> Equipe dirigeante</h2>
+                    <h2 class="title text-reveal-anim">Gouvernance & <br> Leadership</h2>
                 </div>
                 <div class="sec-right-box">
                     <div class="text">
@@ -259,7 +265,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         l'organisation.
 
                     </div>
-                    <a href="page-team.html" class="theme-btn btn-style-one">
+                    <a href="{{ route('equipe') }}" class="theme-btn btn-style-one">
                         <span class="btn-title">Voir plus </span>
                         <span class="icon">
                             <i class="fa-light fa-arrow-right"></i>
@@ -267,106 +273,29 @@ new #[Layout('layouts::archinest')] class extends Component {
                     </a>
                 </div>
             </div>
-            <div class="row column-gap-2">
-                <div class="team-block col-xl-4 col-sm-6">
+            <div class="row g-4 justify-content-center">
+                @foreach ($members as $member)
+                <div class="team-block col-xl-3 col-md-6 col-sm-12">
                     <div class="inner-block">
                         <div class="image-box">
                             <figure class="image">
-                                <a href="page-team-details.html"><img src="archinest/images/resource/team1-1.jpg"
-                                        alt=""></a>
+                                <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}">
+                                    <img src="{{ asset('images/equipes/' . $member['imageName']) }}" alt="{{ $member['fullName'] }}">
+                                </a>
                             </figure>
                         </div>
                         <div class="info-box">
                             <h5 class="name">
-                                <a href="page-team-details.html">Dr Gountante KOMBATE</a>
+                                <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}">{{ $member['fullName'] }}</a>
                             </h5>
-                            <div class="designation">Président</div>
+                            <div class="designation">{{ $member['roleTitle'] }}</div>
                             <p class="mt-3">
-                                Épidémiologiste et spécialiste des sciences de la mise en œuvre. Ses travaux portent
-                                notamment sur le contrôle du paludisme, la prévention du cancer du col de l'utérus, la
-                                santé communautaire et le renforcement des systèmes de santé en Afrique.
+                                {{ $member['bioShort'] }}
                             </p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="team-block col-xl-4 col-sm-6">
-                    <div class="inner-block">
-                        <div class="image-box">
-                            <figure class="image">
-                                <a href="page-team-details.html"><img src="archinest/images/resource/team1-2.jpg"
-                                        alt=""></a>
-                            </figure>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name">
-                                <a href="page-team-details.html">Mme NIKIEMA W. Berthilde</a>
-                            </h5>
-                            <div class="designation">Secrétaire Générale</div>
-                            <p class="mt-3">
-                                Responsable de la coordination administrative et institutionnelle de l'organisation.
-                            </p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-block col-xl-4 col-sm-6">
-                    <div class="inner-block">
-                        <div class="image-box">
-                            <figure class="image">
-                                <a href="page-team-details.html"><img src="archinest/images/resource/team1-3.jpg"
-                                        alt=""></a>
-                            </figure>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name">
-                                <a href="page-team-details.html">M. KOMBATE P. Eloi</a>
-                            </h5>
-                            <div class="designation bold">Trésorier Général</div>
-                            <p class="mt-3">
-                                Responsable de la gestion financière et de la conformité administrative.
-                            </p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-block col-xl-4 col-sm-6">
-                    <div class="inner-block">
-                        <div class="image-box">
-                            <figure class="image">
-                                <a href="page-team-details.html"><img src="archinest/images/resource/team1-4.jpg"
-                                        alt=""></a>
-                            </figure>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name">
-                                <a href="page-team-details.html">Dr AZIANU Komi Ameko</a>
-                            </h5>
-                            <div class="designation">Responsable des Programmes et de la Recherche</div>
-                            <p class="mt-3">
-                                Responsable de la coordination scientifique et technique des projets de recherche et des
-                                programmes de santé.
-                            </p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

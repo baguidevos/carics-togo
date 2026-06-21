@@ -11,6 +11,15 @@ Route::livewire('/ressource-publication', 'archinest::ressource-publication')->n
 Route::livewire('/actu-opportunites', 'archinest::actu-opportunites')->name('actu-opportunites');
 Route::livewire('/equipe', 'archinest::team')->name('equipe');
 Route::livewire('/equipe/{slug}', 'archinest::team-detail')->name('team-detail');
+Route::livewire('/contact', 'archinest::contact')->name('contact');
+
+// Changement de langue
+Route::get('/lang/{locale}', function (string $locale) {
+    if (in_array($locale, ['fr', 'en'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('lang.switch');
 
 // Route::get('/about', 'about')->name('about');
 // Route::get('/contact', 'contact')->name('contact');

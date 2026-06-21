@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="footer-logo">
-                    <div class="{{ route('home') }}"><a href="index.html"><img src="{{ asset('logo_resize.png') }}"
+                    <div><a href="{{ route('home') }}"><img src="{{ asset('logo_resize.png') }}"
                                 alt=""></a></div>
                 </div>
                 <div class="widgets-section">
@@ -22,11 +22,11 @@
                                 <h4 class="widget-title">Liens Utiles</h4>
                                 <div class="widget-content">
                                     <ul class="user-links">
-                                        <li><a href="index.html">Accueil</a></li>
-                                        <li><a href="page-about.html">A propos</a></li>
-                                        <li><a href="page-service.html">Recherche & Projets</a></li>
-                                        <li><a href="page-pricing.html">Ressources & Publications</a></li>
-                                        <li><a href="page-team.html">Actualités & Opportunités</a></li>
+                                        <li><a href="{{ route('home') }}">Accueil</a></li>
+                                        <li><a href="{{ route('about') }}">A propos</a></li>
+                                        <li><a href="{{ route('recherche-expertize-projet') }}">Recherche &amp; Projets</a></li>
+                                        <li><a href="{{ route('ressource-publication') }}">Ressources &amp; Publications</a></li>
+                                        <li><a href="{{ route('actu-opportunites') }}">Actualités &amp; Opportunités</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -36,11 +36,11 @@
                                 <h4 class="widget-title">Autres Liens</h4>
                                 <div class="widget-content">
                                     <ul class="user-links">
-                                        <li><a href="page-project.html">Actualités</a></li>
-                                        <li><a href="index.html">Opportunités</a></li>
-                                        <li><a href="page-faq.html">Offres de Services</a></li>
-                                        <li><a href="page-contact.html">Partenariats</a></li>
-                                        <li><a href="page-404.html">Rejoignez-nous</a></li>
+                                        <li><a href="{{ route('equipe') }}">Gouvernance &amp; Leadership</a></li>
+                                        <li><a href="{{ route('actu-opportunites') }}">Actualités</a></li>
+                                        <li><a href="{{ route('actu-opportunites') }}">Opportunités</a></li>
+                                        <li><a href="{{ route('contact') }}">Contactez-nous</a></li>
+                                        <li><a href="{{ route('contact') }}">Partenariats</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                     <div class="inner-contact">
                         <h2 class="contact-title">Un projet ou une Collaboration ? <br>Parlons-en.</h2>
                         <div class="widget-outer">
-                            <a href="page-contact.html" class="contact-buton"><i
+                            <a href="{{ route('contact') }}" class="contact-buton"><i
                                     class="icon fa-light fa-arrow-right"></i> <span>Nous Contacter</span></a>
                             <div class="footer-widget social-widget">
                                 <h4 class="widget-title">Suivez-nous sur les réseaux</h4>

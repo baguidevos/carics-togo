@@ -2,9 +2,15 @@
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use App\Data\TeamData;
 
 new #[Layout('layouts::archinest')] class extends Component {
-    //
+    public function with(): array
+    {
+        return [
+            'members' => TeamData::all(),
+        ];
+    }
 };
 ?>
 
@@ -725,6 +731,38 @@ new #[Layout('layouts::archinest')] class extends Component {
         </div>
     </section>
     <!-- Gallery Section end -->
+
+    <!-- Team Section -->
+    <section class="section py-5 bg-bg-alt">
+        <div class="container">
+            <div class="sec-title-style-three text-center mb-5">
+                <h6 class="sub-title">// Notre Leadership //</h6>
+                <h2 class="title text-reveal-anim">Leadership & Gouvernance</h2>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                @foreach ($members as $member)
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}" class="text-decoration-none text-reset d-block h-100">
+                        <div class="team-card h-100">
+                            <div class="team-photo">
+                                <img src="{{ asset('images/equipes/' . $member['imageName']) }}" alt="{{ $member['fullName'] }}">
+                            </div>
+                            <div class="team-body">
+                                <h3 class="h6 mb-1">{{ $member['fullName'] }}</h3>
+                                <div class="team-role">{{ $member['roleTitle'] }}</div>
+                                <p class="team-excerpt">
+                                    {{ $member['bioShort'] }}
+                                </p>
+                                <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
     <!-- Partenaires Section -->
     <section class="clients-section home-3 pt-0">

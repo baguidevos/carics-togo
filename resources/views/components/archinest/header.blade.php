@@ -20,7 +20,38 @@
                         <li><a href="{{ config('site.href_phone3') }}"><i class="fa-regular fa-phone"></i>
                                 {{ config('site.phone3') }}</a>
                         </li>
-                    </ul>
+                        <li class="line"></li>
+                        <li>
+                            <ul class="list" x-data="{ open: false }" style="margin-left:auto; position:relative;">
+                                <li>
+                                    <div @click="open = !open" @click.outside="open = false"
+                                        style="cursor:pointer; display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; letter-spacing:.04em; user-select:none;">
+                                        <i class="fa-regular fa-globe text-white" style="font-size:14px;"></i>
+                                        <span x-text="$store.lang.current.toUpperCase()">FR</span>
+                                        <span class="text-white">{{ str_replace('_', '-', strtoupper(app()->getLocale())) }}</span>
+                                        <i class="fa-solid fa-angle-down text-white"
+                                            style="font-size:10px; transition:transform .2s;"
+                                            :style="open ? 'transform:rotate(180deg)' : ''"></i>
+                                    </div>
+                                    <div x-show="open" x-transition
+                                        style="position:absolute; top:calc(100% + 6px); right:0; background:#fff; border:1px solid #e5e7eb; border-radius:6px; min-width:90px; box-shadow:0 4px 16px rgba(0,0,0,.1); z-index:9999; overflow:hidden; display:none;">
+                                        <a href="{{ route('lang.switch', ['locale' => 'fr']) }}"
+                                            style="display:flex; align-items:center; gap:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#16344F; text-decoration:none; transition:background .15s;"
+                                            onmouseover="this.style.background='#f3f4f6'"
+                                            onmouseout="this.style.background=''" @click="open=false">
+                                            FR
+                                        </a>
+                                        <a href="{{ route('lang.switch', ['locale' => 'en']) }}"
+                                            style="display:flex; align-items:center; gap:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#16344F; text-decoration:none; transition:background .15s;"
+                                            onmouseover="this.style.background='#f3f4f6'"
+                                            onmouseout="this.style.background=''" @click="open=false">
+                                            EN
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
                 </div>
             </div>
         </div>
@@ -39,22 +70,23 @@
                         <div class="nav-outer">
                             <nav class="nav main-menu mx-auto">
                                 <ul class="navigation">
-                                    <li class="current dropdown"><a href="{{ route('home') }}" wire:current>Acceuil</a>
+                                    <li class="current"><a href="{{ route('home') }}" wire:current>Acceuil</a>
                                     </li>
                                     <li class="dropdown"><a href="{{ route('about') }}">A propos</a>
+                                        <ul>
+                                            <li><a href="{{ route('about') }}">A propos</a></li>
+                                            <li><a href="{{ route('equipe') }}">Gouvernance &amp; Leadership</a></li>
+                                        </ul>
                                     </li>
-                                    <li class="dropdown"><a href="{{ route('recherche-expertize-projet') }}">Recherche &
+                                    <li class=""><a href="{{ route('recherche-expertize-projet') }}">Recherche &
                                             Projets</a>
                                     </li>
-                                    <li class="dropdown"><a href="{{ route('ressource-publication') }}">Ressources &
+                                    <li class=""><a href="{{ route('ressource-publication') }}">Ressources &
                                             Publications</a>
 
                                     </li>
                                     <li>
                                         <a href="{{ route('actu-opportunites') }}">Actualités & Opportunités</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('equipe') }}">Gouvernance</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -62,7 +94,7 @@
 
                         <!-- Outer Box -->
                         <div class="action-box">
-                            <a href="#" class="theme-btn btn-style-one d-none d-md-flex">
+                            <a href="{{ route('contact') }}" class="theme-btn btn-style-one d-none d-md-flex">
                                 <span class="btn-title">Contactez-nous</span>
                             </a>
                             <!-- Mobile Nav toggler -->
@@ -99,6 +131,18 @@
                     <i class="icon fal fa-phone"></i>
                     <span class="title">Appelez-nous</span>
                     <div class="text"><a href="{{ config('site.href_phone1') }}">{{ config('site.phone1') }}</a>
+                    </div>
+                </li>
+                <li>
+                    <i class="icon fal fa-phone"></i>
+                    <span class="title">Appelez-nous</span>
+                    <div class="text"><a href="{{ config('site.href_phone2') }}">{{ config('site.phone2') }}</a>
+                    </div>
+                </li>
+                <li>
+                    <i class="icon fal fa-phone"></i>
+                    <span class="title">Appelez-nous</span>
+                    <div class="text"><a href="{{ config('site.href_phone3') }}">{{ config('site.phone3') }}</a>
                     </div>
                 </li>
             </ul>
