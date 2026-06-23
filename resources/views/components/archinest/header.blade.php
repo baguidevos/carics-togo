@@ -28,7 +28,8 @@
                                         style="cursor:pointer; display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; letter-spacing:.04em; user-select:none;">
                                         <i class="fa-regular fa-globe text-white" style="font-size:14px;"></i>
                                         <span x-text="$store.lang.current.toUpperCase()">FR</span>
-                                        <span class="text-white">{{ str_replace('_', '-', strtoupper(app()->getLocale())) }}</span>
+                                        <span
+                                            class="text-white">{{ str_replace('_', '-', strtoupper(app()->getLocale())) }}</span>
                                         <i class="fa-solid fa-angle-down text-white"
                                             style="font-size:10px; transition:transform .2s;"
                                             :style="open ? 'transform:rotate(180deg)' : ''"></i>
@@ -70,11 +71,11 @@
                         <div class="nav-outer">
                             <nav class="nav main-menu mx-auto">
                                 <ul class="navigation">
-                                    <li class="current"><a href="{{ route('home') }}" wire:current>Acceuil</a>
+                                    <li class="current"><a href="{{ route('home') }}" wire:current>Accueil</a>
                                     </li>
-                                    <li class="dropdown"><a href="{{ route('about') }}">A propos</a>
+                                    <li class="dropdown"><a href="{{ route('about') }}">À propos</a>
                                         <ul>
-                                            <li><a href="{{ route('about') }}">A propos</a></li>
+                                            <li><a href="{{ route('about') }}">À propos</a></li>
                                             <li><a href="{{ route('equipe') }}">Gouvernance &amp; Leadership</a></li>
                                         </ul>
                                     </li>

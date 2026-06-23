@@ -5846,7 +5846,7 @@ sec-title-style-three
   }
 }
 .banner-section-three .content-box {
-  max-width: 774px;
+  /* max-width: 774px; */
   -webkit-transform: translateY(-150px);
           transform: translateY(-150px);
   -webkit-transition: all 2500ms ease;

@@ -9,7 +9,7 @@
                             <!-- Slide Item -->
                             <div class="banner-slide">
                                 <div class="content-box">
-                                    <h1 class="title text-reveal-anim">Données probantes.<br>Action. Santé.
+                                    <h1 class="title text-reveal-anim">Recherche - Action - Impact.
                                     </h1>
                                     <div class="bottom-box">
                                         {{-- <div class="banner-icon"><img
@@ -31,7 +31,7 @@
                             <div class="banner-count-box">
                                 <div class="inner-box">
                                     <div class="count-box"><span class="count-text" data-speed="3000"
-                                            data-stop="1">0</span>+</div>
+                                            data-stop="1">0</span></div>
                                     <div class="text">Un centre de recherche créé en <strong>2026</strong></div>
                                 </div>
                             </div>

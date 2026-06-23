@@ -16,7 +16,7 @@
             <div class="text">{{ $description }}</div>
         </div>
         <div class="btn-box">
-            <a href="page-service-details.html" class="btn-style-link"><span>Read More </span><i
+            <a href="page-service-details.html" class="btn-style-link"><span>Lire plus </span><i
                     class="icon fa-light fa-arrow-up-right"></i></a>
         </div>
     </div>

@@ -142,7 +142,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-emploi" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="eyebrow mb-2">Tableau 06 — Emplois &amp; consultances</div>
+                            <div class="eyebrow mb-2">Emplois &amp; consultances</div>
                             <h2 class="section-title mb-3">Offres d&rsquo;emploi et de consultance</h2>
                             <div class="empty-state">
                                 <span class="badge-status upcoming">Aucune offre actuellement</span>
@@ -168,7 +168,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-stage" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="eyebrow mb-2">Tableau 07 — Stages &amp; mentorat</div>
+                            <div class="eyebrow mb-2">Stages &amp; mentorat</div>
                             <h2 class="section-title mb-3">Stages et mentorat</h2>
                             <div class="empty-state">
                                 <span class="badge-status upcoming">Aucune offre actuellement</span>
@@ -193,7 +193,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-bourses" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="eyebrow mb-2">Tableau 08 — Bourses &amp; formations</div>
+                            <div class="eyebrow mb-2">Bourses &amp; formations</div>
                             <h2 class="section-title mb-3">Bourses et formations</h2>
                             <div class="empty-state">
                                 <span class="badge-status upcoming">Aucune opportunité actuellement</span>
@@ -213,7 +213,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-partenariat" role="tabpanel">
                     <div class="row g-4">
                         <div class="col-lg-7">
-                            <div class="eyebrow mb-2">Tableau 09 — Partenariats</div>
+                            <div class="eyebrow mb-2">Partenariats</div>
                             <h2 class="section-title mb-3">Proposer un partenariat</h2>
                             <p>
                                 CARICS-Togo est ouvert aux propositions de collaboration de la part de toute

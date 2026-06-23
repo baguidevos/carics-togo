@@ -13,10 +13,10 @@ new #[Layout('layouts::archinest')] class extends Component {
     <section class="page-title" style="background-image: url(images/banner.jpg);">
         <div class="auto-container">
             <div class="title-outer text-center">
-                <h1 class="title">Nos Domaines d'Expertises</h1>
+                <h1 class="title">Nos Domaines d'Expertise</h1>
                 <ul class="page-breadcrumb">
                     <li><a href="{{ route('home') }}">Accueil</a></li>
-                    <li>Nos Domaines d'Expertises</li>
+                    <li>Nos Domaines d'Expertise</li>
                 </ul>
             </div>
         </div>
@@ -28,8 +28,8 @@ new #[Layout('layouts::archinest')] class extends Component {
         <div class="auto-container">
             <div class="sec-title-box gap-4 gap-xl-0">
                 <div class="sec-title-style-three">
-                    <h6 class="sub-title">// // Expertise //</h6>
-                    <h2 class="title text-reveal-anim">Notre expertises et Recherches</h2>
+                    {{-- <h6 class="sub-title">// // Expertise //</h6> --}}
+                    <h2 class="title text-reveal-anim">Nos expertises et Recherches</h2>
                 </div>
                 <div class="sec-right-box">
                     <div class="text">
@@ -38,7 +38,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         prise de décision.
                     </div>
                     <a href="page-faq.html" class="theme-btn btn-style-one">
-                        <span class="btn-title"> Read More</span>
+                        <span class="btn-title">En savoir plus</span>
                         <span class="icon"><i class="fa-light fa-arrow-right"></i></span>
                     </a>
                 </div>
@@ -194,7 +194,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row">
                 <div class="col-xl-5 col-lg-5 mb-5 mb-lg-0">
                     <div class="sec-title-style-three">
-                        <h6 class="sub-title">// Projets //</h6>
+                        {{-- <h6 class="sub-title">// Projets //</h6> --}}
                         <h2 class="title text-reveal-anim wow fadeInUp" data-wow-delay=".3s">
                             Notre projet phare en cours
                         </h2>
@@ -222,7 +222,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 </li>
                                 <li>
                                     <h4 class="project-details__name mb-2">Financement </h4>
-                                    <p class="project-details__client">Royal Society of Tropical Medicine and Hygiene (RSTMH)</p>
+                                    <p class="project-details__client">Royal Society of Tropical Medicine and Hygiene
+                                        (RSTMH)</p>
                                 </li>
                                 <li>
                                     <h4 class="project-details__name mb-2">Statut :</h4>

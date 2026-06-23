@@ -12,8 +12,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="footer-logo">
-                    <div><a href="{{ route('home') }}"><img src="{{ asset('logo_resize.png') }}"
-                                alt=""></a></div>
+                    <div><a href="{{ route('home') }}"><img src="{{ asset('logo_resize.png') }}" alt=""></a></div>
                 </div>
                 <div class="widgets-section">
                     <div class="row">
@@ -23,10 +22,13 @@
                                 <div class="widget-content">
                                     <ul class="user-links">
                                         <li><a href="{{ route('home') }}">Accueil</a></li>
-                                        <li><a href="{{ route('about') }}">A propos</a></li>
-                                        <li><a href="{{ route('recherche-expertize-projet') }}">Recherche &amp; Projets</a></li>
-                                        <li><a href="{{ route('ressource-publication') }}">Ressources &amp; Publications</a></li>
-                                        <li><a href="{{ route('actu-opportunites') }}">Actualités &amp; Opportunités</a></li>
+                                        <li><a href="{{ route('about') }}">À propos</a></li>
+                                        <li><a href="{{ route('recherche-expertize-projet') }}">Recherche &amp;
+                                                Projets</a></li>
+                                        <li><a href="{{ route('ressource-publication') }}">Ressources &amp;
+                                                Publications</a></li>
+                                        <li><a href="{{ route('actu-opportunites') }}">Actualités &amp; Opportunités</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,20 +55,23 @@
                                         <div class="info-box">
                                             <span>Téléphone 1:</span>
 
-                                            <a class="info-link" href="{{ config('site.href_phone1') }}">{{ config('site.phone1') }}</a>
+                                            <a class="info-link"
+                                                href="{{ config('site.href_phone1') }}">{{ config('site.phone1') }}</a>
                                         </div>
                                         <div class="info-box">
                                             <span>Téléphone 2:</span>
-                                            <a class="info-link" href="{{ config('site.href_phone2') }}">{{ config('site.phone2') }}</a>
+                                            <a class="info-link"
+                                                href="{{ config('site.href_phone2') }}">{{ config('site.phone2') }}</a>
                                         </div>
                                         <div class="info-box">
                                             <span>Téléphone 3:</span>
-                                            <a class="info-link" href="{{ config('site.href_phone3') }}">{{ config('site.phone3') }}</a>
+                                            <a class="info-link"
+                                                href="{{ config('site.href_phone3') }}">{{ config('site.phone3') }}</a>
                                         </div>
-                                       
+
                                         <div class="info-box">
                                             <span>Adresse:</span>
-                                            <span class="">{{ config('site.address') }}</span>
+                                            <span class="">Commune de Tône 1, Préfecture de Tône</span>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +82,7 @@
                 <div class="big-title">CARICS</div>
                 <div class="footer-bottom">
                     <div class="copyright">© 2026 CARICS - Tous droits réservés.</div>
-                    
+
                 </div>
             </div>
             <div class="col-lg-4">

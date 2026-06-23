@@ -48,7 +48,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4">
                     <div class="icon-tile"><i class="fa fa-solid fa-journal-whills"></i></div>
-                    <div class="eyebrow">Tableau 05 — Catégorie 01</div>
+                    <div class="eyebrow"></div>
                     <h2 class="section-title mb-2" style="font-size:1.4rem;">Publications scientifiques</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
                         Articles scientifiques, publications en revue à comité de lecture et actes de conférences
@@ -79,7 +79,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4">
                     <div class="icon-tile"><i class="fa fa-solid fa-bar-chart"></i></div>
-                    <div class="eyebrow">Tableau 05 — Catégorie 02</div>
+                    <div class="eyebrow"></div>
                     <h2 class="section-title mb-2" style="font-size:1.4rem;">Rapports techniques</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
                         Rapports de recherche, évaluations de programmes et documents méthodologiques produits dans
@@ -108,7 +108,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4">
                     <div class="icon-tile ochre"><i class="fa fa-solid fa-megaphone"></i></div>
-                    <div class="eyebrow">Tableau 05 — Catégorie 03</div>
+                    <div class="eyebrow"></div>
                     <h2 class="section-title mb-2" style="font-size:1.4rem;">Notes de politique sanitaire</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
                         Recommandations opérationnelles destinées aux décideurs, gestionnaires de programmes et
@@ -138,7 +138,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4">
                     <div class="icon-tile"><i class="fa fa-solid fa-file-medical"></i></div>
-                    <div class="eyebrow">Tableau 05 — Catégorie 04</div>
+                    <div class="eyebrow"></div>
                     <h2 class="section-title mb-2" style="font-size:1.4rem;">Outils et ressources pratiques</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
                         Ressources destinées aux chercheurs, professionnels de santé, gestionnaires de programmes

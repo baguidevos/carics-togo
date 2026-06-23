@@ -19,10 +19,10 @@ new #[Layout('layouts::archinest')] class extends Component {
     <section class="page-title" style="background-image: url(images/banner.jpg);">
         <div class="auto-container">
             <div class="title-outer text-center">
-                <h1 class="title">A Propos de Nous</h1>
+                <h1 class="title">À propos de nous</h1>
                 <ul class="page-breadcrumb">
                     <li><a href="{{ route('home') }}">Accueil</a></li>
-                    <li>A Propos de Nous</li>
+                    <li>À propos de nous</li>
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@ new #[Layout('layouts::archinest')] class extends Component {
     <section class="about-section-home-two">
         <div class="auto-container">
             <div class="sec-title-style-two">
-                <h6 class="sub-title">// A propos de nous //</h6>
+                <h6 class="sub-title"></h6>
                 <h2 class="title text-reveal-anim">Qui sommes-nous ?</h2>
             </div>
             <div class="row">
@@ -49,7 +49,6 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="content-column col-xl-9 col-lg-12">
                     <div class="inner-column">
                         <div class="content">
-                            <h4 class="title"><a href="page-about.html">Nous sommes ?</a></h4>
                             <div class="text">Le Centre Africain d'Action pour la Recherche et l'Innovation
                                 Communautaire en Santé (CARICS-Togo) est un centre indépendant de recherche,
                                 d'innovation et d'action en santé publique basé au Togo</div>
@@ -89,7 +88,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-xl-6 offset-xl-6">
                         <div class="content-box">
                             <div class="sec-title-style-three">
-                                <h6 class="sub-title">// Notre Approche //</h6>
+                                {{-- <h6 class="sub-title">// Notre Approche //</h6> --}}
                                 <h2 class="title text-reveal-anim">Recherche - Innovation - Action</h2>
                                 <div class="text">CARICS-Togo repose sur trois piliers complémentaires qui guident
                                     l'ensemble de ses activités.</div>
@@ -173,7 +172,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="inner-container">
                 <div class="sec-title-box">
                     <div class="sec-title-style-three">
-                        <h6 class="sub-title">// Nos Valeurs //</h6>
+                        {{-- <h6 class="sub-title">// Nos Valeurs //</h6> --}}
                         <h2 class="title text-reveal-anim">L'intégrité au cœur de notre démarche</h2>
                     </div>
                     <div class="sec-right-box">
@@ -255,7 +254,7 @@ new #[Layout('layouts::archinest')] class extends Component {
         <div class="auto-container">
             <div class="sec-title-box">
                 <div class="sec-title-style-three">
-                    <h6 class="sub-title">// Nos Membres //</h6>
+                    {{-- <h6 class="sub-title">// Nos Membres //</h6> --}}
                     <h2 class="title text-reveal-anim">Gouvernance & <br> Leadership</h2>
                 </div>
                 <div class="sec-right-box">
@@ -275,26 +274,28 @@ new #[Layout('layouts::archinest')] class extends Component {
             </div>
             <div class="row g-4 justify-content-center">
                 @foreach ($members as $member)
-                <div class="team-block col-xl-3 col-md-6 col-sm-12">
-                    <div class="inner-block">
-                        <div class="image-box">
-                            <figure class="image">
-                                <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}">
-                                    <img src="{{ asset('images/equipes/' . $member['imageName']) }}" alt="{{ $member['fullName'] }}">
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name">
-                                <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}">{{ $member['fullName'] }}</a>
-                            </h5>
-                            <div class="designation">{{ $member['roleTitle'] }}</div>
-                            <p class="mt-3">
-                                {{ $member['bioShort'] }}
-                            </p>
+                    <div class="team-block col-xl-3 col-md-6 col-sm-12">
+                        <div class="inner-block">
+                            <div class="image-box">
+                                <figure class="image">
+                                    <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}">
+                                        <img src="{{ asset('images/equipes/' . $member['imageName']) }}"
+                                            alt="{{ $member['fullName'] }}">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="info-box">
+                                <h5 class="name">
+                                    <a
+                                        href="{{ route('team-detail', ['slug' => $member['slug']]) }}">{{ $member['fullName'] }}</a>
+                                </h5>
+                                <div class="designation">{{ $member['roleTitle'] }}</div>
+                                <p class="mt-3">
+                                    {{ $member['bioShort'] }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -307,7 +308,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="inner-container" style="background-image: url(archinest/images/background/bg-claint1-1.jpg);">
                 <div class="outer-box">
                     <div class="sec-title-style-three text-center">
-                        <h6 class="sub-title">// Nos Partenaires //</h6>
+                        {{-- <h6 class="sub-title">// Nos Partenaires //</h6> --}}
                         <h2 class="title text-reveal-anim">Collaboration et Réseaux</h2>
                     </div>
                     <p>
@@ -327,7 +328,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="claint-outer">
                         <div>
                             <a href="news-grid.html" class="theme-btn btn-style-one">
-                                <span class="btn-title">Découvrir Nos Traveaux</span>
+                                <span class="btn-title">Découvrir nos travaux</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>
                                 </span>
@@ -355,7 +356,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="sec-title-style-three">
-                            <h6 class="sub-title">// Stats //</h6>
+                            {{-- <h6 class="sub-title">// Stats //</h6> --}}
                             <h2 class="title text-reveal-anim">CARICS en bref.</h2>
                         </div>
                     </div>
@@ -389,7 +390,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="number">#03</div>
                                 <div class="content">
                                     <h4 class="title">Fondateurs</h4>
-                                    <div class="text">4 membres fondateurs issus de la recherche et de la santé publique.</div>
+                                    <div class="text">4 membres fondateurs issus de la recherche et de la santé
+                                        publique.</div>
                                 </div>
                                 <figure class="image mb-0">
                                     <img src="{{ asset('images/cta-1.jpg') }}" alt="">
@@ -401,7 +403,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="number">#04</div>
                                 <div class="content">
                                     <h4 class="title">Projets</h4>
-                                    <div class="text">1 projet de recherche financé à l'international actuellement en cours.</div>
+                                    <div class="text">1 projet de recherche financé à l'international actuellement en
+                                        cours.</div>
                                 </div>
                                 <figure class="image mb-0">
                                     <img src="{{ asset('images/cta-1.jpg') }}" alt="">

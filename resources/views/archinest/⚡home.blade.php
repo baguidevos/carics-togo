@@ -69,7 +69,7 @@ new #[Layout('layouts::archinest')] class extends Component {
     <section class="funfact-section-three">
         <div class="container">
             <div class="sec-title-style-two  col-lg-12">
-                <h6 class="sub-title">// Nos interventions //</h6>
+                {{-- <h6 class="sub-title">// Nos interventions //</h6> --}}
                 <h2 class="title text-reveal-anim">Nos domaines d'intervention.</h2>
             </div>
             <div class="row justify-content-between">
@@ -89,7 +89,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="row gx-2">
                                 <x-archinest.counter_card number="01" title="Santé publique et épidémiologie">
                                     <br>
-                                    
+
                                 </x-archinest.counter_card>
                                 <x-archinest.counter_card number="02"
                                     title="Recherche opérationnelle et sciences de la mise en œuvre">
@@ -223,7 +223,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     <div class="border-style"></div>
                                     <div class="border-style2"></div>
                                     <div class="count-box"><span class="count-text" data-speed="3000"
-                                            data-stop="1">1</span>+</div>
+                                            data-stop="1">1</span></div>
                                     <h5 class="counter-title">Centre de recherche</h5>
                                 </div>
                             </div>
@@ -249,7 +249,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     <div class="border-style"></div>
                                     <div class="border-style2"></div>
                                     <div class="count-box"><span class="count-text" data-speed="3000"
-                                            data-stop="1">0</span>+</div>
+                                            data-stop="1">1</span></div>
                                     <h5 class="counter-title">Région d'intervention</h5>
                                 </div>
                             </div>
@@ -263,7 +263,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     <div class="border-style2"></div>
                                     <div class="count-box style-two"><span class="count-text" data-speed="3000"
                                             data-stop="04">0</span></div>
-                                    <h5 class="counter-title">Membre fondateurs</h5>
+                                    <h5 class="counter-title">Membres fondateurs</h5>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +275,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     <div class="border-style2"></div>
                                     <div class="count-box style-two"><span class="count-text" data-speed="3000"
                                             data-stop="01">0</span></div>
-                                    <h5 class="counter-title">Partenariat scientifique internationnal</h5>
+                                    <h5 class="counter-title">Partenariat scientifique international</h5>
                                 </div>
                             </div>
                         </div>
@@ -529,236 +529,35 @@ new #[Layout('layouts::archinest')] class extends Component {
     <!-- End Services Section--> --}}
 
 
-    <!-- Gallery Section Start -->
-    <section class="projects-section-three position-relative">
-        <div class="container">
-            <div class="sec-title-box">
-                <div class="sec-title-style-three">
-                    {{-- <h6 class="sub-title">// Nos Projets //</h6> --}}
-                    <h2 class="title text-reveal-anim">Nos Projets</h2>
-                </div>
-                <div class="btn-box">
-                    <div class="text">Découvrez notre portfolio de projets exceptionnels, impressionnants.</div>
-                    <a href="page-project.html" class="theme-btn btn-style-one">
-                        <span class="btn-title"> Voir Tout</span>
-                        <span class="icon"><i class="fa-light fa-arrow-right"></i></span>
-                    </a>
-                </div>
-            </div>
-            <div class="outer-box">
-                <div class="project-swiper-outer">
-                    <!-- Slider main container -->
-                    <div class="project-swiper-container mx-auto p-0">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper align-items-center mb-40">
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <div class="project-block-three">
-                                    <div class="inner-block">
-                                        <div class="image-box">
-                                            <figure class="image">
-                                                <a href="page-project-details.html"><img
-                                                        src="archinest/images/resource/project3-1.jpg" alt=""></a>
-                                            </figure>
-                                        </div>
-                                        <div class="content-box">
-                                            <div class="inner-box">
-                                                <div class="title-box">
-                                                    <div class="catagories-box">
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Residential</a>
-                                                        </div>
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Luxury</a></div>
-                                                    </div>
-                                                    <h4 class="title"><a href="page-project-details.html">3D
-                                                            Visualization</a></h4>
-                                                </div>
-                                                <div class="bottom-box">
-                                                    <div class="text">From layouts to finishes, meticulously refine
-                                                        every aspect achieve design execution.</div>
-                                                    <a class="btn-link-arrow" href="page-project-details.html"><i
-                                                            class="icon fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <div class="project-block-three">
-                                    <div class="inner-block">
-                                        <div class="image-box">
-                                            <figure class="image">
-                                                <a href="page-project-details.html"><img
-                                                        src="archinest/images/resource/project3-2.jpg" alt=""></a>
-                                            </figure>
-                                        </div>
-                                        <div class="content-box">
-                                            <div class="inner-box">
-                                                <div class="title-box">
-                                                    <div class="catagories-box">
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Residential</a>
-                                                        </div>
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Luxury</a></div>
-                                                    </div>
-                                                    <h4 class="title"><a href="page-project-details.html">3D
-                                                            Visualization</a></h4>
-                                                </div>
-                                                <div class="bottom-box">
-                                                    <div class="text">From layouts to finishes, meticulously refine
-                                                        every aspect achieve design execution.</div>
-                                                    <a class="btn-link-arrow" href="page-project-details.html"><i
-                                                            class="icon fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <div class="project-block-three">
-                                    <div class="inner-block">
-                                        <div class="image-box">
-                                            <figure class="image">
-                                                <a href="page-project-details.html"><img
-                                                        src="archinest/images/resource/project3-3.jpg" alt=""></a>
-                                            </figure>
-                                        </div>
-                                        <div class="content-box">
-                                            <div class="inner-box">
-                                                <div class="title-box">
-                                                    <div class="catagories-box">
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Residential</a>
-                                                        </div>
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Luxury</a></div>
-                                                    </div>
-                                                    <h4 class="title"><a href="page-project-details.html">3D
-                                                            Visualization</a></h4>
-                                                </div>
-                                                <div class="bottom-box">
-                                                    <div class="text">From layouts to finishes, meticulously refine
-                                                        every aspect achieve design execution.</div>
-                                                    <a class="btn-link-arrow" href="page-project-details.html"><i
-                                                            class="icon fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <div class="project-block-three">
-                                    <div class="inner-block">
-                                        <div class="image-box">
-                                            <figure class="image">
-                                                <a href="page-project-details.html"><img
-                                                        src="archinest/images/resource/project3-1.jpg" alt=""></a>
-                                            </figure>
-                                        </div>
-                                        <div class="content-box">
-                                            <div class="inner-box">
-                                                <div class="title-box">
-                                                    <div class="catagories-box">
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Residential</a>
-                                                        </div>
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Luxury</a></div>
-                                                    </div>
-                                                    <h4 class="title"><a href="page-project-details.html">3D
-                                                            Visualization</a></h4>
-                                                </div>
-                                                <div class="bottom-box">
-                                                    <div class="text">From layouts to finishes, meticulously refine
-                                                        every aspect achieve design execution.</div>
-                                                    <a class="btn-link-arrow" href="page-project-details.html"><i
-                                                            class="icon fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <div class="project-block-three">
-                                    <div class="inner-block">
-                                        <div class="image-box">
-                                            <figure class="image">
-                                                <a href="page-project-details.html"><img
-                                                        src="archinest/images/resource/project3-2.jpg" alt=""></a>
-                                            </figure>
-                                        </div>
-                                        <div class="content-box">
-                                            <div class="inner-box">
-                                                <div class="title-box">
-                                                    <div class="catagories-box">
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Residential</a>
-                                                        </div>
-                                                        <div class="catagory"><a
-                                                                href="page-project-details.html">Luxury</a></div>
-                                                    </div>
-                                                    <h4 class="title"><a href="page-project-details.html">3D
-                                                            Visualization</a></h4>
-                                                </div>
-                                                <div class="bottom-box">
-                                                    <div class="text">From layouts to finishes, meticulously refine
-                                                        every aspect achieve design execution.</div>
-                                                    <a class="btn-link-arrow" href="page-project-details.html"><i
-                                                            class="icon fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev custom-nav"><i class="far fa-arrow-left"></i></div>
-                <div class="swiper-button-next custom-nav"><i class="far fa-arrow-right"></i></div>
-            </div>
-        </div>
-    </section>
-    <!-- Gallery Section end -->
-
     <!-- Team Section -->
     <section class="section py-5 bg-bg-alt">
         <div class="container">
             <div class="sec-title-style-three text-center mb-5">
-                <h6 class="sub-title">// Notre Leadership //</h6>
+                {{-- <h6 class="sub-title">// Notre Leadership //</h6> --}}
                 <h2 class="title text-reveal-anim">Leadership & Gouvernance</h2>
             </div>
 
             <div class="row g-4 justify-content-center">
                 @foreach ($members as $member)
-                <div class="col-md-6 col-lg-3">
-                    <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}" class="text-decoration-none text-reset d-block h-100">
-                        <div class="team-card h-100">
-                            <div class="team-photo">
-                                <img src="{{ asset('images/equipes/' . $member['imageName']) }}" alt="{{ $member['fullName'] }}">
+                    <div class="col-md-6 col-lg-3">
+                        <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}"
+                            class="text-decoration-none text-reset d-block h-100">
+                            <div class="team-card h-100">
+                                <div class="team-photo">
+                                    <img src="{{ asset('images/equipes/' . $member['imageName']) }}"
+                                        alt="{{ $member['fullName'] }}">
+                                </div>
+                                <div class="team-body">
+                                    <h3 class="h6 mb-1">{{ $member['fullName'] }}</h3>
+                                    <div class="team-role">{{ $member['roleTitle'] }}</div>
+                                    <p class="team-excerpt">
+                                        {{ $member['bioShort'] }}
+                                    </p>
+                                    <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
+                                </div>
                             </div>
-                            <div class="team-body">
-                                <h3 class="h6 mb-1">{{ $member['fullName'] }}</h3>
-                                <div class="team-role">{{ $member['roleTitle'] }}</div>
-                                <p class="team-excerpt">
-                                    {{ $member['bioShort'] }}
-                                </p>
-                                <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 @endforeach
             </div>
         </div>
@@ -770,7 +569,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="inner-container" style="background-image: url(archinest/images/background/bg-claint1-1.jpg);">
                 <div class="outer-box">
                     <div class="sec-title-style-three text-center">
-                        <h6 class="sub-title">// Nos Partenaires //</h6>
+                        {{-- <h6 class="sub-title">// Nos Partenaires //</h6> --}}
                         <h2 class="title text-reveal-anim">Travaillons Ensemble</h2>
                     </div>
                     <p class="partenaire-content">
