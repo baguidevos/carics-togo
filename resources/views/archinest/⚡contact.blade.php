@@ -138,8 +138,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="text-muted-2 mb-1"
                                     style="font-size:.78rem; font-family:var(--font-mono); letter-spacing:.08em; text-transform:uppercase;">
                                     Email</div>
-                                <a href="mailto:contact@carics-togo.org" class="fw-semibold text-decoration-none"
-                                    style="color:var(--ink);">contact@carics-togo.org</a>
+                                <a href="mailto:info@carics.org" class="fw-semibold text-decoration-none"
+                                    style="color:var(--ink);">info@carics.org</a>
                             </div>
                         </div>
 
