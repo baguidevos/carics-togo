@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
+
+class BlogPost extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'title', 'slug', 'type', 'excerpt', 'body', 'cover_image',
+        'author_id', 'category_id', 'research_project_id',
+        'reading_time_minutes', 'references',
+        'meta_title', 'meta_description',
+        'status', 'published_at', 'is_featured',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'references'   => 'array',
+            'published_at' => 'datetime',
+            'is_featured'  => 'boolean',
+        ];
+    }
+
+    protected static function booted(): void
+    {
+        static::saving(function (self $model) {
+            if (empty($model->slug)) {
+                $model->slug = Str::slug(Str::limit($model->title, 80, ''));
+            }
+            // Calcul automatique du temps de lecture si non renseigné
+            if (empty($model->reading_time_minutes) && $model->body) {
+                $words = str_word_count(strip_tags($model->body));
+                $model->reading_time_minutes = max(1, (int) ceil($words / 200));
+            }
+        });
+    }
+
+    // ─── Relations ───────────────────────────────────────────────────────────
+
+    /** Auteur (membre de l'équipe) */
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(TeamMember::class, 'author_id');
+    }
+
+    /**
+     * Catégorie — relation polymorphique côté enfant.
+     * La catégorie correspondante a categorizable_type = 'App\Models\BlogPost'.
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /** Projet de recherche lié (optionnel) */
+    public function researchProject(): BelongsTo
+    {
+        return $this->belongsTo(ResearchProject::class);
+    }
+
+    /** Tags */
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(BlogTag::class, 'blog_post_blog_tag');
+    }
+
+    // ─── Scopes ──────────────────────────────────────────────────────────────
+
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query
+            ->where('status', 'publie')
+            ->where('published_at', '<=', now());
+    }
+
+    public function scopeArticles(Builder $query): Builder
+    {
+        return $query->where('type', 'article');
+    }
+
+    public function scopeProjectSheets(Builder $query): Builder
+    {
+        return $query->where('type', 'fiche_projet');
+    }
+
+    public function scopeFeatured(Builder $query): Builder
+    {
+        return $query->where('is_featured', true);
+    }
+
+    public function scopeRecent(Builder $query, int $days = 90): Builder
+    {
+        return $query->where('published_at', '>=', now()->subDays($days));
+    }
+}
