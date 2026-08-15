@@ -32,7 +32,6 @@ new #[Layout('layouts::archinest')] class extends Component {
     <section class="about-section-home-two">
         <div class="auto-container">
             <div class="sec-title-style-two">
-                <h6 class="sub-title"></h6>
                 <h2 class="title text-reveal-anim">Qui sommes-nous ?</h2>
             </div>
             <div class="row">
@@ -89,11 +88,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="content-box">
                             <div class="sec-title-style-three">
                                 {{-- <h6 class="sub-title">// Notre Approche //</h6> --}}
-                                <h2 class="title text-reveal-anim">Recherche - Innovation - Action</h2>
+                                <h2 class="title text-reveal-anim">Recherche – Innovation – Action</h2>
                                 <div class="text">CARICS-Togo repose sur trois piliers complémentaires qui guident
                                     l'ensemble de ses activités.</div>
                             </div>
-                            <a href="page-project-details.html" class="theme-btn btn-style-one">
+                            <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
                                 <span class="btn-title">Nous Contacter</span> <i
                                     class="icon fa-light fa-arrow-right"></i>
                             </a>
@@ -108,7 +107,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         <h4 class="title"><a href="#">Recherche</a></h4>
                                         <div class="text">Produire des connaissances scientifiques de qualité répondant
                                             aux
-                                            défis prioritaires de santé publique. Données probantes pour la décision.
+                                            défis prioritaires de santé publique.
                                         </div>
                                     </div>
                                     <div class="pricing-block mt-4">
@@ -187,7 +186,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">01</div>
-                            <h4 class="title"><a href="page-project-details.html">Excellence scientifique</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Excellence scientifique</a></h4>
                             <div class="text">
                                 Promouvoir la rigueur méthodologique, la qualité des données et
                                 l'excellence dans toutes nos activités de recherche.
@@ -197,7 +196,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">02</div>
-                            <h4 class="title"><a href="page-project-details.html">Intégrité et éthique</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Intégrité et éthique</a></h4>
                             <div class="text">
                                 Respecter les principes d'éthique, de transparence, d'indépendance scientifique et de
                                 responsabilité
@@ -207,7 +206,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">03</div>
-                            <h4 class="title"><a href="page-project-details.html">Innovation</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Innovation</a></h4>
                             <div class="text">
                                 Développer et promouvoir des approches innovantes adaptées aux réalités africaines.
                             </div>
@@ -216,7 +215,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">04</div>
-                            <h4 class="title"><a href="page-project-details.html">Collaboration</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Collaboration</a></h4>
                             <div class="text">
                                 Favoriser les partenariats interdisciplinaires et la co-construction des connaissances
                                 avec tous les acteurs.
@@ -226,7 +225,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">05</div>
-                            <h4 class="title"><a href="page-project-details.html">Transparence et redevabilité</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Transparence et redevabilité</a></h4>
                             <div class="text">
                                 Garantir une gestion responsable des ressources et une communication ouverte avec les
                                 partenaires et les bénéficiaires.
@@ -236,7 +235,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">06</div>
-                            <h4 class="title"><a href="page-project-details.html">Impact communautaire</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Impact communautaire</a></h4>
                             <div class="text">
                                 Veiller à ce que les résultats de la recherche contribuent concrètement à l'amélioration
                                 de la santé des populations.
@@ -327,7 +326,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     </p>
                     <div class="claint-outer">
                         <div>
-                            <a href="news-grid.html" class="theme-btn btn-style-one">
+                            <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
                                 <span class="btn-title">Découvrir nos travaux</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>
@@ -335,7 +334,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </a>
                         </div>
                         <div>
-                            <a href="news-grid.html" class="theme-btn btn-style-one">
+                            <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
                                 <span class="btn-title">Devenir Partenaire</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>

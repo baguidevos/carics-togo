@@ -171,7 +171,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                                 probantes
                                                 pour renforcer les programmes de lutte contre le paludisme.
                                             </p>
-                                            <a class="btn-style-four theme-btn" href="page-pricing.html"><span>En savoir
+                                            <a class="btn-style-four theme-btn" href="{{ route('recherche-expertize-projet') }}"><span>En savoir
                                                     plus
                                                 </span></a>
 
@@ -579,7 +579,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     </p>
                     <div class="claint-outer">
                         <div>
-                            <a href="news-grid.html" class="theme-btn btn-style-one">
+                            <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
                                 <span class="btn-title">Découvrir nos travaux</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>
@@ -587,7 +587,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </a>
                         </div>
                         <div>
-                            <a href="news-grid.html" class="theme-btn btn-style-one">
+                            <a href="{{ route('contact') }}" class="theme-btn btn-style-one">
                                 <span class="btn-title">Devenir partenaire</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>

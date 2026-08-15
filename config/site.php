@@ -13,5 +13,5 @@ return [
     "href_phone3" => "tel:+228 99 56 10 55",
 
 
-    "address" => "Quartier Nassablée, Commune de Tône 1 Préfecture de Tône, Région des Savanes République Togolaise",
+    "address" => "Quartier Nassablée, Commune de Tône 1, Préfecture de Tône, Région des Savanes République Togolaise",
 ];

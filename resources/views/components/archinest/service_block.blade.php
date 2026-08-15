@@ -1,6 +1,7 @@
 @props([
-    'titre' =>'ivi',
-    'description' => "va vaoir ailleur"
+    'titre' => '',
+    'description' => '',
+    'href' => null,
 ])
 
 
@@ -12,11 +13,11 @@
             </div>
         </div>
         <div class="content-box text-center">
-            <h4 class="title"><a href="page-service-details.html">{{ $titre }}</a></h4>
+            <h4 class="title"><a href="{{ $href ?? route('about') }}">{{ $titre }}</a></h4>
             <div class="text">{{ $description }}</div>
         </div>
         <div class="btn-box">
-            <a href="page-service-details.html" class="btn-style-link"><span>Lire plus </span><i
+            <a href="{{ $href ?? route('about') }}" class="btn-style-link"><span>En savoir plus </span><i
                     class="icon fa-light fa-arrow-up-right"></i></a>
         </div>
     </div>

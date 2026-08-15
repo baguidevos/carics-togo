@@ -96,7 +96,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             recherche, la transparence institutionnelle et l&rsquo;utilisation des données probantes
                             pour améliorer les politiques, les programmes et les interventions de santé en Afrique.
                         </p>
-                        <a href="contact.html#collaboration" class="btn-cta">Rejoindre notre réseau <i
+                        <a href="{{ route('contact') }}" class="btn-cta">Rejoindre notre réseau <i
                                 class="fa-solid fa-arrow-right ms-1"></i></a>
                     </div>
                     <div class="col-lg-5">
@@ -133,7 +133,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     Chercheurs, consultants et experts techniques sont régulièrement mobilisés selon les
                     besoins de nos projets et programmes.
                 </p>
-                <a href="contact.html#collaboration" class="btn-cta-light">Proposer une collaboration</a>
+                <a href="{{ route('contact') }}" class="btn-cta-light">Proposer une collaboration</a>
             </div>
         </section>
 

@@ -37,7 +37,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         programmes et d'innovation en santé publique afin de produire des données probantes utiles à la
                         prise de décision.
                     </div>
-                    <a href="page-faq.html" class="theme-btn btn-style-one">
+                    <a href="{{ route('contact') }}" class="theme-btn btn-style-one">
                         <span class="btn-title">En savoir plus</span>
                         <span class="icon"><i class="fa-light fa-arrow-right"></i></span>
                     </a>
@@ -203,7 +203,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             contexte transfrontalier confronté à l'insécurité au Nord du Togo
                         </p>
                     </div>
-                    <a href="page-project-details.html" class="theme-btn btn-style-one">
+                    <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
                         <span class="btn-title">Les autres projets</span> <i class="icon fa-light fa-arrow-right"></i>
                     </a>
 

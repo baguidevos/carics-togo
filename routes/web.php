@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 //
-Route::livewire('/1', 'pages::home')->name('home2');
 Route::livewire('/', 'archinest::home')->name('home');
 Route::livewire('/a-propos', 'archinest::about-us')->name('about');
 Route::livewire('/recherche-expertize-projet', 'archinest::research_expertize_project')->name('recherche-expertize-projet');
@@ -20,12 +19,6 @@ Route::get('/lang/{locale}', function (string $locale) {
     }
     return redirect()->back();
 })->name('lang.switch');
-
-// Route::get('/about', 'about')->name('about');
-// Route::get('/contact', 'contact')->name('contact');
-// Route::get('/portfolio', 'portfolio')->name('portfolio');
-// Route::get('/blog', 'blog')->name('blog');
-// Route::get('/services', 'services')->name('services');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
