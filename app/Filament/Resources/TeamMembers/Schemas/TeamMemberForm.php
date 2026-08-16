@@ -143,7 +143,6 @@ class TeamMemberForm
                             ->label('Publié'),
                         TextInput::make('display_order')
                             ->label('Ordre d\'affichage')
-                            ->required()
                             ->numeric()
                             ->default(0),
                     ]),

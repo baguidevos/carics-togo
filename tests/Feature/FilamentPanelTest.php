@@ -22,6 +22,7 @@ test('authenticated admin can access admincarics dashboard and resources', funct
 })->with([
     '/admincarics',
     '/admincarics/team-members',
+    '/admincarics/team-members/1',
     '/admincarics/research-projects',
     '/admincarics/blog-posts',
     '/admincarics/publications',

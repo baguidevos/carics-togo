@@ -21,21 +21,38 @@ class TeamMemberInfolist
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('bio_full')
+                    ->html()
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('mission_text')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('expertises')
+                    ->badge()
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('education')
+                    ->formatStateUsing(function ($state) {
+                        if (! is_array($state)) {
+                            return $state;
+                        }
+
+                        return collect($state)->map(fn ($e) => is_array($e) ? trim(($e['degree'] ?? '').' '.($e['field'] ?? '').' — '.($e['institution'] ?? '')) : (string) $e)->filter()->join(', ');
+                    })
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('distinctions')
+                    ->formatStateUsing(function ($state) {
+                        if (! is_array($state)) {
+                            return $state;
+                        }
+
+                        return collect($state)->map(fn ($d) => is_array($d) ? trim(($d['title'] ?? '').' — '.($d['organisation'] ?? '').' ('.($d['year'] ?? '').')') : (string) $d)->filter()->join(', ');
+                    })
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('affiliations')
+                    ->badge()
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('photo')

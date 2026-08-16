@@ -63,9 +63,13 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="eyebrow">{{ __('team.detail.bio_eyebrow') }}</div>
                             <h2 class="h4 mb-3">{{ __('team.detail.bio_title') }}</h2>
                             <div class="article-prose" style="font-size:1rem;">
-                                @foreach ($member['bioFull'] as $paragraph)
-                                <p>{!! $paragraph !!}</p>
-                                @endforeach
+                                @if (!empty($member->bio_paragraphs))
+                                    @foreach ($member->bio_paragraphs as $paragraph)
+                                        <p>{!! $paragraph !!}</p>
+                                    @endforeach
+                                @elseif (!empty($member->bio_full))
+                                    {!! $member->bio_full !!}
+                                @endif
 
                                 @if ($member['bioQuote'])
                                 <blockquote>

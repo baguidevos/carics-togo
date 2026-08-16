@@ -81,7 +81,6 @@ class TeamMember extends Model implements HasMedia, HasRichContent
     protected function casts(): array
     {
         return [
-            'bio_full' => 'array',
             'expertises' => 'array',
             'education' => 'array',   // [{degree, field, institution}, ...]
             'distinctions' => 'array',   // [{title, organisation, year}, ...]
@@ -180,16 +179,48 @@ class TeamMember extends Model implements HasMedia, HasRichContent
         return $this->attributes['bio_short'] ?? null;
     }
 
-    public function getBioFullAttribute(): array
+    public function setBioFullAttribute(mixed $value): void
     {
-        $val = $this->attributes['bio_full'] ?? [];
-        if (is_string($val)) {
-            $decoded = json_decode($val, true);
+        if (is_array($value)) {
+            $this->attributes['bio_full'] = implode('', array_map(fn ($p) => '<p>'.$p.'</p>', $value));
+        } else {
+            $this->attributes['bio_full'] = $value;
+        }
+    }
 
-            return is_array($decoded) ? $decoded : [$val];
+    public function getBioFullAttribute(): ?string
+    {
+        $val = $this->attributes['bio_full'] ?? null;
+        if (empty($val)) {
+            return null;
         }
 
-        return is_array($val) ? $val : [];
+        if (is_string($val) && (str_starts_with(trim($val), '[') || str_starts_with(trim($val), '{'))) {
+            $decoded = json_decode($val, true);
+            if (is_array($decoded)) {
+                // Si c'est un tableau de paragraphes
+                if (array_is_list($decoded) && isset($decoded[0]) && is_string($decoded[0])) {
+                    return implode('', array_map(fn ($p) => '<p>'.htmlspecialchars($p).'</p>', $decoded));
+                }
+            }
+        }
+
+        return is_string($val) ? $val : null;
+    }
+
+    public function getBioParagraphsAttribute(): array
+    {
+        $bio = $this->bio_full;
+        if (empty($bio)) {
+            return [];
+        }
+
+        // Si contient des balises <p>
+        if (preg_match_all('/<p>(.*?)<\/p>/is', $bio, $matches)) {
+            return $matches[1];
+        }
+
+        return array_filter(explode("\n", strip_tags($bio)));
     }
 
     public function getBioQuoteAttribute(): ?string
