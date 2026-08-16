@@ -16,13 +16,13 @@ new #[Layout('layouts::archinest')] class extends Component {
 
 <div>
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url(images/banner.jpg);">
+    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
-                <h1 class="title">À propos de nous</h1>
+                <h1 class="title">{{ __('about.title') }}</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">Accueil</a></li>
-                    <li>À propos de nous</li>
+                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
+                    <li>{{ __('about.title') }}</li>
                 </ul>
             </div>
         </div>
@@ -32,44 +32,30 @@ new #[Layout('layouts::archinest')] class extends Component {
     <section class="about-section-home-two">
         <div class="auto-container">
             <div class="sec-title-style-two">
-                <h2 class="title text-reveal-anim">Qui sommes-nous ?</h2>
+                <h2 class="title text-reveal-anim">{{ __('about.who_we_are.title') }}</h2>
             </div>
             <div class="row">
                 <div class="image-column col-xl-3 col-md-6 d-none d-xl-block">
                     <figure class="image one">
-                        <img src="archinest/images/resource/feature-h2-1.jpg" alt="">
+                        <img src="{{ asset('archinest/images/resource/feature-h2-1.jpg') }}" alt="">
                     </figure>
                 </div>
-                {{-- <div class="image-column col-xl-4 col-lg-5">
-                    <figure class="image">
-                        <img src="archinest/images/resource/feature-h2-2.jpg" alt="">
-                    </figure>
-                </div> --}}
                 <div class="content-column col-xl-9 col-lg-12">
                     <div class="inner-column">
                         <div class="content">
-                            <div class="text">Le Centre Africain d'Action pour la Recherche et l'Innovation
-                                Communautaire en Santé (CARICS-Togo) est un centre indépendant de recherche,
-                                d'innovation et d'action en santé publique basé au Togo</div>
+                            <div class="text">{{ __('about.who_we_are.intro') }}</div>
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="page-about.html">Historique</a></h4>
-                            <div class="text">Créé en 2026 à Dapaong, dans la Région des Savanes, CARICS-Togo a été
-                                fondé par des chercheurs, professionnels de santé et spécialistes du développement
-                                partageant une conviction commune : les décisions en santé publique doivent être guidées
-                                par des données fiables, contextualisées et utiles à l'action.</div>
+                            <h4 class="title"><a href="#">{{ __('about.who_we_are.history_title') }}</a></h4>
+                            <div class="text">{{ __('about.who_we_are.history_text') }}</div>
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="page-about.html">Statut Juridique</a></h4>
-                            <div class="text">Constitué sous la forme juridique d'une association à but non lucratif,
-                                CARICS-Togo agit comme une plateforme de recherche appliquée, de collaboration
-                                scientifique et d'innovation au service des communautés, des institutions publiques et
-                                des partenaires du développement.</div>
+                            <h4 class="title"><a href="#">{{ __('about.who_we_are.status_title') }}</a></h4>
+                            <div class="text">{{ __('about.who_we_are.status_text') }}</div>
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="page-about.html">Ambitions</a></h4>
-                            <div class="text">Notre ambition est de contribuer à l'amélioration durable de la santé des
-                                populations africaines en rapprochant la recherche, l'innovation et l'action.</div>
+                            <h4 class="title"><a href="#">{{ __('about.who_we_are.ambitions_title') }}</a></h4>
+                            <div class="text">{{ __('about.who_we_are.ambitions_text') }}</div>
                         </div>
                     </div>
                 </div>
@@ -88,12 +74,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="content-box">
                             <div class="sec-title-style-three">
                                 {{-- <h6 class="sub-title">// Notre Approche //</h6> --}}
-                                <h2 class="title text-reveal-anim">Recherche – Innovation – Action</h2>
-                                <div class="text">CARICS-Togo repose sur trois piliers complémentaires qui guident
-                                    l'ensemble de ses activités.</div>
+                                <h2 class="title text-reveal-anim">{{ __('about.approach.title') }}</h2>
+                                <div class="text">{{ __('about.approach.subtitle') }}</div>
                             </div>
-                            <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
-                                <span class="btn-title">Nous Contacter</span> <i
+                            <a href="{{ route('contact') }}" class="theme-btn btn-style-one">
+                                <span class="btn-title">{{ __('navigation.actions.contact_us') }}</span> <i
                                     class="icon fa-light fa-arrow-right"></i>
                             </a>
                         </div>
@@ -104,17 +89,15 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="inner-block">
                                     <div>
                                         <div class="number">01</div>
-                                        <h4 class="title"><a href="#">Recherche</a></h4>
-                                        <div class="text">Produire des connaissances scientifiques de qualité répondant
-                                            aux
-                                            défis prioritaires de santé publique.
+                                        <h4 class="title"><a href="#">{{ __('about.approach.pillar_1_title') }}</a></h4>
+                                        <div class="text">{{ __('about.approach.pillar_1_text') }}
                                         </div>
                                     </div>
                                     <div class="pricing-block mt-4">
                                         <div class="inner-block active">
                                             <div class="content-column">
-                                                <h4 class="pricing-title"> Résultat Attendu</h4>
-                                                <div class="text">Données probantes pour la décision.</div>
+                                                <h4 class="pricing-title">{{ __('about.approach.pillar_1_expected') }}</h4>
+                                                <div class="text">{{ __('about.approach.pillar_1_result') }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -124,16 +107,15 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="inner-block">
                                     <div>
                                         <div class="number">02</div>
-                                        <h4 class="title"><a href="#">Innovation</a></h4>
-                                        <div class="text">Développer, tester et adapter des solutions innovantes
-                                            répondant aux besoins des communautés et des systèmes de santé.
+                                        <h4 class="title"><a href="#">{{ __('about.approach.pillar_2_title') }}</a></h4>
+                                        <div class="text">{{ __('about.approach.pillar_2_text') }}
                                         </div>
                                     </div>
                                     <div class="pricing-block mt-4">
                                         <div class="inner-block active">
                                             <div class="content-column">
-                                                <h4 class="pricing-title"> Résultat Attendu</h4>
-                                                <div class="text">Des solutions adaptées au contexte.</div>
+                                                <h4 class="pricing-title">{{ __('about.approach.pillar_2_expected') }}</h4>
+                                                <div class="text">{{ __('about.approach.pillar_2_result') }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -143,16 +125,15 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="inner-block">
                                     <div>
                                         <div class="number">03</div>
-                                        <h4 class="title"><a href="#">Action</a></h4>
-                                        <div class="text">Transformer les résultats de recherche en interventions,
-                                            recommandations et politiques publiques.
+                                        <h4 class="title"><a href="#">{{ __('about.approach.pillar_3_title') }}</a></h4>
+                                        <div class="text">{{ __('about.approach.pillar_3_text') }}
                                         </div>
                                     </div>
                                     <div class="pricing-block mt-4">
                                         <div class="inner-block active">
                                             <div class="content-column">
-                                                <h4 class="pricing-title"> Résultat Attendu</h4>
-                                                <div class="text">Amélioration durable de la santé</div>
+                                                <h4 class="pricing-title">{{ __('about.approach.pillar_3_expected') }}</h4>
+                                                <div class="text">{{ __('about.approach.pillar_3_result') }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -172,13 +153,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="sec-title-box">
                     <div class="sec-title-style-three">
                         {{-- <h6 class="sub-title">// Nos Valeurs //</h6> --}}
-                        <h2 class="title text-reveal-anim">L'intégrité au cœur de notre démarche</h2>
+                        <h2 class="title text-reveal-anim">{{ __('about.values.title') }}</h2>
                     </div>
                     <div class="sec-right-box">
-                        <div class="text">Les valeurs guident nos actions et nos décisions. Elles définissent la culture
-                            de notre organisation et orientent nos interactions avec nos partenaires, nos bailleurs et
-                            les
-                            communautés que nous servons.
+                        <div class="text">{{ __('about.values.intro') }}
                         </div>
                     </div>
                 </div>
@@ -186,59 +164,54 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">01</div>
-                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Excellence scientifique</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">{{ __('about.values.val_1_title') }}</a></h4>
                             <div class="text">
-                                Promouvoir la rigueur méthodologique, la qualité des données et
-                                l'excellence dans toutes nos activités de recherche.
+                                {{ __('about.values.val_1_text') }}
                             </div>
                         </div>
                     </div>
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">02</div>
-                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Intégrité et éthique</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">{{ __('about.values.val_2_title') }}</a></h4>
                             <div class="text">
-                                Respecter les principes d'éthique, de transparence, d'indépendance scientifique et de
-                                responsabilité
+                                {{ __('about.values.val_2_text') }}
                             </div>
                         </div>
                     </div>
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">03</div>
-                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Innovation</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">{{ __('about.values.val_3_title') }}</a></h4>
                             <div class="text">
-                                Développer et promouvoir des approches innovantes adaptées aux réalités africaines.
+                                {{ __('about.values.val_3_text') }}
                             </div>
                         </div>
                     </div>
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">04</div>
-                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Collaboration</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">{{ __('about.values.val_4_title') }}</a></h4>
                             <div class="text">
-                                Favoriser les partenariats interdisciplinaires et la co-construction des connaissances
-                                avec tous les acteurs.
+                                {{ __('about.values.val_4_text') }}
                             </div>
                         </div>
                     </div>
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">05</div>
-                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Transparence et redevabilité</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">{{ __('about.values.val_5_title') }}</a></h4>
                             <div class="text">
-                                Garantir une gestion responsable des ressources et une communication ouverte avec les
-                                partenaires et les bénéficiaires.
+                                {{ __('about.values.val_5_text') }}
                             </div>
                         </div>
                     </div>
                     <div class="work-block col-xxl-3 col-xl-4 col-md-6">
                         <div class="inner-block mb-20">
                             <div class="number">06</div>
-                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">Impact communautaire</a></h4>
+                            <h4 class="title"><a href="{{ route('recherche-expertize-projet') }}">{{ __('about.values.val_6_title') }}</a></h4>
                             <div class="text">
-                                Veiller à ce que les résultats de la recherche contribuent concrètement à l'amélioration
-                                de la santé des populations.
+                                {{ __('about.values.val_6_text') }}
                             </div>
                         </div>
                     </div>
@@ -254,17 +227,14 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="sec-title-box">
                 <div class="sec-title-style-three">
                     {{-- <h6 class="sub-title">// Nos Membres //</h6> --}}
-                    <h2 class="title text-reveal-anim">Gouvernance & <br> Leadership</h2>
+                    <h2 class="title text-reveal-anim">{!! __('about.governance.title') !!}</h2>
                 </div>
                 <div class="sec-right-box">
                     <div class="text">
-                        CARICS-Togo est dirigé par un Bureau Exécutif élu conformément à ses statuts.
-                        Celui-ci assure la gouvernance stratégique, administrative, financière et scientifique de
-                        l'organisation.
-
+                        {{ __('about.governance.description') }}
                     </div>
                     <a href="{{ route('equipe') }}" class="theme-btn btn-style-one">
-                        <span class="btn-title">Voir plus </span>
+                        <span class="btn-title">{{ __('navigation.actions.view_more') }}</span>
                         <span class="icon">
                             <i class="fa-light fa-arrow-right"></i>
                         </span>
@@ -308,26 +278,18 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="outer-box">
                     <div class="sec-title-style-three text-center">
                         {{-- <h6 class="sub-title">// Nos Partenaires //</h6> --}}
-                        <h2 class="title text-reveal-anim">Collaboration et Réseaux</h2>
+                        <h2 class="title text-reveal-anim">{{ __('about.collaboration.title') }}</h2>
                     </div>
-                    <p>
                     <div class="partenaire-content">
-                        CARICS-Togo développe des collaborations avec des universités, instituts de recherche,
-                        ministères de la santé, organisations non gouvernementales, agences de développement et
-                        partenaires techniques et financiers partageant son engagement pour une santé publique fondée
-                        sur les données probantes.
+                        {{ __('about.collaboration.paragraph_1') }}
                     </div>
                     <div class="mt-4 partenaire-content">
-                        L'organisation est ouverte aux partenariats scientifiques, aux projets de recherche
-                        collaboratifs, aux évaluations de programmes de santé, aux activités de formation et au
-                        développement de solutions innovantes adaptées aux contextes africains.
+                        {{ __('about.collaboration.paragraph_2') }}
                     </div>
-
-                    </p>
                     <div class="claint-outer">
                         <div>
                             <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
-                                <span class="btn-title">Découvrir nos travaux</span>
+                                <span class="btn-title">{{ __('navigation.actions.discover_works') }}</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>
                                 </span>
@@ -335,7 +297,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         </div>
                         <div>
                             <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
-                                <span class="btn-title">Devenir Partenaire</span>
+                                <span class="btn-title">{{ __('navigation.actions.become_partner') }}</span>
                                 <span class="icon">
                                     <i class="fa-light fa-arrow-right"></i>
                                 </span>
@@ -356,7 +318,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-lg-6">
                         <div class="sec-title-style-three">
                             {{-- <h6 class="sub-title">// Stats //</h6> --}}
-                            <h2 class="title text-reveal-anim">CARICS en bref.</h2>
+                            <h2 class="title text-reveal-anim">{{ __('about.in_brief.title') }}</h2>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-12">
@@ -364,8 +326,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="inner-box">
                                 <div class="number">#01</div>
                                 <div class="content">
-                                    <h4 class="title">Création</h4>
-                                    <div class="text">Créé en 2026 à Dapaong, Région des Savanes (Togo).</div>
+                                    <h4 class="title">{{ __('about.in_brief.item_1_title') }}</h4>
+                                    <div class="text">{{ __('about.in_brief.item_1_text') }}</div>
                                 </div>
                                 <figure class="image mb-0">
                                     <img src="{{ asset('images/cta-1.jpg') }}" alt="">
@@ -376,8 +338,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="inner-box active">
                                 <div class="number">#02</div>
                                 <div class="content">
-                                    <h4 class="title">Statut</h4>
-                                    <div class="text">Organisation indépendante à but non lucratif.</div>
+                                    <h4 class="title">{{ __('about.in_brief.item_2_title') }}</h4>
+                                    <div class="text">{{ __('about.in_brief.item_2_text') }}</div>
                                 </div>
                                 <figure class="image mb-0">
                                     <img src="{{ asset('images/cta-1.jpg') }}" alt="">
@@ -388,9 +350,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="inner-box">
                                 <div class="number">#03</div>
                                 <div class="content">
-                                    <h4 class="title">Fondateurs</h4>
-                                    <div class="text">4 membres fondateurs issus de la recherche et de la santé
-                                        publique.</div>
+                                    <h4 class="title">{{ __('about.in_brief.item_3_title') }}</h4>
+                                    <div class="text">{{ __('about.in_brief.item_3_text') }}</div>
                                 </div>
                                 <figure class="image mb-0">
                                     <img src="{{ asset('images/cta-1.jpg') }}" alt="">
@@ -401,9 +362,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="inner-box mb-0">
                                 <div class="number">#04</div>
                                 <div class="content">
-                                    <h4 class="title">Projets</h4>
-                                    <div class="text">1 projet de recherche financé à l'international actuellement en
-                                        cours.</div>
+                                    <h4 class="title">{{ __('about.in_brief.item_4_title') }}</h4>
+                                    <div class="text">{{ __('about.in_brief.item_4_text') }}</div>
                                 </div>
                                 <figure class="image mb-0">
                                     <img src="{{ asset('images/cta-1.jpg') }}" alt="">
@@ -414,8 +374,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="inner-box mb-0">
                                 <div class="number">#05</div>
                                 <div class="content">
-                                    <h4 class="title">Ambition</h4>
-                                    <div class="text">Interventions au Togo avec une vocation régionale africaine.</div>
+                                    <h4 class="title">{{ __('about.in_brief.item_5_title') }}</h4>
+                                    <div class="text">{{ __('about.in_brief.item_5_text') }}</div>
                                 </div>
                                 <figure class="image mb-0">
                                     <img src="{{ asset('images/cta-1.jpg') }}" alt="">
@@ -428,6 +388,5 @@ new #[Layout('layouts::archinest')] class extends Component {
         </div>
     </section>
     <!-- End Features Section -->
-
 
 </div>

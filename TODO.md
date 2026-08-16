@@ -34,7 +34,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 ### 1.1 Éléments Statiques (Fichiers de Langue `lang/fr` & `lang/en`)
 - [x] Créer `lang/fr/navigation.php` et `lang/en/navigation.php` (Header, Footer, Liens, Boutons)
 - [x] Créer `lang/fr/home.php` et `lang/en/home.php` (Hero, Piliers, Domaines d'intervention, Chiffres clés, CTA)
-- [ ] Créer `lang/fr/about.php` et `lang/en/about.php` (Qui sommes-nous, Historique, Ambition, Valeurs)
+- [x] Créer `lang/fr/about.php` et `lang/en/about.php` (Qui sommes-nous, Historique, Ambition, Valeurs)
 - [ ] Créer `lang/fr/research.php` et `lang/en/research.php` (Domaines d'expertise, Priorités, Projets phares)
 - [ ] Créer `lang/fr/resources.php` et `lang/en/resources.php` (Publications, Rapports, Policy briefs, Outils)
 - [ ] Créer `lang/fr/team.php` et `lang/en/team.php` (Titres de rôles, Labels bio, Boutons contact)
@@ -44,7 +44,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] Remplacer les textes statiques dans `<x-archinest.header />` par `__('navigation....')`
 - [x] Remplacer les textes statiques dans `<x-archinest.footer />` par `__('navigation....')`
 - [x] Traduire la vue Accueil `⚡home.blade.php`
-- [ ] Traduire la vue À Propos `⚡about-us.blade.php`
+- [x] Traduire la vue À Propos `⚡about-us.blade.php`
 - [ ] Traduire la vue Recherche `⚡research_expertize_project.blade.php`
 - [ ] Traduire la vue Ressources `⚡ressource-publication.blade.php`
 - [ ] Traduire la vue Actualités & Opportunités `⚡actu-opportunites.blade.php`
