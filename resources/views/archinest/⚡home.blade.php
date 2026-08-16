@@ -2,6 +2,8 @@
 
 use App\Models\News;
 use App\Models\Partner;
+use App\Models\Publication;
+use App\Models\ResearchProject;
 use App\Models\TeamMember;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -10,9 +12,14 @@ new #[Layout('layouts::archinest')] class extends Component {
     public function with(): array
     {
         return [
-            'members'    => TeamMember::published()->ordered()->take(4)->get(),
-            'partners'   => Partner::active()->ordered()->get(),
-            'latestNews' => News::published()->recent()->take(3)->get(),
+            'members'          => TeamMember::published()->ordered()->take(4)->get(),
+            'partners'         => Partner::active()->ordered()->get(),
+            'latestNews'       => News::published()->recent()->take(3)->get(),
+            'featuredProject'  => ResearchProject::published()->featured()->first() ?? ResearchProject::published()->first(),
+            'statsProjects'    => ResearchProject::published()->count(),
+            'statsMembers'     => TeamMember::published()->count(),
+            'statsPublications'=> Publication::published()->count(),
+            'statsPartners'    => Partner::active()->count(),
         ];
     }
 };
@@ -181,69 +188,61 @@ new #[Layout('layouts::archinest')] class extends Component {
     <section class="funfact-section pt-0">
         <div class="large-container">
             <h1>{{ __('home.stats.section_title') }}</h1>
-            <div class="inner-container" style="background-image: url(archinest/images/background/fun-fact1-1.jpg);">
+            <div class="inner-container" style="background-image: url({{ asset('archinest/images/background/fun-fact1-1.jpg') }});">
                 <div class="fact-counter">
                     <div class="row justify-content-between">
-                        <!-- Counter block-->
+                        <!-- Counter block Projets -->
                         <div class="col-lg-3 col-md-6 col-sm-12 counter-clomun">
                             <div class="counter-block wow zoomIn">
                                 <div class="inner">
                                     <div class="border-style"></div>
                                     <div class="border-style2"></div>
-                                    <div class="count-box"><span class="count-text" data-speed="3000"
-                                            data-stop="1">1</span></div>
-                                    <h5 class="counter-title">{{ __('home.stats.research_centers') }}</h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Counter block-->
-                        <div class="col-lg-3 col-md-6 col-sm-12 counter-clomun">
-                            <div class="counter-block wow zoomIn" data-wow-delay="300ms">
-                                <div class="inner">
-                                    <div class="border-style"></div>
-                                    <div class="border-style2"></div>
-                                    <div class="count-box style-two"><span class="count-text" data-speed="3000"
-                                            data-stop="1">1</span></div>
+                                    <div class="count-box">
+                                        <span class="count-text" data-speed="2500" data-stop="{{ max(1, $statsProjects) }}">{{ max(1, $statsProjects) }}</span>
+                                    </div>
                                     <h5 class="counter-title">{{ __('home.stats.funded_projects') }}</h5>
                                 </div>
                             </div>
                         </div>
 
-                        <!--Counter block-->
+                        <!-- Counter block Publications -->
+                        <div class="col-lg-3 col-md-6 col-sm-12 counter-clomun">
+                            <div class="counter-block wow zoomIn" data-wow-delay="300ms">
+                                <div class="inner">
+                                    <div class="border-style"></div>
+                                    <div class="border-style2"></div>
+                                    <div class="count-box style-two">
+                                        <span class="count-text" data-speed="2500" data-stop="{{ max(5, $statsPublications) }}">{{ max(5, $statsPublications) }}</span>+
+                                    </div>
+                                    <h5 class="counter-title">Publications & Rapports</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Counter block Régions -->
                         <div class="col-lg-3 col-md-6 col-sm-12 counter-clomun">
                             <div class="counter-block wow zoomIn" data-wow-delay="600ms">
                                 <div class="inner">
                                     <div class="border-style"></div>
                                     <div class="border-style2"></div>
-                                    <div class="count-box"><span class="count-text" data-speed="3000"
-                                            data-stop="1">1</span></div>
-                                    <h5 class="counter-title">{{ __('home.stats.intervention_regions') }}</h5>
+                                    <div class="count-box">
+                                        <span class="count-text" data-speed="2500" data-stop="5">5</span>
+                                    </div>
+                                    <h5 class="counter-title">{{ __('home.stats.intervention_regions') }} (Togo)</h5>
                                 </div>
                             </div>
                         </div>
 
-                        <!--Counter block-->
+                        <!-- Counter block Chercheurs & Experts -->
                         <div class="col-lg-3 col-md-6 col-sm-12 counter-clomun">
                             <div class="counter-block wow zoomIn" data-wow-delay="900ms">
                                 <div class="inner mr-0">
                                     <div class="border-style"></div>
                                     <div class="border-style2"></div>
-                                    <div class="count-box style-two"><span class="count-text" data-speed="3000"
-                                            data-stop="04">0</span></div>
-                                    <h5 class="counter-title">{{ __('home.stats.founding_members') }}</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Counter block-->
-                        <div class="col-lg-3 col-md-6 col-sm-12 counter-clomun">
-                            <div class="counter-block wow zoomIn" data-wow-delay="900ms">
-                                <div class="inner mr-0">
-                                    <div class="border-style"></div>
-                                    <div class="border-style2"></div>
-                                    <div class="count-box style-two"><span class="count-text" data-speed="3000"
-                                            data-stop="01">0</span></div>
-                                    <h5 class="counter-title">{{ __('home.stats.international_partnerships') }}</h5>
+                                    <div class="count-box style-two">
+                                        <span class="count-text" data-speed="2500" data-stop="{{ max(4, $statsMembers) }}">{{ max(4, $statsMembers) }}</span>
+                                    </div>
+                                    <h5 class="counter-title">Experts & Chercheurs</h5>
                                 </div>
                             </div>
                         </div>

@@ -2,14 +2,45 @@
 
 use App\Models\ResearchProject;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 new #[Layout('layouts::archinest')] class extends Component {
+    #[Url(as: 'q')]
+    public string $search = '';
+
+    #[Url(as: 'status')]
+    public string $selectedStatus = 'all';
+
+    public function resetFilters(): void
+    {
+        $this->search = '';
+        $this->selectedStatus = 'all';
+    }
+
     public function with(): array
     {
+        $projectsQuery = ResearchProject::published()
+            ->with(['lead', 'partners'])
+            ->when($this->search !== '', function ($query) {
+                $query->where(function ($q) {
+                    $q->where('title', 'like', "%{$this->search}%")
+                        ->orWhere('context', 'like', "%{$this->search}%")
+                        ->orWhere('objective', 'like', "%{$this->search}%")
+                        ->orWhere('funder', 'like', "%{$this->search}%")
+                        ->orWhere('region', 'like', "%{$this->search}%");
+                });
+            })
+            ->when($this->selectedStatus !== 'all', function ($query) {
+                $query->where('status', $this->selectedStatus);
+            })
+            ->ordered();
+
         return [
             'featuredProject' => ResearchProject::published()->featured()->with('lead', 'partners')->first() ?? ResearchProject::published()->first(),
-            'allProjects'     => ResearchProject::published()->ordered()->with('lead', 'partners')->get(),
+            'projects'        => $projectsQuery->get(),
+            'allProjects'     => ResearchProject::published()->get(),
+            'totalCount'      => ResearchProject::published()->count(),
         ];
     }
 };
@@ -323,4 +354,197 @@ new #[Layout('layouts::archinest')] class extends Component {
         </div>
     </section>
     <!-- End Projet phare Section -->
+
+    <!-- ============ CARTE INTERACTIVE DES INTERVENTIONS AU TOGO ============ -->
+    <section class="section-sm bg-light py-5">
+        <div class="container">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
+                    <i class="fa fa-solid fa-map-location-dot"></i> Couverture Nationale
+                </div>
+                <h2 class="h3 fw-bold text-dark mb-2">Implantation Territoriale & Sites d'Intervention</h2>
+                <p class="text-muted">
+                    Découvrez la répartition des projets de recherche et d'action sociale menés par le CARICS à travers les 5 régions du Togo.
+                </p>
+            </div>
+
+            <x-togo-map :projects="$allProjects" />
+        </div>
+    </section>
+
+    <!-- ============ EXPLORATEUR DE TOUS LES PROJETS DE RECHERCHE ============ -->
+    <section class="section-sm py-5">
+        <div class="container">
+            <!-- En-tête & Barre de recherche -->
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-7">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success-subtle text-success fw-semibold small mb-2">
+                        <i class="fa fa-solid fa-folder-tree"></i> Répertoire Scientifique
+                    </div>
+                    <h2 class="h3 fw-bold text-dark mb-1">Tous nos Projets de Recherche</h2>
+                    <p class="text-muted mb-0">Consultez l'ensemble des études menées par nos équipes et partenaires.</p>
+                </div>
+                <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
+                    <span class="badge bg-light text-dark border px-3 py-2 fs-6">
+                        <strong class="text-primary">{{ $totalCount }}</strong> projets au total
+                    </span>
+                </div>
+            </div>
+
+            <!-- Filtres interactifs -->
+            <div class="card p-3 p-md-4 border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #f8faff 0%, #f0f6ff 100%);">
+                <div class="row g-3 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3">
+                                <i class="fa fa-solid fa-search text-muted"></i>
+                            </span>
+                            <input 
+                                type="text" 
+                                wire:model.live.debounce.300ms="search" 
+                                class="form-control border-start-0 rounded-end-pill py-2 shadow-none" 
+                                placeholder="Rechercher par mot-clé, thématique, bailleur, région..."
+                            >
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="d-flex gap-2">
+                            <select wire:model.live="selectedStatus" class="form-select rounded-pill py-2 shadow-none">
+                                <option value="all">🔍 Tous les statuts</option>
+                                <option value="en_cours">🟢 En cours</option>
+                                <option value="termine">🔵 Achevés</option>
+                                <option value="en_attente">🟡 En préparation</option>
+                            </select>
+                            @if ($search !== '' || $selectedStatus !== 'all')
+                                <button wire:click="resetFilters" class="btn btn-outline-secondary rounded-pill px-3" title="Réinitialiser">
+                                    <i class="fa fa-solid fa-rotate-left"></i>
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onglets statut rapides -->
+                <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
+                    <button 
+                        type="button" 
+                        wire:click="$set('selectedStatus', 'all')" 
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'all' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
+                    >
+                        Tous les projets
+                    </button>
+                    <button 
+                        type="button" 
+                        wire:click="$set('selectedStatus', 'en_cours')" 
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_cours' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
+                    >
+                        🟢 En cours
+                    </button>
+                    <button 
+                        type="button" 
+                        wire:click="$set('selectedStatus', 'termine')" 
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'termine' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
+                    >
+                        🔵 Achevés
+                    </button>
+                    <button 
+                        type="button" 
+                        wire:click="$set('selectedStatus', 'en_attente')" 
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_attente' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
+                    >
+                        🟡 En préparation
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grille de cartes de projets -->
+            <div wire:loading.flex class="justify-content-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Chargement des projets...</span>
+                </div>
+            </div>
+
+            <div wire:loading.remove>
+                @if ($projects->isNotEmpty())
+                    <div class="row g-4">
+                        @foreach ($projects as $proj)
+                            @php
+                                $statusBadge = match($proj->status) {
+                                    'en_cours'   => ['class' => 'bg-success-subtle text-success', 'label' => 'En cours'],
+                                    'termine'    => ['class' => 'bg-info-subtle text-info-emphasis', 'label' => 'Achevé'],
+                                    'en_attente' => ['class' => 'bg-warning-subtle text-warning-emphasis', 'label' => 'En préparation'],
+                                    default      => ['class' => 'bg-secondary-subtle text-secondary', 'label' => ucfirst($proj->status)],
+                                };
+                            @endphp
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100 border rounded-4 shadow-sm bg-white p-4 d-flex flex-column justify-content-between transition-all hover-shadow">
+                                    <div>
+                                        <!-- En-tête -->
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="badge {{ $statusBadge['class'] }} fw-semibold px-3 py-1 rounded-pill small">
+                                                {{ $statusBadge['label'] }}
+                                            </span>
+                                            @if ($proj->region)
+                                                <span class="badge bg-light text-muted border small">
+                                                    <i class="fa fa-solid fa-location-dot me-1 text-danger"></i>{{ $proj->region }}
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <!-- Titre -->
+                                        <h3 class="h5 fw-bold text-dark mb-2" style="line-height: 1.4;">
+                                            {{ $proj->title }}
+                                        </h3>
+
+                                        <!-- Bailleur & Date -->
+                                        <div class="d-flex flex-wrap gap-2 text-muted small mb-3">
+                                            @if ($proj->funder)
+                                                <span><i class="fa fa-solid fa-hand-holding-dollar text-success me-1"></i>{{ $proj->funder }}</span>
+                                            @endif
+                                            @if ($proj->start_date)
+                                                <span>• <i class="fa fa-regular fa-calendar me-1"></i>{{ $proj->start_date->format('Y') }}{{ $proj->end_date ? '–' . $proj->end_date->format('Y') : '' }}</span>
+                                            @endif
+                                        </div>
+
+                                        <!-- Extrait Contexte -->
+                                        @if ($proj->context)
+                                            <p class="text-secondary small mb-3" style="line-height: 1.6;">
+                                                {{ Str::limit(strip_tags($proj->context), 130) }}
+                                            </p>
+                                        @endif
+                                    </div>
+
+                                    <!-- Pied de carte -->
+                                    <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            @if ($proj->lead)
+                                                <i class="fa fa-solid fa-user-tie me-1"></i> {{ $proj->lead->full_name }}
+                                            @else
+                                                <i class="fa fa-solid fa-users me-1"></i> Équipe CARICS
+                                            @endif
+                                        </small>
+
+                                        <a href="{{ route('contact') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                            Partenariat <i class="fa fa-solid fa-arrow-right ms-1 small"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="text-center py-5 bg-white rounded-4 border p-4">
+                        <div class="mb-3 text-muted" style="font-size: 3rem;">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <h4 class="h5 fw-bold text-dark mb-2">Aucun projet trouvé</h4>
+                        <p class="text-muted small mb-3">Aucun projet de recherche ne correspond à ces critères.</p>
+                        <button type="button" wire:click="resetFilters" class="btn btn-outline-primary rounded-pill px-4 btn-sm">
+                            <i class="fa fa-solid fa-rotate-left me-1"></i> Réinitialiser les filtres
+                        </button>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
 </div>

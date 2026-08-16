@@ -1322,3 +1322,21 @@
   object-fit: cover;
   object-position: center top;
 }
+
+/* ============================================================
+   Preloader Sécurité & Thème CARICS
+   ============================================================ */
+.preloader {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.preloader svg {
+  fill: #1B3A6B !important;
+}
+
+.preloader.loaded {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}

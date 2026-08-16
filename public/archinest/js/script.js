@@ -8,92 +8,92 @@ var THEMEMASCOT = {};
   /* --------------------------- Start Demo Switcher  --------------------- */
   /* ---------------------------------------------------------------------- */
 
-	var showSwitcher = true;
+	var showSwitcher = false;
 	var $style_switcher = $("#style-switcher");
 
-	if (!$style_switcher.length && showSwitcher) {
-		$.ajax({
-			url: "color-switcher/style-switcher.html",
-			dataType: "html",
-			success: function (data) {
-				try {
-				const $parsed = $("<div>").html(data).contents();
-				$("body").append($parsed);
-				} catch (e) {
-				console.error("Append failed:", e.message);
-				console.warn("Response was:", data);
-				}
-			},
-			error: function (xhr, status, error) {
-				console.error("AJAX load failed:", status, error);
+	THEMEMASCOT.isRTL = {
+		check: function() {
+			return $("html").attr("dir") === "rtl";
+		}
+	};
+
+	THEMEMASCOT.isLTR = {
+		check: function() {
+			return $("html").attr("dir") !== "rtl";
+		}
+	};
+
+	// ─── Hide Loading Box (Preloader) avec Fallback Garanti ───
+	function hidePreloader() {
+		const preloader = document.querySelector(".preloader");
+		if (!preloader) return;
+
+		preloader.classList.add("loaded");
+		setTimeout(() => {
+			preloader.style.opacity = "0";
+			preloader.style.visibility = "hidden";
+			preloader.style.pointerEvents = "none";
+			preloader.style.display = "none";
+			if (preloader.parentNode) {
+				preloader.parentNode.removeChild(preloader);
 			}
-		});
+		}, 300);
 	}
 
-  /* ---------------------------------------------------------------------- */
-  /* ----------------------------- En Demo Switcher  ---------------------- */
-  /* ---------------------------------------------------------------------- */
-
-
-  THEMEMASCOT.isRTL = {
-    check: function() {
-      if( $( "html" ).attr("dir") === "rtl" ) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  };
-
-  THEMEMASCOT.isLTR = {
-    check: function() {
-      if( $( "html" ).attr("dir") !== "rtl" ) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  };
-
-	// gsap.registerPlugin(ScrollTrigger);
-
-	//Hide Loading Box (Preloader)
 	const svg = document.getElementById("preloaderSvg");
-		const preTl = gsap.timeline({
-			onComplete: startAnimationAfterPreloader,
-		});
-		const curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
-		const flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
-		preTl.to(".preloader-heading .load-text , .preloader-heading .cont", {
-			delay: .25,
-			y: -100,
-			opacity: 0,
-		});
-		preTl
-			.to(svg, {
-				duration: 0.5,
-				attr: { d: curve },
-				ease: "power2.easeIn",
-			})
-			.to(svg, {
-				duration: 0.5,
-				attr: { d: flat },
-				ease: "power2.easeOut",
+	if (svg && typeof gsap !== "undefined") {
+		try {
+			const preTl = gsap.timeline({
+				onComplete: function() {
+					startAnimationAfterPreloader();
+					hidePreloader();
+				}
 			});
-		preTl.to(".preloader", {
-		delay: .25,
-			y: -1500,
-		});
-		preTl.to(".preloader", {
-			zIndex: -1,
-			display: "none",
-		});
-		let svgText = document.querySelector("svg text");
-		function startAnimationAfterPreloader() {
-			if (svgText) {
-				// Add a class or directly apply styles to trigger the stroke animation
-				svgText.classList.add("animate-stroke");
-			}
+			const curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
+			const flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
+
+			preTl.to(".preloader-heading .load-text , .preloader-heading .cont", {
+				delay: 0.15,
+				y: -80,
+				opacity: 0,
+				duration: 0.3
+			});
+			preTl
+				.to(svg, {
+					duration: 0.4,
+					attr: { d: curve },
+					ease: "power2.easeIn",
+				})
+				.to(svg, {
+					duration: 0.4,
+					attr: { d: flat },
+					ease: "power2.easeOut",
+				});
+			preTl.to(".preloader", {
+				delay: 0.1,
+				y: -1500,
+				duration: 0.4,
+				onComplete: hidePreloader
+			});
+		} catch (e) {
+			console.warn("GSAP Preloader animation error:", e);
+			hidePreloader();
+		}
+	} else {
+		hidePreloader();
+	}
+
+	// Sécurité absolue : masquer le preloader après 1 seconde max quoi qu'il arrive
+	setTimeout(hidePreloader, 1000);
+	window.addEventListener("load", function() {
+		setTimeout(hidePreloader, 400);
+	});
+
+	let svgText = document.querySelector("svg text");
+	function startAnimationAfterPreloader() {
+		if (svgText) {
+			svgText.classList.add("animate-stroke");
+		}
 	}
 
 	//Update Header Style and Scroll to Top

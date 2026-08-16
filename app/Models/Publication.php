@@ -78,6 +78,25 @@ class Publication extends Model implements HasMedia
             ->values();
     }
 
+    public function getCitationAttribute(): string
+    {
+        $authorNames = [];
+        foreach ($this->authors() as $author) {
+            $authorNames[] = $author->full_name;
+        }
+
+        if ($this->external_co_authors) {
+            $authorNames[] = $this->external_co_authors;
+        }
+
+        $authorsStr = ! empty($authorNames) ? implode(', ', $authorNames) : 'CARICS-Togo';
+        $year = $this->published_date ? $this->published_date->format('Y') : date('Y');
+        $journal = $this->journal_or_publisher ? " *{$this->journal_or_publisher}*" : '';
+        $url = $this->external_url ? " {$this->external_url}" : '';
+
+        return "{$authorsStr} ({$year}). {$this->title}.{$journal}.{$url}";
+    }
+
     // ─── Scopes ──────────────────────────────────────────────────────────────
 
     public function scopePublished(Builder $query): Builder
