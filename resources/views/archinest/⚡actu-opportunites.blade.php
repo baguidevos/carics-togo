@@ -98,7 +98,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <p class="text-muted-2 mb-3" style="font-size:.92rem;">
                                     {{ __('news_opp.news.news2_desc') }}
                                 </p>
-                                <a href="{{ route('a-propos') }}" class="btn-cta-sm btn-cta-outline"
+                                <a href="{{ route('about') }}" class="btn-cta-sm btn-cta-outline"
                                     style="display:inline-block;">{{ __('news_opp.news.news2_btn') }} <i class="bi bi-arrow-right ms-1"></i></a>
                             </div>
                         </div>

@@ -9,7 +9,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 
 - [x] **Phase 0 : Audit & Nettoyage Initial** (100%)
 - [x] **Phase 1 : Traduction & Internationalisation (i18n)** (100%)
-- [ ] **Phase 2 : Stabilisation des Modèles & Données** (30%)
+- [x] **Phase 2 : Stabilisation des Modèles & Données** (100%)
 - [ ] **Phase 3 : Panneau d'Administration Filament v5** (15%)
 - [ ] **Phase 4 : Dynamisation Frontend Livewire SFC** (10%)
 - [ ] **Phase 5 : Modules Interactifs & Formulaires** (0%)
@@ -29,7 +29,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 
 ---
 
-## 🌍 Phase 1 : Internationalisation (i18n) — Éléments Statiques & Dynamiques
+## 🌍 Phase 1 : Internationalisation (i18n) — Éléments Statiques & Dynamiques (Terminé ✅)
 
 ### 1.1 Éléments Statiques (Fichiers de Langue `lang/fr` & `lang/en`)
 - [x] Créer `lang/fr/navigation.php` et `lang/en/navigation.php` (Header, Footer, Liens, Boutons)
@@ -58,7 +58,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 
 ---
 
-## 🛠️ Phase 2 : Stabilisation des Modèles & Base de Données
+## 🛠️ Phase 2 : Stabilisation des Modèles & Base de Données (Terminé ✅)
 
 - [x] **Migration TeamData ➔ Eloquent** :
   - [x] Écrire un Seeder `TeamMemberSeeder` qui charge les données de `TeamData.php` en base de données
@@ -66,14 +66,20 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
   - [x] Supprimer ou archiver `TeamData.php`
 - [x] **Compatibilité SQLite** :
   - [x] Corriger [Publication::authors()](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/app/Models/Publication.php) pour remplacer la fonction MySQL `FIELD()` par une méthode compatible SQLite/PostgreSQL
-- [ ] **Seeders & Données Initiales** :
-  - [ ] `CategorySeeder` (Catégories pour Blog, Ressources, Opportunités, Actualités)
-  - [ ] `PartnerSeeder` (Partenaires scientifiques et institutionnels)
-  - [ ] `ResearchProjectSeeder` (Projet CPS Savanes et futurs projets)
-  - [ ] `SiteSettingSeeder` (Téléphones, emails, mission, réseaux sociaux)
-  - [ ] Mettre à jour [DatabaseSeeder](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/database/seeders/DatabaseSeeder.php) pour exécuter l'ensemble
-- [ ] **Model Factories** :
-  - [ ] Créer les factories pour chaque modèle : `BlogPostFactory`, `ResearchProjectFactory`, `PublicationFactory`, `OpportunityFactory`, `NewsFactory`, etc.
+- [x] **Seeders & Données Initiales** :
+  - [x] `CategorySeeder` (Catégories pour Blog, Ressources, Opportunités, Actualités)
+  - [x] `PartnerSeeder` (Partenaires scientifiques et institutionnels)
+  - [x] `ResearchProjectSeeder` (Projet CPS Savanes et futurs projets)
+  - [x] `PublicationSeeder` (Publications scientifiques et rapports)
+  - [x] `BlogPostSeeder` (Articles de blog et fiches projet)
+  - [x] `NewsSeeder` (Actualités institutionnelles et scientifiques)
+  - [x] `OpportunitySeeder` (Offres d'emploi, stages et consultances)
+  - [x] `ResourceSeeder` (Documents, guides et synthèses)
+  - [x] `SiteSettingSeeder` (Téléphones, emails, mission, réseaux sociaux)
+  - [x] Mettre à jour [DatabaseSeeder](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/database/seeders/DatabaseSeeder.php) pour exécuter l'ensemble
+- [x] **Model Factories** :
+  - [x] Créer les factories pour tous les modèles : `TeamMemberFactory`, `PartnerFactory`, `CategoryFactory`, `ResearchProjectFactory`, `BlogPostFactory`, `PublicationFactory`, `OpportunityFactory`, `NewsFactory`, `ResourceFactory`, `ContactSubmissionFactory`, `NewsletterSubscriberFactory`, `SiteSettingFactory`.
+  - [x] Tests unitaires/feature de validation des factories (`ModelFactoriesTest.php`)
 
 ---
 
