@@ -124,15 +124,13 @@ class TeamMemberForm
                                             ->schema([
                                                 TextInput::make('degree')
                                                     ->label('Diplôme')
-                                                    ->placeholder('Ex: PhD, MD, MPH, Master')
-                                                    ->required(),
+                                                    ->placeholder('Ex: PhD, MD, MPH, Master'),
                                                 TextInput::make('field')
                                                     ->label('Discipline / Spécialité')
                                                     ->placeholder('Ex: Épidémiologie & Santé Mondiale'),
                                                 TextInput::make('institution')
                                                     ->label('Université / École / Institution')
-                                                    ->placeholder('Ex: Université d\'Utrecht (Pays-Bas)')
-                                                    ->required(),
+                                                    ->placeholder('Ex: Université d\'Utrecht (Pays-Bas)'),
                                             ])
                                             ->columns(3)
                                             ->defaultItems(0)
@@ -151,8 +149,7 @@ class TeamMemberForm
                                                     ->required(),
                                                 TextInput::make('organisation')
                                                     ->label('Organisme / Institution de délivrance')
-                                                    ->placeholder('Ex: Royal Society of Tropical Medicine and Hygiene (RSTMH)')
-                                                    ->required(),
+                                                    ->placeholder('Ex: Royal Society of Tropical Medicine and Hygiene (RSTMH)'),
                                                 TextInput::make('year')
                                                     ->label('Année')
                                                     ->placeholder('Ex: 2025'),
@@ -232,8 +229,7 @@ class TeamMemberForm
                                                 'warning' => 'Ocre / Jaune (Avertissement)',
                                                 'danger' => 'Rouge / Brique',
                                             ])
-                                            ->default('primary')
-                                            ->required(),
+                                            ->default('primary'),
                                     ]),
 
                                 Section::make('Réseaux & Contact Scientifique')
