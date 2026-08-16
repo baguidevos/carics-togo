@@ -27,7 +27,7 @@ class NewsForm
                         // ─── COLONNE GAUCHE (Contenu Principal) ───────────────
                         Section::make('Informations principales')
                             ->icon('heroicon-m-megaphone')
-                            ->columnSpan(['default' => 1, 'lg' => 2])
+                            ->columnSpan(['default' => 1, 'lg' => 3])
                             ->schema([
                                 TextInput::make('title')
                                     ->label('Titre')
@@ -76,7 +76,7 @@ class NewsForm
 
                         // ─── COLONNE DROITE (Publication & Galerie du même côté) ───
                         Grid::make(1)
-                            ->columnSpan(['default' => 1, 'lg' => 2])
+                            ->columnSpan(['default' => 1, 'lg' => 1])
                             ->schema([
                                 Section::make('Publication & Visibilité')
                                     ->icon('heroicon-m-rocket-launch')
