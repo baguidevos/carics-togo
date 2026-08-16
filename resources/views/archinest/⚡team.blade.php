@@ -15,13 +15,13 @@ new #[Layout('layouts::archinest')] class extends Component {
 ?>
 
 <div>
-    <section class="page-title" style="background-image: url(images/banner.jpg);">
+    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
-                <h1 class="title">Leadership & Gouvernance</h1>
+                <h1 class="title">{{ __('team.title') }}</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">Accueil</a></li>
-                    <li>Leadership & Gouvernance</li>
+                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
+                    <li>{{ __('team.title') }}</li>
                 </ul>
             </div>
         </div>
@@ -34,12 +34,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="row">
                     <div class="col-lg-8">
                         <p class="section-lead mb-0">
-                          
-                            <strong>CARICS-Togo</strong> est dirigé par un Bureau Exécutif élu conformément à ses statuts. Le Bureau
-                            assure l'orientation stratégique, la gouvernance institutionnelle, la supervision
-                            scientifique et la gestion administrative et financière de l'organisation. Les membres
-                            fondateurs partagent une expérience commune dans la recherche en santé publique,
-                            l'épidémiologie, la gestion des programmes de santé et le développement communautaire.
+                            {!! __('team.intro') !!}
                         </p>
                     </div>
                 </div>
@@ -49,8 +44,8 @@ new #[Layout('layouts::archinest')] class extends Component {
         <!-- ============ GRILLE BUREAU EXÉCUTIF ============ -->
         <section class="section">
             <div class="container">
-                <div class="eyebrow">Bureau Exécutif</div>
-                <h2 class="section-title mb-4">Les membres du Bureau Exécutif</h2>
+                <div class="eyebrow">{{ __('team.board_eyebrow') }}</div>
+                <h2 class="section-title mb-4">{{ __('team.board_title') }}</h2>
 
                 <div class="row g-4">
 
@@ -67,7 +62,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     <p class="team-excerpt">
                                         {{ $member['bioShort'] }}
                                     </p>
-                                    <div class="team-link">Voir le profil <i class="fa-solid fa-arrow-right ms-1"></i></div>
+                                    <div class="team-link">{{ __('team.view_profile') }} <i class="fa-solid fa-arrow-right ms-1"></i></div>
                                 </div>
                             </div>
                         </a>
@@ -83,38 +78,30 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="container">
                 <div class="row g-4 g-lg-5 align-items-center">
                     <div class="col-lg-7">
-                        <div class="eyebrow">Notre engagement</div>
-                        <h2 class="section-title mb-3">Un réseau élargi de chercheurs et de partenaires</h2>
+                        <div class="eyebrow">{{ __('team.commitment.eyebrow') }}</div>
+                        <h2 class="section-title mb-3">{{ __('team.commitment.title') }}</h2>
                         <p>
-                            Le Bureau Exécutif est appuyé par un réseau de chercheurs associés, consultants,
-                            experts techniques et partenaires institutionnels mobilisés en fonction des besoins
-                            des projets et programmes.
+                            {{ __('team.commitment.text_1') }}
                         </p>
                         <p class="mb-4">
-                            CARICS-Togo s&rsquo;engage à promouvoir l&rsquo;excellence scientifique, l&rsquo;éthique de
-                            la
-                            recherche, la transparence institutionnelle et l&rsquo;utilisation des données probantes
-                            pour améliorer les politiques, les programmes et les interventions de santé en Afrique.
+                            {{ __('team.commitment.text_2') }}
                         </p>
-                        <a href="{{ route('contact') }}" class="btn-cta">Rejoindre notre réseau <i
+                        <a href="{{ route('contact') }}" class="btn-cta">{{ __('team.commitment.join_cta') }} <i
                                 class="fa-solid fa-arrow-right ms-1"></i></a>
                     </div>
                     <div class="col-lg-5">
                         <div class="card-soft" style="background:var(--white);">
-                            <div class="eyebrow mb-3">Valeurs de gouvernance</div>
+                            <div class="eyebrow mb-3">{{ __('team.commitment.values_title') }}</div>
                             <ul class="list-unstyled mb-0" style="font-size:.92rem;">
                                 <li class="d-flex gap-2 mb-3"><i
-                                        class="fa fa-solid fa-award text-accent mt-1"></i><span>Excellence scientifique</span>
+                                        class="fa fa-solid fa-award text-accent mt-1"></i><span>{{ __('team.commitment.val_1') }}</span>
                                 </li>
                                 <li class="d-flex gap-2 mb-3"><i
-                                        class="fa-solid fa-shield-check text-accent mt-1"></i><span>Éthique de la
-                                        recherche</span></li>
+                                        class="fa-solid fa-shield-check text-accent mt-1"></i><span>{{ __('team.commitment.val_2') }}</span></li>
                                 <li class="d-flex gap-2 mb-3"><i
-                                        class="fa-solid fa-eye text-accent mt-1"></i><span>Transparence
-                                        institutionnelle</span></li>
+                                        class="fa-solid fa-eye text-accent mt-1"></i><span>{{ __('team.commitment.val_3') }}</span></li>
                                 <li class="d-flex gap-2 mb-0"><i
-                                        class="fa-solid fa-clipboard-check text-accent mt-1"></i><span>Utilisation des données
-                                        probantes</span></li>
+                                        class="fa-solid fa-clipboard-check text-accent mt-1"></i><span>{{ __('team.commitment.val_4') }}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -126,14 +113,12 @@ new #[Layout('layouts::archinest')] class extends Component {
         <section class="section"
             style="background-image: var(--contour-light), linear-gradient(165deg, var(--primary), var(--ink)); background-size: 480px auto, cover; background-repeat: repeat, no-repeat; color:#fff;">
             <div class="container text-center">
-                <div class="eyebrow light justify-content-center">Chercheurs associés</div>
-                <h2 class="font-display mb-3" style="font-size: clamp(1.5rem, 2.8vw, 2.2rem); color:#fff;">Vous
-                    souhaitez collaborer avec CARICS-Togo&nbsp;?</h2>
+                <div class="eyebrow light justify-content-center">{{ __('team.cta_collaborate.eyebrow') }}</div>
+                <h2 class="font-display mb-3" style="font-size: clamp(1.5rem, 2.8vw, 2.2rem); color:#fff;">{{ __('team.cta_collaborate.title') }}</h2>
                 <p class="mx-auto mb-4" style="max-width:38rem; color:rgba(255,255,255,.85);">
-                    Chercheurs, consultants et experts techniques sont régulièrement mobilisés selon les
-                    besoins de nos projets et programmes.
+                    {{ __('team.cta_collaborate.text') }}
                 </p>
-                <a href="{{ route('contact') }}" class="btn-cta-light">Proposer une collaboration</a>
+                <a href="{{ route('contact') }}" class="btn-cta-light">{{ __('team.cta_collaborate.btn') }}</a>
             </div>
         </section>
 
