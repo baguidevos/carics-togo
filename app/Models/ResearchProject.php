@@ -9,10 +9,27 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class ResearchProject extends Model
+class ResearchProject extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('cover')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+
+        $this->addMediaCollection('documents');
+    }
+
+    public function getCoverUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('cover') ?: null;
+    }
 
     protected $fillable = [
         'title', 'slug', 'status', 'funder',
@@ -26,13 +43,13 @@ class ResearchProject extends Model
     protected function casts(): array
     {
         return [
-            'start_date'         => 'date',
-            'end_date'           => 'date',
+            'start_date' => 'date',
+            'end_date' => 'date',
             'intervention_zones' => 'array',
-            'expected_results'   => 'array',
-            'research_domains'   => 'array',
-            'is_featured'        => 'boolean',
-            'is_published'       => 'boolean',
+            'expected_results' => 'array',
+            'research_domains' => 'array',
+            'is_featured' => 'boolean',
+            'is_published' => 'boolean',
         ];
     }
 

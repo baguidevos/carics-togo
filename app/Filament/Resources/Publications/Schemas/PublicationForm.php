@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Publications\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -25,7 +26,13 @@ class PublicationForm
                 Textarea::make('author_ids')
                     ->columnSpanFull(),
                 TextInput::make('external_co_authors'),
-                TextInput::make('file_path'),
+                SpatieMediaLibraryFileUpload::make('document')
+                    ->collection('document')
+                    ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
+                    ->downloadable(),
+                SpatieMediaLibraryFileUpload::make('cover')
+                    ->collection('cover')
+                    ->image(),
                 TextInput::make('external_url')
                     ->url(),
                 DatePicker::make('published_date'),

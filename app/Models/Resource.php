@@ -6,10 +6,33 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Resource extends Model
+class Resource extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('file')
+            ->singleFile();
+
+        $this->addMediaCollection('thumbnail')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+    }
+
+    public function getFileUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('file') ?: ($this->file_path ? asset($this->file_path) : null);
+    }
+
+    public function getThumbnailUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('thumbnail') ?: null;
+    }
 
     protected $fillable = [
         'title', 'description', 'category_id',

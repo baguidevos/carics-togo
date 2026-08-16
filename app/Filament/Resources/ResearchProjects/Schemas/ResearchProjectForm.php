@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ResearchProjects\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -19,6 +20,14 @@ class ResearchProjectForm
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
+                SpatieMediaLibraryFileUpload::make('cover')
+                    ->collection('cover')
+                    ->image()
+                    ->imageEditor(),
+                SpatieMediaLibraryFileUpload::make('documents')
+                    ->collection('documents')
+                    ->multiple()
+                    ->downloadable(),
                 TextInput::make('status')
                     ->required()
                     ->default('en_cours'),

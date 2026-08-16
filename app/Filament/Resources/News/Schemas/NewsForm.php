@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\News\Schemas;
 
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -24,8 +24,10 @@ class NewsForm
                     ->columnSpanFull(),
                 Textarea::make('content')
                     ->columnSpanFull(),
-                FileUpload::make('cover_image')
-                    ->image(),
+                SpatieMediaLibraryFileUpload::make('cover')
+                    ->collection('cover')
+                    ->image()
+                    ->imageEditor(),
                 Select::make('category_id')
                     ->relationship('category', 'name'),
                 TextInput::make('blog_post_id')

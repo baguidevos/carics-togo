@@ -3,13 +3,38 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Publication extends Model
+class Publication extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('document')
+            ->singleFile()
+            ->acceptsMimeTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']);
+
+        $this->addMediaCollection('cover')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+    }
+
+    public function getDocumentUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('document') ?: ($this->file_path ? asset($this->file_path) : null);
+    }
+
+    public function getCoverUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('cover') ?: null;
+    }
 
     protected $fillable = [
         'title', 'type', 'abstract',
@@ -21,7 +46,7 @@ class Publication extends Model
     protected function casts(): array
     {
         return [
-            'author_ids'     => 'array',  // [1, 4] → IDs de team_members
+            'author_ids' => 'array',  // [1, 4] → IDs de team_members
             'published_date' => 'date',
         ];
     }
@@ -37,7 +62,7 @@ class Publication extends Model
      * Membres auteurs résolus depuis author_ids (pas de pivot dédié car
      * l'ordre des auteurs est significatif en publication scientifique).
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, TeamMember>
+     * @return Collection<int, TeamMember>
      */
     public function authors()
     {

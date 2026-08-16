@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Paramètres globaux du site éditables via FilamentPHP.
@@ -17,9 +19,21 @@ use Illuminate\Support\Facades\Cache;
  * Usage en PHP :
  *   SiteSetting::set('hero_title', 'Nouveau titre');
  */
-class SiteSetting extends Model
+class SiteSetting extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('logo')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']);
+
+        $this->addMediaCollection('favicon')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/x-icon', 'image/png', 'image/svg+xml', 'image/vnd.microsoft.icon']);
+    }
 
     protected $fillable = [
         'group', 'key', 'value', 'type', 'label', 'display_order',

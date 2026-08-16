@@ -29,6 +29,7 @@ class CpanelPanelProvider extends PanelProvider
             ->id('cpanel')
             ->path('cpanel')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -36,8 +37,8 @@ class CpanelPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->favicon(asset('favicons/apple-touch-icon.png'))
             ->brandLogo(asset('logo.jpeg'))
-            ->brandName("CARICS")
-            ->brandLogoHeight("3rem")
+            ->brandName('CARICS')
+            ->brandLogoHeight('3rem')
             ->icons([
                 'panels::sidebar.collapse-button' => 'heroicon-o-arrows-pointing-in',
                 'panels::sidebar.expand-button' => 'heroicon-o-chevron-double-right',

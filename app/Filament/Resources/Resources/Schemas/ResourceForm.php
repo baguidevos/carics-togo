@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Resources\Schemas;
 
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -19,7 +20,12 @@ class ResourceForm
                     ->columnSpanFull(),
                 Select::make('category_id')
                     ->relationship('category', 'name'),
-                TextInput::make('file_path'),
+                SpatieMediaLibraryFileUpload::make('file')
+                    ->collection('file')
+                    ->downloadable(),
+                SpatieMediaLibraryFileUpload::make('thumbnail')
+                    ->collection('thumbnail')
+                    ->image(),
                 TextInput::make('external_url')
                     ->url(),
                 TextInput::make('status')

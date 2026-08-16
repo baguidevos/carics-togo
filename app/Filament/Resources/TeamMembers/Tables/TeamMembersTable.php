@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,6 +17,9 @@ class TeamMembersTable
     {
         return $table
             ->columns([
+                SpatieMediaLibraryImageColumn::make('avatar')
+                    ->collection('avatar')
+                    ->circular(),
                 TextColumn::make('full_name')
                     ->searchable(),
                 TextColumn::make('slug')
@@ -23,8 +27,6 @@ class TeamMembersTable
                 TextColumn::make('role_title')
                     ->searchable(),
                 TextColumn::make('role_category')
-                    ->searchable(),
-                TextColumn::make('photo')
                     ->searchable(),
                 TextColumn::make('avatar_color')
                     ->searchable(),

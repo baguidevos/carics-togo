@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
@@ -35,7 +36,11 @@ class TeamMemberForm
                     ->columnSpanFull(),
                 Textarea::make('affiliations')
                     ->columnSpanFull(),
-                TextInput::make('photo'),
+                SpatieMediaLibraryFileUpload::make('avatar')
+                    ->collection('avatar')
+                    ->image()
+                    ->avatar()
+                    ->imageEditor(),
                 TextInput::make('avatar_color')
                     ->required()
                     ->default('primary'),

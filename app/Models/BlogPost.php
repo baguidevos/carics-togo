@@ -8,10 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class BlogPost extends Model
+class BlogPost extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('cover')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+    }
+
+    public function getCoverImageUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('cover') ?: ($this->cover_image ? asset($this->cover_image) : null);
+    }
+
+    public function getCoverUrlAttribute(): ?string
+    {
+        return $this->cover_image_url;
+    }
 
     protected $fillable = [
         'title', 'slug', 'type', 'excerpt', 'body', 'cover_image',
@@ -24,9 +44,9 @@ class BlogPost extends Model
     protected function casts(): array
     {
         return [
-            'references'   => 'array',
+            'references' => 'array',
             'published_at' => 'datetime',
-            'is_featured'  => 'boolean',
+            'is_featured' => 'boolean',
         ];
     }
 

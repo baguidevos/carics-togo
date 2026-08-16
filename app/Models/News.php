@@ -7,10 +7,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class News extends Model
+class News extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('cover')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+    }
+
+    public function getCoverImageUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('cover') ?: ($this->cover_image ? asset($this->cover_image) : null);
+    }
+
+    public function getCoverUrlAttribute(): ?string
+    {
+        return $this->cover_image_url;
+    }
 
     protected $table = 'news';
 
@@ -24,8 +44,8 @@ class News extends Model
     {
         return [
             'published_date' => 'date',
-            'is_featured'    => 'boolean',
-            'is_published'   => 'boolean',
+            'is_featured' => 'boolean',
+            'is_published' => 'boolean',
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\SiteSettings\Schemas;
 
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -19,6 +20,12 @@ class SiteSettingForm
                     ->required(),
                 Textarea::make('value')
                     ->columnSpanFull(),
+                SpatieMediaLibraryFileUpload::make('logo')
+                    ->collection('logo')
+                    ->image(),
+                SpatieMediaLibraryFileUpload::make('favicon')
+                    ->collection('favicon')
+                    ->image(),
                 TextInput::make('type')
                     ->required()
                     ->default('text'),

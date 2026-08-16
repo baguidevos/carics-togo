@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Partners\Schemas;
 
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
@@ -15,7 +16,10 @@ class PartnerForm
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('full_name'),
-                TextInput::make('logo'),
+                SpatieMediaLibraryFileUpload::make('logo')
+                    ->collection('logo')
+                    ->image()
+                    ->imageEditor(),
                 TextInput::make('website_url')
                     ->url(),
                 TextInput::make('type')
