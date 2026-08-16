@@ -10,10 +10,10 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] **Phase 0 : Audit & Nettoyage Initial** (100%)
 - [x] **Phase 1 : Traduction & Internationalisation (i18n)** (100%)
 - [x] **Phase 2 : Stabilisation des Modèles & Données** (100%)
-- [ ] **Phase 3 : Panneau d'Administration Filament v5** (15%)
+- [x] **Phase 3 : Panneau d'Administration Filament v5** (100%)
 - [ ] **Phase 4 : Dynamisation Frontend Livewire SFC** (10%)
 - [ ] **Phase 5 : Modules Interactifs & Formulaires** (0%)
-- [ ] **Phase 6 : Qualité, Tests Pest & Sécurité** (20%)
+- [ ] **Phase 6 : Qualité, Tests Pest & Sécurité** (40%)
 - [ ] **Phase 7 : SEO, Performance & Déploiement** (0%)
 
 ---
@@ -83,22 +83,24 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 
 ---
 
-## 🎛️ Phase 3 : Panneau d'Administration Filament v5
+## 🎛️ Phase 3 : Panneau d'Administration Filament v5 (Terminé ✅)
 
-- [ ] **Ressources CRUD manquantes** :
-  - [ ] `ResearchProjectResource` (Gestion des projets de recherche, partenaires associés, statut)
-  - [ ] `BlogPostResource` (Articles de blog, fiches projet, slug auto, éditeur riche)
-  - [ ] `PublicationResource` (Publications scientifiques, DOIs, auteurs associés)
-  - [ ] `NewsResource` (Actualités et événements)
-  - [ ] `OpportunityResource` (Offres d'emploi, bourses, stages, dates limites)
-  - [ ] `PartnerResource` (Partenaires et bailleurs avec logos)
-  - [ ] `ResourceItemResource` (Ressources documentaires et outils téléchargeables)
-  - [ ] `CategoryResource` (Gestion des catégories polymorphiques par modèle)
-  - [ ] `ContactSubmissionResource` (Visualisation des messages reçus, statut lu/traité)
-  - [ ] `NewsletterSubscriberResource` (Exportation et gestion des abonnés)
-  - [ ] `SiteSettingPage` / `ManageSettings` (Gestion visuelle des paramètres globaux du site)
-- [ ] **Gestion des Médias** :
-  - [ ] Configurer Spatie Media Library ou intégrer le stockage Filament pour les photos, documents PDF et logos
+- [x] **Ressources CRUD Filament** :
+  - [x] `TeamMemberResource` (Membres de l'équipe, rôles, expertises, bios)
+  - [x] `ResearchProjectResource` (Gestion des projets de recherche, partenaires associés, statut)
+  - [x] `BlogPostResource` (Articles de blog, fiches projet, slug auto, éditeur riche)
+  - [x] `PublicationResource` (Publications scientifiques, DOIs, auteurs associés)
+  - [x] `NewsResource` (Actualités et événements)
+  - [x] `OpportunityResource` (Offres d'emploi, bourses, stages, dates limites)
+  - [x] `PartnerResource` (Partenaires et bailleurs avec logos)
+  - [x] `ResourceResource` (Ressources documentaires et outils téléchargeables)
+  - [x] `CategoryResource` (Gestion des catégories polymorphiques par modèle)
+  - [x] `ContactSubmissionResource` (Visualisation des messages reçus, statut lu/traité)
+  - [x] `NewsletterSubscriberResource` (Exportation et gestion des abonnés)
+  - [x] `SiteSettingResource` (Gestion des paramètres globaux du site)
+- [x] **Sécurité & Authentification Filament** :
+  - [x] Implémentation du contrat `FilamentUser` et de `canAccessPanel()` sur `User`
+  - [x] Tests automatisés d'accès et d'autorisation du panneau (`tests/Feature/FilamentPanelTest.php`)
 
 ---
 

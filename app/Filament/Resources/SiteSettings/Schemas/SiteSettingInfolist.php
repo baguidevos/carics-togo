@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Filament\Resources\SiteSettings\Schemas;
+
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Schema;
+
+class SiteSettingInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextEntry::make('group'),
+                TextEntry::make('key'),
+                TextEntry::make('value')
+                    ->placeholder('-')
+                    ->columnSpanFull(),
+                TextEntry::make('type'),
+                TextEntry::make('label')
+                    ->placeholder('-'),
+                TextEntry::make('display_order')
+                    ->numeric(),
+                TextEntry::make('created_at')
+                    ->dateTime()
+                    ->placeholder('-'),
+                TextEntry::make('updated_at')
+                    ->dateTime()
+                    ->placeholder('-'),
+            ]);
+    }
+}
