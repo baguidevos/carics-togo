@@ -46,7 +46,7 @@ return [
         'email_label' => 'Email',
         'phone_label' => 'Phone',
         'address_label' => 'Address',
-        'address_value' => "Quartier Nassablée<br>Commune de Tône 1, Préfecture de Tône<br>Région des Savanes<br><strong>Togolese Republic</strong>",
+        'address_value' => 'Quartier Nassablée<br>Commune de Tône 1, Préfecture de Tône<br>Région des Savanes<br><strong>Togolese Republic</strong>',
         'location_title' => 'Dapaong, Savanes Region',
         'location_subtitle' => 'Quartier Nassablée, Commune de Tône 1',
         'open_in_osm' => 'Open in OpenStreetMap',

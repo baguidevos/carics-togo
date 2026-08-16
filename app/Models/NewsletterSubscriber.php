@@ -19,8 +19,8 @@ class NewsletterSubscriber extends Model
     protected function casts(): array
     {
         return [
-            'preferences'   => 'array',
-            'is_active'     => 'boolean',
+            'preferences' => 'array',
+            'is_active' => 'boolean',
             'subscribed_at' => 'datetime',
         ];
     }

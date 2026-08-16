@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             // en_cours | complete | archive | a_venir
             $table->enum('status', ['en_cours', 'complete', 'archive', 'a_venir'])
-                  ->default('en_cours');
+                ->default('en_cours');
             $table->string('funder')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
@@ -29,9 +29,9 @@ return new class extends Migration
             $table->json('expected_results')->nullable();    // liste ordonnée
             $table->json('research_domains')->nullable();    // tags thématiques libres
             $table->foreignId('lead_id')
-                  ->nullable()
-                  ->constrained('team_members')
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('team_members')
+                ->nullOnDelete();
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_published')->default(true);
             $table->unsignedInteger('display_order')->default(0);

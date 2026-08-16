@@ -19,8 +19,8 @@ class ContactSubmission extends Model
     protected function casts(): array
     {
         return [
-            'meta'        => 'array',
-            'is_read'     => 'boolean',
+            'meta' => 'array',
+            'is_read' => 'boolean',
             'is_archived' => 'boolean',
         ];
     }

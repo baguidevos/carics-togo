@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('website_url')->nullable();
             // financeur | academique | institutionnel | ong | autre
             $table->enum('type', ['financeur', 'academique', 'institutionnel', 'ong', 'autre'])
-                  ->default('autre');
+                ->default('autre');
             $table->boolean('is_active')->default(true);
             $table->unsignedInteger('display_order')->default(0);
             $table->timestamps();

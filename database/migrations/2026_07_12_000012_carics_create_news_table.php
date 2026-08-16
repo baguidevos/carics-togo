@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('cover_image')->nullable();
             // category_id → categories où categorizable_type = 'App\Models\News'
             $table->foreignId('category_id')
-                  ->nullable()
-                  ->constrained('categories')
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('categories')
+                ->nullOnDelete();
             // Lien optionnel vers un article de blog complet
             $table->foreignId('blog_post_id')
-                  ->nullable()
-                  ->constrained()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->date('published_date')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_published')->default(true);

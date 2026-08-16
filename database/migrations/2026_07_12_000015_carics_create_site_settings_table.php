@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('value')->nullable();
             // text | textarea | richtext | image | number | boolean | json
             $table->enum('type', ['text', 'textarea', 'richtext', 'image', 'number', 'boolean', 'json'])
-                  ->default('text');
+                ->default('text');
             $table->string('label')->nullable();
             $table->unsignedInteger('display_order')->default(0);
             $table->timestamps();

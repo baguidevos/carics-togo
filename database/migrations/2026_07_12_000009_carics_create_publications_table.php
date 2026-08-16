@@ -27,9 +27,9 @@ return new class extends Migration
             $table->string('external_url')->nullable();
             $table->date('published_date')->nullable();
             $table->foreignId('research_project_id')
-                  ->nullable()
-                  ->constrained()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             // a_paraitre | publie
             $table->enum('status', ['a_paraitre', 'publie'])->default('a_paraitre');
             $table->timestamps();

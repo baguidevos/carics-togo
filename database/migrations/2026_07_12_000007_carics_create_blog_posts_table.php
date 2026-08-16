@@ -18,26 +18,26 @@ return new class extends Migration
             $table->longText('body')->nullable();
             $table->string('cover_image')->nullable();
             $table->foreignId('author_id')
-                  ->nullable()
-                  ->constrained('team_members')
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('team_members')
+                ->nullOnDelete();
             // Relation polymorphique via categories
             // (categorizable_type = 'App\Models\BlogPost')
             $table->foreignId('category_id')
-                  ->nullable()
-                  ->constrained('categories')
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('categories')
+                ->nullOnDelete();
             $table->foreignId('research_project_id')
-                  ->nullable()
-                  ->constrained()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->unsignedInteger('reading_time_minutes')->nullable();
             $table->json('references')->nullable();   // bibliographie [{text}, ...]
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             // brouillon | publie | archive
             $table->enum('status', ['brouillon', 'publie', 'archive'])
-                  ->default('brouillon');
+                ->default('brouillon');
             $table->timestamp('published_at')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->timestamps();

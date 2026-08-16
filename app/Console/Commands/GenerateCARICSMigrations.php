@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 class GenerateCARICSMigrations extends Command
 {
     private string $migrationPath;
+
     private int $timestamp = 0;
 
     public function __construct()
@@ -55,7 +56,7 @@ class GenerateCARICSMigrations extends Command
 
     private function cleanOldMigrations(): void
     {
-        $files = File::glob($this->migrationPath . '/*_carics_*.php');
+        $files = File::glob($this->migrationPath.'/*_carics_*.php');
         foreach ($files as $file) {
             File::delete($file);
         }
@@ -66,14 +67,15 @@ class GenerateCARICSMigrations extends Command
     private function getTimestamp(): string
     {
         $this->timestamp++;
-        return date('Y_m_d_') . str_pad((string) $this->timestamp, 6, '0', STR_PAD_LEFT);
+
+        return date('Y_m_d_').str_pad((string) $this->timestamp, 6, '0', STR_PAD_LEFT);
     }
 
     private function createMigration(string $name, string $content): void
     {
         $timestamp = $this->getTimestamp();
-        $filename  = "{$timestamp}_carics_{$name}.php";
-        $filepath  = $this->migrationPath . '/' . $filename;
+        $filename = "{$timestamp}_carics_{$name}.php";
+        $filepath = $this->migrationPath.'/'.$filename;
 
         File::put($filepath, $content);
         $this->line("  <fg=green>✓</> Migration créée : <fg=cyan>{$filename}</>");

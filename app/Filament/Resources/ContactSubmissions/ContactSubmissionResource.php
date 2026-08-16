@@ -30,6 +30,8 @@ class ContactSubmissionResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Messages reçus';
 
+    protected static ?string $recordTitleAttribute = 'subject';
+
     protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema

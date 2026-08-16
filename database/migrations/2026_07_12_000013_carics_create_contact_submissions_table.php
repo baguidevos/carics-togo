@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             // general | collaboration | stage | media
             $table->enum('form_type', ['general', 'collaboration', 'stage', 'media'])
-                  ->default('general');
+                ->default('general');
             $table->string('full_name');
             $table->string('email');
             $table->string('organisation')->nullable();

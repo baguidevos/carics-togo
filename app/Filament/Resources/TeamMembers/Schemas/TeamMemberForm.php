@@ -2,11 +2,16 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Set;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class TeamMemberForm
 {
@@ -14,53 +19,120 @@ class TeamMemberForm
     {
         return $schema
             ->components([
-                TextInput::make('full_name')
-                    ->required(),
-                TextInput::make('slug')
-                    ->required(),
-                TextInput::make('role_title')
-                    ->required(),
-                TextInput::make('role_category')
-                    ->default('bureau_executif'),
-                Textarea::make('bio_short')
-                    ->columnSpanFull(),
-                Textarea::make('bio_full')
-                    ->columnSpanFull(),
-                Textarea::make('mission_text')
-                    ->columnSpanFull(),
-                Textarea::make('expertises')
-                    ->columnSpanFull(),
-                Textarea::make('education')
-                    ->columnSpanFull(),
-                Textarea::make('distinctions')
-                    ->columnSpanFull(),
-                Textarea::make('affiliations')
-                    ->columnSpanFull(),
-                SpatieMediaLibraryFileUpload::make('avatar')
-                    ->collection('avatar')
-                    ->image()
-                    ->avatar()
-                    ->imageEditor(),
-                TextInput::make('avatar_color')
-                    ->required()
-                    ->default('primary'),
-                TextInput::make('email')
-                    ->label('Email address')
-                    ->email(),
-                TextInput::make('linkedin_url')
-                    ->url(),
-                TextInput::make('orcid_url')
-                    ->url(),
-                TextInput::make('google_scholar_url')
-                    ->url(),
-                Toggle::make('is_founder')
-                    ->required(),
-                Toggle::make('is_published')
-                    ->required(),
-                TextInput::make('display_order')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
+                Section::make('Identité')
+                    ->icon('heroicon-m-user')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('full_name')
+                            ->label('Nom complet')
+                            ->required()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
+                        TextInput::make('slug')
+                            ->label('Slug URL')
+                            ->required()
+                            ->unique(ignoreRecord: true),
+                        TextInput::make('role_title')
+                            ->label('Titre / Fonction')
+                            ->required(),
+                        Select::make('role_category')
+                            ->label('Catégorie')
+                            ->options([
+                                'bureau_executif' => 'Bureau Exécutif',
+                                'conseil_scientifique' => 'Conseil Scientifique',
+                                'equipe_technique' => 'Équipe Technique',
+                                'doctorant' => 'Doctorant',
+                                'partenaire_associe' => 'Partenaire Associé',
+                            ])
+                            ->default('bureau_executif'),
+                    ]),
+
+                Section::make('Biographie & Compétences')
+                    ->icon('heroicon-m-book-open')
+                    ->collapsible()
+                    ->schema([
+                        Textarea::make('bio_short')
+                            ->label('Biographie courte')
+                            ->rows(3)
+                            ->columnSpanFull(),
+                        RichEditor::make('bio_full')
+                            ->label('Biographie complète')
+                            ->toolbarButtons([
+                                'bold', 'italic', 'underline',
+                                'h2', 'h3',
+                                'bulletList', 'orderedList',
+                                'link', 'blockquote',
+                                'undo', 'redo',
+                            ])
+                            ->columnSpanFull(),
+                        Textarea::make('mission_text')
+                            ->label('Mission')
+                            ->rows(2)
+                            ->columnSpanFull(),
+                        Textarea::make('expertises')
+                            ->label('Domaines d\'expertise')
+                            ->rows(2)
+                            ->columnSpanFull(),
+                        Textarea::make('education')
+                            ->label('Formation')
+                            ->rows(2)
+                            ->columnSpanFull(),
+                        Textarea::make('distinctions')
+                            ->label('Distinctions')
+                            ->rows(2)
+                            ->columnSpanFull(),
+                        Textarea::make('affiliations')
+                            ->label('Affiliations')
+                            ->rows(2)
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Photo & Liens')
+                    ->icon('heroicon-m-link')
+                    ->columns(2)
+                    ->schema([
+                        SpatieMediaLibraryFileUpload::make('avatar')
+                            ->label('Photo de profil')
+                            ->collection('avatar')
+                            ->image()
+                            ->avatar()
+                            ->imageEditor()
+                            ->columnSpanFull(),
+                        TextInput::make('avatar_color')
+                            ->label('Couleur avatar (fallback)')
+                            ->required()
+                            ->default('primary'),
+                        TextInput::make('email')
+                            ->label('Adresse email')
+                            ->email(),
+                        TextInput::make('linkedin_url')
+                            ->label('LinkedIn')
+                            ->url()
+                            ->prefix('https://'),
+                        TextInput::make('orcid_url')
+                            ->label('ORCID')
+                            ->url()
+                            ->prefix('https://'),
+                        TextInput::make('google_scholar_url')
+                            ->label('Google Scholar')
+                            ->url()
+                            ->prefix('https://'),
+                    ]),
+
+                Section::make('Paramètres')
+                    ->icon('heroicon-m-cog-6-tooth')
+                    ->columns(3)
+                    ->schema([
+                        Toggle::make('is_founder')
+                            ->label('Membre fondateur'),
+                        Toggle::make('is_published')
+                            ->label('Publié'),
+                        TextInput::make('display_order')
+                            ->label('Ordre d\'affichage')
+                            ->required()
+                            ->numeric()
+                            ->default(0),
+                    ]),
             ]);
     }
 }

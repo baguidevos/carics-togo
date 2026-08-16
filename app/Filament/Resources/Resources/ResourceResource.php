@@ -30,6 +30,8 @@ class ResourceResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Ressources & Guides';
 
+    protected static ?string $recordTitleAttribute = 'title';
+
     protected static ?int $navigationSort = 4;
 
     public static function form(Schema $schema): Schema

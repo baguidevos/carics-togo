@@ -48,11 +48,12 @@ class GenerateCARICSModels extends Command
 
     private function createModel(string $className, string $content): void
     {
-        $filepath = $this->modelPath . '/' . $className . '.php';
+        $filepath = $this->modelPath.'/'.$className.'.php';
 
         if (File::exists($filepath)) {
             if (! $this->confirm("  Le modèle {$className}.php existe déjà. L'écraser ?", false)) {
                 $this->line("  <fg=yellow>⏭</> {$className} ignoré.");
+
                 return;
             }
         }

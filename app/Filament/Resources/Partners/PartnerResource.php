@@ -30,6 +30,8 @@ class PartnerResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Partenaires & Bailleurs';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     protected static ?int $navigationSort = 3;
 
     public static function form(Schema $schema): Schema

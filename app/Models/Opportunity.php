@@ -22,7 +22,7 @@ class Opportunity extends Model
     {
         return [
             'requirements' => 'array',
-            'deadline'     => 'date',
+            'deadline' => 'date',
             'is_published' => 'boolean',
         ];
     }

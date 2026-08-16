@@ -12,11 +12,11 @@ return new class extends Migration
         Schema::create('research_project_team_member', function (Blueprint $table) {
             $table->id();
             $table->foreignId('research_project_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->cascadeOnDelete();
             $table->foreignId('team_member_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->cascadeOnDelete();
             $table->string('role_on_project')->nullable();
             $table->timestamps();
 
@@ -27,11 +27,11 @@ return new class extends Migration
         Schema::create('partner_research_project', function (Blueprint $table) {
             $table->id();
             $table->foreignId('research_project_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->cascadeOnDelete();
             $table->foreignId('partner_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->cascadeOnDelete();
             $table->timestamps();
 
             $table->unique(['research_project_id', 'partner_id']);

@@ -14,15 +14,15 @@ return new class extends Migration
             // category_id → categories où categorizable_type = 'App\Models\Opportunity'
             // Ex. : Emploi & Consultance | Stage & Mentorat | Bourse | Partenariat
             $table->foreignId('category_id')
-                  ->nullable()
-                  ->constrained('categories')
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('categories')
+                ->nullOnDelete();
             $table->text('description')->nullable();
             $table->json('requirements')->nullable();   // critères / profils
             $table->string('location')->nullable();
             // cdd | cdi | consultance | stage | benevolat
             $table->enum('contract_type', ['cdd', 'cdi', 'consultance', 'stage', 'benevolat'])
-                  ->nullable();
+                ->nullable();
             $table->date('deadline')->nullable();
             $table->string('application_email')->nullable();
             $table->string('application_url')->nullable();

@@ -14,9 +14,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             // category_id → categories où categorizable_type = 'App\Models\Resource'
             $table->foreignId('category_id')
-                  ->nullable()
-                  ->constrained('categories')
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('categories')
+                ->nullOnDelete();
             $table->string('file_path')->nullable();
             $table->string('external_url')->nullable();
             // a_paraitre | disponible

@@ -11,11 +11,11 @@ return new class extends Migration
         Schema::create('blog_post_blog_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignId('blog_post_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->cascadeOnDelete();
             $table->foreignId('blog_tag_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->cascadeOnDelete();
 
             $table->unique(['blog_post_id', 'blog_tag_id']);
         });
