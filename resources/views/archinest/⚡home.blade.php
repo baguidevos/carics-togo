@@ -330,104 +330,71 @@ new #[Layout('layouts::archinest')] class extends Component {
             </div>
         </div>
     </section>
-    <!-- End Partenaires Section-->
-
-    {{-- <!-- News Section -->
-    <section class="news-section-four">
-        <div class="container">
-            <div class="sec-title-box">
-                <div class="sec-title-style-three text-left">
-                    <h6 class="sub-title">// Nos dernières publications ///</h6>
-                    <h2 class="title text-reveal-anim">Nos dernières <br>publications</h2>
-                </div>
-                <div class="sec-right-box">
-                    <div class="text">Découvrez nos dernières publications et suivez l'actualité de nos
-                        recherches et nos réussites.
+    <!-- End Partenaires Section--    <!-- News Section -->
+    @if ($latestNews->isNotEmpty())
+        <section class="news-section-four py-5">
+            <div class="container">
+                <div class="sec-title-box mb-4">
+                    <div class="sec-title-style-three text-left">
+                        <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
+                            <i class="fa fa-solid fa-newspaper"></i> Actualités Récentes
+                        </div>
+                        <h2 class="title text-reveal-anim">Dernières nouvelles du terrain & de la recherche</h2>
                     </div>
-                    <a href="news-grid.html" class="theme-btn btn-style-one">
-                        <span class="btn-title"> Voir tout</span>
-                        <span class="icon">
-                            <i class="fa-light fa-arrow-right"></i>
-                        </span>
-                    </a>
+                    <div class="sec-right-box">
+                        <div class="text">
+                            Suivez les avancées scientifiques, les ateliers de formation et les interventions communautaires du CARICS.
+                        </div>
+                        <a href="{{ route('actu-opportunites') }}" class="theme-btn btn-style-one">
+                            <span class="btn-title">Toutes les actualités</span>
+                            <span class="icon">
+                                <i class="fa-light fa-arrow-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    @foreach ($latestNews as $newsItem)
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="card h-100 p-4 border rounded-4 bg-white shadow-sm d-flex flex-column justify-content-between transition-all hover-shadow">
+                                <div>
+                                    @if ($newsItem->cover_image_url)
+                                        <div class="mb-3 rounded-3 overflow-hidden" style="height: 180px;">
+                                            <img src="{{ $newsItem->cover_image_url }}" alt="{{ $newsItem->title }}" class="w-100 h-100 object-fit-cover" style="object-fit: cover;">
+                                        </div>
+                                    @endif
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-light text-primary border px-2 py-1 rounded-pill small">
+                                            {{ $newsItem->category?->name ?? 'Actualité' }}
+                                        </span>
+                                        @if ($newsItem->published_date)
+                                            <span class="text-muted small">
+                                                <i class="fa fa-regular fa-calendar me-1"></i>{{ $newsItem->published_date->format('d/m/Y') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <h3 class="h5 fw-bold text-dark mb-2" style="line-height: 1.4;">
+                                        <a href="{{ route('news-detail', ['slug' => $newsItem->slug]) }}" class="text-dark text-decoration-none hover-primary">
+                                            {{ $newsItem->title }}
+                                        </a>
+                                    </h3>
+                                    <p class="text-secondary small mb-3" style="line-height: 1.5;">
+                                        {{ Str::limit($newsItem->excerpt, 120) }}
+                                    </p>
+                                </div>
+                                <div class="pt-3 border-top">
+                                    <a href="{{ route('news-detail', ['slug' => $newsItem->slug]) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                        Lire l'article <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="row g-24">
-                <div class="news-block-four col-xl-4 col-lg-6 col-md-6">
-                    <div class="inner-block">
-                        <div class="image-box">
-                            <div class="inner-box">
-                                <figure class="image">
-                                    <a href="news-details.html">
-                                        <img src="archinest/images/resource/news1-1.jpg" alt="">
-                                        <img src="archinest/images/resource/news1-1.jpg" alt="">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="content-box">
-                            <div class="inner-box">
-                                <h4 class="title"><a href="news-details.html">Blending Tradition With Modern
-                                        Architecture</a></h4>
-                                <div class="text">Understand how modern design come together create timeless,</div>
-                            </div>
-                            <a class="read-more" href="news-details.html">Read More <i
-                                    class="icon fa fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-block-four col-xl-4 col-lg-6 col-md-6">
-                    <div class="inner-block">
-                        <div class="image-box">
-                            <div class="inner-box">
-                                <figure class="image">
-                                    <a href="news-details.html">
-                                        <img src="archinest/images/resource/news1-2.jpg" alt="">
-                                        <img src="archinest/images/resource/news1-2.jpg" alt="">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="content-box">
-                            <div class="inner-box">
-                                <h4 class="title"><a href="news-details.html">Modern Interior Design Trends 2025</a>
-                                </h4>
-                                <div class="text">Explore the latest interior innovations blending for modern
-                                    living.</div>
-                            </div>
-                            <a class="read-more" href="news-details.html">Read More <i
-                                    class="icon fa fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-block-four col-xl-4 col-lg-6 col-md-6">
-                    <div class="inner-block">
-                        <div class="image-box">
-                            <div class="inner-box">
-                                <figure class="image">
-                                    <a href="news-details.html">
-                                        <img src="archinest/images/resource/news1-3.jpg" alt="">
-                                        <img src="archinest/images/resource/news1-3.jpg" alt="">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="content-box">
-                            <div class="inner-box">
-                                <h4 class="title"><a href="news-details.html">Designing Spaces That Inspire
-                                        Productivity</a></h4>
-                                <div class="text">Learn how architecture and interior design impact workplace
-                                    efficiency,</div>
-                            </div>
-                            <a class="read-more" href="news-details.html">Read More <i
-                                    class="icon fa fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End News Section --> --}}
+        </section>
+    @endif
+</div>
 
 
 </div>

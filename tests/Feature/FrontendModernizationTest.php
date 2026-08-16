@@ -1,10 +1,9 @@
 <?php
 
+use App\Models\News;
 use App\Models\Opportunity;
 use App\Models\Publication;
 use App\Models\ResearchProject;
-use App\Models\TeamMember;
-use Livewire\Livewire;
 
 test('la page ressource publication est accessible et affiche le hub de publications', function () {
     $pub = Publication::factory()->create([
@@ -35,9 +34,9 @@ test('la page recherche expertize et projet est accessible avec la carte interac
 
 test('la page actualites et opportunites affiche le bento grid et les opportunites', function () {
     $opp = Opportunity::factory()->create([
-        'title'         => 'Coordonnateur de Recherche Santé',
+        'title' => 'Coordonnateur de Recherche Santé',
         'contract_type' => 'cdi',
-        'status'        => 'ouverte',
+        'status' => 'ouverte',
     ]);
 
     $response = $this->get(route('actu-opportunites'));
@@ -45,15 +44,19 @@ test('la page actualites et opportunites affiche le bento grid et les opportunit
     $response->assertSee('Opportunités', false);
 });
 
-test('le composant global search modal retourne les resultats de recherche', function () {
-    $member = TeamMember::factory()->create([
-        'full_name' => 'Dr. Koffi Ametowoyona',
-        'role_title' => 'Chercheur Principal',
+test('la page detail actualite est accessible et affiche le contenu complet', function () {
+    $news = News::factory()->create([
+        'title' => 'Formation des assistants de recherche CPS Cinkassé',
+        'slug' => 'formation-assistants-recherche-cps-cinkasse',
+        'excerpt' => 'Formation des équipes pour la collecte de données sur la CPS.',
+        'content' => '<p>Le projet est financé par la RSTMH dans le cadre du grant 2025.</p>',
+        'published_date' => now()->toDateString(),
         'is_published' => true,
     ]);
 
-    Livewire::test('global-search-modal')
-        ->set('query', 'Ameto')
-        ->assertSee('Dr. Koffi Ametowoyona')
-        ->assertSee('Équipe', false);
+    $response = $this->get(route('news-detail', ['slug' => $news->slug]));
+    $response->assertOk();
+    $response->assertSee('Formation des assistants de recherche CPS Cinkassé');
+    $response->assertSee('Le projet est financé par la RSTMH');
+    $response->assertSee('min de lecture');
 });

@@ -144,7 +144,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         {{ Str::limit($featuredNews->excerpt, 180) }}
                                     </p>
                                     <div>
-                                        <a href="{{ route('about') }}" class="btn btn-light rounded-pill px-4 fw-semibold text-primary">
+                                        <a href="{{ route('news-detail', ['slug' => $featuredNews->slug]) }}" class="btn btn-light rounded-pill px-4 fw-semibold text-primary">
                                             Lire le communiqué <i class="fa fa-solid fa-arrow-right ms-1"></i>
                                         </a>
                                     </div>
@@ -188,15 +188,27 @@ new #[Layout('layouts::archinest')] class extends Component {
                                             @endif
                                         </div>
                                         <h4 class="h6 fw-bold text-dark mb-2" style="line-height: 1.4;">
-                                            {{ $item->title }}
+                                            <a href="{{ route('news-detail', ['slug' => $item->slug]) }}" class="text-dark text-decoration-none hover-primary">
+                                                {{ $item->title }}
+                                            </a>
                                         </h4>
+                                        @if ($item->location || $item->event_date)
+                                            <div class="d-flex flex-wrap gap-2 align-items-center mb-2" style="font-size: .8rem;">
+                                                @if ($item->event_date)
+                                                    <span class="text-muted"><i class="fa fa-regular fa-calendar-days text-primary me-1"></i>{{ $item->event_date }}</span>
+                                                @endif
+                                                @if ($item->location)
+                                                    <span class="text-muted"><i class="fa fa-solid fa-location-dot text-danger me-1"></i>{{ $item->location }}</span>
+                                                @endif
+                                            </div>
+                                        @endif
                                         <p class="text-secondary small mb-3" style="line-height: 1.5;">
                                             {{ Str::limit($item->excerpt, 130) }}
                                         </p>
                                     </div>
                                     <div class="pt-2 border-top">
-                                        <a href="{{ route('about') }}" class="text-primary fw-medium small text-decoration-none">
-                                            En savoir plus <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                        <a href="{{ route('news-detail', ['slug' => $item->slug]) }}" class="text-primary fw-medium small text-decoration-none">
+                                            Lire la suite <i class="fa fa-solid fa-arrow-right ms-1"></i>
                                         </a>
                                     </div>
                                 </div>

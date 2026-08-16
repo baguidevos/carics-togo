@@ -1340,3 +1340,54 @@
   pointer-events: none !important;
   display: none !important;
 }
+
+/* ============================================================
+   Styling Contenu Riche des Actualités (RichEditor & Spatie Media)
+   ============================================================ */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+.article-content figure {
+  margin: 1.5rem 0;
+}
+
+.article-content figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.article-content h2, .article-content h3, .article-content h4 {
+  color: var(--ink);
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  color: #374151;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.article-content ul, .article-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.article-content blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 0.75rem 1.25rem;
+  background: var(--accent-soft);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  margin: 1.5rem 0;
+}

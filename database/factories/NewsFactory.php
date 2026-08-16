@@ -24,6 +24,8 @@ class NewsFactory extends Factory
             'excerpt' => fake()->paragraph(),
             'content' => '<p>'.fake()->paragraph().'</p>',
             'cover_image' => null,
+            'event_date' => fake()->optional()->date(),
+            'location' => fake()->optional()->city().', Togo',
             'category_id' => Category::factory(['categorizable_type' => News::class]),
             'blog_post_id' => null,
             'published_date' => fake()->date(),

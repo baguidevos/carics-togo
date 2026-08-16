@@ -34,6 +34,9 @@ class News extends Model implements HasMedia, HasRichContent
             ->singleFile()
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
 
+        $this->addMediaCollection('gallery')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+
         $this->addMediaCollection('news_attachments');
     }
 
@@ -51,6 +54,7 @@ class News extends Model implements HasMedia, HasRichContent
 
     protected $fillable = [
         'title', 'slug', 'excerpt', 'content', 'cover_image',
+        'event_date', 'location',
         'category_id', 'blog_post_id',
         'published_date', 'is_featured', 'is_published',
     ];
