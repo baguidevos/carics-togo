@@ -37,13 +37,20 @@ class Publication extends Model
      * Membres auteurs résolus depuis author_ids (pas de pivot dédié car
      * l'ordre des auteurs est significatif en publication scientifique).
      *
-     * @return \Illuminate\Database\Eloquent\Collection<TeamMember>
+     * @return \Illuminate\Database\Eloquent\Collection<int, TeamMember>
      */
     public function authors()
     {
-        return TeamMember::whereIn('id', $this->author_ids ?? [])
-            ->orderByRaw('FIELD(id, ' . implode(',', $this->author_ids ?? [0]) . ')')
-            ->get();
+        $ids = $this->author_ids ?? [];
+
+        if (empty($ids)) {
+            return TeamMember::query()->whereRaw('1 = 0')->get();
+        }
+
+        return TeamMember::whereIn('id', $ids)
+            ->get()
+            ->sortBy(fn (TeamMember $member) => array_search($member->id, $ids))
+            ->values();
     }
 
     // ─── Scopes ──────────────────────────────────────────────────────────────

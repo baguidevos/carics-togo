@@ -64,8 +64,8 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
   - [ ] Écrire un Seeder `TeamMemberSeeder` qui charge les données de `TeamData.php` en base de données
   - [ ] Mettre à jour les composants Livewire pour requêter `TeamMember::published()->ordered()->get()` au lieu de `TeamData::all()`
   - [ ] Supprimer ou archiver `TeamData.php`
-- [ ] **Compatibilité SQLite** :
-  - [ ] Corriger [Publication::authors()](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/app/Models/Publication.php) pour remplacer la fonction MySQL `FIELD()` par une méthode compatible SQLite/PostgreSQL
+- [x] **Compatibilité SQLite** :
+  - [x] Corriger [Publication::authors()](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/app/Models/Publication.php) pour remplacer la fonction MySQL `FIELD()` par une méthode compatible SQLite/PostgreSQL
 - [ ] **Seeders & Données Initiales** :
   - [ ] `CategorySeeder` (Catégories pour Blog, Ressources, Opportunités, Actualités)
   - [ ] `PartnerSeeder` (Partenaires scientifiques et institutionnels)
