@@ -36,7 +36,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] Créer `lang/fr/home.php` et `lang/en/home.php` (Hero, Piliers, Domaines d'intervention, Chiffres clés, CTA)
 - [x] Créer `lang/fr/about.php` et `lang/en/about.php` (Qui sommes-nous, Historique, Ambition, Valeurs)
 - [x] Créer `lang/fr/research.php` et `lang/en/research.php` (Domaines d'expertise, Priorités, Projets phares)
-- [ ] Créer `lang/fr/resources.php` et `lang/en/resources.php` (Publications, Rapports, Policy briefs, Outils)
+- [x] Créer `lang/fr/resources.php` et `lang/en/resources.php` (Publications, Rapports, Policy briefs, Outils)
 - [ ] Créer `lang/fr/team.php` et `lang/en/team.php` (Titres de rôles, Labels bio, Boutons contact)
 - [ ] Créer `lang/fr/contact.php` et `lang/en/contact.php` (Champs formulaires, Labels, Messages de confirmation)
 
@@ -46,7 +46,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] Traduire la vue Accueil `⚡home.blade.php`
 - [x] Traduire la vue À Propos `⚡about-us.blade.php`
 - [x] Traduire la vue Recherche `⚡research_expertize_project.blade.php`
-- [ ] Traduire la vue Ressources `⚡ressource-publication.blade.php`
+- [x] Traduire la vue Ressources `⚡ressource-publication.blade.php`
 - [ ] Traduire la vue Actualités & Opportunités `⚡actu-opportunites.blade.php`
 - [ ] Traduire la vue Équipe `⚡team.blade.php` et `⚡team-detail.blade.php`
 - [ ] Traduire la vue Contact `⚡contact.blade.php`

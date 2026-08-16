@@ -10,13 +10,13 @@ new #[Layout('layouts::archinest')] class extends Component {
 
 <div>
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url(images/banner.jpg);">
+    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
-                <h1 class="title">Ressources & Publications</h1>
+                <h1 class="title">{{ __('resources.title') }}</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">Accueil</a></li>
-                    <li>Ressources & Publications</li>
+                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
+                    <li>{{ __('resources.title') }}</li>
                 </ul>
             </div>
         </div>
@@ -27,14 +27,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row">
                 <div class="col-lg-8">
                     <p class="section-lead mb-0">
-                        CARICS-Togo s&rsquo;engage à partager les connaissances produites dans le cadre de ses
-                        activités de recherche et de ses projets. Cette section regroupe progressivement les
-                        publications scientifiques, rapports techniques, notes de politique sanitaire et outils
-                        pratiques destinés aux chercheurs, professionnels de santé, décideurs et acteurs
-                        communautaires. Le centre étant récemment créé, plusieurs catégories seront alimentées au
-                        fil de l&rsquo;avancement de nos projets&nbsp;: inscrivez-vous à la newsletter pour être informé
-                        dès
-                        leur publication.
+                        {{ __('resources.intro') }}
                     </p>
                 </div>
             </div>
@@ -49,23 +42,20 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-4">
                     <div class="icon-tile"><i class="fa fa-solid fa-journal-whills"></i></div>
                     <div class="eyebrow"></div>
-                    <h2 class="section-title mb-2" style="font-size:1.4rem;">Publications scientifiques</h2>
+                    <h2 class="section-title mb-2" style="font-size:1.4rem;">{{ __('resources.scientific_publications.title') }}</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
-                        Articles scientifiques, publications en revue à comité de lecture et actes de conférences
-                        issus de nos projets de recherche.
+                        {{ __('resources.scientific_publications.description') }}
                     </p>
                 </div>
                 <div class="col-lg-8">
                     <div class="empty-state">
-                        <span class="badge-status upcoming">Prochainement</span>
-                        <p class="mb-2" style="font-size:.95rem;">Aucune publication disponible pour le moment. Les
-                            contenus suivants seront ajoutés au fil de l&rsquo;avancement de nos projets de
-                            recherche&nbsp;:</p>
+                        <span class="badge-status upcoming">{{ __('resources.badge_upcoming') }}</span>
+                        <p class="mb-2" style="font-size:.95rem;">{{ __('resources.scientific_publications.empty_text') }}</p>
                         <ul class="mb-0" style="font-size:.92rem; color:var(--muted);">
-                            <li>Articles issus des projets de recherche en cours</li>
-                            <li>Publications réalisées en collaboration avec des universités et instituts partenaires
+                            <li>{{ __('resources.scientific_publications.item_1') }}</li>
+                            <li>{{ __('resources.scientific_publications.item_2') }}
                             </li>
-                            <li>Communications présentées lors de conférences scientifiques</li>
+                            <li>{{ __('resources.scientific_publications.item_3') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -80,21 +70,20 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-4">
                     <div class="icon-tile"><i class="fa fa-solid fa-bar-chart"></i></div>
                     <div class="eyebrow"></div>
-                    <h2 class="section-title mb-2" style="font-size:1.4rem;">Rapports techniques</h2>
+                    <h2 class="section-title mb-2" style="font-size:1.4rem;">{{ __('resources.technical_reports.title') }}</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
-                        Rapports de recherche, évaluations de programmes et documents méthodologiques produits dans
-                        le cadre de nos projets.
+                        {{ __('resources.technical_reports.description') }}
                     </p>
                 </div>
                 <div class="col-lg-8">
                     <div class="empty-state" style="background:var(--white);">
-                        <span class="badge-status upcoming">Prochainement</span>
-                        <p class="mb-2" style="font-size:.95rem;">Cette catégorie accueillera progressivement&nbsp;:</p>
+                        <span class="badge-status upcoming">{{ __('resources.badge_upcoming') }}</span>
+                        <p class="mb-2" style="font-size:.95rem;">{{ __('resources.technical_reports.empty_text') }}</p>
                         <ul class="mb-0" style="font-size:.92rem; color:var(--muted);">
-                            <li>Rapports de recherche issus des projets en cours</li>
-                            <li>Rapports d&rsquo;évaluation de programmes de santé</li>
-                            <li>Rapports de suivi et d&rsquo;apprentissage</li>
-                            <li>Documents méthodologiques</li>
+                            <li>{{ __('resources.technical_reports.item_1') }}</li>
+                            <li>{{ __('resources.technical_reports.item_2') }}</li>
+                            <li>{{ __('resources.technical_reports.item_3') }}</li>
+                            <li>{{ __('resources.technical_reports.item_4') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -109,22 +98,20 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-4">
                     <div class="icon-tile ochre"><i class="fa fa-solid fa-megaphone"></i></div>
                     <div class="eyebrow"></div>
-                    <h2 class="section-title mb-2" style="font-size:1.4rem;">Notes de politique sanitaire</h2>
+                    <h2 class="section-title mb-2" style="font-size:1.4rem;">{{ __('resources.policy_briefs.title') }}</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
-                        Recommandations opérationnelles destinées aux décideurs, gestionnaires de programmes et
-                        partenaires techniques et financiers.
+                        {{ __('resources.policy_briefs.description') }}
                     </p>
                 </div>
                 <div class="col-lg-8">
                     <div class="empty-state">
-                        <span class="badge-status upcoming">Prochainement</span>
-                        <p class="mb-2" style="font-size:.95rem;">Ces documents traduiront nos résultats de recherche en
-                            recommandations actionnables&nbsp;:</p>
+                        <span class="badge-status upcoming">{{ __('resources.badge_upcoming') }}</span>
+                        <p class="mb-2" style="font-size:.95rem;">{{ __('resources.policy_briefs.empty_text') }}</p>
                         <ul class="mb-0" style="font-size:.92rem; color:var(--muted);">
-                            <li>Notes de politique sanitaire (policy briefs)</li>
-                            <li>Notes stratégiques</li>
-                            <li>Synthèses de résultats</li>
-                            <li>Recommandations opérationnelles à destination des décideurs</li>
+                            <li>{{ __('resources.policy_briefs.item_1') }}</li>
+                            <li>{{ __('resources.policy_briefs.item_2') }}</li>
+                            <li>{{ __('resources.policy_briefs.item_3') }}</li>
+                            <li>{{ __('resources.policy_briefs.item_4') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -139,22 +126,21 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-4">
                     <div class="icon-tile"><i class="fa fa-solid fa-file-medical"></i></div>
                     <div class="eyebrow"></div>
-                    <h2 class="section-title mb-2" style="font-size:1.4rem;">Outils et ressources pratiques</h2>
+                    <h2 class="section-title mb-2" style="font-size:1.4rem;">{{ __('resources.practical_tools.title') }}</h2>
                     <p class="text-muted-2" style="font-size:.92rem;">
-                        Ressources destinées aux chercheurs, professionnels de santé, gestionnaires de programmes
-                        et acteurs communautaires.
+                        {{ __('resources.practical_tools.description') }}
                     </p>
                 </div>
                 <div class="col-lg-8">
                     <div class="empty-state" style="background:var(--white);">
-                        <span class="badge-status upcoming">Prochainement</span>
-                        <p class="mb-2" style="font-size:.95rem;">Cette section regroupera notamment&nbsp;:</p>
+                        <span class="badge-status upcoming">{{ __('resources.badge_upcoming') }}</span>
+                        <p class="mb-2" style="font-size:.95rem;">{{ __('resources.practical_tools.empty_text') }}</p>
                         <ul class="mb-0" style="font-size:.92rem; color:var(--muted);">
-                            <li>Protocoles de recherche</li>
-                            <li>Guides méthodologiques</li>
-                            <li>Outils de collecte de données</li>
-                            <li>Supports de formation et boîtes à outils pour la mise en œuvre</li>
-                            <li>Ressources pédagogiques</li>
+                            <li>{{ __('resources.practical_tools.item_1') }}</li>
+                            <li>{{ __('resources.practical_tools.item_2') }}</li>
+                            <li>{{ __('resources.practical_tools.item_3') }}</li>
+                            <li>{{ __('resources.practical_tools.item_4') }}</li>
+                            <li>{{ __('resources.practical_tools.item_5') }}</li>
                         </ul>
                     </div>
                 </div>
