@@ -42,9 +42,18 @@ class TeamMember extends Model implements HasMedia, HasRichContent
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(150)
-            ->height(150)
-            ->sharpen(10);
+            ->width(300)
+            ->height(300)
+            ->format('webp')
+            ->quality(80)
+            ->nonQueued();
+
+        $this->addMediaConversion('medium')
+            ->width(600)
+            ->height(600)
+            ->format('webp')
+            ->quality(85)
+            ->nonQueued();
     }
 
     public function getAvatarUrlAttribute(): ?string

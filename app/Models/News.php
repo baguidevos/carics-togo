@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class News extends Model implements HasMedia, HasRichContent
 {
@@ -40,14 +41,45 @@ class News extends Model implements HasMedia, HasRichContent
         $this->addMediaCollection('news_attachments');
     }
 
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(600)
+            ->height(400)
+            ->format('webp')
+            ->quality(80)
+            ->nonQueued();
+
+        $this->addMediaConversion('large')
+            ->width(1200)
+            ->height(800)
+            ->format('webp')
+            ->quality(85)
+            ->nonQueued();
+    }
+
+    public function getCoverImageUrl(?string $conversion = null): ?string
+    {
+        if ($this->hasMedia('cover')) {
+            $media = $this->getFirstMedia('cover');
+            if ($conversion && $media && $media->hasGeneratedConversion($conversion)) {
+                return $media->getUrl($conversion);
+            }
+
+            return $media?->getUrl();
+        }
+
+        return $this->cover_image ? asset($this->cover_image) : null;
+    }
+
     public function getCoverImageUrlAttribute(): ?string
     {
-        return $this->getFirstMediaUrl('cover') ?: ($this->cover_image ? asset($this->cover_image) : null);
+        return $this->getCoverImageUrl();
     }
 
     public function getCoverUrlAttribute(): ?string
     {
-        return $this->cover_image_url;
+        return $this->getCoverImageUrl();
     }
 
     protected $table = 'news';

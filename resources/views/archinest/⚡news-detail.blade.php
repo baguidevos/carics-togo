@@ -132,8 +132,9 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <!-- Image de couverture principale (Gérée par Spatie Media Library) -->
                         @if ($news->cover_image_url)
                             <figure class="mb-4 rounded-4 overflow-hidden shadow-sm border" style="max-height: 480px; background: #f8fafc;">
-                                <img src="{{ $news->cover_image_url }}" 
+                                <img src="{{ $news->getCoverImageUrl('large') }}" 
                                      alt="{{ $news->getFirstMedia('cover')?->getCustomProperty('alt') ?: $news->title }}" 
+                                     decoding="async"
                                      class="w-100 h-100 object-fit-cover" 
                                      style="object-fit: cover; max-height: 480px;">
                                 @if ($news->getFirstMedia('cover')?->getCustomProperty('caption'))
@@ -189,8 +190,13 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         <div class="col-6 col-md-4 col-lg-3">
                                             <div @click="open('{{ $photo->getUrl() }}')" 
                                                  class="rounded-3 overflow-hidden shadow-sm border position-relative cursor-pointer transition-all hover-scale" 
-                                                 style="height: 120px; cursor: pointer;">
-                                                <img src="{{ $photo->getUrl() }}" alt="{{ $photo->name }}" class="w-100 h-100 object-fit-cover" style="object-fit: cover;">
+                                                 style="height: 120px; cursor: pointer; background: #e2e8f0;">
+                                                <img src="{{ $photo->hasGeneratedConversion('thumb') ? $photo->getUrl('thumb') : $photo->getUrl() }}" 
+                                                     alt="{{ $photo->name }}" 
+                                                     loading="lazy" 
+                                                     decoding="async" 
+                                                     class="w-100 h-100 object-fit-cover" 
+                                                     style="object-fit: cover;">
                                                 <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-25 d-flex align-items-center justify-content-center opacity-0 hover-opacity transition-all">
                                                     <i class="fa fa-solid fa-magnifying-glass-plus text-white fs-5"></i>
                                                 </div>

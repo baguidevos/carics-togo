@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class BlogPost extends Model implements HasMedia, HasRichContent
 {
@@ -36,6 +37,23 @@ class BlogPost extends Model implements HasMedia, HasRichContent
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
 
         $this->addMediaCollection('body_attachments');
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(600)
+            ->height(400)
+            ->format('webp')
+            ->quality(80)
+            ->nonQueued();
+
+        $this->addMediaConversion('large')
+            ->width(1200)
+            ->height(800)
+            ->format('webp')
+            ->quality(85)
+            ->nonQueued();
     }
 
     public function getCoverImageUrlAttribute(): ?string

@@ -12,10 +12,10 @@ new #[Layout('layouts::archinest')] class extends Component {
     public function with(): array
     {
         return [
-            'members'          => TeamMember::published()->ordered()->take(4)->get(),
+            'members'          => TeamMember::published()->with('media')->ordered()->take(4)->get(),
             'partners'         => Partner::active()->ordered()->get(),
-            'latestNews'       => News::published()->recent()->take(3)->get(),
-            'featuredProject'  => ResearchProject::published()->featured()->first() ?? ResearchProject::published()->first(),
+            'latestNews'       => News::published()->with(['category', 'media'])->recent()->take(3)->get(),
+            'featuredProject'  => ResearchProject::published()->with(['partners', 'media'])->featured()->first() ?? ResearchProject::published()->first(),
             'statsProjects'    => ResearchProject::published()->count(),
             'statsMembers'     => TeamMember::published()->count(),
             'statsPublications'=> Publication::published()->count(),
@@ -359,8 +359,13 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="card h-100 p-4 border rounded-4 bg-white shadow-sm d-flex flex-column justify-content-between transition-all hover-shadow">
                                 <div>
                                     @if ($newsItem->cover_image_url)
-                                        <div class="mb-3 rounded-3 overflow-hidden" style="height: 180px;">
-                                            <img src="{{ $newsItem->cover_image_url }}" alt="{{ $newsItem->title }}" class="w-100 h-100 object-fit-cover" style="object-fit: cover;">
+                                        <div class="mb-3 rounded-3 overflow-hidden" style="height: 180px; background: #f1f5f9;">
+                                            <img src="{{ $newsItem->getCoverImageUrl('thumb') }}" 
+                                                 alt="{{ $newsItem->title }}" 
+                                                 loading="lazy" 
+                                                 decoding="async" 
+                                                 class="w-100 h-100 object-fit-cover" 
+                                                 style="object-fit: cover;">
                                         </div>
                                     @endif
                                     <div class="d-flex justify-content-between align-items-center mb-2">

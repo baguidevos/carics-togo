@@ -53,8 +53,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-md-6 col-lg-3">
                         <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}" class="text-decoration-none text-reset d-block h-100">
                             <div class="team-card h-100">
-                                <div class="team-photo">
-                                    <img src="{{ asset('images/equipes/' . $member['imageName']) }}" alt="{{ $member['fullName'] }}">
+                                <div class="team-photo" style="background: #f1f5f9;">
+                                    <img src="{{ $member->avatar_url ? (str_starts_with($member->avatar_url, 'http') ? $member->avatar_url : asset($member->avatar_url)) : asset('images/equipes/' . $member['imageName']) }}" 
+                                         alt="{{ $member['fullName'] }}" 
+                                         loading="lazy" 
+                                         decoding="async">
                                 </div>
                                 <div class="team-body">
                                     <h3 class="h6 mb-1">{{ $member['fullName'] }}</h3>

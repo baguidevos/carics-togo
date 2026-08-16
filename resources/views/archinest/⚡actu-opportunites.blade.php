@@ -17,8 +17,8 @@ new #[Layout('layouts::archinest')] class extends Component {
 
     public function with(): array
     {
-        $featuredNews = News::published()->featured()->with('category')->first() ?? News::published()->recent()->with('category')->first();
-        $otherNews = News::published()->recent()
+        $featuredNews = News::published()->featured()->with(['category', 'media'])->first() ?? News::published()->recent()->with(['category', 'media'])->first();
+        $otherNews = News::published()->recent()->with(['category', 'media'])
             ->when($featuredNews, fn($q) => $q->where('id', '!=', $featuredNews->id))
             ->take(6)
             ->get();
@@ -177,6 +177,16 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="col-md-6 col-lg-4">
                                 <div class="card h-100 p-4 border rounded-4 bg-white shadow-sm d-flex flex-column justify-content-between transition-all hover-shadow">
                                     <div>
+                                        @if ($item->cover_image_url)
+                                            <div class="mb-3 rounded-3 overflow-hidden" style="height: 160px; background: #f1f5f9;">
+                                                <img src="{{ $item->getCoverImageUrl('thumb') }}" 
+                                                     alt="{{ $item->title }}" 
+                                                     loading="lazy" 
+                                                     decoding="async" 
+                                                     class="w-100 h-100 object-fit-cover" 
+                                                     style="object-fit: cover;">
+                                            </div>
+                                        @endif
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <span class="badge bg-light text-primary border px-2 py-1 rounded-pill small">
                                                 {{ $item->category?->name ?? 'Actualité' }}
