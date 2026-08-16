@@ -45,11 +45,11 @@ jobs:
           extensions: mbstring, pdo, pdo_mysql, bcmath
 
       # 4. Installer Node.js si package.json modifié
-      # - name: Setup Node.js
+      - name: Setup Node.js
       #   if: contains(steps.changed-files.outputs.all_changed_files, 'package.json') || contains(steps.changed-files.outputs.all_changed_files, 'resources/')
-      #   uses: actions/setup-node@v4
-      #   with:z
-      #     node-version: "18"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
 
       # 5. Installer dépendances Composer
       - name: Install Composer dependencies
