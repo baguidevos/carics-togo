@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="david Hida">
     <meta name="description"
-        content="Le Centre Africain d'Action pour la Recherche et l'Innovation Communautaire en Santé (CARICS-Togo) est un centre indépendant de recherche, d'innovation et d'action en santé publique basé au Togo.">
+        content="{{ $metaDescription ?? __('navigation.meta.description') }}">
     <meta name="keywords"
-        content="CARICS, CARICS-Togo, Innovation, Recherce, Santé, TOGO, AFRIQUE, COMMUNAUTAIRE, ACTION, SANTE PUBLIQUE">
+        content="{{ $metaKeywords ?? __('navigation.meta.keywords') }}">
     <!-- page title -->
     <title>{{ $title ?? config('app.name') }}</title>
 

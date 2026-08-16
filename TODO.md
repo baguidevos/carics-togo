@@ -8,7 +8,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 ## 📊 Tableau de Bord d'Avancement
 
 - [x] **Phase 0 : Audit & Nettoyage Initial** (100%)
-- [ ] **Phase 1 : Traduction & Internationalisation (i18n)** (10%)
+- [x] **Phase 1 : Traduction & Internationalisation (i18n)** (100%)
 - [ ] **Phase 2 : Stabilisation des Modèles & Données** (30%)
 - [ ] **Phase 3 : Panneau d'Administration Filament v5** (15%)
 - [ ] **Phase 4 : Dynamisation Frontend Livewire SFC** (10%)

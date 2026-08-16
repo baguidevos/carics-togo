@@ -56,4 +56,10 @@ return [
         'join_network' => 'Join our network',
         'other_projects' => 'Other projects',
     ],
+
+    // Metadata
+    'meta' => [
+        'description' => 'The African Action Center for Research and Community Innovation in Health (CARICS-Togo) is an independent center for research, innovation, and action in public health based in Togo.',
+        'keywords' => 'CARICS, CARICS-Togo, Innovation, Research, Health, Togo, Africa, Community, Action, Public Health',
+    ],
 ];

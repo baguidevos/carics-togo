@@ -17,7 +17,7 @@
             <div class="text">{{ $description }}</div>
         </div>
         <div class="btn-box">
-            <a href="{{ $href ?? route('about') }}" class="btn-style-link"><span>En savoir plus </span><i
+            <a href="{{ $href ?? route('about') }}" class="btn-style-link"><span>{{ __('navigation.actions.learn_more') }} </span><i
                     class="icon fa-light fa-arrow-up-right"></i></a>
         </div>
     </div>

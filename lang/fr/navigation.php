@@ -56,4 +56,10 @@ return [
         'join_network' => 'Rejoindre notre réseau',
         'other_projects' => 'Les autres projets',
     ],
+
+    // Métadonnées
+    'meta' => [
+        'description' => 'Le Centre Africain d\'Action pour la Recherche et l\'Innovation Communautaire en Santé (CARICS-Togo) est un centre indépendant de recherche, d\'innovation et d\'action en santé publique basé au Togo.',
+        'keywords' => 'CARICS, CARICS-Togo, Innovation, Recherche, Santé, Togo, Afrique, Communautaire, Action, Santé Publique',
+    ],
 ];

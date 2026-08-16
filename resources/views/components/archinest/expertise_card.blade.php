@@ -28,8 +28,8 @@
                 </div>
             </div>
             <div class="btn-box">
-                <a href="page-project-details.html" class="theme-btn btn-style-one">
-                    <span class="btn-title">Read More </span> <i class="icon fa-light fa-arrow-right"></i>
+                <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
+                    <span class="btn-title">{{ __('navigation.actions.read_more') }} </span> <i class="icon fa-light fa-arrow-right"></i>
                 </a>
             </div>
         </div>
