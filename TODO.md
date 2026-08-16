@@ -32,8 +32,8 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 ## 🌍 Phase 1 : Internationalisation (i18n) — Éléments Statiques & Dynamiques
 
 ### 1.1 Éléments Statiques (Fichiers de Langue `lang/fr` & `lang/en`)
-- [ ] Créer `lang/fr/navigation.php` et `lang/en/navigation.php` (Header, Footer, Liens, Boutons)
-- [ ] Créer `lang/fr/home.php` et `lang/en/home.php` (Hero, Piliers, Domaines d'intervention, Chiffres clés, CTA)
+- [x] Créer `lang/fr/navigation.php` et `lang/en/navigation.php` (Header, Footer, Liens, Boutons)
+- [x] Créer `lang/fr/home.php` et `lang/en/home.php` (Hero, Piliers, Domaines d'intervention, Chiffres clés, CTA)
 - [ ] Créer `lang/fr/about.php` et `lang/en/about.php` (Qui sommes-nous, Historique, Ambition, Valeurs)
 - [ ] Créer `lang/fr/research.php` et `lang/en/research.php` (Domaines d'expertise, Priorités, Projets phares)
 - [ ] Créer `lang/fr/resources.php` et `lang/en/resources.php` (Publications, Rapports, Policy briefs, Outils)
@@ -41,9 +41,9 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [ ] Créer `lang/fr/contact.php` et `lang/en/contact.php` (Champs formulaires, Labels, Messages de confirmation)
 
 ### 1.2 Intégration dans les Vues Blade
-- [ ] Remplacer les textes statiques dans `<x-archinest.header />` par `__('navigation....')`
-- [ ] Remplacer les textes statiques dans `<x-archinest.footer />` par `__('navigation....')`
-- [ ] Traduire la vue Accueil `⚡home.blade.php`
+- [x] Remplacer les textes statiques dans `<x-archinest.header />` par `__('navigation....')`
+- [x] Remplacer les textes statiques dans `<x-archinest.footer />` par `__('navigation....')`
+- [x] Traduire la vue Accueil `⚡home.blade.php`
 - [ ] Traduire la vue À Propos `⚡about-us.blade.php`
 - [ ] Traduire la vue Recherche `⚡research_expertize_project.blade.php`
 - [ ] Traduire la vue Ressources `⚡ressource-publication.blade.php`
@@ -52,8 +52,8 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [ ] Traduire la vue Contact `⚡contact.blade.php`
 
 ### 1.3 Système de Switch de Langue
-- [ ] Vérifier et perfectionner le dropdown de changement de langue FR/EN dans le header
-- [ ] S'assurer que le middleware [SetLocale](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/app/Http/Middleware/SetLocale.php) est bien actif sur le groupe `web`
+- [x] Vérifier et perfectionner le dropdown de changement de langue FR/EN dans le header
+- [x] S'assurer que le middleware [SetLocale](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/app/Http/Middleware/SetLocale.php) est bien actif sur le groupe `web`
 
 ---
 

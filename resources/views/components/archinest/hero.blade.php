@@ -9,19 +9,15 @@
                             <!-- Slide Item -->
                             <div class="banner-slide">
                                 <div class="content-box">
-                                    <h1 class="title text-reveal-anim">Recherche - Action - Impact.
-                                    </h1>
+                                    <h1 class="title text-reveal-anim">{{ __('home.hero.title') }}</h1>
                                     <div class="bottom-box">
                                         {{-- <div class="banner-icon"><img
                                                 src="archinest/images/icons/banner-h3-icon1.png" alt="">
                                         </div> --}}
                                         <div class="content">
-                                            <div class="text">Nous
-                                                transformons la
-                                                recherche de pointe en solutions concrètes pour les défis de santé
-                                                publique en Afrique de l'Ouest.</div>
-                                            <a href="page-service-details.html" class="theme-btn btn-style-two">
-                                                <span class="btn-title">Nos Projets</span> <i
+                                            <div class="text">{{ __('home.hero.description') }}</div>
+                                            <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-two">
+                                                <span class="btn-title">{{ __('home.hero.our_projects') }}</span> <i
                                                     class="icon fa-light fa-arrow-right"></i>
                                             </a>
                                         </div>
@@ -32,7 +28,7 @@
                                 <div class="inner-box">
                                     <div class="count-box"><span class="count-text" data-speed="3000"
                                             data-stop="1">0</span></div>
-                                    <div class="text">Un centre de recherche créé en <strong>2026</strong></div>
+                                    <div class="text">{{ __('home.hero.badge_count') }} <strong>2026</strong></div>
                                 </div>
                             </div>
                         </div>

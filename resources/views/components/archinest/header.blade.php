@@ -27,9 +27,7 @@
                                     <div @click="open = !open" @click.outside="open = false"
                                         style="cursor:pointer; display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; letter-spacing:.04em; user-select:none;">
                                         <i class="fa-regular fa-globe text-white" style="font-size:14px;"></i>
-                                        <span x-text="$store.lang.current.toUpperCase()">FR</span>
-                                        <span
-                                            class="text-white">{{ str_replace('_', '-', strtoupper(app()->getLocale())) }}</span>
+                                        <span class="text-white">{{ strtoupper(app()->getLocale()) }}</span>
                                         <i class="fa-solid fa-angle-down text-white"
                                             style="font-size:10px; transition:transform .2s;"
                                             :style="open ? 'transform:rotate(180deg)' : ''"></i>
@@ -37,16 +35,16 @@
                                     <div x-show="open" x-transition
                                         style="position:absolute; top:calc(100% + 6px); right:0; background:#fff; border:1px solid #e5e7eb; border-radius:6px; min-width:90px; box-shadow:0 4px 16px rgba(0,0,0,.1); z-index:9999; overflow:hidden; display:none;">
                                         <a href="{{ route('lang.switch', ['locale' => 'fr']) }}"
-                                            style="display:flex; align-items:center; gap:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#16344F; text-decoration:none; transition:background .15s;"
+                                            style="display:flex; align-items:center; gap:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#16344F; text-decoration:none; transition:background .15s; {{ app()->getLocale() === 'fr' ? 'background:#e0f2fe; color:#0284c7;' : '' }}"
                                             onmouseover="this.style.background='#f3f4f6'"
-                                            onmouseout="this.style.background=''" @click="open=false">
-                                            FR
+                                            onmouseout="this.style.background='{{ app()->getLocale() === 'fr' ? '#e0f2fe' : '' }}'" @click="open=false">
+                                            🇫🇷 Français
                                         </a>
                                         <a href="{{ route('lang.switch', ['locale' => 'en']) }}"
-                                            style="display:flex; align-items:center; gap:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#16344F; text-decoration:none; transition:background .15s;"
+                                            style="display:flex; align-items:center; gap:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#16344F; text-decoration:none; transition:background .15s; {{ app()->getLocale() === 'en' ? 'background:#e0f2fe; color:#0284c7;' : '' }}"
                                             onmouseover="this.style.background='#f3f4f6'"
-                                            onmouseout="this.style.background=''" @click="open=false">
-                                            EN
+                                            onmouseout="this.style.background='{{ app()->getLocale() === 'en' ? '#e0f2fe' : '' }}'" @click="open=false">
+                                            🇬🇧 English
                                         </a>
                                     </div>
                                 </li>
@@ -71,23 +69,20 @@
                         <div class="nav-outer">
                             <nav class="nav main-menu mx-auto">
                                 <ul class="navigation">
-                                    <li class="current"><a href="{{ route('home') }}" wire:current>Accueil</a>
+                                    <li class="current"><a href="{{ route('home') }}" wire:current>{{ __('navigation.menu.home') }}</a>
                                     </li>
-                                    <li class="dropdown"><a href="{{ route('about') }}">À propos</a>
+                                    <li class="dropdown"><a href="{{ route('about') }}">{{ __('navigation.menu.about') }}</a>
                                         <ul>
-                                            <li><a href="{{ route('about') }}">À propos</a></li>
-                                            <li><a href="{{ route('equipe') }}">Gouvernance &amp; Leadership</a></li>
+                                            <li><a href="{{ route('about') }}">{{ __('navigation.menu.about') }}</a></li>
+                                            <li><a href="{{ route('equipe') }}">{{ __('navigation.menu.governance') }}</a></li>
                                         </ul>
                                     </li>
-                                    <li class=""><a href="{{ route('recherche-expertize-projet') }}">Recherche &
-                                            Projets</a>
+                                    <li class=""><a href="{{ route('recherche-expertize-projet') }}">{{ __('navigation.menu.research_projects') }}</a>
                                     </li>
-                                    <li class=""><a href="{{ route('ressource-publication') }}">Ressources &
-                                            Publications</a>
-
+                                    <li class=""><a href="{{ route('ressource-publication') }}">{{ __('navigation.menu.resources_publications') }}</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('actu-opportunites') }}">Actualités & Opportunités</a>
+                                        <a href="{{ route('actu-opportunites') }}">{{ __('navigation.menu.news_opportunities') }}</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -96,7 +91,7 @@
                         <!-- Outer Box -->
                         <div class="action-box">
                             <a href="{{ route('contact') }}" class="theme-btn btn-style-one d-none d-md-flex">
-                                <span class="btn-title">Contactez-nous</span>
+                                <span class="btn-title">{{ __('navigation.header.contact_us') }}</span>
                             </a>
                             <!-- Mobile Nav toggler -->
                             <div class="mobile-nav-toggler"><i class="icon fa-solid fa-bars-staggered"></i>
@@ -124,25 +119,25 @@
             <ul class="contact-list-one">
                 <li>
                     <i class="icon fal fa-envelope"></i>
-                    <span class="title">Envoyer un mail</span>
+                    <span class="title">{{ __('navigation.header.send_email') }}</span>
                     <div class="text"><a href="{{ config('site.href_email') }}">{{ config('site.email') }}</a>
                     </div>
                 </li>
                 <li>
                     <i class="icon fal fa-phone"></i>
-                    <span class="title">Appelez-nous</span>
+                    <span class="title">{{ __('navigation.header.call_us') }}</span>
                     <div class="text"><a href="{{ config('site.href_phone1') }}">{{ config('site.phone1') }}</a>
                     </div>
                 </li>
                 <li>
                     <i class="icon fal fa-phone"></i>
-                    <span class="title">Appelez-nous</span>
+                    <span class="title">{{ __('navigation.header.call_us') }}</span>
                     <div class="text"><a href="{{ config('site.href_phone2') }}">{{ config('site.phone2') }}</a>
                     </div>
                 </li>
                 <li>
                     <i class="icon fal fa-phone"></i>
-                    <span class="title">Appelez-nous</span>
+                    <span class="title">{{ __('navigation.header.call_us') }}</span>
                     <div class="text"><a href="{{ config('site.href_phone3') }}">{{ config('site.phone3') }}</a>
                     </div>
                 </li>
@@ -164,7 +159,7 @@
         <div class="search-inner">
             <form method="post" action="{{ route('home') }}">
                 <div class="form-group">
-                    <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                    <input type="search" name="search-field" value="" placeholder="{{ __('navigation.header.search_placeholder') }}" required="">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </div>
             </form>
