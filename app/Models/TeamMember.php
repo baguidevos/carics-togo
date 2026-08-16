@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
+use Filament\Forms\Components\RichEditor\Models\Concerns\InteractsWithRichContent;
+use Filament\Forms\Components\RichEditor\Models\Contracts\HasRichContent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,10 +15,20 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class TeamMember extends Model implements HasMedia
+class TeamMember extends Model implements HasMedia, HasRichContent
 {
     use HasFactory;
     use InteractsWithMedia;
+    use InteractsWithRichContent;
+
+    public function setUpRichContent(): void
+    {
+        $this->registerRichContent('bio_full')
+            ->fileAttachmentProvider(
+                SpatieMediaLibraryFileAttachmentProvider::make()
+                    ->collection('bio_attachments')
+            );
+    }
 
     public function registerMediaCollections(): void
     {
@@ -23,7 +36,7 @@ class TeamMember extends Model implements HasMedia
             ->singleFile()
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 
-        $this->addMediaCollection('content_attachments');
+        $this->addMediaCollection('bio_attachments');
     }
 
     public function registerMediaConversions(?Media $media = null): void

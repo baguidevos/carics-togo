@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\ContactSubmissions\Schemas;
 
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -19,17 +19,25 @@ class ContactSubmissionForm
                     ->icon('heroicon-m-user')
                     ->columns(2)
                     ->schema([
-                        Select::make('form_type')
+                        ToggleButtons::make('form_type')
                             ->label('Type de formulaire')
                             ->options([
-                                'general' => '📩 Général',
-                                'collaboration' => '🤝 Collaboration',
-                                'stage' => '🎓 Stage',
-                                'presse' => '📰 Presse',
+                                'general' => 'Général',
+                                'collaboration' => 'Collaboration',
+                                'stage' => 'Stage',
+                                'presse' => 'Presse',
                             ])
+                            ->icons([
+                                'general' => 'heroicon-m-envelope',
+                                'collaboration' => 'heroicon-m-user-plus',
+                                'stage' => 'heroicon-m-academic-cap',
+                                'presse' => 'heroicon-m-newspaper',
+                            ])
+                            ->inline()
                             ->required()
                             ->default('general')
-                            ->disabled(),
+                            ->disabled()
+                            ->columnSpanFull(),
                         TextInput::make('full_name')
                             ->label('Nom complet')
                             ->required(),

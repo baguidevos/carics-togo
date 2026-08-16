@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
+use Filament\Forms\Components\RichEditor\Models\Concerns\InteractsWithRichContent;
+use Filament\Forms\Components\RichEditor\Models\Contracts\HasRichContent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,10 +15,50 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class ResearchProject extends Model implements HasMedia
+class ResearchProject extends Model implements HasMedia, HasRichContent
 {
     use HasFactory;
     use InteractsWithMedia;
+    use InteractsWithRichContent;
+
+    public function setUpRichContent(): void
+    {
+        $this->registerRichContent('context')
+            ->fileAttachmentProvider(
+                SpatieMediaLibraryFileAttachmentProvider::make()
+                    ->collection('project_attachments')
+            );
+
+        $this->registerRichContent('objective')
+            ->fileAttachmentProvider(
+                SpatieMediaLibraryFileAttachmentProvider::make()
+                    ->collection('project_attachments')
+            );
+
+        $this->registerRichContent('methodology')
+            ->fileAttachmentProvider(
+                SpatieMediaLibraryFileAttachmentProvider::make()
+                    ->collection('project_attachments')
+            );
+
+        $this->registerRichContent('expected_results')
+            ->fileAttachmentProvider(
+                SpatieMediaLibraryFileAttachmentProvider::make()
+                    ->collection('project_attachments')
+            );
+
+        $this->registerRichContent('research_domains')
+            ->fileAttachmentProvider(
+                SpatieMediaLibraryFileAttachmentProvider::make()
+                    ->collection('project_attachments')
+            );
+
+        $this->registerRichContent('intervention_zones')
+            ->fileAttachmentProvider(
+                SpatieMediaLibraryFileAttachmentProvider::make()
+                    ->collection('project_attachments')
+            );
+    }
 
     public function registerMediaCollections(): void
     {
@@ -24,7 +67,7 @@ class ResearchProject extends Model implements HasMedia
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
 
         $this->addMediaCollection('documents');
-        $this->addMediaCollection('content_attachments');
+        $this->addMediaCollection('project_attachments');
     }
 
     public function getCoverUrlAttribute(): ?string

@@ -4,11 +4,11 @@ namespace App\Filament\Resources\ResearchProjects\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
@@ -107,14 +107,27 @@ class ResearchProjectForm
                                             ->icon('heroicon-m-check-badge')
                                             ->columnSpan(['default' => 1, 'lg' => 1])
                                             ->schema([
-                                                Select::make('status')
+                                                ToggleButtons::make('status')
                                                     ->label('État d\'avancement')
                                                     ->options([
-                                                        'en_cours' => '🟢 En cours de réalisation',
-                                                        'termine' => '🔵 Projet achevé',
-                                                        'en_attente' => '🟡 En phase de préparation',
-                                                        'suspendu' => '🔴 Suspendu',
+                                                        'en_cours' => 'En cours',
+                                                        'termine' => 'Achevé',
+                                                        'en_attente' => 'En préparation',
+                                                        'suspendu' => 'Suspendu',
                                                     ])
+                                                    ->colors([
+                                                        'en_cours' => 'success',
+                                                        'termine' => 'info',
+                                                        'en_attente' => 'warning',
+                                                        'suspendu' => 'danger',
+                                                    ])
+                                                    ->icons([
+                                                        'en_cours' => 'heroicon-m-arrow-path',
+                                                        'termine' => 'heroicon-m-check-badge',
+                                                        'en_attente' => 'heroicon-m-clock',
+                                                        'suspendu' => 'heroicon-m-pause-circle',
+                                                    ])
+                                                    ->inline()
                                                     ->required()
                                                     ->default('en_cours'),
 
@@ -150,10 +163,8 @@ class ResearchProjectForm
                                         RichEditor::make('context')
                                             ->label('Contexte de l\'étude')
                                             ->placeholder('Décrivez le contexte institutionnel, géographique et sanitaire...')
-                                            ->fileAttachmentProvider(
-                                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                                    ->collection('content_attachments')
-                                            )
+                                            ->fileAttachmentsDisk('public')
+                                            ->fileAttachmentsDirectory('project-attachments')
                                             ->fileAttachmentsVisibility('public')
                                             ->toolbarButtons(self::FULL_TOOLBAR)
                                             ->columnSpanFull(),
@@ -167,10 +178,8 @@ class ResearchProjectForm
                                     ->schema([
                                         RichEditor::make('objective')
                                             ->label('Objectifs généraux & spécifiques')
-                                            ->fileAttachmentProvider(
-                                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                                    ->collection('content_attachments')
-                                            )
+                                            ->fileAttachmentsDisk('public')
+                                            ->fileAttachmentsDirectory('project-attachments')
                                             ->fileAttachmentsVisibility('public')
                                             ->toolbarButtons(self::FULL_TOOLBAR)
                                             ->columnSpanFull(),
@@ -178,10 +187,8 @@ class ResearchProjectForm
                                         RichEditor::make('methodology')
                                             ->label('Protocole méthodologique')
                                             ->placeholder('Approche quantitative, qualitative, échantillonnage...')
-                                            ->fileAttachmentProvider(
-                                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                                    ->collection('content_attachments')
-                                            )
+                                            ->fileAttachmentsDisk('public')
+                                            ->fileAttachmentsDirectory('project-attachments')
                                             ->fileAttachmentsVisibility('public')
                                             ->toolbarButtons(self::FULL_TOOLBAR)
                                             ->columnSpanFull(),
@@ -194,10 +201,8 @@ class ResearchProjectForm
                                     ->schema([
                                         RichEditor::make('expected_results')
                                             ->label('Résultats attendus & Livrables')
-                                            ->fileAttachmentProvider(
-                                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                                    ->collection('content_attachments')
-                                            )
+                                            ->fileAttachmentsDisk('public')
+                                            ->fileAttachmentsDirectory('project-attachments')
                                             ->fileAttachmentsVisibility('public')
                                             ->toolbarButtons(self::FULL_TOOLBAR)
                                             ->columnSpanFull(),
@@ -205,10 +210,8 @@ class ResearchProjectForm
                                         RichEditor::make('research_domains')
                                             ->label('Thématiques de recherche couvertes')
                                             ->placeholder('Épidémiologie, Santé publique, Innovation communautaire...')
-                                            ->fileAttachmentProvider(
-                                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                                    ->collection('content_attachments')
-                                            )
+                                            ->fileAttachmentsDisk('public')
+                                            ->fileAttachmentsDirectory('project-attachments')
                                             ->fileAttachmentsVisibility('public')
                                             ->toolbarButtons(self::FULL_TOOLBAR)
                                             ->columnSpanFull(),
@@ -250,10 +253,8 @@ class ResearchProjectForm
                                         RichEditor::make('intervention_zones')
                                             ->label('Précisions sur les sites d\'intervention')
                                             ->placeholder('Listez les préfectures, cantons, villages ou centres de santé partenaires...')
-                                            ->fileAttachmentProvider(
-                                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                                    ->collection('content_attachments')
-                                            )
+                                            ->fileAttachmentsDisk('public')
+                                            ->fileAttachmentsDirectory('project-attachments')
                                             ->fileAttachmentsVisibility('public')
                                             ->toolbarButtons(self::FULL_TOOLBAR)
                                             ->columnSpanFull(),

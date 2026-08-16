@@ -4,7 +4,6 @@ namespace App\Filament\Resources\News\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
@@ -40,10 +39,8 @@ class NewsForm
                         RichEditor::make('content')
                             ->label('Contenu')
                             ->required()
-                            ->fileAttachmentProvider(
-                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                    ->collection('content_attachments')
-                            )
+                            ->fileAttachmentsDisk('public')
+                            ->fileAttachmentsDirectory('news-attachments')
                             ->fileAttachmentsVisibility('public')
                             ->toolbarButtons([
                                 'bold', 'italic', 'underline', 'strike',

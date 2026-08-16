@@ -4,12 +4,12 @@ namespace App\Filament\Resources\BlogPosts\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
@@ -74,10 +74,8 @@ class BlogPostForm
                                                 RichEditor::make('body')
                                                     ->label('Contenu complet')
                                                     ->required()
-                                                    ->fileAttachmentProvider(
-                                                        SpatieMediaLibraryFileAttachmentProvider::make()
-                                                            ->collection('content_attachments')
-                                                    )
+                                                    ->fileAttachmentsDisk('public')
+                                                    ->fileAttachmentsDirectory('blog-attachments')
                                                     ->fileAttachmentsVisibility('public')
                                                     ->toolbarButtons(self::FULL_TOOLBAR)
                                                     ->columnSpanFull(),
@@ -86,14 +84,21 @@ class BlogPostForm
                                         Section::make('Classification & Métriques')
                                             ->columnSpan(['default' => 1, 'lg' => 1])
                                             ->schema([
-                                                Select::make('type')
+                                                ToggleButtons::make('type')
                                                     ->label('Type de publication')
                                                     ->options([
-                                                        'article' => '📄 Article standard',
-                                                        'billet' => '✍️ Billet d\'opinion',
-                                                        'tribune' => '🏛️ Tribune libre',
-                                                        'interview' => '🎙️ Interview',
+                                                        'article' => 'Article',
+                                                        'billet' => 'Billet',
+                                                        'tribune' => 'Tribune',
+                                                        'interview' => 'Interview',
                                                     ])
+                                                    ->icons([
+                                                        'article' => 'heroicon-m-document-text',
+                                                        'billet' => 'heroicon-m-pencil-square',
+                                                        'tribune' => 'heroicon-m-megaphone',
+                                                        'interview' => 'heroicon-m-chat-bubble-left-right',
+                                                    ])
+                                                    ->inline()
                                                     ->required()
                                                     ->default('article'),
 
@@ -163,19 +168,32 @@ class BlogPostForm
                                     ->schema([
                                         Select::make('author_id')
                                             ->label('Auteur principal')
-                                            ->relationship('author', 'name')
+                                            ->relationship('author', 'full_name')
                                             ->searchable()
                                             ->preload()
                                             ->prefixIcon('heroicon-m-user'),
 
-                                        Select::make('status')
+                                        ToggleButtons::make('status')
                                             ->label('État de publication')
                                             ->options([
-                                                'brouillon' => '🔘 Brouillon',
-                                                'en_revision' => '🟡 En relecture',
-                                                'publie' => '🟢 Publié immédiatement',
-                                                'archive' => '⚫ Archivé',
+                                                'brouillon' => 'Brouillon',
+                                                'en_revision' => 'En relecture',
+                                                'publie' => 'Publié',
+                                                'archive' => 'Archivé',
                                             ])
+                                            ->colors([
+                                                'brouillon' => 'gray',
+                                                'en_revision' => 'warning',
+                                                'publie' => 'success',
+                                                'archive' => 'danger',
+                                            ])
+                                            ->icons([
+                                                'brouillon' => 'heroicon-m-pencil-square',
+                                                'en_revision' => 'heroicon-m-eye',
+                                                'publie' => 'heroicon-m-check-circle',
+                                                'archive' => 'heroicon-m-archive-box',
+                                            ])
+                                            ->inline()
                                             ->required()
                                             ->default('brouillon'),
 

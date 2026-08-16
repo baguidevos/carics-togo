@@ -44,7 +44,7 @@ class BlogPostsTable
                         'archive' => 'danger',
                         default => 'gray',
                     }),
-                TextColumn::make('author.name')
+                TextColumn::make('author.full_name')
                     ->label('Auteur')
                     ->searchable(),
                 TextColumn::make('published_at')

@@ -3,12 +3,11 @@
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
@@ -35,9 +34,10 @@ class TeamMemberForm
                             ->unique(ignoreRecord: true),
                         TextInput::make('role_title')
                             ->label('Titre / Fonction')
-                            ->required(),
-                        Select::make('role_category')
-                            ->label('Catégorie')
+                            ->required()
+                            ->columnSpanFull(),
+                        ToggleButtons::make('role_category')
+                            ->label('Catégorie de membre')
                             ->options([
                                 'bureau_executif' => 'Bureau Exécutif',
                                 'conseil_scientifique' => 'Conseil Scientifique',
@@ -45,7 +45,16 @@ class TeamMemberForm
                                 'doctorant' => 'Doctorant',
                                 'partenaire_associe' => 'Partenaire Associé',
                             ])
-                            ->default('bureau_executif'),
+                            ->icons([
+                                'bureau_executif' => 'heroicon-m-user-group',
+                                'conseil_scientifique' => 'heroicon-m-academic-cap',
+                                'equipe_technique' => 'heroicon-m-wrench-screwdriver',
+                                'doctorant' => 'heroicon-m-sparkles',
+                                'partenaire_associe' => 'heroicon-m-building-office-2',
+                            ])
+                            ->inline()
+                            ->default('bureau_executif')
+                            ->columnSpanFull(),
                     ]),
 
                 Section::make('Biographie & Compétences')
@@ -58,10 +67,8 @@ class TeamMemberForm
                             ->columnSpanFull(),
                         RichEditor::make('bio_full')
                             ->label('Biographie complète')
-                            ->fileAttachmentProvider(
-                                SpatieMediaLibraryFileAttachmentProvider::make()
-                                    ->collection('content_attachments')
-                            )
+                            ->fileAttachmentsDisk('public')
+                            ->fileAttachmentsDirectory('team-attachments')
                             ->fileAttachmentsVisibility('public')
                             ->toolbarButtons([
                                 'bold', 'italic', 'underline', 'strike',

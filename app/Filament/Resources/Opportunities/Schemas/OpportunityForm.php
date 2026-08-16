@@ -7,6 +7,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -29,15 +30,24 @@ class OpportunityForm
                             ->relationship('category', 'name')
                             ->searchable()
                             ->preload(),
-                        Select::make('contract_type')
+                        ToggleButtons::make('contract_type')
                             ->label('Type de contrat')
                             ->options([
-                                'stage' => '🎓 Stage',
-                                'cdd' => '📋 CDD',
-                                'cdi' => '🔒 CDI',
-                                'benevolat' => '🤝 Bénévolat',
-                                'consultation' => '💼 Consultation',
-                            ]),
+                                'stage' => 'Stage',
+                                'cdd' => 'CDD',
+                                'cdi' => 'CDI',
+                                'benevolat' => 'Bénévolat',
+                                'consultation' => 'Consultation',
+                            ])
+                            ->icons([
+                                'stage' => 'heroicon-m-academic-cap',
+                                'cdd' => 'heroicon-m-document-text',
+                                'cdi' => 'heroicon-m-lock-closed',
+                                'benevolat' => 'heroicon-m-heart',
+                                'consultation' => 'heroicon-m-briefcase',
+                            ])
+                            ->inline()
+                            ->columnSpanFull(),
                         TextInput::make('location')
                             ->label('Lieu'),
                         DatePicker::make('deadline')
@@ -81,13 +91,24 @@ class OpportunityForm
                     ->icon('heroicon-m-cog-6-tooth')
                     ->columns(2)
                     ->schema([
-                        Select::make('status')
+                        ToggleButtons::make('status')
                             ->label('Statut')
                             ->options([
-                                'ouverte' => '🟢 Ouverte',
-                                'fermee' => '🔴 Fermée',
-                                'en_cours' => '🟡 En cours de traitement',
+                                'ouverte' => 'Ouverte',
+                                'fermee' => 'Fermée',
+                                'en_cours' => 'En cours',
                             ])
+                            ->colors([
+                                'ouverte' => 'success',
+                                'fermee' => 'danger',
+                                'en_cours' => 'warning',
+                            ])
+                            ->icons([
+                                'ouverte' => 'heroicon-m-check-circle',
+                                'fermee' => 'heroicon-m-x-circle',
+                                'en_cours' => 'heroicon-m-clock',
+                            ])
+                            ->inline()
                             ->required()
                             ->default('ouverte'),
                         Toggle::make('is_published')
