@@ -1,0 +1,111 @@
+<?php
+
+return [
+    'title' => 'Contact Us',
+    'subtitle' => 'Our team responds promptly to all requests for collaboration, partnership, or general inquiries.',
+
+    // Main Form
+    'form' => [
+        'eyebrow' => 'Contact Form',
+        'title' => 'Send Us a Message',
+        'last_name' => 'Last Name',
+        'last_name_placeholder' => 'Your last name',
+        'first_name' => 'First Name',
+        'first_name_placeholder' => 'Your first name',
+        'email' => 'Email Address',
+        'email_placeholder' => 'your@email.com',
+        'organization' => 'Organization / Institution',
+        'organization_placeholder' => 'Your institution or organization',
+        'subject' => 'Subject',
+        'select_subject' => 'Select a subject',
+        'subjects' => [
+            'collaboration' => 'Scientific Collaboration',
+            'internship' => 'Internship / Mentorship',
+            'partnership' => 'Institutional Partnership',
+            'information' => 'General Inquiry',
+            'media' => 'Media Inquiry / Interview',
+            'other' => 'Other',
+        ],
+        'message' => 'Message',
+        'message_placeholder' => 'Describe the purpose of your inquiry...',
+        'privacy_agree' => 'I agree that CARICS-Togo may process my personal data in connection with this inquiry, in accordance with the',
+        'privacy_link' => 'privacy policy',
+        'send_btn' => 'Send Message',
+        'success_title' => 'Message Sent Successfully',
+        'success_text' => 'Your message has been sent successfully. The CARICS-Togo team will reply as soon as possible, typically within 3 to 5 business days.',
+        'required_field' => 'This field is required.',
+        'invalid_email' => 'Please enter a valid email address.',
+        'invalid_message' => 'Your message must be at least 30 characters long.',
+        'privacy_required' => 'You must accept the privacy policy.',
+    ],
+
+    // Contact Information
+    'info' => [
+        'eyebrow' => 'Information',
+        'title' => 'Our Contact Details',
+        'email_label' => 'Email',
+        'phone_label' => 'Phone',
+        'address_label' => 'Address',
+        'address_value' => "Quartier Nassablée<br>Commune de Tône 1, Préfecture de Tône<br>Région des Savanes<br><strong>Togolese Republic</strong>",
+        'location_title' => 'Dapaong, Savanes Region',
+        'location_subtitle' => 'Quartier Nassablée, Commune de Tône 1',
+        'open_in_osm' => 'Open in OpenStreetMap',
+    ],
+
+    // Specialized Forms
+    'specialized' => [
+        'eyebrow' => 'Specialized Forms',
+        'title' => 'Specific Requests',
+        'collaboration' => [
+            'title' => 'Propose a Collaboration',
+            'desc' => 'Looking to initiate a collaborative project, join a consortium, or propose co-supervision? Describe your project and attach a concept note.',
+            'fullname' => 'Full Name',
+            'institution' => 'Institution',
+            'domain' => 'Area of Expertise',
+            'project_desc' => 'Project Description',
+            'submit' => 'Submit',
+            'success' => 'Proposal sent successfully!',
+        ],
+        'stage' => [
+            'title' => 'Internship / Mentorship Application',
+            'desc' => 'Master\'s, PhD, or Postdoc student seeking an internship or scientific mentorship? Submit your spontaneous application.',
+            'fullname' => 'Full Name',
+            'university' => 'University / School',
+            'level' => 'Degree Level',
+            'select_level' => 'Select',
+            'levels' => [
+                'master' => 'Master',
+                'doctorate' => 'Doctorate / PhD',
+                'postdoc' => 'Post-doctorate',
+            ],
+            'domain' => 'Research Field',
+            'submit' => 'Submit Application',
+            'success' => 'Application sent successfully!',
+        ],
+        'media' => [
+            'title' => 'Media Inquiry / Interview',
+            'desc' => 'Journalist, documentarian, or communicator wishing to interview a CARICS-Togo expert? Send your request with subject and preferred date.',
+            'fullname' => 'Full Name',
+            'organization' => 'Media / Organization',
+            'subject' => 'Interview Topic',
+            'date' => 'Preferred Date',
+            'email' => 'Contact Email',
+            'submit' => 'Send Request',
+            'success' => 'Request sent successfully!',
+        ],
+    ],
+
+    // FAQ
+    'faq' => [
+        'eyebrow' => 'FAQ',
+        'title' => 'Frequently Asked Questions',
+        'q1' => 'Is CARICS-Togo open to collaborations with institutions outside Togo?',
+        'a1' => 'Yes, absolutely. CARICS-Togo operates with a regional and international perspective. We welcome partnerships with universities, research institutes, NGOs, and development agencies worldwide, particularly in West Africa and francophone countries.',
+        'q2' => 'How can I submit a joint project proposal?',
+        'a2' => 'Use the "Propose a Collaboration" form on this page to describe your project and attach a concept note (2–5 pages) if possible. Our team will get back to you within 5 business days.',
+        'q3' => 'Do you accept short-term student internships?',
+        'a3' => 'Yes, subject to available mentoring capacity. Internships of at least 3 months are preferred. Submit your spontaneous application using the dedicated form on this page.',
+        'q4' => 'Can I use CARICS-Togo data and publications in my research?',
+        'a4' => 'Yes, resources published on the website are freely accessible under their respective licenses. For specific requests regarding unpublished datasets or protocols, please contact us directly.',
+    ],
+];
