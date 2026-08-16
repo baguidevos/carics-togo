@@ -39,6 +39,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] Créer `lang/fr/resources.php` et `lang/en/resources.php` (Publications, Rapports, Policy briefs, Outils)
 - [x] Créer `lang/fr/team.php` et `lang/en/team.php` (Titres de rôles, Labels bio, Boutons contact)
 - [x] Créer `lang/fr/contact.php` et `lang/en/contact.php` (Champs formulaires, Labels, Messages de confirmation)
+- [x] Créer `lang/fr/news_opp.php` et `lang/en/news_opp.php` (Actualités, Emplois, Stages, Bourses, Partenariats)
 
 ### 1.2 Intégration dans les Vues Blade
 - [x] Remplacer les textes statiques dans `<x-archinest.header />` par `__('navigation....')`
@@ -47,7 +48,7 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] Traduire la vue À Propos `⚡about-us.blade.php`
 - [x] Traduire la vue Recherche `⚡research_expertize_project.blade.php`
 - [x] Traduire la vue Ressources `⚡ressource-publication.blade.php`
-- [ ] Traduire la vue Actualités & Opportunités `⚡actu-opportunites.blade.php`
+- [x] Traduire la vue Actualités & Opportunités `⚡actu-opportunites.blade.php`
 - [x] Traduire la vue Équipe `⚡team.blade.php` et `⚡team-detail.blade.php`
 - [x] Traduire la vue Contact `⚡contact.blade.php`
 

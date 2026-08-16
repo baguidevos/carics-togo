@@ -21,14 +21,14 @@ new #[Layout('layouts::archinest')] class extends Component {
         </div>
     </header> --}}
 
-       <!-- Start main-content -->
-    <section class="page-title" style="background-image: url(images/banner.jpg);">
+    <!-- Start main-content -->
+    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
-                <h1 class="title">Actualités &amp; Opportunités</h1>
+                <h1 class="title">{{ __('news_opp.title') }}</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">Accueil</a></li>
-                    <li>Actualités & Opportunités</li>
+                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
+                    <li>{{ __('news_opp.title') }}</li>
                 </ul>
             </div>
         </div>
@@ -36,20 +36,18 @@ new #[Layout('layouts::archinest')] class extends Component {
 
     <!-- ============ TABS ============ -->
     <section class="section-sm pb-0" style="background:var(--white); border-bottom:1px solid var(--line);">
-        {{-- <p class="lead">Nouvelles institutionnelles, agenda scientifique, offres d&rsquo;emploi, stages, bourses et
-                partenariats.</p> --}}
         <div class="container">
             <ul class="nav nav-carics" id="actuTabs" role="tablist">
                 <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-actu"
-                        role="tab">Actualités</button></li>
+                        role="tab">{{ __('news_opp.tabs.news') }}</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-emploi"
-                        role="tab">Emplois &amp; Consultances</button></li>
+                        role="tab">{{ __('news_opp.tabs.jobs') }}</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-stage"
-                        role="tab">Stages</button></li>
+                        role="tab">{{ __('news_opp.tabs.internships') }}</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-bourses"
-                        role="tab">Bourses</button></li>
+                        role="tab">{{ __('news_opp.tabs.scholarships') }}</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-partenariat"
-                        role="tab">Partenariats</button></li>
+                        role="tab">{{ __('news_opp.tabs.partnerships') }}</button></li>
             </ul>
         </div>
     </section>
@@ -68,28 +66,21 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="project-highlight shadow-soft">
                                 <div class="ph-head">
                                     <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
-                                        <span class="badge-status light">À la une</span>
+                                        <span class="badge-status light">{{ __('news_opp.news.featured_badge') }}</span>
                                         <span style="color:rgba(255,255,255,.65); font-size:.85rem;"><i
-                                                class="bi bi-calendar3 me-1"></i>Juin 2026</span>
+                                                class="bi bi-calendar3 me-1"></i>{{ __('news_opp.news.featured_date') }}</span>
                                     </div>
-                                    <h2 class="h4 mb-1">CARICS-Togo lance son premier projet de recherche financé à
-                                        l&rsquo;international</h2>
+                                    <h2 class="h4 mb-1">{{ __('news_opp.news.featured_title') }}</h2>
                                     <p
                                         style="color:rgba(255,255,255,.82); font-size:.95rem; max-width:42rem; margin-bottom:0;">
-                                        Avec le soutien de la Royal Society of Tropical Medicine and Hygiene (RSTMH),
-                                        CARICS-Togo démarre un projet sur la mise en œuvre de la CPS dans la Région des
-                                        Savanes.
+                                        {{ __('news_opp.news.featured_desc') }}
                                     </p>
                                 </div>
                                 <div class="ph-body">
                                     <p class="mb-3">
-                                        Ce projet marque une étape majeure pour CARICS-Togo, qui obtient son premier
-                                        financement international quelques mois seulement après sa création. Il portera
-                                        sur la fidélité de mise en œuvre, la couverture et l&rsquo;adhésion à la CPS
-                                        dans
-                                        un contexte transfrontalier complexe.
+                                        {{ __('news_opp.news.featured_body') }}
                                     </p>
-                                    <a href="blog-projet.html" class="btn-cta-outline">Lire le projet complet <i
+                                    <a href="{{ route('recherche-expertize-projet') }}" class="btn-cta-outline">{{ __('news_opp.news.featured_btn') }} <i
                                             class="bi bi-arrow-right ms-1"></i></a>
                                 </div>
                             </div>
@@ -99,18 +90,16 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="col-md-6">
                             <div class="card-soft h-100">
                                 <div class="d-flex gap-2 mb-2">
-                                    <span class="badge-status ongoing">Institutionnel</span>
+                                    <span class="badge-status ongoing">{{ __('news_opp.news.news2_badge') }}</span>
                                     <span class="text-muted-2" style="font-size:.82rem;"><i
-                                            class="bi bi-calendar3 me-1"></i>Mars 2026</span>
+                                            class="bi bi-calendar3 me-1"></i>{{ __('news_opp.news.news2_date') }}</span>
                                 </div>
-                                <h3 class="h5 mb-2">CARICS-Togo officiellement enregistré à Dapaong</h3>
+                                <h3 class="h5 mb-2">{{ __('news_opp.news.news2_title') }}</h3>
                                 <p class="text-muted-2 mb-3" style="font-size:.92rem;">
-                                    Le Centre Africain d&rsquo;Action pour la Recherche et l&rsquo;Innovation
-                                    Communautaire en Santé
-                                    obtient son enregistrement officiel auprès des autorités togolaises compétentes.
+                                    {{ __('news_opp.news.news2_desc') }}
                                 </p>
-                                <a href="blog-article.html" class="btn-cta-sm btn-cta-outline"
-                                    style="display:inline-block;">Lire <i class="bi bi-arrow-right ms-1"></i></a>
+                                <a href="{{ route('a-propos') }}" class="btn-cta-sm btn-cta-outline"
+                                    style="display:inline-block;">{{ __('news_opp.news.news2_btn') }} <i class="bi bi-arrow-right ms-1"></i></a>
                             </div>
                         </div>
 
@@ -118,20 +107,16 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="col-md-6">
                             <div class="card-soft h-100">
                                 <div class="d-flex gap-2 mb-2">
-                                    <span class="badge-status upcoming">Bientôt</span>
+                                    <span class="badge-status upcoming">{{ __('news_opp.news.news3_badge') }}</span>
                                     <span class="text-muted-2" style="font-size:.82rem;"><i
-                                            class="bi bi-calendar3 me-1"></i>Septembre 2026</span>
+                                            class="bi bi-calendar3 me-1"></i>{{ __('news_opp.news.news3_date') }}</span>
                                 </div>
-                                <h3 class="h5 mb-2">Présentation des premiers résultats lors d&rsquo;un séminaire
-                                    régional</h3>
+                                <h3 class="h5 mb-2">{{ __('news_opp.news.news3_title') }}</h3>
                                 <p class="text-muted-2 mb-3" style="font-size:.92rem;">
-                                    L&rsquo;équipe CARICS prévoit de présenter les premières données terrain du projet
-                                    CPS
-                                    lors d&rsquo;un séminaire régional sur la santé communautaire en Afrique de
-                                    l&rsquo;Ouest.
+                                    {{ __('news_opp.news.news3_desc') }}
                                 </p>
                                 <span class="text-muted-2" style="font-size:.85rem;"><i
-                                        class="bi bi-clock me-1"></i>Annonce à venir</span>
+                                        class="bi bi-clock me-1"></i>{{ __('news_opp.news.news3_upcoming') }}</span>
                             </div>
                         </div>
 
@@ -142,23 +127,17 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-emploi" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="eyebrow mb-2">Emplois &amp; consultances</div>
-                            <h2 class="section-title mb-3">Offres d&rsquo;emploi et de consultance</h2>
+                            <div class="eyebrow mb-2">{{ __('news_opp.jobs.eyebrow') }}</div>
+                            <h2 class="section-title mb-3">{{ __('news_opp.jobs.title') }}</h2>
                             <div class="empty-state">
-                                <span class="badge-status upcoming">Aucune offre actuellement</span>
+                                <span class="badge-status upcoming">{{ __('news_opp.jobs.empty_badge') }}</span>
                                 <p class="mb-3" style="font-size:.95rem;">
-                                    CARICS-Togo ne dispose d&rsquo;aucune offre d&rsquo;emploi ou de consultance ouverte
-                                    en ce moment. Les prochaines opportunités seront annoncées sur cette page et dans
-                                    notre newsletter.
+                                    {{ __('news_opp.jobs.empty_text1') }}
                                 </p>
                                 <p class="text-muted-2 mb-4" style="font-size:.9rem;">
-                                    Nous recrutons généralement des profils dans les domaines suivants&nbsp;:
-                                    épidémiologistes, biostatisticiens, experts en suivi-évaluation, professionnels de
-                                    santé publique, consultants techniques, coordonnateurs de projets et spécialistes
-                                    en santé numérique.
+                                    {{ __('news_opp.jobs.empty_text2') }}
                                 </p>
-                                <a href="newsletter.html" class="btn-cta-outline">S&rsquo;abonner à la newsletter pour
-                                    être notifié</a>
+                                <a href="#newsletter" class="btn-cta-outline">{{ __('news_opp.jobs.newsletter_btn') }}</a>
                             </div>
                         </div>
                     </div>
@@ -168,22 +147,17 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-stage" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="eyebrow mb-2">Stages &amp; mentorat</div>
-                            <h2 class="section-title mb-3">Stages et mentorat</h2>
+                            <div class="eyebrow mb-2">{{ __('news_opp.internships.eyebrow') }}</div>
+                            <h2 class="section-title mb-3">{{ __('news_opp.internships.title') }}</h2>
                             <div class="empty-state">
-                                <span class="badge-status upcoming">Aucune offre actuellement</span>
+                                <span class="badge-status upcoming">{{ __('news_opp.internships.empty_badge') }}</span>
                                 <p class="mb-3" style="font-size:.95rem;">
-                                    Aucune offre de stage n&rsquo;est actuellement disponible. CARICS-Togo accueille
-                                    ponctuellement des étudiants et jeunes chercheurs dans les domaines de la
-                                    santé publique, de l&rsquo;épidémiologie, de la gestion de projets et de la
-                                    santé numérique.
+                                    {{ __('news_opp.internships.empty_text1') }}
                                 </p>
                                 <p class="text-muted-2 mb-4" style="font-size:.9rem;">
-                                    Niveaux concernés&nbsp;: Master · Doctorat · Post-doctorat. Les candidatures
-                                    spontanées sont acceptées.
+                                    {{ __('news_opp.internships.empty_text2') }}
                                 </p>
-                                <a href="contact.html#stage" class="btn-cta-outline">Envoyer une candidature
-                                    spontanée</a>
+                                <a href="{{ route('contact') }}#stage" class="btn-cta-outline">{{ __('news_opp.internships.apply_btn') }}</a>
                             </div>
                         </div>
                     </div>
@@ -193,17 +167,14 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-bourses" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="eyebrow mb-2">Bourses &amp; formations</div>
-                            <h2 class="section-title mb-3">Bourses et formations</h2>
+                            <div class="eyebrow mb-2">{{ __('news_opp.scholarships.eyebrow') }}</div>
+                            <h2 class="section-title mb-3">{{ __('news_opp.scholarships.title') }}</h2>
                             <div class="empty-state">
-                                <span class="badge-status upcoming">Aucune opportunité actuellement</span>
+                                <span class="badge-status upcoming">{{ __('news_opp.scholarships.empty_badge') }}</span>
                                 <p class="mb-3" style="font-size:.95rem;">
-                                    Aucune bourse ou opportunité de formation n&rsquo;est actuellement disponible.
-                                    CARICS-Togo publie dans cette section les fellowships, bourses d&rsquo;études et
-                                    formations spécialisées pertinentes pour les chercheurs et professionnels de
-                                    santé publique en Afrique.
+                                    {{ __('news_opp.scholarships.empty_text') }}
                                 </p>
-                                <a href="newsletter.html" class="btn-cta-outline">S&rsquo;abonner à la newsletter</a>
+                                <a href="#newsletter" class="btn-cta-outline">{{ __('news_opp.scholarships.newsletter_btn') }}</a>
                             </div>
                         </div>
                     </div>
@@ -213,41 +184,39 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="tab-pane fade" id="tab-partenariat" role="tabpanel">
                     <div class="row g-4">
                         <div class="col-lg-7">
-                            <div class="eyebrow mb-2">Partenariats</div>
-                            <h2 class="section-title mb-3">Proposer un partenariat</h2>
+                            <div class="eyebrow mb-2">{{ __('news_opp.partnerships.eyebrow') }}</div>
+                            <h2 class="section-title mb-3">{{ __('news_opp.partnerships.title') }}</h2>
                             <p>
-                                CARICS-Togo est ouvert aux propositions de collaboration de la part de toute
-                                institution ou organisation partageant son engagement pour une santé publique
-                                fondée sur les données probantes. Nous collaborons notamment avec&nbsp;:
+                                {{ __('news_opp.partnerships.intro') }}
                             </p>
                             <ul class="mb-4">
-                                <li>Universités et facultés de santé publique</li>
-                                <li>Centres et instituts de recherche en santé</li>
-                                <li>Ministères de la santé et agences nationales</li>
-                                <li>Organisations non gouvernementales et associations</li>
-                                <li>Agences de développement et partenaires techniques et financiers</li>
-                                <li>Réseaux scientifiques régionaux et internationaux</li>
-                                <li>Étudiants Master, Doctorat et Postdoc</li>
+                                <li>{{ __('news_opp.partnerships.target_1') }}</li>
+                                <li>{{ __('news_opp.partnerships.target_2') }}</li>
+                                <li>{{ __('news_opp.partnerships.target_3') }}</li>
+                                <li>{{ __('news_opp.partnerships.target_4') }}</li>
+                                <li>{{ __('news_opp.partnerships.target_5') }}</li>
+                                <li>{{ __('news_opp.partnerships.target_6') }}</li>
+                                <li>{{ __('news_opp.partnerships.target_7') }}</li>
                             </ul>
-                            <div class="eyebrow mb-3">Domaines de collaboration</div>
+                            <div class="eyebrow mb-3">{{ __('news_opp.partnerships.areas_eyebrow') }}</div>
                             <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="tag-ghost">Recherche appliquée</span>
-                                <span class="tag-ghost">Recherche opérationnelle</span>
-                                <span class="tag-ghost">Sciences de la mise en œuvre</span>
-                                <span class="tag-ghost">Évaluation de programmes</span>
-                                <span class="tag-ghost">Analyses statistiques</span>
-                                <span class="tag-ghost">Revues systématiques</span>
-                                <span class="tag-ghost">Rédaction scientifique</span>
-                                <span class="tag-ghost">Renforcement des capacités</span>
-                                <span class="tag-ghost">Consortiums internationaux</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_1') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_2') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_3') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_4') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_5') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_6') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_7') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_8') }}</span>
+                                <span class="tag-ghost">{{ __('news_opp.partnerships.area_9') }}</span>
                             </div>
-                            <a href="contact.html#collaboration" class="btn-cta">Soumettre une proposition <i
+                            <a href="{{ route('contact') }}#collaboration" class="btn-cta">{{ __('news_opp.partnerships.submit_btn') }} <i
                                     class="bi bi-arrow-right ms-1"></i></a>
                         </div>
 
                         <div class="col-lg-5">
                             <div class="card-soft" style="background:var(--bg-alt);">
-                                <div class="eyebrow mb-3">Partenaires actuels</div>
+                                <div class="eyebrow mb-3">{{ __('news_opp.partnerships.current_partners_eyebrow') }}</div>
                                 <div class="border rounded-3 py-4 text-center fw-bold mb-3"
                                     style="border-color:var(--line); color:var(--primary); background:var(--white);">
                                     <div style="font-size:1.1rem;">RSTMH</div>
@@ -255,8 +224,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         Medicine and Hygiene</div>
                                 </div>
                                 <p class="text-muted-2 mb-0" style="font-size:.88rem;">
-                                    D&rsquo;autres partenariats institutionnels et scientifiques seront annoncés
-                                    prochainement.
+                                    {{ __('news_opp.partnerships.more_partners') }}
                                 </p>
                             </div>
                         </div>
