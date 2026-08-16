@@ -24,6 +24,7 @@ class TeamMemberForm
         return $schema
             ->components([
                 Grid::make(['default' => 1, 'lg' => 3])
+                    ->columnSpanFull()
                     ->schema([
                         // ─── COLONNE PRINCIPALE (2/3) ───────────────────────────
                         Grid::make(1)

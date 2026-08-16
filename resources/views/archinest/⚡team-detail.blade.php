@@ -41,7 +41,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                              class="rounded-circle border border-3 border-white shadow-lg object-fit-cover" 
                              style="width: 110px; height: 110px; object-fit: cover;">
                     @else
-                        <div class="rounded-circle border border-3 border-white shadow-lg d-flex align-items-center justify-content-center bg-white text-primary fs-2 fw-bold" 
+                        <div class="rounded-circle border border-3 border-white shadow-lg d-flex align-items-center justify-content-center  text-primary fs-2 fw-bold" 
                              style="width: 110px; height: 110px;">
                             {{ $member->initials }}
                         </div>
@@ -50,11 +50,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col">
                     <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
                         @if ($member->is_founder)
-                            <span class="badge bg-white text-primary rounded-pill px-3 py-1 fw-semibold small">
+                            <span class="badge  text-primary rounded-pill px-3 py-1 fw-semibold small">
                                 <i class="fa fa-solid fa-certificate text-warning me-1"></i> Membre Fondateur
                             </span>
                         @endif
-                        <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-3 py-1 small">
+                        <span class="badge  bg-opacity-20 text-white rounded-pill px-3 py-1 small">
                             {{ ucfirst(str_replace('_', ' ', $member->role_category ?? 'Membre')) }}
                         </span>
                     </div>
@@ -112,7 +112,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-8">
 
                     <!-- BIOGRAPHIE -->
-                    <div class="mb-5 p-4 p-md-5 rounded-4 bg-white border shadow-sm">
+                    <div class="mb-5 p-4 p-md-5 rounded-4  border shadow-sm">
                         <div class="eyebrow text-primary mb-2">{{ __('team.detail.bio_eyebrow') }}</div>
                         <h2 class="h4 fw-bold text-dark mb-4">{{ __('team.detail.bio_title') }}</h2>
                         
@@ -138,7 +138,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                     <!-- MISSION & RÔLE DANS CARICS -->
                     @if ($member->mission_text)
-                        <div class="mb-5 p-4 p-md-5 rounded-4 bg-white border shadow-sm">
+                        <div class="mb-5 p-4 p-md-5 rounded-4  border shadow-sm">
                             <div class="eyebrow text-primary mb-2">{{ __('team.detail.role_eyebrow') }}</div>
                             <h2 class="h4 fw-bold text-dark mb-3">{{ __('team.detail.role_title', ['role' => $member->role_title]) }}</h2>
                             <p class="text-secondary mb-0" style="line-height: 1.7; font-size: 1.02rem;">
@@ -149,7 +149,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                     <!-- PROJET ASSOCIÉ -->
                     @if ($relatedProject || $member->related_project_slug)
-                        <div class="mb-5 p-4 p-md-5 rounded-4 bg-white border shadow-sm">
+                        <div class="mb-5 p-4 p-md-5 rounded-4  border shadow-sm">
                             <div class="eyebrow text-primary mb-2">{{ __('team.detail.project_eyebrow') }}</div>
                             <h2 class="h4 fw-bold text-dark mb-3">{{ __('team.detail.project_title') }}</h2>
                             <a href="{{ route('recherche-expertize-projet') }}" class="text-decoration-none text-reset d-block">
@@ -184,7 +184,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                         <!-- EXPERTISES CLÉS (JSON) -->
                         @if (!empty($member->expertises) && is_array($member->expertises))
-                            <div class="p-4 rounded-4 bg-white border shadow-sm mb-4">
+                            <div class="p-4 rounded-4  border shadow-sm mb-4">
                                 <div class="eyebrow text-primary mb-3">
                                     <i class="fa fa-solid fa-tags me-1"></i> {{ __('team.detail.expertises_eyebrow') }}
                                 </div>
@@ -200,7 +200,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                         <!-- FORMATION / CURSUS ACADÉMIQUE (JSON) -->
                         @if (!empty($member->education) && is_array($member->education))
-                            <div class="p-4 rounded-4 bg-white border shadow-sm mb-4">
+                            <div class="p-4 rounded-4  border shadow-sm mb-4">
                                 <div class="eyebrow text-primary mb-3">
                                     <i class="fa fa-solid fa-graduation-cap me-1"></i> {{ __('team.detail.education_eyebrow') }}
                                 </div>
@@ -231,12 +231,12 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                         <!-- DISTINCTIONS & BOURSES (JSON) -->
                         @if (!empty($member->distinctions) && is_array($member->distinctions))
-                            <div class="p-4 rounded-4 bg-white border shadow-sm mb-4" style="background: #fffcf5;">
+                            <div class="p-4 rounded-4  border shadow-sm mb-4" style="background: #fffcf5;">
                                 <div class="eyebrow text-warning mb-3">
                                     <i class="fa fa-solid fa-trophy me-1"></i> Prix & Distinctions
                                 </div>
                                 @foreach ($member->distinctions as $dist)
-                                    <div class="p-3 rounded-3 bg-white border mb-2 shadow-2xs">
+                                    <div class="p-3 rounded-3  border mb-2 shadow-2xs">
                                         <div class="fw-bold text-dark" style="font-size: .92rem;">
                                             {{ is_array($dist) ? ($dist['title'] ?? '') : (string) $dist }}
                                         </div>
@@ -255,7 +255,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                         <!-- AFFILIATIONS INSTITUTIONNELLES (JSON) -->
                         @if (!empty($member->affiliations) && is_array($member->affiliations))
-                            <div class="p-4 rounded-4 bg-white border shadow-sm mb-4">
+                            <div class="p-4 rounded-4  border shadow-sm mb-4">
                                 <div class="eyebrow text-primary mb-3">
                                     <i class="fa fa-solid fa-building-columns me-1"></i> {{ __('team.detail.affiliations_eyebrow') }}
                                 </div>
@@ -271,7 +271,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         @endif
 
                         <!-- CONTACT & IDENTIFIANTS SCIENTIFIQUES -->
-                        <div class="p-4 rounded-4 bg-white border shadow-sm">
+                        <div class="p-4 rounded-4  border shadow-sm">
                             <div class="eyebrow text-primary mb-3">
                                 <i class="fa fa-solid fa-paper-plane me-1"></i> {{ __('team.detail.links_eyebrow') }}
                             </div>
@@ -331,7 +331,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     @foreach ($otherMembers as $other)
                         <div class="col-md-6 col-lg-4">
                             <a href="{{ route('team-detail', ['slug' => $other->slug]) }}" class="text-decoration-none text-reset d-block h-100">
-                                <div class="card h-100 p-3 border rounded-4 bg-white shadow-sm hover-shadow transition-all d-flex flex-column justify-content-between">
+                                <div class="card h-100 p-3 border rounded-4  shadow-sm hover-shadow transition-all d-flex flex-column justify-content-between">
                                     <div>
                                         <div class="mb-3 rounded-3 overflow-hidden" style="height: 180px; background: #f1f5f9;">
                                             @if ($other->avatar_url)

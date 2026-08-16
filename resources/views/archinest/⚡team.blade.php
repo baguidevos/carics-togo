@@ -62,34 +62,34 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <button type="button" 
                             wire:click="$set('selectedCategory', 'all')"
                             class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'all' ? 'btn-primary' : 'btn-light border' }}">
-                        Tous les membres <span class="badge bg-white bg-opacity-25 ms-1">{{ $counts['all'] }}</span>
+                        Tous les membres <span class="badge  bg-opacity-25 ms-1">{{ $counts['all'] }}</span>
                     </button>
                     @if ($counts['bureau_executif'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'bureau_executif')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'bureau_executif' ? 'btn-primary' : 'btn-light border' }}">
-                            Bureau Exécutif <span class="badge bg-white bg-opacity-25 ms-1">{{ $counts['bureau_executif'] }}</span>
+                            Bureau Exécutif <span class="badge  bg-opacity-25 ms-1">{{ $counts['bureau_executif'] }}</span>
                         </button>
                     @endif
                     @if ($counts['conseil_scientifique'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'conseil_scientifique')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'conseil_scientifique' ? 'btn-primary' : 'btn-light border' }}">
-                            Conseil Scientifique <span class="badge bg-white bg-opacity-25 ms-1">{{ $counts['conseil_scientifique'] }}</span>
+                            Conseil Scientifique <span class="badge  bg-opacity-25 ms-1">{{ $counts['conseil_scientifique'] }}</span>
                         </button>
                     @endif
                     @if ($counts['chercheur_associe'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'chercheur_associe')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'chercheur_associe' ? 'btn-primary' : 'btn-light border' }}">
-                            Chercheurs Associés <span class="badge bg-white bg-opacity-25 ms-1">{{ $counts['chercheur_associe'] }}</span>
+                            Chercheurs Associés <span class="badge  bg-opacity-25 ms-1">{{ $counts['chercheur_associe'] }}</span>
                         </button>
                     @endif
                     @if ($counts['equipe_technique'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'equipe_technique')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'equipe_technique' ? 'btn-primary' : 'btn-light border' }}">
-                            Équipe Technique <span class="badge bg-white bg-opacity-25 ms-1">{{ $counts['equipe_technique'] }}</span>
+                            Équipe Technique <span class="badge  bg-opacity-25 ms-1">{{ $counts['equipe_technique'] }}</span>
                         </button>
                     @endif
                 </div>
@@ -103,7 +103,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     @forelse ($members as $member)
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}" class="text-decoration-none text-reset d-block h-100">
-                                <div class="team-card h-100 d-flex flex-column justify-content-between p-3 border rounded-4 bg-white shadow-sm hover-shadow transition-all">
+                                <div class="team-card h-100 d-flex flex-column justify-content-between p-3 border rounded-4  shadow-sm hover-shadow transition-all">
                                     <div>
                                         <div class="team-photo mb-3 rounded-3 overflow-hidden position-relative" style="height: 230px; background: #f1f5f9;">
                                             @if ($member->avatar_url)
@@ -127,7 +127,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                             @endif
 
                                             @if ($member->is_founder)
-                                                <span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 px-2 py-1 rounded-pill small">
+                                                <span class="badge bg-opacity-75 text-white position-absolute top-0 start-0 m-2 px-2 py-1 rounded-pill small">
                                                     Fondateur
                                                 </span>
                                             @endif
