@@ -30,7 +30,7 @@ class CpanelPanelProvider extends PanelProvider
             ->path('admincarics')
             ->login()
             ->registration()
-
+            ->spa(hasPrefetching:true)
             // ── Palette CARICS : bleu marine + vert forêt ──
             ->colors([
                 'primary' => Color::hex('#1B3A6B'),
