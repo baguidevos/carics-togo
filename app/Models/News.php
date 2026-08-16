@@ -20,6 +20,8 @@ class News extends Model implements HasMedia
         $this->addMediaCollection('cover')
             ->singleFile()
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+
+        $this->addMediaCollection('content_attachments');
     }
 
     public function getCoverImageUrlAttribute(): ?string

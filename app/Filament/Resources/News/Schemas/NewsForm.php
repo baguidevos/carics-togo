@@ -4,13 +4,14 @@ namespace App\Filament\Resources\News\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Section;
+use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Set;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
@@ -39,11 +40,17 @@ class NewsForm
                         RichEditor::make('content')
                             ->label('Contenu')
                             ->required()
+                            ->fileAttachmentProvider(
+                                SpatieMediaLibraryFileAttachmentProvider::make()
+                                    ->collection('content_attachments')
+                            )
+                            ->fileAttachmentsVisibility('public')
                             ->toolbarButtons([
                                 'bold', 'italic', 'underline', 'strike',
                                 'h2', 'h3',
                                 'bulletList', 'orderedList',
-                                'link', 'blockquote',
+                                'link', 'blockquote', 'codeBlock', 'table',
+                                'attachFiles',
                                 'undo', 'redo',
                             ])
                             ->columnSpanFull(),

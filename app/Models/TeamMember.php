@@ -22,6 +22,8 @@ class TeamMember extends Model implements HasMedia
         $this->addMediaCollection('avatar')
             ->singleFile()
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+
+        $this->addMediaCollection('content_attachments');
     }
 
     public function registerMediaConversions(?Media $media = null): void

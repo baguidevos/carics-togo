@@ -24,6 +24,7 @@ class ResearchProject extends Model implements HasMedia
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
 
         $this->addMediaCollection('documents');
+        $this->addMediaCollection('content_attachments');
     }
 
     public function getCoverUrlAttribute(): ?string

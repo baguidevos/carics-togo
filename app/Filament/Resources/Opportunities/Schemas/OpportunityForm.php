@@ -4,10 +4,10 @@ namespace App\Filament\Resources\Opportunities\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class OpportunityForm
@@ -44,11 +44,23 @@ class OpportunityForm
                             ->label('Date limite de candidature'),
                         RichEditor::make('description')
                             ->label('Description du poste')
-                            ->toolbarButtons(['bold', 'italic', 'bulletList', 'orderedList', 'link'])
+                            ->toolbarButtons([
+                                'bold', 'italic', 'underline', 'strike',
+                                'h2', 'h3',
+                                'bulletList', 'orderedList',
+                                'link', 'blockquote', 'table',
+                                'undo', 'redo',
+                            ])
                             ->columnSpanFull(),
                         RichEditor::make('requirements')
                             ->label('Profil recherché / Prérequis')
-                            ->toolbarButtons(['bold', 'italic', 'bulletList', 'orderedList', 'link'])
+                            ->toolbarButtons([
+                                'bold', 'italic', 'underline',
+                                'h2', 'h3',
+                                'bulletList', 'orderedList',
+                                'link', 'blockquote', 'table',
+                                'undo', 'redo',
+                            ])
                             ->columnSpanFull(),
                     ]),
 
