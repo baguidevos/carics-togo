@@ -31,3 +31,11 @@ test('language switcher sets locale and redirects back', function () {
     $responseFr->assertRedirect();
     expect(session('locale'))->toBe('fr');
 });
+
+test('sitemap.xml returns valid xml response', function () {
+    $response = $this->get('/sitemap.xml');
+
+    $response->assertOk();
+    $response->assertHeader('Content-Type', 'application/xml; charset=utf-8');
+    expect($response->getContent())->toContain('<urlset');
+});

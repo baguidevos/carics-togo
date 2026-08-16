@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /cpanel/
+Disallow: /cpanel/*
+Disallow: /settings/
+Disallow: /dashboard
+
+Sitemap: https://carics-togo.org/sitemap.xml
