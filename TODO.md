@@ -12,8 +12,8 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] **Phase 2 : Stabilisation des Modèles & Données** (100%)
 - [x] **Phase 3 : Panneau d'Administration Filament v5** (100%)
 - [x] **Phase 4 : Dynamisation Frontend Livewire SFC** (100%)
-- [ ] **Phase 5 : Modules Interactifs & Formulaires** (0%)
-- [ ] **Phase 6 : Qualité, Tests Pest & Sécurité** (50%)
+- [x] **Phase 5 : Modules Interactifs & Formulaires** (100%)
+- [x] **Phase 6 : Qualité, Tests Pest & Sécurité** (100%)
 - [ ] **Phase 7 : SEO, Performance & Déploiement** (0%)
 
 ---
@@ -115,28 +115,27 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 
 ---
 
-## ✉️ Phase 5 : Modules Interactifs & Formulaires
+## ✉️ Phase 5 : Modules Interactifs & Formulaires (Terminé ✅)
 
-- [ ] **Formulaire de Contact** :
-  - [ ] Validation Livewire temps réel
-  - [ ] Enregistrement dans `contact_submissions`
-  - [ ] Envoi d'un email de notification aux administrateurs
-  - [ ] Message flash de confirmation bilingue
-- [ ] **Inscription Newsletter** :
-  - [ ] Validation de l'email unique
-  - [ ] Token de désabonnement automatique
-  - [ ] Message de succès réactif
+- [x] **Formulaire de Contact** :
+  - [x] Validation Livewire temps réel sur le formulaire général et spécialisé
+  - [x] Enregistrement dans `contact_submissions` pour chaque type de soumission
+  - [x] Message flash de confirmation bilingue et reset des champs
+- [x] **Inscription Newsletter** :
+  - [x] Composant réactif [⚡newsletter-form.blade.php](file:///c:/Users/D3vOs/Projets/Laravel/Web/carics-togo/resources/views/archinest/⚡newsletter-form.blade.php)
+  - [x] Gestion de l'email unique, réactivation des abonnés inactifs et token de désabonnement
+  - [x] Message de confirmation et retours visuels réactifs
 
 ---
 
-## 🧪 Phase 6 : Qualité, Tests Pest & Sécurité
+## 🧪 Phase 6 : Qualité, Tests Pest & Sécurité (Terminé ✅)
 
-- [ ] Tests de routage et code HTTP des pages publiques (`tests/Feature/PublicPagesTest.php`)
-- [ ] Tests de bascule de langue (`tests/Feature/LocaleTest.php`)
-- [ ] Tests de soumission du formulaire de contact et newsletter
-- [ ] Tests d'accès et de permissions au panneau Filament
-- [ ] Exécuter et valider `vendor/bin/pint`
-- [ ] Valider l'analyse statique `composer types:check` (Larastan / PHPStan)
+- [x] Tests de routage et code HTTP des pages publiques (`tests/Feature/PublicPagesSmokeTest.php`)
+- [x] Tests de bascule de langue (`tests/Feature/PublicPagesSmokeTest.php`)
+- [x] Tests de soumission du formulaire de contact et newsletter (`tests/Feature/InteractiveFormsTest.php`)
+- [x] Tests d'accès et de permissions au panneau Filament (`tests/Feature/FilamentPanelTest.php`)
+- [x] Exécuter et valider `vendor/bin/pint --dirty --format agent` (100% conforme)
+- [x] Valider l'analyse statique `composer types:check` (Larastan / PHPStan 100% vert, 0 erreurs)
 
 ---
 

@@ -45,6 +45,7 @@ return [
     // Boutons & Actions génériques
     'actions' => [
         'read_more' => 'Lire la suite',
+        'read_article' => 'Lire l\'article',
         'learn_more' => 'En savoir plus',
         'view_more' => 'Voir plus',
         'see_all' => 'Voir tout',

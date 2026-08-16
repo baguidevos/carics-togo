@@ -1,26 +1,162 @@
 <?php
 
-use Livewire\Component;
+use App\Models\ContactSubmission;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 new #[Layout('layouts::archinest')] class extends Component {
-    //
+    // Formulaire Général
+    public string $nom = '';
+    public string $prenom = '';
+    public string $email = '';
+    public string $organisation = '';
+    public string $objet = '';
+    public string $message = '';
+    public bool $rgpd = false;
+    public bool $successGeneral = false;
+
+    // Formulaire Spécialisé : Collaboration
+    public string $c_nom = '';
+    public string $c_institution = '';
+    public string $c_domaine = '';
+    public string $c_projet = '';
+    public bool $successCollaboration = false;
+
+    // Formulaire Spécialisé : Stage
+    public string $s_nom = '';
+    public string $s_universite = '';
+    public string $s_niveau = '';
+    public string $s_domaine = '';
+    public bool $successStage = false;
+
+    // Formulaire Spécialisé : Médias
+    public string $m_nom = '';
+    public string $m_media = '';
+    public string $m_sujet = '';
+    public string $m_date = '';
+    public string $m_contact = '';
+    public bool $successMedia = false;
+
+    public function submitGeneral(): void
+    {
+        $this->validate([
+            'nom'          => 'required|string|min:2|max:100',
+            'prenom'       => 'required|string|min:2|max:100',
+            'email'        => 'required|email|max:150',
+            'organisation' => 'nullable|string|max:150',
+            'objet'        => 'required|string|max:100',
+            'message'      => 'required|string|min:10|max:5000',
+            'rgpd'         => 'accepted',
+        ]);
+
+        ContactSubmission::create([
+            'form_type'    => 'general',
+            'full_name'    => trim("{$this->prenom} {$this->nom}"),
+            'email'        => $this->email,
+            'organisation' => $this->organisation ?: null,
+            'subject'      => $this->objet,
+            'message'      => $this->message,
+            'meta'         => ['source' => 'web_contact_general'],
+            'is_read'      => false,
+            'is_archived'  => false,
+        ]);
+
+        $this->reset(['nom', 'prenom', 'email', 'organisation', 'objet', 'message', 'rgpd']);
+        $this->successGeneral = true;
+    }
+
+    public function submitCollaboration(): void
+    {
+        $this->validate([
+            'c_nom'         => 'required|string|min:2|max:150',
+            'c_institution' => 'required|string|min:2|max:150',
+            'c_domaine'     => 'required|string|min:2|max:150',
+            'c_projet'      => 'required|string|min:10|max:5000',
+        ]);
+
+        ContactSubmission::create([
+            'form_type'    => 'collaboration',
+            'full_name'    => $this->c_nom,
+            'email'        => 'contact@carics-togo.org', // Email par défaut si non renseigné
+            'organisation' => $this->c_institution,
+            'subject'      => "Demande de Collaboration : {$this->c_domaine}",
+            'message'      => $this->c_projet,
+            'meta'         => [
+                'institution' => $this->c_institution,
+                'domaine'     => $this->c_domaine,
+            ],
+            'is_read'      => false,
+            'is_archived'  => false,
+        ]);
+
+        $this->reset(['c_nom', 'c_institution', 'c_domaine', 'c_projet']);
+        $this->successCollaboration = true;
+    }
+
+    public function submitStage(): void
+    {
+        $this->validate([
+            's_nom'        => 'required|string|min:2|max:150',
+            's_universite' => 'required|string|min:2|max:150',
+            's_niveau'     => 'required|string|max:50',
+            's_domaine'    => 'required|string|min:2|max:150',
+        ]);
+
+        ContactSubmission::create([
+            'form_type'    => 'stage',
+            'full_name'    => $this->s_nom,
+            'email'        => 'contact@carics-togo.org',
+            'organisation' => $this->s_universite,
+            'subject'      => "Candidature Stage ({$this->s_niveau}) : {$this->s_domaine}",
+            'message'      => "Candidature pour un stage / accueil scientifique.\nUniversité : {$this->s_universite}\nNiveau : {$this->s_niveau}\nDomaine : {$this->s_domaine}",
+            'meta'         => [
+                'universite' => $this->s_universite,
+                'niveau'     => $this->s_niveau,
+                'domaine'    => $this->s_domaine,
+            ],
+            'is_read'      => false,
+            'is_archived'  => false,
+        ]);
+
+        $this->reset(['s_nom', 's_universite', 's_niveau', 's_domaine']);
+        $this->successStage = true;
+    }
+
+    public function submitMedia(): void
+    {
+        $this->validate([
+            'm_nom'     => 'required|string|min:2|max:150',
+            'm_media'   => 'required|string|min:2|max:150',
+            'm_sujet'   => 'required|string|min:2|max:200',
+            'm_date'    => 'nullable|date',
+            'm_contact' => 'required|email|max:150',
+        ]);
+
+        ContactSubmission::create([
+            'form_type'    => 'media',
+            'full_name'    => $this->m_nom,
+            'email'        => $this->m_contact,
+            'organisation' => $this->m_media,
+            'subject'      => "Demande Média / Presse : {$this->m_sujet}",
+            'message'      => "Demande d'interview ou de reportage.\nMédia : {$this->m_media}\nSujet : {$this->m_sujet}\nDate souhaitée : {$this->m_date}",
+            'meta'         => [
+                'media'          => $this->m_media,
+                'date_souhaitee' => $this->m_date,
+            ],
+            'is_read'      => false,
+            'is_archived'  => false,
+        ]);
+
+        $this->reset(['m_nom', 'm_media', 'm_sujet', 'm_date', 'm_contact']);
+        $this->successMedia = true;
+    }
 };
 ?>
 
 <div>
 
-    <!-- ============ HERO ============ -->
-    {{-- <header class="hero-sm">
-        <div class="container">
-            <div class="breadcrumb-carics"><a href="index.html">Accueil</a><span class="sep">/</span>Contact</div>
-            <h1 class="font-display">Contactez-nous</h1>
-            <p class="lead">Notre équipe répond à toutes les demandes de collaboration, de partenariat ou
-                d&rsquo;information dans les meilleurs délais.</p>
-        </div>
-    </header> --}}
-
-     <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
+    <!-- Start main-content -->
+    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
                 <h1 class="title">{{ __('contact.title') }}</h1>
@@ -42,33 +178,48 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="eyebrow">{{ __('contact.form.eyebrow') }}</div>
                     <h2 class="section-title mb-4">{{ __('contact.form.title') }}</h2>
 
-                    <form class="form-carics needs-validation" novalidate>
+                    @if ($successGeneral)
+                        <div class="form-success mb-4 p-4 rounded-3"
+                            style="background:var(--success-soft); border-left:4px solid var(--success);">
+                            <div class="d-flex gap-3 align-items-start">
+                                <i class="bi bi-check-circle-fill text-success mt-1 fs-5"></i>
+                                <div>
+                                    <div class="fw-semibold mb-1" style="color:var(--success);">{{ __('contact.form.success_title') }}</div>
+                                    <p class="mb-0" style="font-size:.92rem; color:var(--ink);">
+                                        {{ __('contact.form.success_text') }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    <form wire:submit="submitGeneral" class="form-carics">
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label for="nom">{{ __('contact.form.last_name') }} <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="nom" placeholder="{{ __('contact.form.last_name_placeholder') }}" required>
-                                <div class="invalid-feedback">{{ __('contact.form.required_field') }}</div>
+                                <input type="text" wire:model="nom" class="form-control @error('nom') is-invalid @enderror" id="nom" placeholder="{{ __('contact.form.last_name_placeholder') }}">
+                                @error('nom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="prenom">{{ __('contact.form.first_name') }} <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="prenom" placeholder="{{ __('contact.form.first_name_placeholder') }}" required>
-                                <div class="invalid-feedback">{{ __('contact.form.required_field') }}</div>
+                                <input type="text" wire:model="prenom" class="form-control @error('prenom') is-invalid @enderror" id="prenom" placeholder="{{ __('contact.form.first_name_placeholder') }}">
+                                @error('prenom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
                             <div class="col-12">
                                 <label for="email">{{ __('contact.form.email') }} <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="email" placeholder="{{ __('contact.form.email_placeholder') }}"
-                                    required>
-                                <div class="invalid-feedback">{{ __('contact.form.invalid_email') }}</div>
+                                <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="{{ __('contact.form.email_placeholder') }}">
+                                @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
                             <div class="col-12">
                                 <label for="organisation">{{ __('contact.form.organization') }}</label>
-                                <input type="text" class="form-control" id="organisation"
+                                <input type="text" wire:model="organisation" class="form-control @error('organisation') is-invalid @enderror" id="organisation"
                                     placeholder="{{ __('contact.form.organization_placeholder') }}">
+                                @error('organisation') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
                             <div class="col-12">
                                 <label for="objet">{{ __('contact.form.subject') }} <span class="text-danger">*</span></label>
-                                <select class="form-select" id="objet" required>
-                                    <option value="" selected disabled>{{ __('contact.form.select_subject') }}</option>
+                                <select wire:model="objet" class="form-select @error('objet') is-invalid @enderror" id="objet">
+                                    <option value="" selected>{{ __('contact.form.select_subject') }}</option>
                                     <option value="collaboration">{{ __('contact.form.subjects.collaboration') }}</option>
                                     <option value="stage">{{ __('contact.form.subjects.internship') }}</option>
                                     <option value="partenariat">{{ __('contact.form.subjects.partnership') }}</option>
@@ -76,45 +227,31 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     <option value="media">{{ __('contact.form.subjects.media') }}</option>
                                     <option value="autre">{{ __('contact.form.subjects.other') }}</option>
                                 </select>
-                                <div class="invalid-feedback">{{ __('contact.form.required_field') }}</div>
+                                @error('objet') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
                             <div class="col-12">
                                 <label for="message">{{ __('contact.form.message') }} <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="message"
-                                    placeholder="{{ __('contact.form.message_placeholder') }}" required
-                                    minlength="30"></textarea>
-                                <div class="invalid-feedback">{{ __('contact.form.invalid_message') }}</div>
+                                <textarea wire:model="message" class="form-control @error('message') is-invalid @enderror" id="message"
+                                    placeholder="{{ __('contact.form.message_placeholder') }}" rows="4"></textarea>
+                                @error('message') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
                             <div class="col-12">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="rgpd" required>
+                                    <input type="checkbox" wire:model="rgpd" class="form-check-input @error('rgpd') is-invalid @enderror" id="rgpd">
                                     <label class="form-check-label" for="rgpd"
                                         style="font-weight:400; font-size:.88rem; color:var(--muted);">
                                         {{ __('contact.form.privacy_agree') }}
                                         <a href="#" class="text-accent">{{ __('contact.form.privacy_link') }}</a>. <span
                                             class="text-danger">*</span>
                                     </label>
-                                    <div class="invalid-feedback">{{ __('contact.form.privacy_required') }}
-                                    </div>
+                                    @error('rgpd') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn-cta w-100 border-0">{{ __('contact.form.send_btn') }} <i
-                                        class="bi bi-arrow-right ms-1"></i></button>
-                            </div>
-                        </div>
-
-                        <!-- Message de succès (caché par défaut) -->
-                        <div class="form-success d-none mt-4 p-4 rounded-3"
-                            style="background:var(--success-soft); border-left:3px solid var(--success);">
-                            <div class="d-flex gap-3 align-items-start">
-                                <i class="bi bi-check-circle-fill text-success mt-1"></i>
-                                <div>
-                                    <div class="fw-semibold mb-1" style="color:var(--success);">{{ __('contact.form.success_title') }}</div>
-                                    <p class="mb-0" style="font-size:.92rem; color:var(--ink);">
-                                        {{ __('contact.form.success_text') }}
-                                    </p>
-                                </div>
+                                <button type="submit" class="btn-cta w-100 border-0" wire:loading.attr="disabled">
+                                    <span wire:loading.remove>{{ __('contact.form.send_btn') }} <i class="bi bi-arrow-right ms-1"></i></span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi en cours...</span>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -134,8 +271,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="text-muted-2 mb-1"
                                     style="font-size:.78rem; font-family:var(--font-mono); letter-spacing:.08em; text-transform:uppercase;">
                                     {{ __('contact.info.email_label') }}</div>
-                                <a href="mailto:info@carics.org" class="fw-semibold text-decoration-none"
-                                    style="color:var(--ink);">info@carics.org</a>
+                                <a href="mailto:contact@carics-togo.org" class="fw-semibold text-decoration-none"
+                                    style="color:var(--ink);">contact@carics-togo.org</a>
                             </div>
                         </div>
 
@@ -170,7 +307,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         </div>
                     </div>
 
-                    <!-- Carte placeholder -->
+                    <!-- Carte -->
                     <div class="map-frame mb-4">
                         <div class="text-center">
                             <i class="fa fa-map-location display-5 d-block mb-2" style="color:var(--accent);"></i>
@@ -204,31 +341,41 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <p class="text-muted-2 mb-4" style="font-size:.92rem;">
                             {{ __('contact.specialized.collaboration.desc') }}
                         </p>
-                        <form class="form-carics needs-validation" novalidate>
+
+                        @if ($successCollaboration)
+                            <div class="form-success mb-3 p-3 rounded-2" style="background:var(--success-soft); color:var(--success);">
+                                <i class="fa fa-check-circle me-2"></i>{{ __('contact.specialized.collaboration.success') }}
+                            </div>
+                        @endif
+
+                        <form wire:submit="submitCollaboration" class="form-carics">
                             <div class="d-flex flex-column gap-3">
                                 <div>
                                     <label for="c-nom">{{ __('contact.specialized.collaboration.fullname') }} <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="c-nom" required>
+                                    <input type="text" wire:model="c_nom" class="form-control @error('c_nom') is-invalid @enderror" id="c-nom">
+                                    @error('c_nom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="c-institution">{{ __('contact.specialized.collaboration.institution') }} <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="c-institution" required>
+                                    <input type="text" wire:model="c_institution" class="form-control @error('c_institution') is-invalid @enderror" id="c-institution">
+                                    @error('c_institution') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="c-domaine">{{ __('contact.specialized.collaboration.domain') }} <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="c-domaine" required>
+                                    <input type="text" wire:model="c_domaine" class="form-control @error('c_domaine') is-invalid @enderror" id="c-domaine">
+                                    @error('c_domaine') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="c-projet">{{ __('contact.specialized.collaboration.project_desc') }} <span
                                             class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="c-projet" rows="3" required></textarea>
+                                    <textarea wire:model="c_projet" class="form-control @error('c_projet') is-invalid @enderror" id="c-projet" rows="3"></textarea>
+                                    @error('c_projet') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
-                                <button type="submit" class="btn-cta border-0">{{ __('contact.specialized.collaboration.submit') }} <i
-                                        class="bi bi-arrow-right ms-1"></i></button>
-                            </div>
-                            <div class="form-success d-none mt-3 p-3 rounded-2" style="background:var(--success-soft);">
-                                <i class="fa fa-check-circle text-success me-2"></i>{{ __('contact.specialized.collaboration.success') }}
+                                <button type="submit" class="btn-cta border-0" wire:loading.attr="disabled">
+                                    <span wire:loading.remove>{{ __('contact.specialized.collaboration.submit') }} <i class="bi bi-arrow-right ms-1"></i></span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi...</span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -242,37 +389,47 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <p class="text-muted-2 mb-4" style="font-size:.92rem;">
                             {{ __('contact.specialized.stage.desc') }}
                         </p>
-                        <form class="form-carics needs-validation" novalidate>
+
+                        @if ($successStage)
+                            <div class="form-success mb-3 p-3 rounded-2" style="background:var(--success-soft); color:var(--success);">
+                                <i class="fa fa-check-circle me-2"></i>{{ __('contact.specialized.stage.success') }}
+                            </div>
+                        @endif
+
+                        <form wire:submit="submitStage" class="form-carics">
                             <div class="d-flex flex-column gap-3">
                                 <div>
                                     <label for="s-nom">{{ __('contact.specialized.stage.fullname') }} <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="s-nom" required>
+                                    <input type="text" wire:model="s_nom" class="form-control @error('s_nom') is-invalid @enderror" id="s-nom">
+                                    @error('s_nom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="s-universite">{{ __('contact.specialized.stage.university') }} <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="s-universite" required>
+                                    <input type="text" wire:model="s_universite" class="form-control @error('s_universite') is-invalid @enderror" id="s-universite">
+                                    @error('s_universite') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="s-niveau">{{ __('contact.specialized.stage.level') }} <span
                                             class="text-danger">*</span></label>
-                                    <select class="form-select" id="s-niveau" required>
-                                        <option value="" selected disabled>{{ __('contact.specialized.stage.select_level') }}</option>
-                                        <option>{{ __('contact.specialized.stage.levels.master') }}</option>
-                                        <option>{{ __('contact.specialized.stage.levels.doctorate') }}</option>
-                                        <option>{{ __('contact.specialized.stage.levels.postdoc') }}</option>
+                                    <select wire:model="s_niveau" class="form-select @error('s_niveau') is-invalid @enderror" id="s-niveau">
+                                        <option value="" selected>{{ __('contact.specialized.stage.select_level') }}</option>
+                                        <option value="master">{{ __('contact.specialized.stage.levels.master') }}</option>
+                                        <option value="doctorate">{{ __('contact.specialized.stage.levels.doctorate') }}</option>
+                                        <option value="postdoc">{{ __('contact.specialized.stage.levels.postdoc') }}</option>
                                     </select>
+                                    @error('s_niveau') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="s-domaine">{{ __('contact.specialized.stage.domain') }} <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="s-domaine" required>
+                                    <input type="text" wire:model="s_domaine" class="form-control @error('s_domaine') is-invalid @enderror" id="s-domaine">
+                                    @error('s_domaine') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
-                                <button type="submit" class="btn-cta border-0">{{ __('contact.specialized.stage.submit') }} <i
-                                        class="fa fa-arrow-right ms-1"></i></button>
-                            </div>
-                            <div class="form-success d-none mt-3 p-3 rounded-2" style="background:var(--success-soft);">
-                                <i class="fa fa-check-circle text-success me-2"></i>{{ __('contact.specialized.stage.success') }}
+                                <button type="submit" class="btn-cta border-0" wire:loading.attr="disabled">
+                                    <span wire:loading.remove>{{ __('contact.specialized.stage.submit') }} <i class="fa fa-arrow-right ms-1"></i></span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi...</span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -286,34 +443,45 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <p class="text-muted-2 mb-4" style="font-size:.92rem;">
                             {{ __('contact.specialized.media.desc') }}
                         </p>
-                        <form class="form-carics needs-validation" novalidate>
+
+                        @if ($successMedia)
+                            <div class="form-success mb-3 p-3 rounded-2" style="background:var(--success-soft); color:var(--success);">
+                                <i class="fa fa-check-circle text-success me-2"></i>{{ __('contact.specialized.media.success') }}
+                            </div>
+                        @endif
+
+                        <form wire:submit="submitMedia" class="form-carics">
                             <div class="d-flex flex-column gap-3">
                                 <div>
                                     <label for="m-nom">{{ __('contact.specialized.media.fullname') }} <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="m-nom" required>
+                                    <input type="text" wire:model="m_nom" class="form-control @error('m_nom') is-invalid @enderror" id="m-nom">
+                                    @error('m_nom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="m-media">{{ __('contact.specialized.media.organization') }} <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="m-media" required>
+                                    <input type="text" wire:model="m_media" class="form-control @error('m_media') is-invalid @enderror" id="m-media">
+                                    @error('m_media') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="m-sujet">{{ __('contact.specialized.media.subject') }} <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="m-sujet" required>
+                                    <input type="text" wire:model="m_sujet" class="form-control @error('m_sujet') is-invalid @enderror" id="m-sujet">
+                                    @error('m_sujet') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="m-date">{{ __('contact.specialized.media.date') }}</label>
-                                    <input type="date" class="form-control" id="m-date">
+                                    <input type="date" wire:model="m_date" class="form-control @error('m_date') is-invalid @enderror" id="m-date">
+                                    @error('m_date') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div>
                                     <label for="m-contact">{{ __('contact.specialized.media.email') }} <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="m-contact" required>
+                                    <input type="email" wire:model="m_contact" class="form-control @error('m_contact') is-invalid @enderror" id="m-contact">
+                                    @error('m_contact') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
-                                <button type="submit" class="btn-cta border-0">{{ __('contact.specialized.media.submit') }} <i
-                                        class="fa fa-arrow-right ms-1"></i></button>
-                            </div>
-                            <div class="form-success d-none mt-3 p-3 rounded-2" style="background:var(--success-soft);">
-                                <i class="fa fa-check-circle text-success me-2"></i>{{ __('contact.specialized.media.success') }}
+                                <button type="submit" class="btn-cta border-0" wire:loading.attr="disabled">
+                                    <span wire:loading.remove>{{ __('contact.specialized.media.submit') }} <i class="fa fa-arrow-right ms-1"></i></span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi...</span>
+                                </button>
                             </div>
                         </form>
                     </div>

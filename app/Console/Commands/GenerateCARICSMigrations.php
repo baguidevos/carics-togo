@@ -66,7 +66,7 @@ class GenerateCARICSMigrations extends Command
     private function getTimestamp(): string
     {
         $this->timestamp++;
-        return date('Y_m_d_') . str_pad($this->timestamp, 6, '0', STR_PAD_LEFT);
+        return date('Y_m_d_') . str_pad((string) $this->timestamp, 6, '0', STR_PAD_LEFT);
     }
 
     private function createMigration(string $name, string $content): void
