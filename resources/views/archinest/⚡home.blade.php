@@ -1,14 +1,18 @@
 <?php
 
-use Livewire\Component;
-use Livewire\Attributes\Layout;
+use App\Models\News;
+use App\Models\Partner;
 use App\Models\TeamMember;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 new #[Layout('layouts::archinest')] class extends Component {
     public function with(): array
     {
         return [
-            'members' => TeamMember::published()->ordered()->get(),
+            'members'    => TeamMember::published()->ordered()->take(4)->get(),
+            'partners'   => Partner::active()->ordered()->get(),
+            'latestNews' => News::published()->recent()->take(3)->get(),
         ];
     }
 };
@@ -296,6 +300,15 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <p class="partenaire-content">
                         {{ __('home.work_together.description') }}
                     </p>
+                    @if ($partners->isNotEmpty())
+                        <div class="d-flex flex-wrap justify-content-center gap-3 my-4">
+                            @foreach ($partners as $partner)
+                                <div class="px-4 py-2 rounded-pill bg-white text-dark shadow-sm border fw-semibold d-inline-flex align-items-center" style="font-size: 0.9rem; letter-spacing: 0.02em;">
+                                    <i class="bi bi-building me-2 text-primary"></i> {{ $partner->name }}
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                     <div class="claint-outer">
                         <div>
                             <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">

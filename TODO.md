@@ -11,9 +11,9 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 - [x] **Phase 1 : Traduction & Internationalisation (i18n)** (100%)
 - [x] **Phase 2 : Stabilisation des Modèles & Données** (100%)
 - [x] **Phase 3 : Panneau d'Administration Filament v5** (100%)
-- [ ] **Phase 4 : Dynamisation Frontend Livewire SFC** (10%)
+- [x] **Phase 4 : Dynamisation Frontend Livewire SFC** (100%)
 - [ ] **Phase 5 : Modules Interactifs & Formulaires** (0%)
-- [ ] **Phase 6 : Qualité, Tests Pest & Sécurité** (40%)
+- [ ] **Phase 6 : Qualité, Tests Pest & Sécurité** (50%)
 - [ ] **Phase 7 : SEO, Performance & Déploiement** (0%)
 
 ---
@@ -104,14 +104,14 @@ Branche active : `fix/content-corrections` (ou future branche `feature/i18n-stat
 
 ---
 
-## 💻 Phase 4 : Dynamisation Frontend Livewire SFC
+## 💻 Phase 4 : Dynamisation Frontend Livewire SFC (Terminé ✅)
 
-- [ ] Connecter la page **Accueil** à la base de données (derniers articles, projet phare, partenaires actifs)
-- [ ] Connecter la page **Recherche & Projets** aux modèles `ResearchProject` et domaines réels
-- [ ] Connecter la page **Ressources & Publications** aux modèles `Publication` et `Resource`
-- [ ] Connecter la page **Actualités & Opportunités** aux modèles `News` et `Opportunity`
-- [ ] Connecter la page **Équipe** et fiche individuelle `team-detail` aux enregistrements `TeamMember`
-- [ ] Gérer les états vides ("Aucun résultat pour le moment") de manière élégante et bilingue
+- [x] Connecter la page **Accueil** à la base de données (membres fondateurs, partenaires actifs, derniers flux)
+- [x] Connecter la page **Recherche & Projets** aux modèles `ResearchProject` et domaines réels
+- [x] Connecter la page **Ressources & Publications** aux modèles `Publication` et `Resource`
+- [x] Connecter la page **Actualités & Opportunités** aux modèles `News`, `Opportunity` et `Partner`
+- [x] Connecter la page **Équipe** et fiche individuelle `team-detail` aux enregistrements `TeamMember`
+- [x] Gérer les états vides ("Aucun résultat pour le moment") de manière élégante et bilingue
 
 ---
 

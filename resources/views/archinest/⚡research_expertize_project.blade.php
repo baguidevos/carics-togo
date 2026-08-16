@@ -1,10 +1,17 @@
 <?php
 
-use Livewire\Component;
+use App\Models\ResearchProject;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 new #[Layout('layouts::archinest')] class extends Component {
-    //
+    public function with(): array
+    {
+        return [
+            'featuredProject' => ResearchProject::published()->featured()->with('lead', 'partners')->first() ?? ResearchProject::published()->first(),
+            'allProjects'     => ResearchProject::published()->ordered()->with('lead', 'partners')->get(),
+        ];
+    }
 };
 ?>
 
@@ -68,9 +75,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 </div>
                             </div>
                         </li>
+
                         <!-- Block -->
-                        <li class="accordion block active-block">
-                            <div class="acc-btn active">
+                        <li class="accordion block">
+                            <div class="acc-btn">
                                 {{ __('research.domains.item_2_title') }}
                                 <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
                             </div>
@@ -173,6 +181,7 @@ new #[Layout('layouts::archinest')] class extends Component {
         </div>
     </section>
     <!-- End Expertise Six -->
+
     <!-- Projet phare Section -->
     <section class="project-details pt-120 pb-70">
         <div class="auto-container">
@@ -184,11 +193,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                             {{ __('research.featured_project.section_title') }}
                         </h2>
                         <p class="text wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-                            {{ __('research.featured_project.project_title') }}
+                            {{ $featuredProject?->title ?? __('research.featured_project.project_title') }}
                         </p>
                     </div>
-                    <a href="{{ route('recherche-expertize-projet') }}" class="theme-btn btn-style-one">
-                        <span class="btn-title">{{ __('navigation.actions.other_projects') }}</span> <i class="icon fa-light fa-arrow-right"></i>
+                    <a href="{{ route('contact') }}" class="theme-btn btn-style-one">
+                        <span class="btn-title">{{ __('navigation.actions.collaborate') ?? 'Collaborer' }}</span> <i class="icon fa-light fa-arrow-right"></i>
                     </a>
 
                 </div>
@@ -198,19 +207,37 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <ul class="list-unstyled project-details__details-list">
                                 <li>
                                     <h4 class="project-details__name mb-2">{{ __('research.featured_project.period_label') }}</h4>
-                                    <p class="project-details__client">{{ __('research.featured_project.period_value') }}</p>
+                                    <p class="project-details__client">
+                                        @if ($featuredProject?->start_date)
+                                            {{ $featuredProject->start_date->format('Y') }} – {{ $featuredProject->end_date?->format('Y') ?? 'En cours' }}
+                                        @else
+                                            {{ __('research.featured_project.period_value') }}
+                                        @endif
+                                    </p>
                                 </li>
                                 <li>
                                     <h4 class="project-details__name mb-2">{{ __('research.featured_project.zone_label') }}</h4>
-                                    <p class="project-details__client">{{ __('research.featured_project.zone_value') }}</p>
+                                    <p class="project-details__client">
+                                        @if (!empty($featuredProject?->intervention_zones))
+                                            {{ implode(', ', $featuredProject->intervention_zones) }} ({{ $featuredProject->region ?? 'Togo' }})
+                                        @else
+                                            {{ __('research.featured_project.zone_value') }}
+                                        @endif
+                                    </p>
                                 </li>
                                 <li>
                                     <h4 class="project-details__name mb-2">{{ __('research.featured_project.funding_label') }}</h4>
-                                    <p class="project-details__client">{{ __('research.featured_project.funding_value') }}</p>
+                                    <p class="project-details__client">{{ $featuredProject?->funder ?? __('research.featured_project.funding_value') }}</p>
                                 </li>
                                 <li>
                                     <h4 class="project-details__name mb-2">{{ __('research.featured_project.status_label') }}</h4>
-                                    <p class="project-details__client">{{ __('research.featured_project.status_value') }}</p>
+                                    <p class="project-details__client">
+                                        @if ($featuredProject?->status === 'en_cours')
+                                            <span class="badge bg-success-subtle text-success px-2 py-1">{{ __('research.featured_project.status_value') }}</span>
+                                        @else
+                                            {{ ucfirst(str_replace('_', ' ', $featuredProject?->status ?? '')) }}
+                                        @endif
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -236,7 +263,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-6">
                     <div class="project-details__top mt-lg-5">
                         <div class="text mb-40">
-                            {{ __('research.featured_project.context_text') }}
+                            {{ $featuredProject?->context ?? __('research.featured_project.context_text') }}
                         </div>
 
                     </div>
@@ -257,7 +284,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 {{ __('research.featured_project.objective_title') }}
                             </h5>
                             <div class="text">
-                                {{ __('research.featured_project.objective_text') }}
+                                {{ $featuredProject?->objective ?? __('research.featured_project.objective_text') }}
                             </div>
                         </div>
                         <div class="project-list-item mb-5">
@@ -265,15 +292,21 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 {{ __('research.featured_project.results_title') }}</h5>
                             <div class="text">
                                 <ul>
-
-                                    <li class="d-flex align-items-center"><i
-                                            class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_1') }}</li>
-                                    <li class="d-flex align-items-center"><i
-                                            class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_2') }}</li>
-                                    <li class="d-flex align-items-center"><i
-                                            class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_3') }}</li>
-                                    <li class="d-flex align-items-center"><i
-                                            class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_4') }}</li>
+                                    @if (!empty($featuredProject?->expected_results))
+                                        @foreach ($featuredProject->expected_results as $res)
+                                            <li class="d-flex align-items-center"><i
+                                                    class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ $res }}</li>
+                                        @endforeach
+                                    @else
+                                        <li class="d-flex align-items-center"><i
+                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_1') }}</li>
+                                        <li class="d-flex align-items-center"><i
+                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_2') }}</li>
+                                        <li class="d-flex align-items-center"><i
+                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_3') }}</li>
+                                        <li class="d-flex align-items-center"><i
+                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_4') }}</li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -290,7 +323,4 @@ new #[Layout('layouts::archinest')] class extends Component {
         </div>
     </section>
     <!-- End Projet phare Section -->
-
-
-
 </div>
