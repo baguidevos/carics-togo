@@ -7,30 +7,30 @@ beforeEach(function () {
     $this->seed(DatabaseSeeder::class);
 });
 
-test('unauthenticated users are redirected to cpanel login', function () {
-    $response = $this->get('/cpanel');
+test('unauthenticated users are redirected to admincarics login', function () {
+    $response = $this->get('/admincarics');
 
-    $response->assertRedirect('/cpanel/login');
+    $response->assertRedirect('/admincarics/login');
 });
 
-test('authenticated admin can access cpanel dashboard and resources', function (string $uri) {
+test('authenticated admin can access admincarics dashboard and resources', function (string $uri) {
     $admin = User::first();
 
     $response = $this->actingAs($admin)->get($uri);
 
     $response->assertOk();
 })->with([
-    '/cpanel',
-    '/cpanel/team-members',
-    '/cpanel/research-projects',
-    '/cpanel/blog-posts',
-    '/cpanel/publications',
-    '/cpanel/news',
-    '/cpanel/opportunities',
-    '/cpanel/partners',
-    '/cpanel/resources',
-    '/cpanel/categories',
-    '/cpanel/contact-submissions',
-    '/cpanel/newsletter-subscribers',
-    '/cpanel/site-settings',
+    '/admincarics',
+    '/admincarics/team-members',
+    '/admincarics/research-projects',
+    '/admincarics/blog-posts',
+    '/admincarics/publications',
+    '/admincarics/news',
+    '/admincarics/opportunities',
+    '/admincarics/partners',
+    '/admincarics/resources',
+    '/admincarics/categories',
+    '/admincarics/contact-submissions',
+    '/admincarics/newsletter-subscribers',
+    '/admincarics/site-settings',
 ]);

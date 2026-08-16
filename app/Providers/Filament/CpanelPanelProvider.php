@@ -26,8 +26,8 @@ class CpanelPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('cpanel')
-            ->path('cpanel')
+            ->id('admincarics')
+            ->path('admincarics')
             ->login()
             ->registration()
 

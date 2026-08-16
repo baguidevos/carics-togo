@@ -25,39 +25,39 @@ class StatsOverviewWidget extends BaseWidget
                 ->descriptionIcon('heroicon-m-academic-cap')
                 ->color('primary')
                 ->chart($this->getWeeklyTrend(ResearchProject::class))
-                ->url(route('filament.cpanel.resources.research-projects.index')),
+                ->url(route('filament.admincarics.resources.research-projects.index')),
 
             Stat::make('Publications & Rapports', Publication::count())
                 ->description('Articles et notes techniques')
                 ->descriptionIcon('heroicon-m-document-text')
                 ->color('success')
                 ->chart($this->getWeeklyTrend(Publication::class))
-                ->url(route('filament.cpanel.resources.publications.index')),
+                ->url(route('filament.admincarics.resources.publications.index')),
 
             Stat::make('Membres de l\'équipe', TeamMember::count())
                 ->description('Chercheurs & gouvernance')
                 ->descriptionIcon('heroicon-m-users')
                 ->color('info')
-                ->url(route('filament.cpanel.resources.team-members.index')),
+                ->url(route('filament.admincarics.resources.team-members.index')),
 
             Stat::make('Articles de blog', BlogPost::count())
                 ->description('Contenus publiés')
                 ->descriptionIcon('heroicon-m-newspaper')
                 ->color('primary')
                 ->chart($this->getWeeklyTrend(BlogPost::class))
-                ->url(route('filament.cpanel.resources.blog-posts.index')),
+                ->url(route('filament.admincarics.resources.blog-posts.index')),
 
             Stat::make('Messages non lus', ContactSubmission::unread()->count())
                 ->description('Messages en attente')
                 ->descriptionIcon('heroicon-m-envelope')
                 ->color('warning')
-                ->url(route('filament.cpanel.resources.contact-submissions.index')),
+                ->url(route('filament.admincarics.resources.contact-submissions.index')),
 
             Stat::make('Abonnés Newsletter', NewsletterSubscriber::active()->count())
                 ->description('Lecteurs actifs')
                 ->descriptionIcon('heroicon-m-at-symbol')
                 ->color('gray')
-                ->url(route('filament.cpanel.resources.newsletter-subscribers.index')),
+                ->url(route('filament.admincarics.resources.newsletter-subscribers.index')),
         ];
     }
 

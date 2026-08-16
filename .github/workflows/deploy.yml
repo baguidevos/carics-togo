@@ -111,9 +111,9 @@ jobs:
             **ARCHITETURE.md**
 
       # 10. migrations
-      - name: Run database migrations
-        if: contains(steps.changed-files.outputs.all_changed_files, 'database/migrations/')
-        run: php artisan migrate
+      # - name: Run database migrations
+      #   if: contains(steps.changed-files.outputs.all_changed_files, 'database/migrations/')
+      #   run: php artisan migrate
 
       # 9. Vider le cache Laravel (optionnel)
       - name: Clear Laravel cache
@@ -122,6 +122,10 @@ jobs:
           php artisan config:cache
           php artisan route:cache
           php artisan view:cache
+      - name: Clear and rebuild Laravel cache
+        run: |
+          php artisan optimize:clear
+          php artisan optimize
 
       # 10. Notification de succès
       - name: ✅ Success Notification
