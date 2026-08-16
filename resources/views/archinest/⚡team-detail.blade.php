@@ -2,28 +2,18 @@
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
-use App\Data\TeamData;
+use App\Models\TeamMember;
 
 new #[Layout('layouts::archinest')] class extends Component {
     public string $slug;
-    public array $member;
-    public array $otherMembers;
+    public TeamMember $member;
+    public $otherMembers;
 
     public function mount(string $slug)
     {
-        $member = TeamData::find($slug);
-
-        if (!$member) {
-            abort(404);
-        }
-
         $this->slug = $slug;
-        $this->member = $member;
-
-        // Load other members for recommendation
-        $all = TeamData::all();
-        unset($all[$slug]);
-        $this->otherMembers = array_values($all);
+        $this->member = TeamMember::published()->where('slug', $slug)->firstOrFail();
+        $this->otherMembers = TeamMember::published()->where('slug', '!=', $slug)->ordered()->get();
     }
 };
 ?>

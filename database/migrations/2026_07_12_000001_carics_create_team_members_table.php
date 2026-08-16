@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('role_category')->default('bureau_executif')->nullable();
             $table->text('bio_short')->nullable();
             $table->longText('bio_full')->nullable();
+            $table->text('bio_quote')->nullable();
             $table->text('mission_text')->nullable();
+            $table->string('current_position')->nullable();
+            $table->string('related_project_slug')->nullable();
             $table->json('expertises')->nullable();   // ["Épidémiologie", "Paludisme", ...]
             $table->json('education')->nullable();    // [{degree, field, institution}, ...]
             $table->json('distinctions')->nullable(); // [{title, organisation, year}, ...]

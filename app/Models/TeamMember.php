@@ -17,7 +17,8 @@ class TeamMember extends Model
 
     protected $fillable = [
         'full_name', 'slug', 'role_title', 'role_category',
-        'bio_short', 'bio_full', 'mission_text',
+        'bio_short', 'bio_full', 'bio_quote', 'mission_text',
+        'current_position', 'related_project_slug',
         'expertises', 'education', 'distinctions', 'affiliations',
         'photo', 'avatar_color',
         'email', 'linkedin_url', 'orcid_url', 'google_scholar_url',
@@ -27,11 +28,12 @@ class TeamMember extends Model
     protected function casts(): array
     {
         return [
-            'expertises'   => 'array',
-            'education'    => 'array',   // [{degree, field, institution}, ...]
+            'bio_full' => 'array',
+            'expertises' => 'array',
+            'education' => 'array',   // [{degree, field, institution}, ...]
             'distinctions' => 'array',   // [{title, organisation, year}, ...]
             'affiliations' => 'array',   // ["RTI International", ...]
-            'is_founder'   => 'boolean',
+            'is_founder' => 'boolean',
             'is_published' => 'boolean',
         ];
     }
@@ -97,10 +99,78 @@ class TeamMember extends Model
     /** Initiales pour l'avatar de substitution (ex. "GK") */
     public function getInitialsAttribute(): string
     {
-        $parts = preg_split('/\s+/', trim($this->full_name));
+        $parts = preg_split('/\s+/', trim($this->full_name ?? ''));
+
         return implode('', array_map(
             fn ($p) => mb_strtoupper(mb_substr($p, 0, 1)),
             array_slice($parts, 0, 2)
         ));
+    }
+
+    public function getImageNameAttribute(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function getFullNameAttribute(): ?string
+    {
+        return $this->attributes['full_name'] ?? null;
+    }
+
+    public function getRoleTitleAttribute(): ?string
+    {
+        return $this->attributes['role_title'] ?? null;
+    }
+
+    public function getBioShortAttribute(): ?string
+    {
+        return $this->attributes['bio_short'] ?? null;
+    }
+
+    public function getBioFullAttribute(): array
+    {
+        $val = $this->attributes['bio_full'] ?? [];
+        if (is_string($val)) {
+            $decoded = json_decode($val, true);
+
+            return is_array($decoded) ? $decoded : [$val];
+        }
+
+        return is_array($val) ? $val : [];
+    }
+
+    public function getBioQuoteAttribute(): ?string
+    {
+        return $this->attributes['bio_quote'] ?? null;
+    }
+
+    public function getMissionTextAttribute(): ?string
+    {
+        return $this->attributes['mission_text'] ?? null;
+    }
+
+    public function getIsFounderAttribute(): bool
+    {
+        return (bool) ($this->attributes['is_founder'] ?? false);
+    }
+
+    public function getRelatedProjectSlugAttribute(): ?string
+    {
+        return $this->attributes['related_project_slug'] ?? null;
+    }
+
+    public function getAvatarColorAttribute(): string
+    {
+        return $this->attributes['avatar_color'] ?? 'primary';
+    }
+
+    public function getLinksAttribute(): array
+    {
+        return [
+            'email' => $this->email,
+            'linkedin' => $this->linkedin_url,
+            'orcid' => $this->orcid_url,
+            'googleScholar' => $this->google_scholar_url,
+        ];
     }
 }

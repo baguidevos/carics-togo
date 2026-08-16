@@ -2,7 +2,6 @@
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
-use App\Data\TeamData;
 
 new #[Layout('layouts::archinest')] class extends Component {
     //

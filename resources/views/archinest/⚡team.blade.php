@@ -2,13 +2,13 @@
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
-use App\Data\TeamData;
+use App\Models\TeamMember;
 
 new #[Layout('layouts::archinest')] class extends Component {
     public function with(): array
     {
         return [
-            'members' => TeamData::all(),
+            'members' => TeamMember::published()->ordered()->get(),
         ];
     }
 };
