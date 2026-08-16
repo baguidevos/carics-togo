@@ -13,14 +13,24 @@ use App\Models\NewsletterSubscriber;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class NewsletterSubscriberResource extends Resource
 {
     protected static ?string $model = NewsletterSubscriber::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-at-symbol';
+
+    protected static string|UnitEnum|null $navigationGroup = '📬 Interactions & Abonnés';
+
+    protected static ?string $navigationLabel = 'Abonnés Newsletter';
+
+    protected static ?string $modelLabel = 'Abonné';
+
+    protected static ?string $pluralModelLabel = 'Abonnés Newsletter';
+
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

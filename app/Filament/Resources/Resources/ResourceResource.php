@@ -13,14 +13,24 @@ use App\Models\Resource as ResourceModel;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ResourceResource extends Resource
 {
     protected static ?string $model = ResourceModel::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-folder-arrow-down';
+
+    protected static string|UnitEnum|null $navigationGroup = '📰 Communication & Blog';
+
+    protected static ?string $navigationLabel = 'Ressources & Guides';
+
+    protected static ?string $modelLabel = 'Ressource';
+
+    protected static ?string $pluralModelLabel = 'Ressources & Guides';
+
+    protected static ?int $navigationSort = 4;
 
     public static function form(Schema $schema): Schema
     {

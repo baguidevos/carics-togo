@@ -13,14 +13,24 @@ use App\Models\Opportunity;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class OpportunityResource extends Resource
 {
     protected static ?string $model = Opportunity::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
+
+    protected static string|UnitEnum|null $navigationGroup = '📰 Communication & Blog';
+
+    protected static ?string $navigationLabel = 'Offres & Opportunités';
+
+    protected static ?string $modelLabel = 'Opportunité';
+
+    protected static ?string $pluralModelLabel = 'Offres & Opportunités';
+
+    protected static ?int $navigationSort = 3;
 
     public static function form(Schema $schema): Schema
     {

@@ -13,14 +13,24 @@ use App\Models\TeamMember;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class TeamMemberResource extends Resource
 {
     protected static ?string $model = TeamMember::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
+
+    protected static string|UnitEnum|null $navigationGroup = '👥 Gouvernance & Équipe';
+
+    protected static ?string $navigationLabel = 'Membres de l\'équipe';
+
+    protected static ?string $modelLabel = 'Membre';
+
+    protected static ?string $pluralModelLabel = 'Membres de l\'équipe';
+
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $recordTitleAttribute = 'full_name';
 

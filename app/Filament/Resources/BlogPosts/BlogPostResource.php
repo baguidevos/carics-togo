@@ -13,14 +13,24 @@ use App\Models\BlogPost;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class BlogPostResource extends Resource
 {
     protected static ?string $model = BlogPost::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-newspaper';
+
+    protected static string|UnitEnum|null $navigationGroup = '📰 Communication & Blog';
+
+    protected static ?string $navigationLabel = 'Articles & Blog';
+
+    protected static ?string $modelLabel = 'Article';
+
+    protected static ?string $pluralModelLabel = 'Articles de blog';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {

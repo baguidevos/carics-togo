@@ -13,14 +13,24 @@ use App\Models\ResearchProject;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ResearchProjectResource extends Resource
 {
     protected static ?string $model = ResearchProject::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static string|UnitEnum|null $navigationGroup = '🔬 Recherche & Projets';
+
+    protected static ?string $navigationLabel = 'Projets de recherche';
+
+    protected static ?string $modelLabel = 'Projet de recherche';
+
+    protected static ?string $pluralModelLabel = 'Projets de recherche';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {

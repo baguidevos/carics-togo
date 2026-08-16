@@ -13,14 +13,24 @@ use App\Models\Partner;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class PartnerResource extends Resource
 {
     protected static ?string $model = Partner::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
+
+    protected static string|UnitEnum|null $navigationGroup = '🔬 Recherche & Projets';
+
+    protected static ?string $navigationLabel = 'Partenaires & Bailleurs';
+
+    protected static ?string $modelLabel = 'Partenaire';
+
+    protected static ?string $pluralModelLabel = 'Partenaires & Bailleurs';
+
+    protected static ?int $navigationSort = 3;
 
     public static function form(Schema $schema): Schema
     {

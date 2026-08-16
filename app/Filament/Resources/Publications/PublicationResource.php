@@ -13,14 +13,24 @@ use App\Models\Publication;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class PublicationResource extends Resource
 {
     protected static ?string $model = Publication::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
+
+    protected static string|UnitEnum|null $navigationGroup = '🔬 Recherche & Projets';
+
+    protected static ?string $navigationLabel = 'Publications & Rapports';
+
+    protected static ?string $modelLabel = 'Publication';
+
+    protected static ?string $pluralModelLabel = 'Publications & Rapports';
+
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {
