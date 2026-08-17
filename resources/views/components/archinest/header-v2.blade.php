@@ -76,7 +76,7 @@
     </div>
 
     <!-- Mobile Drawer Glassmorphism -->
-    <div x-show="mobileOpen" 
+    <div x-show.important="mobileOpen" 
          x-cloak 
          @keydown.escape.window="mobileOpen = false"
          class="position-fixed top-0 start-0 w-100 h-100" 

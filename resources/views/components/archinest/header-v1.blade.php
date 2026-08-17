@@ -216,7 +216,7 @@
     </div>
 
     <!-- Search Modal Modal Overlay -->
-    <div x-show="searchOpen" 
+    <div x-show.important="searchOpen" 
          x-cloak 
          @keydown.escape.window="searchOpen = false"
          class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-start justify-content-center pt-5" 
