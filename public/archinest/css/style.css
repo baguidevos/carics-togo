@@ -389,10 +389,10 @@ section > .container-fluid {
 
 /*=== Default Form ===*/
 .form-control, .input-text {
-  height: calc(2.25rem + 27px);
+  /* height: calc(2.25rem + 27px); */
   padding: 14px 30px;
   outline: 0;
-  background-color: #f4f5f8;
+  background-color: #232323;
   border: 1px solid #f4f5f8;
   color: #fff;
   font-size: 0.9rem;

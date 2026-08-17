@@ -38,15 +38,23 @@ new #[Layout('layouts::archinest')] class extends Component {
 
         return [
             'featuredProject' => ResearchProject::published()->featured()->with('lead', 'partners')->first() ?? ResearchProject::published()->first(),
-            'projects'        => $projectsQuery->get(),
-            'allProjects'     => ResearchProject::published()->get(),
-            'totalCount'      => ResearchProject::published()->count(),
+            'projects' => $projectsQuery->get(),
+            'allProjects' => ResearchProject::published()->get(),
+            'totalCount' => ResearchProject::published()->count(),
         ];
     }
 };
 ?>
 
-<div>
+<div x-data="{ 
+    selectedProject: null,
+    openProjectModal(project) {
+        this.selectedProject = project;
+    },
+    closeProjectModal() {
+        this.selectedProject = null;
+    }
+}">
     <!-- Start main-content -->
     <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
         <div class="auto-container">
@@ -61,333 +69,469 @@ new #[Layout('layouts::archinest')] class extends Component {
     </section>
     <!-- end main-content -->
 
-    <!-- Expertise Six -->
-    <section class="faq-section-home-two">
-        <div class="auto-container">
-            <div class="sec-title-box gap-4 gap-xl-0">
-                <div class="sec-title-style-three">
-                    {{-- <h6 class="sub-title">// // Expertise //</h6> --}}
-                    <h2 class="title text-reveal-anim">{{ __('research.header.title') }}</h2>
-                </div>
-                <div class="sec-right-box">
-                    <div class="text">
-                        {{ __('research.header.intro') }}
+    <!-- ============ SECTION 1 : DOMAINES D'EXPERTISE & PRIORITÉS SCIENTIFIQUES ============ -->
+    <section class="section py-5" style="background: #ffffff;">
+        <div class="container">
+            <!-- En-tête de section -->
+            <div class="row align-items-end mb-5">
+                <div class="col-lg-8">
+                    <div
+                        class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
+                        <i class="fa fa-solid fa-flask-vial"></i> Pôle d'Excellence & Axes Stratégiques
                     </div>
-                    <a href="{{ route('contact') }}" class="theme-btn btn-style-one">
-                        <span class="btn-title">{{ __('navigation.actions.learn_more') }}</span>
-                        <span class="icon"><i class="fa-light fa-arrow-right"></i></span>
+                    <h2 class="h2 fw-bold text-dark mb-2">{{ __('research.header.title') }}</h2>
+                    <p class="text-secondary lead mb-0" style="font-size: 1.08rem; line-height: 1.7;">
+                        {{ __('research.header.intro') }}
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <a href="{{ route('contact') }}"
+                        class="btn btn-primary rounded-pill px-4 py-2 fw-semibold shadow-sm">
+                        <span>{{ __('navigation.actions.learn_more') }}</span>
+                        <i class="fa fa-solid fa-arrow-right ms-2"></i>
                     </a>
                 </div>
             </div>
-            <div class="row clearfix">
-                <!-- Column -->
-                <div class="image-column col-xl-4 col-lg-4">
-                    <figure class="image reveal">
-                        <img src="{{ asset('archinest/images/resource/faq-h2-1.jpg') }}" alt="">
-                    </figure>
+
+            <!-- Grille Bento des 6 Domaines d'Expertise -->
+            <div class="row g-4 mb-5">
+                <!-- Domaine 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div
+                        class="card h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-primary-subtle text-primary mb-3"
+                                style="width: 48px; height: 48px; font-size: 1.4rem;">
+                                <i class="fa fa-solid fa-microscope"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-2">{{ __('research.domains.item_1_title') }}</h3>
+                            <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                                {{ __('research.domains.item_1_text') }}
+                            </p>
+                        </div>
+                        <div class="pt-3 mt-3 border-top text-primary small fw-semibold">
+                            <i class="fa fa-solid fa-check-circle me-1"></i> Épidémiologie appliquée
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Column -->
-                <div class="column col-xl-7 col-lg-8 offset-xl-1">
-                    <!-- Accordion Box / Style Three -->
-                    <ul class="accordion-box">
-
-                        <!-- Block -->
-                        <li class="accordion block active-block">
-                            <div class="acc-btn active">
-                                {{ __('research.domains.item_1_title') }}
-                                <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
+                <!-- Domaine 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div
+                        class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-success-subtle text-success mb-3"
+                                style="width: 48px; height: 48px; font-size: 1.4rem;">
+                                <i class="fa fa-solid fa-gears"></i>
                             </div>
-                            <div class="acc-content current">
-                                <div class="content">
-                                    <div class="text">
-                                        {{ __('research.domains.item_1_text') }}
-                                    </div>
+                            <h3 class="h5 fw-bold text-dark mb-2">{{ __('research.domains.item_2_title') }}</h3>
+                            <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                                {{ __('research.domains.item_2_text') }}
+                            </p>
+                        </div>
+                        <div class="pt-3 mt-3 border-top text-success small fw-semibold">
+                            <i class="fa fa-solid fa-check-circle me-1"></i> Sciences de la mise en œuvre
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domaine 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div
+                        class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-info-subtle text-info mb-3"
+                                style="width: 48px; height: 48px; font-size: 1.4rem;">
+                                <i class="fa fa-solid fa-people-roof"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-2">{{ __('research.domains.item_3_title') }}</h3>
+                            <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                                {{ __('research.domains.item_3_text') }}
+                            </p>
+                        </div>
+                        <div class="pt-3 mt-3 border-top text-info small fw-semibold">
+                            <i class="fa fa-solid fa-check-circle me-1"></i> Approches communautaires
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domaine 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div
+                        class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-warning-subtle text-warning-emphasis mb-3"
+                                style="width: 48px; height: 48px; font-size: 1.4rem;">
+                                <i class="fa fa-solid fa-landmark"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-2">{{ __('research.domains.item_4_title') }}</h3>
+                            <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                                {{ __('research.domains.item_4_text') }}
+                            </p>
+                        </div>
+                        <div class="pt-3 mt-3 border-top text-warning-emphasis small fw-semibold">
+                            <i class="fa fa-solid fa-check-circle me-1"></i> Gouvernance & Équité
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domaine 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div
+                        class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-danger-subtle text-danger mb-3"
+                                style="width: 48px; height: 48px; font-size: 1.4rem;">
+                                <i class="fa fa-solid fa-chart-pie"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-2">{{ __('research.domains.item_5_title') }}</h3>
+                            <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                                {{ __('research.domains.item_5_text') }}
+                            </p>
+                        </div>
+                        <div class="pt-3 mt-3 border-top text-danger small fw-semibold">
+                            <i class="fa fa-solid fa-check-circle me-1"></i> Suivi-évaluation & Données
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domaine 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div
+                        class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-purple-subtle text-primary mb-3"
+                                style="width: 48px; height: 48px; font-size: 1.4rem; background: #ede9fe; color: #6d28d9;">
+                                <i class="fa fa-solid fa-laptop-medical"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-2">{{ __('research.domains.item_6_title') }}</h3>
+                            <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                                {{ __('research.domains.item_6_text') }}
+                            </p>
+                        </div>
+                        <div class="pt-3 mt-3 border-top text-primary small fw-semibold">
+                            <i class="fa fa-solid fa-check-circle me-1"></i> Santé numérique & IA
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panneau des 8 Priorités de Recherche Nationales -->
+            <div class="card border-0 rounded-4 shadow-sm p-4 p-lg-5 text-white"
+                style="background: linear-gradient(135deg, #1B3A6B 0%, #008A5E 100%);">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-4">
+                        <div
+                            class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success bg-opacity-0 text-white fw-semibold small mb-2">
+                            <i class="fa fa-solid fa-bullseye"></i> Orientations Stratégiques
+                        </div>
+                        <h3 class="h3 fw-bold text-white mb-2">{{ __('research.domains.priorities_title') }}</h3>
+                        <p class="text-white-50 small mb-0">
+                            {{ __('research.domains.priorities_intro') }}
+                        </p>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">1</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_1') }}</span>
                                 </div>
                             </div>
-                        </li>
-
-                        <!-- Block -->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                {{ __('research.domains.item_2_title') }}
-                                <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">
-                                        {{ __('research.domains.item_2_text') }}
-                                    </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">2</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_2') }}</span>
                                 </div>
                             </div>
-                        </li>
-
-                        <!-- Block -->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                {{ __('research.domains.item_3_title') }}
-                                <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">
-                                        {{ __('research.domains.item_3_text') }}
-                                    </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">3</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_3') }}</span>
                                 </div>
                             </div>
-                        </li>
-
-                        <!-- Block -->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                {{ __('research.domains.item_4_title') }}
-                                <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">
-                                        {{ __('research.domains.item_4_text') }}
-                                    </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">4</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_4') }}</span>
                                 </div>
                             </div>
-                        </li>
-
-                        <!-- Block -->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                {{ __('research.domains.item_5_title') }}
-                                <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">
-                                        {{ __('research.domains.item_5_text') }}
-                                    </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">5</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_5') }}</span>
                                 </div>
                             </div>
-                        </li>
-
-                        <!-- Block -->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                {{ __('research.domains.item_6_title') }}
-                                <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">
-                                        {{ __('research.domains.item_6_text') }}
-                                    </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">6</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_6') }}</span>
                                 </div>
                             </div>
-                        </li>
-                        <!-- Block -->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                {{ __('research.domains.priorities_title') }}
-                                <div class="icon"><img src="{{ asset('archinest/images/icons/faq-h2-1.svg') }}" alt=""></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">
-                                        {{ __('research.domains.priorities_intro') }}
-                                        <ul>
-                                            <li>• {{ __('research.domains.priority_1') }}</li>
-                                            <li>• {{ __('research.domains.priority_2') }}</li>
-                                            <li>• {{ __('research.domains.priority_3') }}</li>
-                                            <li>• {{ __('research.domains.priority_4') }}</li>
-                                            <li>• {{ __('research.domains.priority_5') }}</li>
-                                            <li>• {{ __('research.domains.priority_6') }}</li>
-                                            <li>• {{ __('research.domains.priority_7') }}</li>
-                                            <li>• {{ __('research.domains.priority_8') }}</li>
-                                        </ul>
-
-                                    </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">7</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_7') }}</span>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
+                                    <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
+                                        style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">8</span>
+                                    <span class="small text-white">{{ __('research.domains.priority_8') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Expertise Six -->
 
-    <!-- Projet phare Section -->
-    <section class="project-details pt-120 pb-70">
-        <div class="auto-container">
-            <div class="row">
-                <div class="col-xl-5 col-lg-5 mb-5 mb-lg-0">
-                    <div class="sec-title-style-three">
-                        {{-- <h6 class="sub-title">// Projets //</h6> --}}
-                        <h2 class="title text-reveal-anim wow fadeInUp" data-wow-delay=".3s">
-                            {{ __('research.featured_project.section_title') }}
-                        </h2>
-                        <p class="text wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+    <!-- ============ SECTION 2 : PROJET PHARE EN VEDETTE (SHOWCASE HERO) ============ -->
+    <section class="section py-5 bg-light" id="projet-phare">
+        <div class="container">
+            <div class="card border-0 rounded-4 shadow-sm overflow-hidden bg-white p-4 p-lg-5">
+                <!-- En-tête du Projet Phare -->
+                <div class="row align-items-center mb-4 pb-4 border-bottom g-3">
+                    <div class="col-lg-8">
+                        <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+                            <span class="badge bg-primary text-white fw-semibold px-3 py-1 rounded-pill">
+                                <i class="fa fa-solid fa-star me-1 text-warning"></i>
+                                {{ __('research.featured_project.section_title') }}
+                            </span>
+                            @if ($featuredProject?->status === 'en_cours')
+                                <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-semibold">
+                                    <i class="fa fa-solid fa-circle-dot me-1"></i>
+                                    {{ __('research.featured_project.status_value') }}
+                                </span>
+                            @elseif ($featuredProject?->status)
+                                <span class="badge bg-secondary-subtle text-secondary px-3 py-1 rounded-pill fw-semibold">
+                                    {{ ucfirst(str_replace('_', ' ', $featuredProject->status)) }}
+                                </span>
+                            @endif
+                            @if ($featuredProject?->region)
+                                <span class="badge bg-light text-muted border px-3 py-1 rounded-pill small">
+                                    <i class="fa fa-solid fa-location-dot text-danger me-1"></i>
+                                    {{ $featuredProject->region }}
+                                </span>
+                            @endif
+                        </div>
+                        <h2 class="h3 fw-bold text-dark mb-0" style="line-height: 1.4;">
                             {{ $featuredProject?->title ?? __('research.featured_project.project_title') }}
-                        </p>
-                    </div>
-                    <a href="{{ route('contact') }}" class="theme-btn btn-style-one">
-                        <span class="btn-title">{{ __('navigation.actions.collaborate') ?? 'Collaborer' }}</span> <i class="icon fa-light fa-arrow-right"></i>
-                    </a>
-
-                </div>
-                <div class="col-xl-5 offset-xl-1 col-lg-7">
-                    <div class="project-details__content-right mt-0">
-                        <div class="project-details__details-box rounded-0">
-                            <ul class="list-unstyled project-details__details-list">
-                                <li>
-                                    <h4 class="project-details__name mb-2">{{ __('research.featured_project.period_label') }}</h4>
-                                    <p class="project-details__client">
-                                        @if ($featuredProject?->start_date)
-                                            {{ $featuredProject->start_date->format('Y') }} – {{ $featuredProject->end_date?->format('Y') ?? 'En cours' }}
-                                        @else
-                                            {{ __('research.featured_project.period_value') }}
-                                        @endif
-                                    </p>
-                                </li>
-                                <li>
-                                    <h4 class="project-details__name mb-2">{{ __('research.featured_project.zone_label') }}</h4>
-                                    <p class="project-details__client">
-                                        @php
-                                            $zones = $featuredProject?->intervention_zones;
-                                            if (is_string($zones)) {
-                                                $decodedZones = json_decode($zones, true);
-                                                if (json_last_error() === JSON_ERROR_NONE && is_array($decodedZones)) {
-                                                    $zones = $decodedZones;
-                                                }
-                                            }
-                                        @endphp
-                                        @if (!empty($zones))
-                                            @if (is_array($zones))
-                                                {{ implode(', ', array_map('strip_tags', array_filter($zones))) }}
-                                            @else
-                                                {{ strip_tags((string) $zones) }}
-                                            @endif
-                                            ({{ $featuredProject->region ?? 'Togo' }})
-                                        @else
-                                            {{ __('research.featured_project.zone_value') }}
-                                        @endif
-                                    </p>
-                                </li>
-                                <li>
-                                    <h4 class="project-details__name mb-2">{{ __('research.featured_project.funding_label') }}</h4>
-                                    <p class="project-details__client">{{ $featuredProject?->funder ?? __('research.featured_project.funding_value') }}</p>
-                                </li>
-                                <li>
-                                    <h4 class="project-details__name mb-2">{{ __('research.featured_project.status_label') }}</h4>
-                                    <p class="project-details__client">
-                                        @if ($featuredProject?->status === 'en_cours')
-                                            <span class="badge bg-success-subtle text-success px-2 py-1">{{ __('research.featured_project.status_value') }}</span>
-                                        @else
-                                            {{ ucfirst(str_replace('_', ' ', $featuredProject?->status ?? '')) }}
-                                        @endif
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-5 mb-lg-0">
-                <div class="">
-                    <div class="project-details__top mt-5">
-                        <div class="project-details__img"> <img class="rounded-0"
-                                src="{{ asset('archinest/images/resource/project-details-2.jpg') }}" alt=""> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-lg-center">
-                <div class="col-lg-6">
-                    <div class="sec-title mb-40">
-                        <h2 class="title mb-30 wow splt-txt" data-splitting="">
-                            {{ __('research.featured_project.context_title') }}
                         </h2>
                     </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="{{ route('contact') }}" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold">
+                            <i class="fa fa-solid fa-handshake me-1"></i>
+                            {{ __('navigation.actions.collaborate') ?? 'Collaborer' }}
+                        </a>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="project-details__top mt-lg-5">
-                        <div class="text mb-40">
-                            {!! $featuredProject?->context ?? __('research.featured_project.context_text') !!}
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-4 mb-5 mb-lg-0">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="sec-title mb-40">
-                        <h2 class="title mb-30 wow splt-txt" data-splitting="">{{ __('research.featured_project.details_title') }}</h2>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="project-details__top mt-lg-5">
-                        <div class="project-list-item mb-5">
-                            <h5 class="title">
-                                <i class="icon fa-classic fa-solid fa-circle-check fa-fw mr-15"></i>
-                                {{ __('research.featured_project.objective_title') }}
-                            </h5>
-                            <div class="text">
-                                {!! $featuredProject?->objective ?? __('research.featured_project.objective_text') !!}
+                <!-- Métadonnées en cartes badges -->
+                <div class="row g-3 mb-4">
+                    <!-- Période -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="p-3 bg-light rounded-3 h-100 border">
+                            <div class="text-muted small mb-1"><i
+                                    class="fa fa-regular fa-calendar text-primary me-1"></i>
+                                {{ __('research.featured_project.period_label') }}
                             </div>
+                            <strong class="text-dark">
+                                @if ($featuredProject?->start_date)
+                                    {{ $featuredProject->start_date->format('Y') }} –
+                                    {{ $featuredProject->end_date?->format('Y') ?? 'En cours' }}
+                                @else
+                                    {{ __('research.featured_project.period_value') }}
+                                @endif
+                            </strong>
                         </div>
-                        <div class="project-list-item mb-5">
-                            <h5 class="title"><i class="icon fa-classic fa-solid fa-circle-check fa-fw mr-15"></i>
-                                {{ __('research.featured_project.results_title') }}</h5>
-                            <div class="text">
+                    </div>
+
+                    <!-- Financement / Bailleur -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="p-3 bg-light rounded-3 h-100 border">
+                            <div class="text-muted small mb-1"><i
+                                    class="fa fa-solid fa-hand-holding-dollar text-success me-1"></i>
+                                {{ __('research.featured_project.funding_label') }}
+                            </div>
+                            <strong
+                                class="text-dark">{{ $featuredProject?->funder ?? __('research.featured_project.funding_value') }}</strong>
+                        </div>
+                    </div>
+
+                    <!-- Zone d'intervention -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="p-3 bg-light rounded-3 h-100 border">
+                            <div class="text-muted small mb-1"><i class="fa fa-solid fa-map-pin text-danger me-1"></i>
+                                {{ __('research.featured_project.zone_label') }}
+                            </div>
+                            <strong class="text-dark">
                                 @php
-                                    $expResults = $featuredProject?->expected_results;
-                                    if (is_string($expResults)) {
-                                        $decodedResults = json_decode($expResults, true);
-                                        if (json_last_error() === JSON_ERROR_NONE && is_array($decodedResults)) {
-                                            $expResults = $decodedResults;
+                                    $zones = $featuredProject?->intervention_zones;
+                                    if (is_string($zones)) {
+                                        $decodedZones = json_decode($zones, true);
+                                        if (json_last_error() === JSON_ERROR_NONE && is_array($decodedZones)) {
+                                            $zones = $decodedZones;
                                         }
                                     }
                                 @endphp
-                                @if (!empty($expResults))
-                                    @if (is_array($expResults))
-                                        <ul>
-                                            @foreach ($expResults as $res)
-                                                <li class="d-flex align-items-start gap-2 mb-2">
-                                                    <i class="icon fa-classic fa-solid fa-check fa-fw mt-1 text-primary"></i>
-                                                    <div>{!! is_string($res) ? $res : e($res) !!}</div>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                @if (!empty($zones))
+                                    @if (is_array($zones))
+                                        {{ implode(', ', array_map('strip_tags', array_filter($zones))) }}
                                     @else
-                                        @if (str_contains($expResults, '<ul') || str_contains($expResults, '<ol') || str_contains($expResults, '<li') || str_contains($expResults, '<p'))
-                                            <div class="rich-text-content">
-                                                {!! $expResults !!}
-                                            </div>
-                                        @else
-                                            <ul>
-                                                <li class="d-flex align-items-start gap-2 mb-2">
-                                                    <i class="icon fa-classic fa-solid fa-check fa-fw mt-1 text-primary"></i>
-                                                    <div>{!! $expResults !!}</div>
-                                                </li>
-                                            </ul>
-                                        @endif
+                                        {{ strip_tags((string) $zones) }}
                                     @endif
                                 @else
-                                    <ul>
-                                        <li class="d-flex align-items-center"><i
-                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_1') }}</li>
-                                        <li class="d-flex align-items-center"><i
-                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_2') }}</li>
-                                        <li class="d-flex align-items-center"><i
-                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_3') }}</li>
-                                        <li class="d-flex align-items-center"><i
-                                                class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_4') }}</li>
-                                    </ul>
+                                    {{ __('research.featured_project.zone_value') }}
                                 @endif
+                            </strong>
+                        </div>
+                    </div>
+
+                    <!-- Chef de projet / Investigateur -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="p-3 bg-light rounded-3 h-100 border">
+                            <div class="text-muted small mb-1"><i class="fa fa-solid fa-user-tie text-primary me-1"></i>
+                                Investigateur Principal</div>
+                            <strong class="text-dark">
+                                @if ($featuredProject?->lead)
+                                    <a href="{{ route('team-detail', ['slug' => $featuredProject->lead->slug]) }}"
+                                        class="text-decoration-none text-primary">
+                                        {{ $featuredProject->lead->full_name }}
+                                    </a>
+                                @else
+                                    Équipe Scientifique CARICS
+                                @endif
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corps du Projet Phare (2 Colonnes) -->
+                <div class="row g-4">
+                    <!-- Colonne Gauche : Contexte & Objectifs -->
+                    <div class="col-lg-6">
+                        <!-- Contexte -->
+                        <div class="mb-4">
+                            <h3 class="h5 fw-bold text-dark mb-3">
+                                <i class="fa fa-solid fa-book-open text-primary me-2"></i>
+                                {{ __('research.featured_project.context_title') }}
+                            </h3>
+                            <div class="text-secondary" style="line-height: 1.8;">
+                                {!! $featuredProject?->context ?? __('research.featured_project.context_text') !!}
                             </div>
                         </div>
-                        <div class="project-list-item">
-                            <h5 class="title"><i
-                                    class="icon fa-classic fa-solid fa-circle-check fa-fw mr-15"></i>{{ __('research.featured_project.perspectives_title') }}</h5>
-                            <div class="text">
-                                {!! __('research.featured_project.perspectives_text') !!}
+
+                        <!-- Objectifs -->
+                        <div class="mb-4">
+                            <h3 class="h5 fw-bold text-dark mb-3">
+                                <i class="fa fa-solid fa-bullseye text-success me-2"></i>
+                                {{ __('research.featured_project.objective_title') }}
+                            </h3>
+                            <div class="text-secondary" style="line-height: 1.8;">
+                                {!! $featuredProject?->objective ?? __('research.featured_project.objective_text') !!}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colonne Droite : Résultats attendus & Perspectives -->
+                    <div class="col-lg-6">
+                        <div class="p-4 rounded-4 bg-light border h-100">
+                            <!-- Résultats attendus -->
+                            <div class="mb-4">
+                                <h3 class="h5 fw-bold text-dark mb-3">
+                                    <i class="fa fa-solid fa-clipboard-check text-primary me-2"></i>
+                                    {{ __('research.featured_project.results_title') }}
+                                </h3>
+                                <div>
+                                    @php
+                                        $expResults = $featuredProject?->expected_results;
+                                        if (is_string($expResults)) {
+                                            $decodedResults = json_decode($expResults, true);
+                                            if (json_last_error() === JSON_ERROR_NONE && is_array($decodedResults)) {
+                                                $expResults = $decodedResults;
+                                            }
+                                        }
+                                    @endphp
+                                    @if (!empty($expResults))
+                                        @if (is_array($expResults))
+                                            <ul class="list-unstyled mb-0">
+                                                @foreach ($expResults as $res)
+                                                    <li class="d-flex align-items-start gap-2 mb-3">
+                                                        <i class="fa fa-solid fa-circle-check text-success mt-1"></i>
+                                                        <div class="small text-secondary" style="line-height: 1.6;">
+                                                            {!! is_string($res) ? $res : e($res) !!}
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @else
+                                            @if (str_contains($expResults, '<ul') || str_contains($expResults, '<ol') || str_contains($expResults, '<li') || str_contains($expResults, '<p'))
+                                                <div class="rich-text-content small text-secondary">
+                                                    {!! $expResults !!}
+                                                </div>
+                                            @else
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="d-flex align-items-start gap-2 mb-2">
+                                                        <i class="fa fa-solid fa-circle-check text-success mt-1"></i>
+                                                        <div class="small text-secondary">{!! $expResults !!}</div>
+                                                    </li>
+                                                </ul>
+                                            @endif
+                                        @endif
+                                    @else
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="d-flex align-items-start gap-2 mb-2">
+                                                <i class="fa fa-solid fa-circle-check text-success mt-1"></i>
+                                                <span
+                                                    class="small text-secondary">{{ __('research.featured_project.result_1') }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-start gap-2 mb-2">
+                                                <i class="fa fa-solid fa-circle-check text-success mt-1"></i>
+                                                <span
+                                                    class="small text-secondary">{{ __('research.featured_project.result_2') }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-start gap-2 mb-2">
+                                                <i class="fa fa-solid fa-circle-check text-success mt-1"></i>
+                                                <span
+                                                    class="small text-secondary">{{ __('research.featured_project.result_3') }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-start gap-2 mb-2">
+                                                <i class="fa fa-solid fa-circle-check text-success mt-1"></i>
+                                                <span
+                                                    class="small text-secondary">{{ __('research.featured_project.result_4') }}</span>
+                                            </li>
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <!-- Perspectives -->
+                            <div class="pt-3 border-top">
+                                <h4 class="h6 fw-bold text-dark mb-2">
+                                    <i class="fa fa-solid fa-compass text-info me-2"></i>
+                                    {{ __('research.featured_project.perspectives_title') }}
+                                </h4>
+                                <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                                    {!! __('research.featured_project.perspectives_text') !!}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -395,18 +539,19 @@ new #[Layout('layouts::archinest')] class extends Component {
             </div>
         </div>
     </section>
-    <!-- End Projet phare Section -->
 
-    <!-- ============ CARTE INTERACTIVE DES INTERVENTIONS AU TOGO ============ -->
-    <section class="section-sm bg-light py-5">
+    <!-- ============ SECTION 3 : CARTE INTERACTIVE DES INTERVENTIONS AU TOGO ============ -->
+    <section class="section py-5 bg-white">
         <div class="container">
             <div class="text-center max-w-700 mx-auto mb-5">
-                <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
+                <div
+                    class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
                     <i class="fa fa-solid fa-map-location-dot"></i> Couverture Nationale
                 </div>
                 <h2 class="h3 fw-bold text-dark mb-2">Implantation Territoriale & Sites d'Intervention</h2>
                 <p class="text-muted">
-                    Découvrez la répartition des projets de recherche et d'action sociale menés par le CARICS à travers les 5 régions du Togo.
+                    Découvrez la répartition des projets de recherche et d'action sociale menés par le CARICS à travers
+                    les 5 régions du Togo.
                 </p>
             </div>
 
@@ -414,51 +559,52 @@ new #[Layout('layouts::archinest')] class extends Component {
         </div>
     </section>
 
-    <!-- ============ EXPLORATEUR DE TOUS LES PROJETS DE RECHERCHE ============ -->
-    <section class="section-sm py-5">
+    <!-- ============ SECTION 4 : EXPLORATEUR DE TOUS LES PROJETS DE RECHERCHE ============ -->
+    <section class="section py-5 bg-light" id="repertoire-projets">
         <div class="container">
             <!-- En-tête & Barre de recherche -->
             <div class="row align-items-center mb-4">
                 <div class="col-lg-7">
-                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success-subtle text-success fw-semibold small mb-2">
+                    <div
+                        class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success-subtle text-success fw-semibold small mb-2">
                         <i class="fa fa-solid fa-folder-tree"></i> Répertoire Scientifique
                     </div>
                     <h2 class="h3 fw-bold text-dark mb-1">Tous nos Projets de Recherche</h2>
-                    <p class="text-muted mb-0">Consultez l'ensemble des études menées par nos équipes et partenaires.</p>
+                    <p class="text-muted mb-0">Consultez l'ensemble des études menées par nos équipes et partenaires.
+                    </p>
                 </div>
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
-                    <span class="badge bg-light text-dark border px-3 py-2 fs-6">
-                        <strong class="text-primary">{{ $totalCount }}</strong> projets au total
+                    <span class="badge bg-white text-dark border px-3 py-2 fs-6 shadow-sm rounded-pill">
+                        <strong class="text-primary">{{ $totalCount }}</strong> projets répertoriés
                     </span>
                 </div>
             </div>
 
             <!-- Filtres interactifs -->
-            <div class="card p-3 p-md-4 border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #f8faff 0%, #f0f6ff 100%);">
+            <div class="card p-3 p-md-4 border-0 shadow-sm rounded-4 mb-4"
+                style="background: linear-gradient(135deg, #f8faff 0%, #f0f6ff 100%);">
                 <div class="row g-3 align-items-center">
                     <div class="col-lg-7">
                         <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3">
+                            <span class="input-group-text border-end-0 rounded-start-pill ps-3">
                                 <i class="fa fa-solid fa-search text-muted"></i>
                             </span>
-                            <input 
-                                type="text" 
-                                wire:model.live.debounce.300ms="search" 
-                                class="form-control border-start-0 rounded-end-pill py-2 shadow-none" 
-                                placeholder="Rechercher par mot-clé, thématique, bailleur, région..."
-                            >
+                            <input type="text" wire:model.live.debounce.300ms="search"
+                                class="form-control border-start-0 rounded-end-pill py-2 shadow-none"
+                                placeholder="Rechercher par mot-clé, thématique, bailleur, région...">
                         </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="d-flex gap-2">
                             <select wire:model.live="selectedStatus" class="form-select rounded-pill py-2 shadow-none">
-                                <option value="all">🔍 Tous les statuts</option>
-                                <option value="en_cours">🟢 En cours</option>
-                                <option value="termine">🔵 Achevés</option>
-                                <option value="en_attente">🟡 En préparation</option>
+                                <option value="all">Tous les statuts</option>
+                                <option value="en_cours">En cours</option>
+                                <option value="termine">Achevés</option>
+                                <option value="en_attente">En préparation</option>
                             </select>
                             @if ($search !== '' || $selectedStatus !== 'all')
-                                <button wire:click="resetFilters" class="btn btn-outline-secondary rounded-pill px-3" title="Réinitialiser">
+                                <button wire:click="resetFilters" class="btn btn-outline-secondary rounded-pill px-3"
+                                    title="Réinitialiser">
                                     <i class="fa fa-solid fa-rotate-left"></i>
                                 </button>
                             @endif
@@ -468,33 +614,21 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                 <!-- Onglets statut rapides -->
                 <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
-                    <button 
-                        type="button" 
-                        wire:click="$set('selectedStatus', 'all')" 
-                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'all' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
-                    >
+                    <button type="button" wire:click="$set('selectedStatus', 'all')"
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'all' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
                         Tous les projets
                     </button>
-                    <button 
-                        type="button" 
-                        wire:click="$set('selectedStatus', 'en_cours')" 
-                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_cours' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
-                    >
-                        🟢 En cours
+                    <button type="button" wire:click="$set('selectedStatus', 'en_cours')"
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_cours' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
+                        En cours
                     </button>
-                    <button 
-                        type="button" 
-                        wire:click="$set('selectedStatus', 'termine')" 
-                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'termine' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
-                    >
-                        🔵 Achevés
+                    <button type="button" wire:click="$set('selectedStatus', 'termine')"
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'termine' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
+                        Achevés
                     </button>
-                    <button 
-                        type="button" 
-                        wire:click="$set('selectedStatus', 'en_attente')" 
-                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_attente' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
-                    >
-                        🟡 En préparation
+                    <button type="button" wire:click="$set('selectedStatus', 'en_attente')"
+                        class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_attente' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
+                        En préparation
                     </button>
                 </div>
             </div>
@@ -510,68 +644,93 @@ new #[Layout('layouts::archinest')] class extends Component {
                 @if ($projects->isNotEmpty())
                     <div class="row g-4">
                         @foreach ($projects as $proj)
-                            @php
-                                $statusBadge = match($proj->status) {
-                                    'en_cours'   => ['class' => 'bg-success-subtle text-success', 'label' => 'En cours'],
-                                    'termine'    => ['class' => 'bg-info-subtle text-info-emphasis', 'label' => 'Achevé'],
-                                    'en_attente' => ['class' => 'bg-warning-subtle text-warning-emphasis', 'label' => 'En préparation'],
-                                    default      => ['class' => 'bg-secondary-subtle text-secondary', 'label' => ucfirst($proj->status)],
-                                };
-                            @endphp
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card h-100 border rounded-4 shadow-sm bg-white p-4 d-flex flex-column justify-content-between transition-all hover-shadow">
-                                    <div>
-                                        <!-- En-tête -->
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <span class="badge {{ $statusBadge['class'] }} fw-semibold px-3 py-1 rounded-pill small">
-                                                {{ $statusBadge['label'] }}
-                                            </span>
-                                            @if ($proj->region)
-                                                <span class="badge bg-light text-muted border small">
-                                                    <i class="fa fa-solid fa-location-dot me-1 text-danger"></i>{{ $proj->region }}
-                                                </span>
-                                            @endif
+                                        @php
+                                            $statusBadge = match ($proj->status) {
+                                                'en_cours' => ['class' => 'bg-success-subtle text-success', 'label' => 'En cours'],
+                                                'termine' => ['class' => 'bg-info-subtle text-info-emphasis', 'label' => 'Achevé'],
+                                                'en_attente' => ['class' => 'bg-warning-subtle text-warning-emphasis', 'label' => 'En préparation'],
+                                                default => ['class' => 'bg-secondary-subtle text-secondary', 'label' => ucfirst($proj->status)],
+                                            };
+                                        @endphp
+                                        <div class="col-md-6 col-lg-6">
+                                            <div
+                                                class="card h-100 border rounded-4 shadow-sm bg-white p-4 d-flex flex-column justify-content-between transition-all hover-shadow">
+                                                <div>
+                                                    <!-- En-tête de carte -->
+                                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                                        <span
+                                                            class="badge {{ $statusBadge['class'] }} fw-semibold px-3 py-1 rounded-pill small">
+                                                            {{ $statusBadge['label'] }}
+                                                        </span>
+                                                        @if ($proj->region)
+                                                            <span class="badge bg-light text-muted border small">
+                                                                <i class="fa fa-solid fa-location-dot me-1 text-danger"></i>{{ $proj->region }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
+
+                                                    <!-- Titre -->
+                                                    <h3 class="h5 fw-bold text-dark mb-2" style="line-height: 1.4;">
+                                                        {{ $proj->title }}
+                                                    </h3>
+
+                                                    <!-- Bailleur & Date -->
+                                                    <div class="d-flex flex-wrap gap-2 text-muted small mb-3">
+                                                        @if ($proj->funder)
+                                                            <span><i
+                                                                    class="fa fa-solid fa-hand-holding-dollar text-success me-1"></i>{{ $proj->funder }}</span>
+                                                        @endif
+                                                        @if ($proj->start_date)
+                                                            <span>• <i
+                                                                    class="fa fa-regular fa-calendar me-1"></i>{{ $proj->start_date->format('Y') }}{{ $proj->end_date ? '–' . $proj->end_date->format('Y') : '' }}</span>
+                                                        @endif
+                                                    </div>
+
+                                                    <!-- Extrait Contexte -->
+                                                    @if ($proj->context)
+                                                        <p class="text-secondary small mb-3" style="line-height: 1.6;">
+                                                            {{ Str::limit(strip_tags($proj->context), 130) }}
+                                                        </p>
+                                                    @endif
+                                                </div>
+
+                                                <!-- Pied de carte -->
+                                                <div class="pt-3 border-top d-flex justify-content-between align-items-center gap-2">
+                                                    <small class="text-muted text-truncate" style="max-width: 140px;">
+                                                        @if ($proj->lead)
+                                                            <i class="fa fa-solid fa-user-tie me-1"></i> {{ $proj->lead->full_name }}
+                                                        @else
+                                                            <i class="fa fa-solid fa-users me-1"></i> CARICS
+                                                        @endif
+                                                    </small>
+
+                                                    <div class="d-flex gap-1">
+                                                        <button type="button" @click="openProjectModal({{ Js::from([
+                                'title' => $proj->title,
+                                'status' => $proj->status,
+                                'statusLabel' => $statusBadge['label'],
+                                'statusClass' => $statusBadge['class'],
+                                'region' => $proj->region,
+                                'funder' => $proj->funder,
+                                'period' => $proj->start_date ? $proj->start_date->format('Y') . ($proj->end_date ? ' – ' . $proj->end_date->format('Y') : ' – En cours') : null,
+                                'lead' => $proj->lead?->full_name ?? 'Équipe CARICS',
+                                'context' => $proj->context,
+                                'objective' => $proj->objective,
+                                'methodology' => $proj->methodology,
+                                'expectedResults' => $proj->expected_results,
+                                'zones' => is_array($proj->intervention_zones) ? implode(', ', array_map('strip_tags', $proj->intervention_zones)) : strip_tags((string) $proj->intervention_zones),
+                            ]) }})" class="btn btn-sm btn-light border rounded-pill px-3">
+                                                            <i class="fa fa-solid fa-circle-info me-1"></i> Détails
+                                                        </button>
+
+                                                        <a href="{{ route('contact') }}"
+                                                            class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                                            Partenariat <i class="fa fa-solid fa-arrow-right ms-1 small"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <!-- Titre -->
-                                        <h3 class="h5 fw-bold text-dark mb-2" style="line-height: 1.4;">
-                                            {{ $proj->title }}
-                                        </h3>
-
-                                        <!-- Bailleur & Date -->
-                                        <div class="d-flex flex-wrap gap-2 text-muted small mb-3">
-                                            @if ($proj->funder)
-                                                <span><i class="fa fa-solid fa-hand-holding-dollar text-success me-1"></i>{{ $proj->funder }}</span>
-                                            @endif
-                                            @if ($proj->start_date)
-                                                <span>• <i class="fa fa-regular fa-calendar me-1"></i>{{ $proj->start_date->format('Y') }}{{ $proj->end_date ? '–' . $proj->end_date->format('Y') : '' }}</span>
-                                            @endif
-                                        </div>
-
-                                        <!-- Extrait Contexte -->
-                                        @if ($proj->context)
-                                            <p class="text-secondary small mb-3" style="line-height: 1.6;">
-                                                {{ Str::limit(strip_tags($proj->context), 130) }}
-                                            </p>
-                                        @endif
-                                    </div>
-
-                                    <!-- Pied de carte -->
-                                    <div class="pt-3 border-top d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">
-                                            @if ($proj->lead)
-                                                <i class="fa fa-solid fa-user-tie me-1"></i> {{ $proj->lead->full_name }}
-                                            @else
-                                                <i class="fa fa-solid fa-users me-1"></i> Équipe CARICS
-                                            @endif
-                                        </small>
-
-                                        <a href="{{ route('contact') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                            Partenariat <i class="fa fa-solid fa-arrow-right ms-1 small"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         @endforeach
                     </div>
                 @else
@@ -581,7 +740,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                         </div>
                         <h4 class="h5 fw-bold text-dark mb-2">Aucun projet trouvé</h4>
                         <p class="text-muted small mb-3">Aucun projet de recherche ne correspond à ces critères.</p>
-                        <button type="button" wire:click="resetFilters" class="btn btn-outline-primary rounded-pill px-4 btn-sm">
+                        <button type="button" wire:click="resetFilters"
+                            class="btn btn-outline-primary rounded-pill px-4 btn-sm">
                             <i class="fa fa-solid fa-rotate-left me-1"></i> Réinitialiser les filtres
                         </button>
                     </div>
@@ -589,4 +749,119 @@ new #[Layout('layouts::archinest')] class extends Component {
             </div>
         </div>
     </section>
+
+    <!-- ============ MODAL ALPINE.JS : DÉTAILS COMPLETS DU PROJET ============ -->
+    <div x-show="selectedProject !== null" x-cloak x-transition @click.self="selectedProject = null"
+        @keydown.escape.window="selectedProject = null"
+        class="position-fixed top-0 start-0 w-100 h-100 align-items-center justify-content-center p-3"
+        :class="{ 'd-flex': selectedProject !== null }"
+        style="background: rgba(15, 23, 42, 0.7); z-index: 99999; backdrop-filter: blur(5px);">
+        <div @click.stop class="card border-0 rounded-4 shadow-lg w-100 overflow-hidden "
+            style="max-width: 800px; max-height: 90vh;">
+            <!-- En-tête Modal -->
+            <div class="p-4 border-bottom d-flex justify-content-between align-items-start bg-light">
+                <div class="pe-3">
+                    <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+                        <span class="badge" :class="selectedProject?.statusClass"
+                            x-text="selectedProject?.statusLabel"></span>
+                        <template x-if="selectedProject?.region">
+                            <span class="badge text-muted border">
+                                <i class="fa fa-solid fa-location-dot text-danger me-1"></i>
+                                <span x-text="selectedProject?.region"></span>
+                            </span>
+                        </template>
+                    </div>
+                    <h3 class="h5 fw-bold text-dark mb-0" x-text="selectedProject?.title"></h3>
+                </div>
+                <button type="button" @click="selectedProject = null"
+                    class="btn btn-sm btn-light rounded-circle p-2 shadow-none" style="width: 36px; height: 36px;"
+                    title="Fermer">
+                    <i class="fa fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Corps Modal (Déroulant) -->
+            <div class="p-4 overflow-auto" style="max-height: calc(90vh - 140px);">
+                <!-- Métadonnées rapides -->
+                <div class="row g-2 mb-4">
+                    <template x-if="selectedProject?.funder">
+                        <div class="col-sm-6">
+                            <div class="p-2 bg-light rounded-3 border small">
+                                <span class="text-muted">Bailleur :</span>
+                                <strong class="text-dark ms-1" x-text="selectedProject?.funder"></strong>
+                            </div>
+                        </div>
+                    </template>
+                    <template x-if="selectedProject?.period">
+                        <div class="col-sm-6">
+                            <div class="p-2 bg-light rounded-3 border small">
+                                <span class="text-muted">Période :</span>
+                                <strong class="text-dark ms-1" x-text="selectedProject?.period"></strong>
+                            </div>
+                        </div>
+                    </template>
+                    <template x-if="selectedProject?.lead">
+                        <div class="col-sm-6">
+                            <div class="p-2 bg-light rounded-3 border small">
+                                <span class="text-muted">Investigateur :</span>
+                                <strong class="text-dark ms-1" x-text="selectedProject?.lead"></strong>
+                            </div>
+                        </div>
+                    </template>
+                    <template x-if="selectedProject?.zones">
+                        <div class="col-sm-6">
+                            <div class="p-2 bg-light rounded-3 border small">
+                                <span class="text-muted">Zones :</span>
+                                <strong class="text-dark ms-1" x-text="selectedProject?.zones"></strong>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Contexte -->
+                <template x-if="selectedProject?.context">
+                    <div class="mb-4">
+                        <h4 class="h6 fw-bold text-dark mb-2">
+                            <i class="fa fa-solid fa-book-open text-primary me-2"></i> Contexte & Problématique
+                        </h4>
+                        <div class="text-secondary small" style="line-height: 1.7;" x-html="selectedProject?.context">
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Objectifs -->
+                <template x-if="selectedProject?.objective">
+                    <div class="mb-4">
+                        <h4 class="h6 fw-bold text-dark mb-2">
+                            <i class="fa fa-solid fa-bullseye text-success me-2"></i> Objectifs de l'Étude
+                        </h4>
+                        <div class="text-secondary small" style="line-height: 1.7;" x-html="selectedProject?.objective">
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Méthodologie -->
+                <template x-if="selectedProject?.methodology">
+                    <div class="mb-4">
+                        <h4 class="h6 fw-bold text-dark mb-2">
+                            <i class="fa fa-solid fa-microscope text-info me-2"></i> Méthodologie
+                        </h4>
+                        <div class="text-secondary small" style="line-height: 1.7;"
+                            x-html="selectedProject?.methodology"></div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Pied de Modal -->
+            <div class="p-3 border-top d-flex justify-content-between align-items-center bg-light">
+                <button type="button" @click="selectedProject = null"
+                    class="btn btn-sm btn-outline-secondary rounded-pill px-4">
+                    Fermer
+                </button>
+                <a href="{{ route('contact') }}" class="btn btn-sm btn-primary rounded-pill px-4 fw-semibold">
+                    Initier une collaboration <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -7,10 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="david Hida">
-    <meta name="description"
-        content="{{ $metaDescription ?? __('navigation.meta.description') }}">
-    <meta name="keywords"
-        content="{{ $metaKeywords ?? __('navigation.meta.keywords') }}">
+    <meta name="description" content="{{ $metaDescription ?? __('navigation.meta.description') }}">
+    <meta name="keywords" content="{{ $metaKeywords ?? __('navigation.meta.keywords') }}">
     <!-- page title -->
     <title>{{ $title ?? config('app.name') }}</title>
 
@@ -31,6 +29,12 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
