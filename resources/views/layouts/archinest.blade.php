@@ -69,6 +69,9 @@
         <x-archinest.footer />
         <!--End Main Footer -->
 
+        <!-- Floating Design Switcher (Dev / Preview) -->
+        {{-- <x-archinest.style-switcher /> --}}
+
     </div><!-- End Page Wrapper -->
 
     @livewireScripts

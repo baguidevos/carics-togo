@@ -278,14 +278,14 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-lg-5">
                         <div class="card border-0 rounded-4 shadow overflow-hidden position-relative" style="min-height: 340px;">
                             <img src="{{ asset('images/projet.webp') }}" alt="Projet de recherche CARICS" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" style="object-fit: cover;">
-                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.1) 100%);"></div>
+                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to top, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0) 100%);"></div>
                             <div class="position-relative p-4 text-white d-flex flex-column justify-content-end h-100" style="z-index: 2;">
                                 <div class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold small align-self-start mb-2">
                                     Impact Région des Savanes
                                 </div>
-                                <div class="small text-white-50">
+                                {{-- <div class="small text-white-50">
                                     ChimioPrévention Saisonnière du Paludisme (CPS) en contexte transfrontalier.
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

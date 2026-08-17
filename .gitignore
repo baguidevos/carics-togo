@@ -33,3 +33,4 @@ yarn-error.log
 /resources/views/archinix/
 /resources/views/archpix/
 /resources/views/carenix/
+/storage/framework/lsp-*.php
