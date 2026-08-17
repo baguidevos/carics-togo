@@ -156,7 +156,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="col-lg-4">
                             <div class="card h-100 p-4 border-0 rounded-4 shadow-sm text-white d-flex flex-column justify-content-between" style="background: linear-gradient(135deg, #1B3A6B 0%, #008A5E 100%);">
                                 <div>
-                                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white bg-opacity-20 text-white fw-semibold small mb-3">
+                                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success bg-opacity-20 text-white fw-semibold small mb-3">
                                         <i class="fa fa-solid fa-bullhorn"></i> Veille & Savoirs
                                     </div>
                                     <h4 class="h4 fw-bold text-white mb-2">Restez informé de nos avancées</h4>

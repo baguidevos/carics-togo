@@ -3,8 +3,8 @@
         <!-- Pre-Footer CTA Banner -->
         <div class="carics-prefooter-v1 mb-5">
             <div class="row align-items-center justify-content-between g-4">
-                <div class="col-lg-7 text-white">
-                    <span class="badge bg-white bg-opacity-20 text-white mb-2 px-3 py-1 rounded-pill" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;">
+                <div class="col-lg-7 text-success">
+                    <span class="badge bg-success text-white mb-2 px-3 py-2 rounded-pill" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;">
                         Collaboration & Partenariat
                     </span>
                     <h3 class="fw-bold mb-2 text-white" style="font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.9rem);">
