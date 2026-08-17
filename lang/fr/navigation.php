@@ -56,6 +56,8 @@ return [
         'propose_collaboration' => 'Proposer une collaboration',
         'join_network' => 'Rejoindre notre réseau',
         'other_projects' => 'Les autres projets',
+        'collaborate' => 'Collaborer',
+
     ],
 
     // Métadonnées

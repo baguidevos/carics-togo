@@ -56,6 +56,7 @@ return [
         'propose_collaboration' => 'Propose a collaboration',
         'join_network' => 'Join our network',
         'other_projects' => 'Other projects',
+        'collaborate' => 'Collaborate',
     ],
 
     // Metadata
