@@ -1,7 +1,7 @@
 @php
     $slides = [
         [
-            'image' => asset('images/hero1.jpg'),
+            'image' => asset('images/banners/ban2.webp'),
             'badge' => 'Centre de Recherche & d\'Action en Santé Publique',
             'title' => __('home.hero.title'),
             'description' => __('home.hero.description'),
@@ -17,7 +17,7 @@
             ],
         ],
         [
-            'image' => asset('images/banner.jpg'),
+            'image' => asset('images/banners/ban3.webp'),
             'badge' => 'Innovation & Sciences de la Mise en Œuvre',
             'title' => 'Des Données Probantes pour l\'Action.',
             'description' => 'Documenter les interventions sous conditions réelles pour renforcer la qualité et la durabilité des soins.',
@@ -33,7 +33,7 @@
             ],
         ],
         [
-            'image' => asset('images/recherche.jpg'),
+            'image' => asset('images/banners/ban1.webp'),
             'badge' => 'Ancrage Communautaire & Vocation Africaine',
             'title' => 'Rapprocher la Recherche des Communautés.',
             'description' => 'Concevoir des approches innovantes avec les acteurs locaux pour relever les défis prioritaires de santé.',
