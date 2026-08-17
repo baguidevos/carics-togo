@@ -260,7 +260,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         @endphp
                                         @if (!empty($zones))
                                             @if (is_array($zones))
-                                                {{ implode(', ', array_filter($zones)) }}
+                                                {{ implode(', ', array_map('strip_tags', array_filter($zones))) }}
                                             @else
                                                 {{ strip_tags((string) $zones) }}
                                             @endif
@@ -308,7 +308,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-6">
                     <div class="project-details__top mt-lg-5">
                         <div class="text mb-40">
-                            {{ $featuredProject?->context ?? __('research.featured_project.context_text') }}
+                            {!! $featuredProject?->context ?? __('research.featured_project.context_text') !!}
                         </div>
 
                     </div>
@@ -329,34 +329,48 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 {{ __('research.featured_project.objective_title') }}
                             </h5>
                             <div class="text">
-                                {{ $featuredProject?->objective ?? __('research.featured_project.objective_text') }}
+                                {!! $featuredProject?->objective ?? __('research.featured_project.objective_text') !!}
                             </div>
                         </div>
                         <div class="project-list-item mb-5">
                             <h5 class="title"><i class="icon fa-classic fa-solid fa-circle-check fa-fw mr-15"></i>
                                 {{ __('research.featured_project.results_title') }}</h5>
                             <div class="text">
-                                <ul>
-                                    @php
-                                        $expResults = $featuredProject?->expected_results;
-                                        if (is_string($expResults)) {
-                                            $decodedResults = json_decode($expResults, true);
-                                            if (json_last_error() === JSON_ERROR_NONE && is_array($decodedResults)) {
-                                                $expResults = $decodedResults;
-                                            }
+                                @php
+                                    $expResults = $featuredProject?->expected_results;
+                                    if (is_string($expResults)) {
+                                        $decodedResults = json_decode($expResults, true);
+                                        if (json_last_error() === JSON_ERROR_NONE && is_array($decodedResults)) {
+                                            $expResults = $decodedResults;
                                         }
-                                    @endphp
-                                    @if (!empty($expResults))
-                                        @if (is_array($expResults))
+                                    }
+                                @endphp
+                                @if (!empty($expResults))
+                                    @if (is_array($expResults))
+                                        <ul>
                                             @foreach ($expResults as $res)
-                                                <li class="d-flex align-items-center"><i
-                                                        class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ is_string($res) ? strip_tags($res) : $res }}</li>
+                                                <li class="d-flex align-items-start gap-2 mb-2">
+                                                    <i class="icon fa-classic fa-solid fa-check fa-fw mt-1 text-primary"></i>
+                                                    <div>{!! is_string($res) ? $res : e($res) !!}</div>
+                                                </li>
                                             @endforeach
-                                        @else
-                                            <li class="d-flex align-items-center"><i
-                                                    class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ strip_tags((string) $expResults) }}</li>
-                                        @endif
+                                        </ul>
                                     @else
+                                        @if (str_contains($expResults, '<ul') || str_contains($expResults, '<ol') || str_contains($expResults, '<li') || str_contains($expResults, '<p'))
+                                            <div class="rich-text-content">
+                                                {!! $expResults !!}
+                                            </div>
+                                        @else
+                                            <ul>
+                                                <li class="d-flex align-items-start gap-2 mb-2">
+                                                    <i class="icon fa-classic fa-solid fa-check fa-fw mt-1 text-primary"></i>
+                                                    <div>{!! $expResults !!}</div>
+                                                </li>
+                                            </ul>
+                                        @endif
+                                    @endif
+                                @else
+                                    <ul>
                                         <li class="d-flex align-items-center"><i
                                                 class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_1') }}</li>
                                         <li class="d-flex align-items-center"><i
@@ -365,15 +379,15 @@ new #[Layout('layouts::archinest')] class extends Component {
                                                 class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_3') }}</li>
                                         <li class="d-flex align-items-center"><i
                                                 class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_4') }}</li>
-                                    @endif
-                                </ul>
+                                    </ul>
+                                @endif
                             </div>
                         </div>
                         <div class="project-list-item">
                             <h5 class="title"><i
                                     class="icon fa-classic fa-solid fa-circle-check fa-fw mr-15"></i>{{ __('research.featured_project.perspectives_title') }}</h5>
                             <div class="text">
-                                {{ __('research.featured_project.perspectives_text') }}
+                                {!! __('research.featured_project.perspectives_text') !!}
                             </div>
                         </div>
                     </div>
