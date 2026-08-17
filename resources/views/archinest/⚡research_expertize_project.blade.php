@@ -249,8 +249,22 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <li>
                                     <h4 class="project-details__name mb-2">{{ __('research.featured_project.zone_label') }}</h4>
                                     <p class="project-details__client">
-                                        @if (!empty($featuredProject?->intervention_zones))
-                                            {{ implode(', ', $featuredProject->intervention_zones) }} ({{ $featuredProject->region ?? 'Togo' }})
+                                        @php
+                                            $zones = $featuredProject?->intervention_zones;
+                                            if (is_string($zones)) {
+                                                $decodedZones = json_decode($zones, true);
+                                                if (json_last_error() === JSON_ERROR_NONE && is_array($decodedZones)) {
+                                                    $zones = $decodedZones;
+                                                }
+                                            }
+                                        @endphp
+                                        @if (!empty($zones))
+                                            @if (is_array($zones))
+                                                {{ implode(', ', array_filter($zones)) }}
+                                            @else
+                                                {{ strip_tags((string) $zones) }}
+                                            @endif
+                                            ({{ $featuredProject->region ?? 'Togo' }})
                                         @else
                                             {{ __('research.featured_project.zone_value') }}
                                         @endif
@@ -323,11 +337,25 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 {{ __('research.featured_project.results_title') }}</h5>
                             <div class="text">
                                 <ul>
-                                    @if (!empty($featuredProject?->expected_results))
-                                        @foreach ($featuredProject->expected_results as $res)
+                                    @php
+                                        $expResults = $featuredProject?->expected_results;
+                                        if (is_string($expResults)) {
+                                            $decodedResults = json_decode($expResults, true);
+                                            if (json_last_error() === JSON_ERROR_NONE && is_array($decodedResults)) {
+                                                $expResults = $decodedResults;
+                                            }
+                                        }
+                                    @endphp
+                                    @if (!empty($expResults))
+                                        @if (is_array($expResults))
+                                            @foreach ($expResults as $res)
+                                                <li class="d-flex align-items-center"><i
+                                                        class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ is_string($res) ? strip_tags($res) : $res }}</li>
+                                            @endforeach
+                                        @else
                                             <li class="d-flex align-items-center"><i
-                                                    class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ $res }}</li>
-                                        @endforeach
+                                                    class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ strip_tags((string) $expResults) }}</li>
+                                        @endif
                                     @else
                                         <li class="d-flex align-items-center"><i
                                                 class="icon fa-classic fa-solid fa-check fa-fw"></i>{{ __('research.featured_project.result_1') }}</li>

@@ -23,6 +23,7 @@ test('la page recherche expertize et projet est accessible avec la carte interac
         'title' => 'Projet Maternité Sans Risque',
         'status' => 'en_cours',
         'region' => 'Centrale',
+        'intervention_zones' => ['Sokodé', 'Tchamba'],
     ]);
 
     $response = $this->get(route('recherche-expertize-projet'));
@@ -30,6 +31,22 @@ test('la page recherche expertize et projet est accessible avec la carte interac
     $response->assertSee('Implantation Territoriale & Sites d\'Intervention', false);
     $response->assertSee('Tous nos Projets de Recherche');
     $response->assertSee('Projet Maternité Sans Risque');
+});
+
+test('la page recherche expertize et projet gère les zones d intervention et resultats sous forme de chaines ou tableaux', function () {
+    $project = ResearchProject::factory()->create([
+        'title' => 'Projet CPS Savanes',
+        'status' => 'en_cours',
+        'region' => 'Savanes',
+        'intervention_zones' => 'Tône, Kpendjal, Cinkassé',
+        'expected_results' => 'Rapport final et recommandations',
+        'is_featured' => true,
+    ]);
+
+    $response = $this->get(route('recherche-expertize-projet'));
+    $response->assertOk();
+    $response->assertSee('Projet CPS Savanes');
+    $response->assertSee('Tône, Kpendjal, Cinkassé');
 });
 
 test('la page actualites et opportunites affiche le bento grid et les opportunites', function () {
