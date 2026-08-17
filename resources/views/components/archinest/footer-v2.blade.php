@@ -83,10 +83,12 @@
         <!-- Bento Bottom Bar / Newsletter & Copyright -->
         <div class="p-4 rounded-4" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);">
             <div class="row align-items-center justify-content-between g-3">
-                <div class="col-md-6 text-muted" style="font-size: 0.85rem;">
-                    {{ __('navigation.footer.copyright') }}
+                <div class="col-md-7 text-muted d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2" style="font-size: 0.85rem;">
+                    <span>{{ __('navigation.footer.copyright') }}</span>
+                    <span class="d-none d-sm-inline text-muted">•</span>
+                    <span>Développé par <a href="tel:+22892407089" class="text-white text-decoration-none fw-semibold">HIDA Baguibassa David</a> (<a href="tel:+22892407089" class="text-accent text-decoration-none">+228 92 40 70 89</a>)</span>
                 </div>
-                <div class="col-md-6 d-flex justify-content-md-end gap-3 text-muted" style="font-size: 0.85rem;">
+                <div class="col-md-5 d-flex justify-content-md-end gap-3 text-muted" style="font-size: 0.85rem;">
                     <a href="{{ route('home') }}" class="text-muted text-decoration-none hover-text-white">Mentions Légales</a>
                     <span>•</span>
                     <a href="{{ route('home') }}" class="text-muted text-decoration-none hover-text-white">Confidentialité</a>

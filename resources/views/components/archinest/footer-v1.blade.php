@@ -98,8 +98,10 @@
 
         <!-- Bottom Legal Bar -->
         <div class="pt-4 mt-2 border-top border-white border-opacity-10 d-flex flex-wrap justify-content-between align-items-center gap-3 text-white-50" style="font-size: 0.82rem;">
-            <div>
-                {{ __('navigation.footer.copyright') }}
+            <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2">
+                <span>{{ __('navigation.footer.copyright') }}</span>
+                <span class="d-none d-sm-inline text-white-50">•</span>
+                <span>Développé par <a href="tel:+22892407089" class="text-white text-decoration-none fw-semibold">HIDA Baguibassa David</a> (<a href="tel:+22892407089" class="text-accent text-decoration-none">+228 92 40 70 89</a>)</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <a href="{{ route('home') }}" class="text-white-50 text-decoration-none">Mentions Légales</a>
