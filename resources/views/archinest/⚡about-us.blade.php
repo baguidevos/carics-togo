@@ -16,7 +16,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
 <div>
     <!-- Start main-content / Hero Banner -->
-    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
+    <section class="page-title" style="background-image: url({{ asset('images/banners/ban2.webp') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
                 <h1 class="title">{{ __('about.title') }}</h1>

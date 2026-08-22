@@ -56,7 +56,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
 <div>
     <!-- En-tête Page Banner -->
-    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
+    <section class="page-title" style="background-image: url({{ asset('images/abouts.webp') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
                 <ul class="page-breadcrumb">

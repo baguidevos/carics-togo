@@ -56,7 +56,7 @@ new #[Layout('layouts::archinest')] class extends Component {
     }
 }">
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url({{ asset('images/banner.jpg') }});">
+    <section class="page-title" style="background-image: url({{ asset('images/projet.webp') }});">
         <div class="auto-container">
             <div class="title-outer text-center">
                 <h1 class="title">{{ __('research.title') }}</h1>
