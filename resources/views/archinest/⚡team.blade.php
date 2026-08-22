@@ -62,34 +62,34 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <button type="button" 
                             wire:click="$set('selectedCategory', 'all')"
                             class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'all' ? 'btn-primary' : 'btn-light border' }}">
-                        Tous les membres <span class="badge  bg-opacity-25 ms-1">{{ $counts['all'] }}</span>
+                        {{ __('team.categories.all') }} <span class="badge  bg-opacity-25 ms-1">{{ $counts['all'] }}</span>
                     </button>
                     @if ($counts['bureau_executif'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'bureau_executif')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'bureau_executif' ? 'btn-primary' : 'btn-light border' }}">
-                            Bureau Exécutif <span class="badge  bg-opacity-25 ms-1">{{ $counts['bureau_executif'] }}</span>
+                            {{ __('team.categories.bureau_executif') }} <span class="badge  bg-opacity-25 ms-1">{{ $counts['bureau_executif'] }}</span>
                         </button>
                     @endif
                     @if ($counts['conseil_scientifique'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'conseil_scientifique')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'conseil_scientifique' ? 'btn-primary' : 'btn-light border' }}">
-                            Conseil Scientifique <span class="badge  bg-opacity-25 ms-1">{{ $counts['conseil_scientifique'] }}</span>
+                            {{ __('team.categories.conseil_scientifique') }} <span class="badge  bg-opacity-25 ms-1">{{ $counts['conseil_scientifique'] }}</span>
                         </button>
                     @endif
                     @if ($counts['chercheur_associe'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'chercheur_associe')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'chercheur_associe' ? 'btn-primary' : 'btn-light border' }}">
-                            Chercheurs Associés <span class="badge  bg-opacity-25 ms-1">{{ $counts['chercheur_associe'] }}</span>
+                            {{ __('team.categories.chercheur_associe') }} <span class="badge  bg-opacity-25 ms-1">{{ $counts['chercheur_associe'] }}</span>
                         </button>
                     @endif
                     @if ($counts['equipe_technique'] > 0)
                         <button type="button" 
                                 wire:click="$set('selectedCategory', 'equipe_technique')"
                                 class="btn btn-sm rounded-pill px-3 {{ $selectedCategory === 'equipe_technique' ? 'btn-primary' : 'btn-light border' }}">
-                            Équipe Technique <span class="badge  bg-opacity-25 ms-1">{{ $counts['equipe_technique'] }}</span>
+                            {{ __('team.categories.equipe_technique') }} <span class="badge  bg-opacity-25 ms-1">{{ $counts['equipe_technique'] }}</span>
                         </button>
                     @endif
                 </div>
@@ -110,15 +110,15 @@ new #[Layout('layouts::archinest')] class extends Component {
                                                 <img src="{{ str_starts_with($member->avatar_url, 'http') ? $member->avatar_url : asset($member->avatar_url) }}" 
                                                      alt="{{ $member['fullName'] }}" 
                                                      loading="lazy" 
-                                                     decoding="async"
-                                                     class="w-100 h-100 object-fit-cover"
+                                                     decoding="async" 
+                                                     class="w-100 h-100 object-fit-cover" 
                                                      style="object-fit: cover;">
                                             @elseif (!empty($member['imageName']))
                                                 <img src="{{ asset('images/equipes/' . $member['imageName']) }}" 
                                                      alt="{{ $member['fullName'] }}" 
                                                      loading="lazy" 
-                                                     decoding="async"
-                                                     class="w-100 h-100 object-fit-cover"
+                                                     decoding="async" 
+                                                     class="w-100 h-100 object-fit-cover" 
                                                      style="object-fit: cover;">
                                             @else
                                                 <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-primary text-white fs-1 fw-bold">
@@ -128,7 +128,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                                             @if ($member->is_founder)
                                                 <span class="badge bg-opacity-75 text-white position-absolute top-0 start-0 m-2 px-2 py-1 rounded-pill small">
-                                                    Fondateur
+                                                    {{ __('team.founder') }}
                                                 </span>
                                             @endif
                                         </div>
@@ -167,10 +167,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="col-12 text-center py-5">
                             <div class="p-5 bg-light rounded-4 border">
                                 <i class="fa fa-solid fa-users text-muted fs-1 mb-3"></i>
-                                <h4 class="h5 text-dark">Aucun membre trouvé dans cette catégorie</h4>
-                                <p class="text-muted small mb-3">Essayez de sélectionner une autre catégorie.</p>
+                                <h4 class="h5 text-dark">{{ __('team.no_member_found') }}</h4>
+                                <p class="text-muted small mb-3">{{ __('team.no_member_desc') }}</p>
                                 <button type="button" wire:click="$set('selectedCategory', 'all')" class="btn btn-sm btn-primary rounded-pill px-3">
-                                    Voir tous les membres
+                                    {{ __('team.see_all_members') }}
                                 </button>
                             </div>
                         </div>

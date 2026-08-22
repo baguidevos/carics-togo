@@ -8,7 +8,7 @@
                     <span class="d-flex align-items-center gap-2">
                         <span class="pulse-dot"></span>
                         <i class="fa-solid fa-location-dot text-white-50"></i>
-                        <span>Dapaong, Savanes — Togo</span>
+                        <span>{{ __('navigation.header.location_topbar') }}</span>
                     </span>
                     <span class="text-white-50">|</span>
                     <a href="{{ config('site.href_email') }}" class="d-flex align-items-center gap-2">
@@ -19,7 +19,7 @@
 
                 <!-- Centre : Slogan -->
                 <div class="d-none d-xl-block text-white-50" style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">
-                    Recherche • Innovation • Action
+                    {{ __('navigation.header.slogan') }}
                 </div>
 
                 <!-- Droite : Téléphone, Langue & Réseaux -->
@@ -85,14 +85,14 @@
                                 <div class="item-icon"><i class="fa-regular fa-landmark"></i></div>
                                 <div>
                                     <div class="fw-semibold" style="font-size: 0.9rem;">{{ __('navigation.menu.about_us') }}</div>
-                                    <div class="text-muted" style="font-size: 0.75rem;">Vision, mission & valeurs</div>
+                                    <div class="text-muted" style="font-size: 0.75rem;">{{ __('navigation.header.about_us_sub') }}</div>
                                 </div>
                             </a>
                             <a href="{{ route('equipe') }}" class="carics-dropdown-item-v1">
                                 <div class="item-icon"><i class="fa-regular fa-users-gear"></i></div>
                                 <div>
                                     <div class="fw-semibold" style="font-size: 0.9rem;">{{ __('navigation.menu.governance') }}</div>
-                                    <div class="text-muted" style="font-size: 0.75rem;">Conseil & équipe exécutive</div>
+                                    <div class="text-muted" style="font-size: 0.75rem;">{{ __('navigation.header.governance_sub') }}</div>
                                 </div>
                             </a>
                         </div>
@@ -114,7 +114,7 @@
                 <!-- Right Actions -->
                 <div class="d-flex align-items-center gap-3">
                     <!-- Search Trigger -->
-                    <button type="button" @click="searchOpen = true" class="btn btn-light rounded-circle d-none d-sm-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 1px solid var(--line);" title="Rechercher">
+                    <button type="button" @click="searchOpen = true" class="btn btn-light rounded-circle d-none d-sm-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 1px solid var(--line);" title="{{ __('navigation.header.search_btn') }}">
                         <i class="fa-solid fa-magnifying-glass text-muted" style="font-size: 0.9rem;"></i>
                     </button>
 
@@ -125,7 +125,7 @@
                     </a>
 
                     <!-- Mobile Hamburger Button -->
-                    <button type="button" @click.stop="mobileOpen = true" class="btn btn-light d-lg-none d-flex align-items-center justify-content-center rounded-3 p-2 border" style="width: 42px; height: 42px;" title="Ouvrir le menu">
+                    <button type="button" @click.stop="mobileOpen = true" class="btn btn-light d-lg-none d-flex align-items-center justify-content-center rounded-3 p-2 border" style="width: 42px; height: 42px;" title="Menu">
                         <i class="fa-solid fa-bars-staggered" style="font-size: 1.2rem; color: var(--ink);"></i>
                     </button>
                 </div>
@@ -196,7 +196,7 @@
 
                 <!-- Coordonnées directes mobile -->
                 <div class="d-flex flex-column gap-2" style="font-size: 0.85rem;">
-                    <div class="text-uppercase text-muted fw-bold" style="font-size: 0.72rem; letter-spacing: 0.1em;">Contact Rapide</div>
+                    <div class="text-uppercase text-muted fw-bold" style="font-size: 0.72rem; letter-spacing: 0.1em;">{{ __('navigation.header.quick_contact') }}</div>
                     <a href="{{ config('site.href_phone1') }}" class="text-decoration-none text-dark d-flex align-items-center gap-2"><i class="fa-solid fa-phone text-accent"></i> {{ config('site.phone1') }}</a>
                     <a href="{{ config('site.href_email') }}" class="text-decoration-none text-dark d-flex align-items-center gap-2"><i class="fa-regular fa-envelope text-accent"></i> {{ config('site.email') }}</a>
                 </div>
@@ -237,7 +237,7 @@
              x-transition:leave-start="opacity-100 scale-100"
              x-transition:leave-end="opacity-0 scale-95">
             <div class="d-flex align-items-center justify-content-between mb-3">
-                <h5 class="mb-0 fw-bold" style="color: var(--ink);">Rechercher sur CARICS-TOGO</h5>
+                <h5 class="mb-0 fw-bold" style="color: var(--ink);">{{ __('navigation.header.search_modal_title') }}</h5>
                 <button type="button" 
                         @click.stop="searchOpen = false" 
                         class="btn btn-sm btn-light rounded-circle d-flex align-items-center justify-content-center border" 
@@ -249,12 +249,13 @@
                 <div class="input-group">
                     <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
                     <input type="search" name="search" class="form-control border-start-0 py-2 ps-0" placeholder="{{ __('navigation.header.search_placeholder') }}" autofocus>
-                    <button class="btn btn-primary px-4" type="submit">Chercher</button>
+                    <button class="btn btn-primary px-4" type="submit">{{ __('navigation.header.search_btn') }}</button>
                 </div>
             </form>
             <div class="mt-3 text-muted" style="font-size: 0.8rem;">
-                Suggestions : <a href="{{ route('recherche-expertize-projet') }}" class="text-accent text-decoration-none">Santé publique</a>, <a href="{{ route('ressource-publication') }}" class="text-accent text-decoration-none">Rapports</a>, <a href="{{ route('actu-opportunites') }}" class="text-accent text-decoration-none">Opportunités</a>
+                {{ __('navigation.header.search_suggestions') }} <a href="{{ route('recherche-expertize-projet') }}" class="text-accent text-decoration-none">Santé publique</a>, <a href="{{ route('ressource-publication') }}" class="text-accent text-decoration-none">Rapports</a>, <a href="{{ route('actu-opportunites') }}" class="text-accent text-decoration-none">Opportunités</a>
             </div>
         </div>
     </div>
 </header>
+

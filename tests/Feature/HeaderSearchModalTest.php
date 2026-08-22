@@ -7,5 +7,3 @@ test('header components contain valid search modal and close triggers', function
         ->toContain('searchOpen')
         ->toContain('@keydown.escape.window="searchOpen = false"');
 })->with(['header-v1', 'header-v2']);
-
-

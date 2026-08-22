@@ -51,7 +51,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
                         @if ($member->is_founder)
                             <span class="badge  text-primary rounded-pill px-3 py-1 fw-semibold small">
-                                <i class="fa fa-solid fa-certificate text-warning me-1"></i> Membre Fondateur
+                                <i class="fa fa-solid fa-certificate text-warning me-1"></i> {{ __('team.member_founder') }}
                             </span>
                         @endif
                         <span class="badge  bg-opacity-20 text-white rounded-pill px-3 py-1 small">
@@ -155,7 +155,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <a href="{{ route('recherche-expertize-projet') }}" class="text-decoration-none text-reset d-block">
                                 <div class="p-4 rounded-4 border bg-light hover-shadow transition-all">
                                     <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
-                                        <span class="badge bg-success rounded-pill px-3 py-1 small">Projet Phare</span>
+                                        <span class="badge bg-success rounded-pill px-3 py-1 small">{{ __('team.featured_project_badge') }}</span>
                                         @if ($relatedProject?->funding_source)
                                             <span class="badge bg-light text-dark border rounded-pill px-3 py-1 small">{{ $relatedProject->funding_source }}</span>
                                         @endif
@@ -169,7 +169,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         </p>
                                     @endif
                                     <div class="text-primary fw-semibold small">
-                                        Découvrir le projet et ses interventions <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                        {{ __('team.discover_project') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                                     </div>
                                 </div>
                             </a>
@@ -233,7 +233,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         @if (!empty($member->distinctions) && is_array($member->distinctions))
                             <div class="p-4 rounded-4  border shadow-sm mb-4" style="background: #fffcf5;">
                                 <div class="eyebrow text-warning mb-3">
-                                    <i class="fa fa-solid fa-trophy me-1"></i> Prix & Distinctions
+                                    <i class="fa fa-solid fa-trophy me-1"></i> {{ __('team.detail.distinctions_eyebrow') }}
                                 </div>
                                 @foreach ($member->distinctions as $dist)
                                     <div class="p-3 rounded-3  border mb-2 shadow-2xs">
@@ -300,7 +300,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 @if ($member->email)
                                     <a href="mailto:{{ $member->email }}" 
                                        class="btn btn-sm btn-primary d-flex align-items-center justify-content-between rounded-pill px-3 py-2">
-                                        <span><i class="fa-solid fa-envelope me-2"></i> Contacter par email</span>
+                                        <span><i class="fa-solid fa-envelope me-2"></i> {{ __('team.detail.contact_by_email') }}</span>
                                         <i class="fa-solid fa-paper-plane small"></i>
                                     </a>
                                 @endif

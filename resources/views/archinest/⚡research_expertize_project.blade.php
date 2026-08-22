@@ -77,7 +77,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-8">
                     <div
                         class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                        <i class="fa fa-solid fa-flask-vial"></i> Pôle d'Excellence & Axes Stratégiques
+                        <i class="fa fa-solid fa-flask-vial"></i> {{ __('research.axes.badge') }}
                     </div>
                     <h2 class="h2 fw-bold text-dark mb-2">{{ __('research.header.title') }}</h2>
                     <p class="text-secondary lead mb-0" style="font-size: 1.08rem; line-height: 1.7;">
@@ -110,7 +110,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-primary small fw-semibold">
-                            <i class="fa fa-solid fa-check-circle me-1"></i> Épidémiologie appliquée
+                            <i class="fa fa-solid fa-check-circle me-1"></i> {{ __('research.axes.item_1_badge') }}
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-success small fw-semibold">
-                            <i class="fa fa-solid fa-check-circle me-1"></i> Sciences de la mise en œuvre
+                            <i class="fa fa-solid fa-check-circle me-1"></i> {{ __('research.axes.item_2_badge') }}
                         </div>
                     </div>
                 </div>
@@ -150,7 +150,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-info small fw-semibold">
-                            <i class="fa fa-solid fa-check-circle me-1"></i> Approches communautaires
+                            <i class="fa fa-solid fa-check-circle me-1"></i> {{ __('research.axes.item_3_badge') }}
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-warning-emphasis small fw-semibold">
-                            <i class="fa fa-solid fa-check-circle me-1"></i> Gouvernance & Équité
+                            <i class="fa fa-solid fa-check-circle me-1"></i> {{ __('research.axes.item_4_badge') }}
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-danger small fw-semibold">
-                            <i class="fa fa-solid fa-check-circle me-1"></i> Suivi-évaluation & Données
+                            <i class="fa fa-solid fa-check-circle me-1"></i> {{ __('research.axes.item_5_badge') }}
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-primary small fw-semibold">
-                            <i class="fa fa-solid fa-check-circle me-1"></i> Santé numérique & IA
+                            <i class="fa fa-solid fa-check-circle me-1"></i> {{ __('research.axes.item_6_badge') }}
                         </div>
                     </div>
                 </div>
@@ -223,7 +223,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-lg-4">
                         <div
                             class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success bg-opacity-0 text-white fw-semibold small mb-2">
-                            <i class="fa fa-solid fa-bullseye"></i> Orientations Stratégiques
+                            <i class="fa fa-solid fa-bullseye"></i> {{ __('research.axes.orientations_badge') }}
                         </div>
                         <h3 class="h3 fw-bold text-white mb-2">{{ __('research.domains.priorities_title') }}</h3>
                         <p class="text-white-50 small mb-0">
@@ -409,7 +409,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-sm-6 col-lg-3">
                         <div class="p-3 bg-light rounded-3 h-100 border">
                             <div class="text-muted small mb-1"><i class="fa fa-solid fa-user-tie text-primary me-1"></i>
-                                Investigateur Principal</div>
+                                {{ __('research.featured_project.lead_investigator') }}</div>
                             <strong class="text-dark">
                                 @if ($featuredProject?->lead)
                                     <a href="{{ route('team-detail', ['slug' => $featuredProject->lead->slug]) }}"
@@ -417,7 +417,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         {{ $featuredProject->lead->full_name }}
                                     </a>
                                 @else
-                                    Équipe Scientifique CARICS
+                                    {{ __('research.featured_project.scientific_team') }}
                                 @endif
                             </strong>
                         </div>
@@ -546,12 +546,11 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="text-center max-w-700 mx-auto mb-5">
                 <div
                     class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                    <i class="fa fa-solid fa-map-location-dot"></i> Couverture Nationale
+                    <i class="fa fa-solid fa-map-location-dot"></i> {{ __('research.map.badge') }}
                 </div>
-                <h2 class="h3 fw-bold text-dark mb-2">Implantation Territoriale & Sites d'Intervention</h2>
+                <h2 class="h3 fw-bold text-dark mb-2">{{ __('research.map.title') }}</h2>
                 <p class="text-muted">
-                    Découvrez la répartition des projets de recherche et d'action sociale menés par le CARICS à travers
-                    les 5 régions du Togo.
+                    {{ __('research.map.subtitle') }}
                 </p>
             </div>
 
@@ -567,15 +566,14 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="col-lg-7">
                     <div
                         class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success-subtle text-success fw-semibold small mb-2">
-                        <i class="fa fa-solid fa-folder-tree"></i> Répertoire Scientifique
+                        <i class="fa fa-solid fa-folder-tree"></i> {{ __('research.directory.badge') }}
                     </div>
-                    <h2 class="h3 fw-bold text-dark mb-1">Tous nos Projets de Recherche</h2>
-                    <p class="text-muted mb-0">Consultez l'ensemble des études menées par nos équipes et partenaires.
-                    </p>
+                    <h2 class="h3 fw-bold text-dark mb-1">{{ __('research.directory.title') }}</h2>
+                    <p class="text-muted mb-0">{{ __('research.directory.subtitle') }}</p>
                 </div>
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
                     <span class="badge bg-white text-dark border px-3 py-2 fs-6 shadow-sm rounded-pill">
-                        <strong class="text-primary">{{ $totalCount }}</strong> projets répertoriés
+                        <strong class="text-primary">{{ $totalCount }}</strong> {{ __('research.directory.projects_listed') }}
                     </span>
                 </div>
             </div>
@@ -591,20 +589,20 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </span>
                             <input type="text" wire:model.live.debounce.300ms="search"
                                 class="form-control border-start-0 rounded-end-pill py-2 shadow-none"
-                                placeholder="Rechercher par mot-clé, thématique, bailleur, région...">
+                                placeholder="{{ __('research.directory.search_placeholder') }}">
                         </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="d-flex gap-2">
                             <select wire:model.live="selectedStatus" class="form-select rounded-pill py-2 shadow-none">
-                                <option value="all">Tous les statuts</option>
-                                <option value="en_cours">En cours</option>
-                                <option value="termine">Achevés</option>
-                                <option value="en_attente">En préparation</option>
+                                <option value="all">{{ __('research.directory.all_statuses') }}</option>
+                                <option value="en_cours">{{ __('research.directory.status_ongoing') }}</option>
+                                <option value="termine">{{ __('research.directory.status_completed') }}</option>
+                                <option value="en_attente">{{ __('research.directory.status_planned') }}</option>
                             </select>
                             @if ($search !== '' || $selectedStatus !== 'all')
                                 <button wire:click="resetFilters" class="btn btn-outline-secondary rounded-pill px-3"
-                                    title="Réinitialiser">
+                                    title="{{ __('research.directory.reset_filters') }}">
                                     <i class="fa fa-solid fa-rotate-left"></i>
                                 </button>
                             @endif
@@ -616,19 +614,19 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top">
                     <button type="button" wire:click="$set('selectedStatus', 'all')"
                         class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'all' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
-                        Tous les projets
+                        {{ __('research.directory.all_projects_btn') }}
                     </button>
                     <button type="button" wire:click="$set('selectedStatus', 'en_cours')"
                         class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_cours' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
-                        En cours
+                        {{ __('research.directory.status_ongoing') }}
                     </button>
                     <button type="button" wire:click="$set('selectedStatus', 'termine')"
                         class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'termine' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
-                        Achevés
+                        {{ __('research.directory.status_completed') }}
                     </button>
                     <button type="button" wire:click="$set('selectedStatus', 'en_attente')"
                         class="btn btn-sm rounded-pill px-3 {{ $selectedStatus === 'en_attente' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}">
-                        En préparation
+                        {{ __('research.directory.status_planned') }}
                     </button>
                 </div>
             </div>
@@ -646,9 +644,9 @@ new #[Layout('layouts::archinest')] class extends Component {
                         @foreach ($projects as $proj)
                                         @php
                                             $statusBadge = match ($proj->status) {
-                                                'en_cours' => ['class' => 'bg-success-subtle text-success', 'label' => 'En cours'],
-                                                'termine' => ['class' => 'bg-info-subtle text-info-emphasis', 'label' => 'Achevé'],
-                                                'en_attente' => ['class' => 'bg-warning-subtle text-warning-emphasis', 'label' => 'En préparation'],
+                                                'en_cours' => ['class' => 'bg-success-subtle text-success', 'label' => __('research.directory.status_ongoing')],
+                                                'termine' => ['class' => 'bg-info-subtle text-info-emphasis', 'label' => __('research.directory.status_completed')],
+                                                'en_attente' => ['class' => 'bg-warning-subtle text-warning-emphasis', 'label' => __('research.directory.status_planned')],
                                                 default => ['class' => 'bg-secondary-subtle text-secondary', 'label' => ucfirst($proj->status)],
                                             };
                                         @endphp
@@ -706,26 +704,26 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                                                     <div class="d-flex gap-1">
                                                         <button type="button" @click="openProjectModal({{ Js::from([
-                                'title' => $proj->title,
-                                'status' => $proj->status,
-                                'statusLabel' => $statusBadge['label'],
-                                'statusClass' => $statusBadge['class'],
-                                'region' => $proj->region,
-                                'funder' => $proj->funder,
-                                'period' => $proj->start_date ? $proj->start_date->format('Y') . ($proj->end_date ? ' – ' . $proj->end_date->format('Y') : ' – En cours') : null,
-                                'lead' => $proj->lead?->full_name ?? 'Équipe CARICS',
-                                'context' => $proj->context,
-                                'objective' => $proj->objective,
-                                'methodology' => $proj->methodology,
-                                'expectedResults' => $proj->expected_results,
-                                'zones' => is_array($proj->intervention_zones) ? implode(', ', array_map('strip_tags', $proj->intervention_zones)) : strip_tags((string) $proj->intervention_zones),
-                            ]) }})" class="btn btn-sm btn-light border rounded-pill px-3">
-                                                            <i class="fa fa-solid fa-circle-info me-1"></i> Détails
+                                                            'title' => $proj->title,
+                                                            'status' => $proj->status,
+                                                            'statusLabel' => $statusBadge['label'],
+                                                            'statusClass' => $statusBadge['class'],
+                                                            'region' => $proj->region,
+                                                            'funder' => $proj->funder,
+                                                            'period' => $proj->start_date ? $proj->start_date->format('Y') . ($proj->end_date ? ' – ' . $proj->end_date->format('Y') : ' – En cours') : null,
+                                                            'lead' => $proj->lead?->full_name ?? 'Équipe CARICS',
+                                                            'context' => $proj->context,
+                                                            'objective' => $proj->objective,
+                                                            'methodology' => $proj->methodology,
+                                                            'expectedResults' => $proj->expected_results,
+                                                            'zones' => is_array($proj->intervention_zones) ? implode(', ', array_map('strip_tags', $proj->intervention_zones)) : strip_tags((string) $proj->intervention_zones),
+                                                        ]) }})" class="btn btn-sm btn-light border rounded-pill px-3">
+                                                            <i class="fa fa-solid fa-circle-info me-1"></i> {{ __('research.directory.view_project_details') }}
                                                         </button>
 
                                                         <a href="{{ route('contact') }}"
                                                             class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                                            Partenariat <i class="fa fa-solid fa-arrow-right ms-1 small"></i>
+                                                            {{ __('navigation.footer.partnerships') }} <i class="fa fa-solid fa-arrow-right ms-1 small"></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -738,11 +736,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="mb-3 text-muted" style="font-size: 3rem;">
                             <i class="fa fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <h4 class="h5 fw-bold text-dark mb-2">Aucun projet trouvé</h4>
-                        <p class="text-muted small mb-3">Aucun projet de recherche ne correspond à ces critères.</p>
+                        <h4 class="h5 fw-bold text-dark mb-2">{{ __('research.directory.no_project_found') }}</h4>
+                        <p class="text-muted small mb-3">{{ __('research.directory.no_project_found_desc') }}</p>
                         <button type="button" wire:click="resetFilters"
                             class="btn btn-outline-primary rounded-pill px-4 btn-sm">
-                            <i class="fa fa-solid fa-rotate-left me-1"></i> Réinitialiser les filtres
+                            <i class="fa fa-solid fa-rotate-left me-1"></i> {{ __('research.directory.reset_filters') }}
                         </button>
                     </div>
                 @endif
@@ -775,7 +773,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 </div>
                 <button type="button" @click="selectedProject = null"
                     class="btn btn-sm btn-light rounded-circle p-2 shadow-none" style="width: 36px; height: 36px;"
-                    title="Fermer">
+                    title="{{ __('research.modal.close') }}">
                     <i class="fa fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -787,7 +785,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <template x-if="selectedProject?.funder">
                         <div class="col-sm-6">
                             <div class="p-2 bg-light rounded-3 border small">
-                                <span class="text-muted">Bailleur :</span>
+                                <span class="text-muted">{{ __('home.featured_project.funding_label') }}</span>
                                 <strong class="text-dark ms-1" x-text="selectedProject?.funder"></strong>
                             </div>
                         </div>
@@ -795,7 +793,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <template x-if="selectedProject?.period">
                         <div class="col-sm-6">
                             <div class="p-2 bg-light rounded-3 border small">
-                                <span class="text-muted">Période :</span>
+                                <span class="text-muted">{{ __('home.featured_project.period_label') }} :</span>
                                 <strong class="text-dark ms-1" x-text="selectedProject?.period"></strong>
                             </div>
                         </div>
@@ -803,7 +801,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <template x-if="selectedProject?.lead">
                         <div class="col-sm-6">
                             <div class="p-2 bg-light rounded-3 border small">
-                                <span class="text-muted">Investigateur :</span>
+                                <span class="text-muted">{{ __('research.featured_project.lead_investigator') }} :</span>
                                 <strong class="text-dark ms-1" x-text="selectedProject?.lead"></strong>
                             </div>
                         </div>
@@ -811,7 +809,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <template x-if="selectedProject?.zones">
                         <div class="col-sm-6">
                             <div class="p-2 bg-light rounded-3 border small">
-                                <span class="text-muted">Zones :</span>
+                                <span class="text-muted">{{ __('home.featured_project.zone_label') }} :</span>
                                 <strong class="text-dark ms-1" x-text="selectedProject?.zones"></strong>
                             </div>
                         </div>
@@ -822,7 +820,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <template x-if="selectedProject?.context">
                     <div class="mb-4">
                         <h4 class="h6 fw-bold text-dark mb-2">
-                            <i class="fa fa-solid fa-book-open text-primary me-2"></i> Contexte & Problématique
+                            <i class="fa fa-solid fa-book-open text-primary me-2"></i> {{ __('research.modal.context') }}
                         </h4>
                         <div class="text-secondary small" style="line-height: 1.7;" x-html="selectedProject?.context">
                         </div>
@@ -833,7 +831,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <template x-if="selectedProject?.objective">
                     <div class="mb-4">
                         <h4 class="h6 fw-bold text-dark mb-2">
-                            <i class="fa fa-solid fa-bullseye text-success me-2"></i> Objectifs de l'Étude
+                            <i class="fa fa-solid fa-bullseye text-success me-2"></i> {{ __('research.modal.objectives') }}
                         </h4>
                         <div class="text-secondary small" style="line-height: 1.7;" x-html="selectedProject?.objective">
                         </div>
@@ -856,10 +854,10 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="p-3 border-top d-flex justify-content-between align-items-center bg-light">
                 <button type="button" @click="selectedProject = null"
                     class="btn btn-sm btn-outline-secondary rounded-pill px-4">
-                    Fermer
+                    {{ __('research.modal.close') }}
                 </button>
                 <a href="{{ route('contact') }}" class="btn btn-sm btn-primary rounded-pill px-4 fw-semibold">
-                    Initier une collaboration <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                    {{ __('navigation.actions.propose_collaboration') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
         </div>

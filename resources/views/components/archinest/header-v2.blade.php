@@ -23,14 +23,14 @@
                         <div class="item-icon"><i class="fa-regular fa-landmark"></i></div>
                         <div>
                             <div class="fw-semibold" style="font-size: 0.88rem;">{{ __('navigation.menu.about_us') }}</div>
-                            <div class="text-muted" style="font-size: 0.72rem;">Pôles & Missions</div>
+                            <div class="text-muted" style="font-size: 0.72rem;">{{ __('navigation.header.poles_sub') }}</div>
                         </div>
                     </a>
                     <a href="{{ route('equipe') }}" class="carics-dropdown-item-v1">
                         <div class="item-icon"><i class="fa-regular fa-users"></i></div>
                         <div>
                             <div class="fw-semibold" style="font-size: 0.88rem;">{{ __('navigation.menu.governance') }}</div>
-                            <div class="text-muted" style="font-size: 0.72rem;">Direction & Chercheurs</div>
+                            <div class="text-muted" style="font-size: 0.72rem;">{{ __('navigation.header.researchers_sub') }}</div>
                         </div>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
             </div>
 
             <!-- Search Icon Button -->
-            <button type="button" @click="searchOpen = true" class="btn btn-light rounded-circle d-flex align-items-center justify-content-center border" style="width: 38px; height: 38px;" title="Rechercher">
+            <button type="button" @click="searchOpen = true" class="btn btn-light rounded-circle d-flex align-items-center justify-content-center border" style="width: 38px; height: 38px;" title="{{ __('navigation.header.search_btn') }}">
                 <i class="fa-solid fa-magnifying-glass text-muted" style="font-size: 0.85rem;"></i>
             </button>
 
@@ -69,7 +69,7 @@
             </a>
 
             <!-- Mobile Hamburger -->
-            <button type="button" @click.stop="mobileOpen = true" class="btn btn-light d-lg-none d-flex align-items-center justify-content-center rounded-circle border" style="width: 40px; height: 40px;" title="Ouvrir le menu">
+            <button type="button" @click.stop="mobileOpen = true" class="btn btn-light d-lg-none d-flex align-items-center justify-content-center rounded-circle border" style="width: 40px; height: 40px;" title="Menu">
                 <i class="fa-solid fa-bars-staggered text-dark"></i>
             </button>
         </div>
@@ -134,7 +134,7 @@
 
                 <!-- Language selection in Drawer -->
                 <div class="mt-4 p-3 bg-light rounded-4">
-                    <div class="text-uppercase text-muted fw-bold mb-2" style="font-size: 0.7rem;">Langue / Language</div>
+                    <div class="text-uppercase text-muted fw-bold mb-2" style="font-size: 0.7rem;">{{ __('navigation.header.language') }}</div>
                     <div class="d-flex gap-2">
                         <a href="{{ route('lang.switch', ['locale' => 'fr']) }}" class="btn btn-sm flex-fill rounded-pill {{ app()->getLocale() === 'fr' ? 'btn-primary' : 'btn-outline-secondary' }}">🇫🇷 FR</a>
                         <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="btn btn-sm flex-fill rounded-pill {{ app()->getLocale() === 'en' ? 'btn-primary' : 'btn-outline-secondary' }}">🇬🇧 EN</a>
@@ -172,7 +172,7 @@
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <h5 class="mb-0 fw-bold text-dark d-flex align-items-center gap-2">
                     <i class="fa-solid fa-magnifying-glass text-accent"></i> 
-                    <span>Exploration Rapide</span>
+                    <span>{{ __('navigation.header.search_quick') }}</span>
                 </h5>
                 <button type="button" 
                         @click.stop="searchOpen = false" 
@@ -183,10 +183,11 @@
             </div>
             <form action="{{ route('recherche-expertize-projet') }}" method="GET">
                 <div class="input-group">
-                    <input type="search" name="search" class="form-control py-2 ps-3 rounded-start-pill" placeholder="Mots-clés (ex: nutrition, épidémiologie, publications...)" autofocus>
-                    <button class="btn btn-primary px-4 rounded-end-pill" type="submit">Rechercher</button>
+                    <input type="search" name="search" class="form-control py-2 ps-3 rounded-start-pill" placeholder="{{ __('navigation.header.search_placeholder_v2') }}" autofocus>
+                    <button class="btn btn-primary px-4 rounded-end-pill" type="submit">{{ __('navigation.header.search_btn') }}</button>
                 </div>
             </form>
         </div>
     </div>
 </header>
+

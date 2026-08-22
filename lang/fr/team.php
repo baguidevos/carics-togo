@@ -8,6 +8,21 @@ return [
     'board_eyebrow' => 'Bureau Exécutif',
     'board_title' => 'Les membres du Bureau Exécutif',
     'view_profile' => 'Voir le profil',
+    'founder' => 'Fondateur',
+    'member_founder' => 'Membre Fondateur',
+    'featured_project_badge' => 'Projet Phare',
+    'discover_project' => 'Découvrir le projet et ses interventions',
+    'no_member_found' => 'Aucun membre trouvé dans cette catégorie',
+    'no_member_desc' => 'Essayez de sélectionner une autre catégorie.',
+    'see_all_members' => 'Voir tous les membres',
+
+    'categories' => [
+        'all' => 'Tous les membres',
+        'bureau_executif' => 'Bureau Exécutif',
+        'conseil_scientifique' => 'Conseil Scientifique',
+        'chercheur_associe' => 'Chercheurs Associés',
+        'equipe_technique' => 'Équipe Technique',
+    ],
 
     'commitment' => [
         'eyebrow' => 'Notre engagement',
@@ -41,8 +56,10 @@ return [
         'ongoing_badge' => 'Projet en cours',
         'expertises_eyebrow' => 'Expertises clés',
         'education_eyebrow' => 'Formation',
+        'distinctions_eyebrow' => 'Prix & Distinctions',
         'affiliations_eyebrow' => 'Collaborations institutionnelles',
-        'links_eyebrow' => 'Liens',
+        'links_eyebrow' => 'Liens & Contact',
+        'contact_by_email' => 'Contacter par email',
         'other_members_title' => 'Autres membres de l’équipe',
         'view_all_team' => 'Voir toute l’équipe',
     ],

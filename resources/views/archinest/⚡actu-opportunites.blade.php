@@ -85,7 +85,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         wire:click="$set('activeTab', 'opportunites')" 
                         class="nav-link {{ $activeTab === 'opportunites' ? 'active' : '' }}"
                     >
-                        <i class="fa fa-solid fa-briefcase me-1"></i> Opportunités & Carrières
+                        <i class="fa fa-solid fa-briefcase me-1"></i> {{ __('news_opp.tabs.opportunities') }}
                         @if ($jobsCount + $internshipsCount > 0)
                             <span class="badge bg-primary text-white rounded-pill ms-1">{{ $jobsCount + $internshipsCount }}</span>
                         @endif
@@ -114,9 +114,9 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
                             <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill small mb-1">
-                                Publications & Événements
+                                {{ __('news_opp.feed.badge') }}
                             </span>
-                            <h2 class="h3 fw-bold text-dark mb-0">Fil d'actualité scientifique & communautaire</h2>
+                            <h2 class="h3 fw-bold text-dark mb-0">{{ __('news_opp.feed.title') }}</h2>
                         </div>
                     </div>
 
@@ -129,7 +129,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                      style="min-height: 380px; background: linear-gradient(180deg, rgba(27,58,107,0.3) 0%, rgba(27,58,107,0.95) 100%), url('{{ $featuredNews->cover_image_url ?? asset('archinest/images/resource/faq-h2-1.jpg') }}') center/cover no-repeat;">
                                     <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
                                         <span class="badge bg-primary px-3 py-1 rounded-pill fw-medium">
-                                            {{ $featuredNews->category?->name ?? 'À la une' }}
+                                            {{ $featuredNews->category?->name ?? __('news_opp.feed.featured_badge') }}
                                         </span>
                                         @if ($featuredNews->published_date)
                                             <span class="badge bg-dark bg-opacity-50 text-white rounded-pill px-3 py-1 small">
@@ -145,7 +145,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     </p>
                                     <div>
                                         <a href="{{ route('news-detail', ['slug' => $featuredNews->slug]) }}" class="btn btn-light rounded-pill px-4 fw-semibold text-primary">
-                                            Lire le communiqué <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                            {{ __('news_opp.feed.read_release') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -157,16 +157,16 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="card h-100 p-4 border-0 rounded-4 shadow-sm text-white d-flex flex-column justify-content-between" style="background: linear-gradient(135deg, #1B3A6B 0%, #008A5E 100%);">
                                 <div>
                                     <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success bg-opacity-20 text-white fw-semibold small mb-3">
-                                        <i class="fa fa-solid fa-bullhorn"></i> Veille & Savoirs
+                                        <i class="fa fa-solid fa-bullhorn"></i> {{ __('news_opp.feed.watch_badge') }}
                                     </div>
-                                    <h4 class="h4 fw-bold text-white mb-2">Restez informé de nos avancées</h4>
+                                    <h4 class="h4 fw-bold text-white mb-2">{{ __('news_opp.feed.watch_title') }}</h4>
                                     <p class="text-white-50 small mb-4">
-                                        Recevez directement nos rapports de recherche, opportunités de bourses et notes de politique sanitaire.
+                                        {{ __('news_opp.feed.watch_desc') }}
                                     </p>
                                 </div>
                                 <div>
                                     <a href="{{ route('contact') }}#newsletter" class="btn btn-outline-light rounded-pill w-100 py-2 fw-semibold">
-                                        <i class="fa fa-solid fa-envelope me-1"></i> S'abonner aux alertes
+                                        <i class="fa fa-solid fa-envelope me-1"></i> {{ __('news_opp.feed.subscribe_alerts') }}
                                     </a>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         @endif
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <span class="badge bg-light text-primary border px-2 py-1 rounded-pill small">
-                                                {{ $item->category?->name ?? 'Actualité' }}
+                                                {{ $item->category?->name ?? __('news_opp.tabs.news') }}
                                             </span>
                                             @if ($item->published_date)
                                                 <span class="text-muted small">
@@ -218,7 +218,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     </div>
                                     <div class="pt-2 border-top">
                                         <a href="{{ route('news-detail', ['slug' => $item->slug]) }}" class="text-primary fw-medium small text-decoration-none">
-                                            Lire la suite <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                            {{ __('news_opp.feed.read_more') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -234,9 +234,9 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="row align-items-center mb-4">
                         <div class="col-lg-7">
                             <span class="badge bg-success-subtle text-success fw-semibold px-3 py-1 rounded-pill small mb-1">
-                                Recrutements & Stages
+                                {{ __('news_opp.opps.badge') }}
                             </span>
-                            <h2 class="h3 fw-bold text-dark mb-0">Rejoignez l'équipe du CARICS</h2>
+                            <h2 class="h3 fw-bold text-dark mb-0">{{ __('news_opp.opps.title') }}</h2>
                         </div>
                         <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
                             <!-- Filtre rapide -->
@@ -246,21 +246,21 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     wire:click="$set('opportunityType', 'all')" 
                                     class="btn btn-sm rounded-pill px-3 {{ $opportunityType === 'all' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
                                 >
-                                    Toutes
+                                    {{ __('news_opp.opps.all') }}
                                 </button>
                                 <button 
                                     type="button" 
                                     wire:click="$set('opportunityType', 'jobs')" 
                                     class="btn btn-sm rounded-pill px-3 {{ $opportunityType === 'jobs' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
                                 >
-                                    Emplois ({{ $jobsCount }})
+                                    {{ __('news_opp.opps.jobs') }} ({{ $jobsCount }})
                                 </button>
                                 <button 
                                     type="button" 
                                     wire:click="$set('opportunityType', 'internships')" 
                                     class="btn btn-sm rounded-pill px-3 {{ $opportunityType === 'internships' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
                                 >
-                                    Stages ({{ $internshipsCount }})
+                                    {{ __('news_opp.opps.internships') }} ({{ $internshipsCount }})
                                 </button>
                             </div>
                         </div>
@@ -288,9 +288,9 @@ new #[Layout('layouts::archinest')] class extends Component {
                                                 </span>
                                                 @if ($opp->deadline)
                                                     <span class="badge {{ $isNearDeadline ? 'bg-danger text-white' : 'bg-light text-muted border' }} px-2 py-1 small">
-                                                        <i class="fa fa-regular fa-clock me-1"></i> Date limite : {{ $opp->deadline->format('d/m/Y') }}
+                                                        <i class="fa fa-regular fa-clock me-1"></i> {{ __('news_opp.opps.deadline') }} {{ $opp->deadline->format('d/m/Y') }}
                                                         @if ($isNearDeadline)
-                                                            (Urgent)
+                                                            {{ __('news_opp.opps.urgent') }}
                                                         @endif
                                                     </span>
                                                 @endif
@@ -325,15 +325,15 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                             @if ($opp->application_email)
                                                 <a href="mailto:{{ $opp->application_email }}?subject=Candidature : {{ rawurlencode($opp->title) }}" class="btn btn-sm btn-primary rounded-pill px-4">
-                                                    Postuler par email <i class="fa fa-solid fa-paper-plane ms-1"></i>
+                                                    {{ __('news_opp.opps.apply_email') }} <i class="fa fa-solid fa-paper-plane ms-1"></i>
                                                 </a>
                                             @elseif ($opp->application_url)
                                                 <a href="{{ $opp->application_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary rounded-pill px-4">
-                                                    Postuler en ligne <i class="fa fa-solid fa-arrow-up-right-from-square ms-1"></i>
+                                                    {{ __('news_opp.opps.apply_online') }} <i class="fa fa-solid fa-arrow-up-right-from-square ms-1"></i>
                                                 </a>
                                             @else
                                                 <a href="{{ route('contact') }}" class="btn btn-sm btn-primary rounded-pill px-4">
-                                                    Nous contacter <i class="fa fa-solid fa-envelope ms-1"></i>
+                                                    {{ __('news_opp.opps.contact_us') }} <i class="fa fa-solid fa-envelope ms-1"></i>
                                                 </a>
                                             @endif
                                         </div>
@@ -346,10 +346,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="mb-3 text-muted" style="font-size: 3rem;">
                                 <i class="fa fa-solid fa-briefcase"></i>
                             </div>
-                            <h4 class="h5 fw-bold text-dark mb-2">Aucune offre ouverte actuellement</h4>
-                            <p class="text-muted small mb-3">Nous n'avons pas d'appel à candidatures pour cette catégorie en ce moment.</p>
+                            <h4 class="h5 fw-bold text-dark mb-2">{{ __('news_opp.opps.no_opps_title') }}</h4>
+                            <p class="text-muted small mb-3">{{ __('news_opp.opps.no_opps_desc') }}</p>
                             <a href="{{ route('contact') }}" class="btn btn-outline-primary rounded-pill px-4 btn-sm">
-                                Déposer une candidature spontanée
+                                {{ __('news_opp.opps.spontaneous_application') }}
                             </a>
                         </div>
                     @endif
@@ -361,11 +361,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div>
                     <div class="text-center max-w-700 mx-auto mb-5">
                         <span class="badge bg-info-subtle text-info-emphasis fw-semibold px-3 py-1 rounded-pill small mb-1">
-                            Réseau Institutionnel
+                            {{ __('news_opp.network.badge') }}
                         </span>
-                        <h2 class="h3 fw-bold text-dark mb-2">Nos Partenaires Techniques & Scientifiques</h2>
+                        <h2 class="h3 fw-bold text-dark mb-2">{{ __('news_opp.network.title') }}</h2>
                         <p class="text-muted">
-                            Le CARICS collabore avec les ministères, universités, agences onusiennes et ONG internationales pour maximiser l'impact de la recherche.
+                            {{ __('news_opp.network.desc') }}
                         </p>
                     </div>
 
@@ -385,7 +385,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         <span class="badge bg-light text-muted border small mb-2">{{ ucfirst(str_replace('_', ' ', $partner->type ?? 'Partenaire')) }}</span>
                                         @if ($partner->website_url)
                                             <a href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer" class="text-primary small text-decoration-none mt-2">
-                                                Visiter le site <i class="fa fa-solid fa-arrow-up-right-from-square ms-1 small"></i>
+                                                {{ __('news_opp.network.visit_website') }} <i class="fa fa-solid fa-arrow-up-right-from-square ms-1 small"></i>
                                             </a>
                                         @endif
                                     </div>
@@ -394,7 +394,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         </div>
                     @else
                         <div class="text-center py-5 bg-white rounded-4 border p-4">
-                            <p class="text-muted mb-0">Partenaires en cours d'actualisation.</p>
+                            <p class="text-muted mb-0">{{ __('news_opp.network.updating') }}</p>
                         </div>
                     @endif
                 </div>

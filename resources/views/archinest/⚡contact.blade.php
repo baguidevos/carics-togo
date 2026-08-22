@@ -250,7 +250,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="col-12">
                                 <button type="submit" class="btn-cta w-100 border-0" wire:loading.attr="disabled">
                                     <span wire:loading.remove>{{ __('contact.form.send_btn') }} <i class="bi bi-arrow-right ms-1"></i></span>
-                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi en cours...</span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>{{ __('contact.form.sending') }}</span>
                                 </button>
                             </div>
                         </div>
@@ -374,7 +374,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 </div>
                                 <button type="submit" class="btn-cta border-0" wire:loading.attr="disabled">
                                     <span wire:loading.remove>{{ __('contact.specialized.collaboration.submit') }} <i class="bi bi-arrow-right ms-1"></i></span>
-                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi...</span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>{{ __('contact.specialized.sending') }}</span>
                                 </button>
                             </div>
                         </form>
@@ -428,7 +428,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 </div>
                                 <button type="submit" class="btn-cta border-0" wire:loading.attr="disabled">
                                     <span wire:loading.remove>{{ __('contact.specialized.stage.submit') }} <i class="fa fa-arrow-right ms-1"></i></span>
-                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi...</span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>{{ __('contact.specialized.sending') }}</span>
                                 </button>
                             </div>
                         </form>
@@ -480,7 +480,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 </div>
                                 <button type="submit" class="btn-cta border-0" wire:loading.attr="disabled">
                                     <span wire:loading.remove>{{ __('contact.specialized.media.submit') }} <i class="fa fa-arrow-right ms-1"></i></span>
-                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>Envoi...</span>
+                                    <span wire:loading><i class="fa fa-spinner fa-spin me-2"></i>{{ __('contact.specialized.sending') }}</span>
                                 </button>
                             </div>
                         </form>

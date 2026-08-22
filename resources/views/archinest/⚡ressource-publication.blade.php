@@ -90,16 +90,16 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row align-items-center mb-4">
                 <div class="col-lg-8">
                     <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                        <i class="fa fa-solid fa-flask"></i> Centre de Ressources Scientifiques
+                        <i class="fa fa-solid fa-flask"></i> {{ __('resources.badge_center') }}
                     </div>
-                    <h2 class="h3 fw-bold text-dark mb-2">Publications & Savoirs CARICS</h2>
+                    <h2 class="h3 fw-bold text-dark mb-2">{{ __('resources.section_title') }}</h2>
                     <p class="text-muted mb-0">
                         {{ __('resources.intro') }}
                     </p>
                 </div>
                 <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
                     <span class="badge bg-light text-dark border px-3 py-2 fs-6">
-                        <strong class="text-primary">{{ $totalCount }}</strong> publications répertoriées
+                        <strong class="text-primary">{{ $totalCount }}</strong> {{ __('resources.publications_listed') }}
                     </span>
                 </div>
             </div>
@@ -117,7 +117,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 type="text" 
                                 wire:model.live.debounce.300ms="search" 
                                 class="form-control border-start-0 rounded-end-pill py-2 shadow-none" 
-                                placeholder="Rechercher par titre, auteur, thématique, DOI..."
+                                placeholder="{{ __('resources.search_placeholder') }}"
                             >
                         </div>
                     </div>
@@ -125,12 +125,12 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <!-- Filtre Type -->
                     <div class="col-sm-6 col-lg-3">
                         <select wire:model.live="selectedType" class="form-select rounded-pill py-2 shadow-none">
-                            <option value="all">📚 Tous les types</option>
-                            <option value="article_scientifique">📄 Articles scientifiques</option>
-                            <option value="rapport_technique">📊 Rapports techniques</option>
-                            <option value="note_politique">📋 Notes de politique</option>
-                            <option value="these">🎓 Thèses</option>
-                            <option value="memoire">📖 Mémoires</option>
+                            <option value="all">📚 {{ __('resources.all_types') }}</option>
+                            <option value="article_scientifique">📄 {{ __('resources.articles_scientific') }}</option>
+                            <option value="rapport_technique">📊 {{ __('resources.reports_technical') }}</option>
+                            <option value="note_politique">📋 {{ __('resources.policy_briefs_type') }}</option>
+                            <option value="these">🎓 {{ __('resources.theses') }}</option>
+                            <option value="memoire">📖 {{ __('resources.dissertations') }}</option>
                         </select>
                     </div>
 
@@ -138,13 +138,13 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="col-sm-6 col-lg-3">
                         <div class="d-flex gap-2">
                             <select wire:model.live="selectedYear" class="form-select rounded-pill py-2 shadow-none">
-                                <option value="all">🗓️ Toutes les années</option>
+                                <option value="all">🗓️ {{ __('resources.all_years') }}</option>
                                 @foreach ($availableYears as $year)
                                     <option value="{{ $year }}">{{ $year }}</option>
                                 @endforeach
                             </select>
                             @if ($search !== '' || $selectedType !== 'all' || $selectedYear !== 'all')
-                                <button wire:click="resetFilters" class="btn btn-outline-secondary rounded-pill px-3" title="Réinitialiser les filtres">
+                                <button wire:click="resetFilters" class="btn btn-outline-secondary rounded-pill px-3" title="{{ __('resources.reset_filters') }}">
                                     <i class="fa fa-solid fa-rotate-left"></i>
                                 </button>
                             @endif
@@ -159,28 +159,28 @@ new #[Layout('layouts::archinest')] class extends Component {
                         wire:click="$set('selectedType', 'all')" 
                         class="btn btn-sm rounded-pill px-3 {{ $selectedType === 'all' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
                     >
-                        Tous
+                        {{ __('resources.all') }}
                     </button>
                     <button 
                         type="button" 
                         wire:click="$set('selectedType', 'article_scientifique')" 
                         class="btn btn-sm rounded-pill px-3 {{ $selectedType === 'article_scientifique' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
                     >
-                        Articles Scientifiques
+                        {{ __('resources.articles_scientific') }}
                     </button>
                     <button 
                         type="button" 
                         wire:click="$set('selectedType', 'rapport_technique')" 
                         class="btn btn-sm rounded-pill px-3 {{ $selectedType === 'rapport_technique' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
                     >
-                        Rapports Techniques
+                        {{ __('resources.reports_technical') }}
                     </button>
                     <button 
                         type="button" 
                         wire:click="$set('selectedType', 'note_politique')" 
                         class="btn btn-sm rounded-pill px-3 {{ $selectedType === 'note_politique' ? 'btn-primary' : 'btn-outline-secondary bg-white' }}"
                     >
-                        Notes de Politique
+                        {{ __('resources.policy_briefs_type') }}
                     </button>
                 </div>
             </div>
@@ -200,7 +200,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <!-- Indicateur de chargement -->
             <div wire:loading.flex class="justify-content-center py-5">
                 <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Chargement...</span>
+                    <span class="visually-hidden">{{ __('resources.loading') }}</span>
                 </div>
             </div>
 
@@ -217,11 +217,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     default                => 'secondary',
                                 };
                                 $typeLabel = match($pub->type) {
-                                    'article_scientifique' => 'Article Scientifique',
-                                    'rapport_technique'    => 'Rapport Technique',
-                                    'note_politique'       => 'Note de Politique',
-                                    'these'                => 'Thèse',
-                                    'memoire'              => 'Mémoire',
+                                    'article_scientifique' => __('resources.articles_scientific'),
+                                    'rapport_technique'    => __('resources.reports_technical'),
+                                    'note_politique'       => __('resources.policy_briefs_type'),
+                                    'these'                => __('resources.theses'),
+                                    'memoire'              => __('resources.dissertations'),
                                     default                => ucfirst($pub->type),
                                 };
                             @endphp
@@ -273,12 +273,12 @@ new #[Layout('layouts::archinest')] class extends Component {
                                                 <p class="text-secondary small mb-1" style="line-height: 1.6;" x-show="!expanded">
                                                     {{ Str::limit($pub->abstract, 160) }}
                                                     @if (strlen($pub->abstract) > 160)
-                                                        <a href="javascript:void(0)" @click="expanded = true" class="text-primary fw-medium ms-1">Lire plus</a>
+                                                        <a href="javascript:void(0)" @click="expanded = true" class="text-primary fw-medium ms-1">{{ __('resources.read_more') }}</a>
                                                     @endif
                                                 </p>
                                                 <p class="text-secondary small mb-1" style="line-height: 1.6;" x-show="expanded" x-cloak>
                                                     {{ $pub->abstract }}
-                                                    <a href="javascript:void(0)" @click="expanded = false" class="text-primary fw-medium ms-1">Réduire</a>
+                                                    <a href="javascript:void(0)" @click="expanded = false" class="text-primary fw-medium ms-1">{{ __('resources.read_less') }}</a>
                                                 </p>
                                             </div>
                                         @endif
@@ -287,7 +287,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         @if ($pub->researchProject)
                                             <div class="mb-3">
                                                 <span class="badge bg-light text-secondary border small">
-                                                    <i class="fa fa-solid fa-folder-open me-1"></i> Projet : {{ Str::limit($pub->researchProject->title, 40) }}
+                                                    <i class="fa fa-solid fa-folder-open me-1"></i> {{ __('resources.project_label') }} {{ Str::limit($pub->researchProject->title, 40) }}
                                                 </span>
                                             </div>
                                         @endif
@@ -303,10 +303,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                                             title="Copier la citation APA"
                                         >
                                             <span x-show="copiedId !== {{ $pub->id }}">
-                                                <i class="fa fa-regular fa-copy me-1 text-muted"></i> Citer
+                                                <i class="fa fa-regular fa-copy me-1 text-muted"></i> {{ __('resources.cite') }}
                                             </span>
                                             <span x-show="copiedId === {{ $pub->id }}" x-cloak class="text-success fw-medium">
-                                                <i class="fa fa-solid fa-check me-1"></i> Citation copiée !
+                                                <i class="fa fa-solid fa-check me-1"></i> {{ __('resources.citation_copied') }}
                                             </span>
                                         </button>
 
@@ -321,7 +321,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                             <!-- Lien externe DOI / Éditeur -->
                                             @if ($pub->external_url)
                                                 <a href="{{ $pub->external_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary rounded-pill px-3">
-                                                    Consulter <i class="fa fa-solid fa-arrow-up-right-from-square ms-1 small"></i>
+                                                    {{ __('resources.consult') }} <i class="fa fa-solid fa-arrow-up-right-from-square ms-1 small"></i>
                                                 </a>
                                             @endif
                                         </div>
@@ -335,10 +335,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="mb-3 text-muted" style="font-size: 3rem;">
                             <i class="fa fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <h4 class="h5 fw-bold text-dark mb-2">Aucune publication trouvée</h4>
-                        <p class="text-muted small mb-3">Aucun document ne correspond à vos critères de recherche.</p>
+                        <h4 class="h5 fw-bold text-dark mb-2">{{ __('resources.no_publication_found') }}</h4>
+                        <p class="text-muted small mb-3">{{ __('resources.no_publication_desc') }}</p>
                         <button type="button" wire:click="resetFilters" class="btn btn-outline-primary rounded-pill px-4 btn-sm">
-                            <i class="fa fa-solid fa-rotate-left me-1"></i> Réinitialiser les filtres
+                            <i class="fa fa-solid fa-rotate-left me-1"></i> {{ __('resources.reset_filters') }}
                         </button>
                     </div>
                 @endif
@@ -366,7 +366,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     <div class="card p-3 border rounded-3 shadow-sm bg-white h-100">
                                         <div class="d-flex justify-content-between align-items-start mb-2">
                                             <span class="badge bg-success-subtle text-success fw-medium px-2 py-1" style="font-size:.8rem;">
-                                                {{ $tool->category?->name ?? 'Outil' }}
+                                                {{ $tool->category?->name ?? __('resources.tool_badge') }}
                                             </span>
                                             @if ($tool->file_type)
                                                 <span class="text-muted small uppercase fw-bold">{{ $tool->file_type }}</span>
@@ -378,7 +378,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                         @endif
                                         @if ($tool->file_path)
                                             <a href="{{ asset($tool->file_path) }}" target="_blank" download class="btn btn-sm btn-outline-secondary rounded-pill mt-auto align-self-start">
-                                                <i class="fa fa-solid fa-download me-1"></i> Télécharger
+                                                <i class="fa fa-solid fa-download me-1"></i> {{ __('resources.download') }}
                                             </a>
                                         @endif
                                     </div>

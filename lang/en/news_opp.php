@@ -2,93 +2,75 @@
 
 return [
     'title' => 'News & Opportunities',
-    'subtitle' => 'Institutional updates, scientific agenda, job openings, internships, fellowships, and partnerships.',
+    'subtitle' => 'Institutional updates, scientific agenda, job vacancies, internships, scholarships, and partnerships.',
 
     'tabs' => [
         'news' => 'News',
+        'opportunities' => 'Opportunities & Careers',
         'jobs' => 'Jobs & Consultancies',
         'internships' => 'Internships',
-        'scholarships' => 'Fellowships',
+        'scholarships' => 'Scholarships',
         'partnerships' => 'Partnerships',
     ],
 
-    // News
-    'news' => [
+    // News & Feed
+    'feed' => [
+        'badge' => 'Publications & Events',
+        'title' => 'Scientific & Community News Feed',
         'featured_badge' => 'Featured',
-        'featured_date' => 'June 2026',
-        'featured_title' => 'CARICS-Togo launches its first internationally-funded research project',
-        'featured_desc' => 'With support from the Royal Society of Tropical Medicine and Hygiene (RSTMH), CARICS-Togo begins a project on the implementation of SMC in the Savanes Region.',
-        'featured_body' => 'This project marks a major milestone for CARICS-Togo, securing its first international grant just months after inception. It focuses on implementation fidelity, coverage, and adherence to SMC in a complex cross-border environment.',
-        'featured_btn' => 'Read Full Project',
-
-        'news2_badge' => 'Institutional',
-        'news2_date' => 'March 2026',
-        'news2_title' => 'CARICS-Togo officially registered in Dapaong',
-        'news2_desc' => 'The African Action Center for Research and Community Innovation in Health obtains official legal registration from relevant Togolese authorities.',
-        'news2_btn' => 'Read',
-
-        'news3_badge' => 'Upcoming',
-        'news3_date' => 'September 2026',
-        'news3_title' => 'Presentation of initial findings at regional seminar',
-        'news3_desc' => 'The CARICS team plans to present initial field data from the SMC project during a regional seminar on community health in West Africa.',
-        'news3_upcoming' => 'Announcement coming soon',
+        'read_release' => 'Read press release',
+        'watch_badge' => 'Intelligence & Knowledge',
+        'watch_title' => 'Stay informed of our progress',
+        'watch_desc' => 'Directly receive our research reports, fellowship opportunities, and health policy briefs.',
+        'subscribe_alerts' => 'Subscribe to alerts',
+        'read_more' => 'Read more',
     ],
 
-    // Jobs & consultancies
-    'jobs' => [
-        'eyebrow' => 'Jobs & Consultancies',
-        'title' => 'Job Openings & Consultancy Opportunities',
-        'empty_badge' => 'No active openings',
-        'empty_text1' => 'CARICS-Togo currently has no open job or consultancy vacancies. Future opportunities will be posted on this page and through our newsletter.',
-        'empty_text2' => 'We typically recruit profiles in the following areas: epidemiologists, biostatisticians, M&E experts, public health practitioners, technical consultants, project coordinators, and digital health specialists.',
-        'newsletter_btn' => 'Subscribe to newsletter for notifications',
+    // Opportunities
+    'opps' => [
+        'badge' => 'Recruitment & Internships',
+        'title' => 'Join the CARICS Team',
+        'all' => 'All',
+        'jobs' => 'Jobs',
+        'internships' => 'Internships',
+        'deadline' => 'Deadline:',
+        'urgent' => '(Urgent)',
+        'apply_email' => 'Apply by email',
+        'apply_online' => 'Apply online',
+        'contact_us' => 'Contact us',
+        'no_opps_title' => 'No open opportunities at this time',
+        'no_opps_desc' => 'We currently have no open calls for applications in this category.',
+        'spontaneous_application' => 'Submit a spontaneous application',
     ],
 
-    // Internships
-    'internships' => [
-        'eyebrow' => 'Internships & Mentorship',
-        'title' => 'Internships and Mentorship',
-        'empty_badge' => 'No active openings',
-        'empty_text1' => 'No internship positions are currently listed. CARICS-Togo periodically welcomes students and early-career researchers in public health, epidemiology, project management, and digital health.',
-        'empty_text2' => 'Eligible levels: Master\'s · Doctorate / PhD · Post-doctorate. Spontaneous applications are welcome.',
-        'apply_btn' => 'Submit a Spontaneous Application',
+    // Partners
+    'network' => [
+        'badge' => 'Institutional Network',
+        'title' => 'Our Technical & Scientific Partners',
+        'desc' => 'CARICS collaborates with ministries, universities, UN agencies, and international NGOs to maximize research impact.',
+        'visit_website' => 'Visit website',
+        'updating' => 'Partners currently being updated.',
     ],
 
-    // Scholarships & Fellowships
-    'scholarships' => [
-        'eyebrow' => 'Fellowships & Training',
-        'title' => 'Fellowships and Training Opportunities',
-        'empty_badge' => 'No active opportunities',
-        'empty_text' => 'No fellowships or training opportunities are currently open. CARICS-Togo publishes fellowships, scholarships, and specialized capacity-building opportunities relevant to public health professionals in Africa.',
-        'newsletter_btn' => 'Subscribe to Newsletter',
-    ],
-
-    // Partnerships
-    'partnerships' => [
-        'eyebrow' => 'Partnerships',
-        'title' => 'Propose a Partnership',
-        'intro' => 'CARICS-Togo welcomes collaboration proposals from any institution or organization sharing its dedication to evidence-informed public health. We collaborate with:',
-        'target_1' => 'Universities and schools of public health',
-        'target_2' => 'Health research institutes and centers',
-        'target_3' => 'Ministries of Health and national agencies',
-        'target_4' => 'Non-governmental organizations and civil society',
-        'target_5' => 'Development agencies and international partners',
-        'target_6' => 'Regional and global scientific networks',
-        'target_7' => 'Master\'s, PhD, and Postdoc students',
-
-        'areas_eyebrow' => 'Collaboration Domains',
-        'area_1' => 'Applied Research',
-        'area_2' => 'Operational Research',
-        'area_3' => 'Implementation Science',
-        'area_4' => 'Program Evaluation',
-        'area_5' => 'Statistical Analysis',
-        'area_6' => 'Systematic Reviews',
-        'area_7' => 'Scientific Writing',
-        'area_8' => 'Capacity Building',
-        'area_9' => 'International Consortia',
-
-        'submit_btn' => 'Submit a Proposal',
-        'current_partners_eyebrow' => 'Current Partners',
-        'more_partners' => 'Additional institutional and scientific partnerships will be announced shortly.',
+    // News detail page
+    'detail' => [
+        'reading_time' => 'min read',
+        'share' => 'Share',
+        'link_copied' => 'Link copied!',
+        'gallery_title' => 'Field Photo Gallery',
+        'photos' => 'photo',
+        'photos_plural' => 'photos',
+        'docs_title' => 'Associated Documents & Files',
+        'download' => 'Download',
+        'related_article' => 'Associated In-Depth Article',
+        'read_full_article' => 'Read full article',
+        'back_to_news' => 'Back to news',
+        'collaborate_btn' => 'Collaborate with CARICS',
+        'org_side_title' => 'Research, Innovation & Public Health',
+        'org_side_desc' => 'Center for Interdisciplinary and Community Health Research Support.',
+        'discover_center' => 'Discover the center',
+        'recent_news' => 'Recent news',
+        'newsletter_title' => 'Newsletter',
+        'newsletter_desc' => 'Receive our latest research reports and opportunity announcements.',
     ],
 ];

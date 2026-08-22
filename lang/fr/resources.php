@@ -3,8 +3,32 @@
 return [
     'title' => 'Ressources & Publications',
 
-    'intro' => 'CARICS-Togo s’engage à partager les connaissances produites dans le cadre de ses activités de recherche et de ses projets. Cette section regroupe progressivement les publications scientifiques, rapports techniques, notes de politique sanitaire et outils pratiques destinés aux chercheurs, professionnels de santé, décideurs et acteurs communautaires. Le centre étant récemment créé, plusieurs catégories seront alimentées au fil de l’avancement de nos projets : inscrivez-vous à la newsletter pour être informé dès leur publication.',
+    'intro' => 'CARICS-Togo s’engage à partager les connaissances produites dans le cadre de ses activités de recherche et de ses projets. Cette section regroupe progressivement les publications scientifiques, rapports techniques, notes de politique sanitaire et outils pratiques destinés aux chercheurs, professionnels de santé, décideurs et acteurs communautaires.',
 
+    'badge_center' => 'Centre de Ressources Scientifiques',
+    'section_title' => 'Publications & Savoirs CARICS',
+    'publications_listed' => 'publications répertoriées',
+    'search_placeholder' => 'Rechercher par titre, auteur, thématique, DOI...',
+    'all_types' => 'Tous les types',
+    'all_years' => 'Toutes les années',
+    'all' => 'Tous',
+    'articles_scientific' => 'Articles Scientifiques',
+    'reports_technical' => 'Rapports Techniques',
+    'policy_briefs_type' => 'Notes de Politique',
+    'theses' => 'Thèses',
+    'dissertations' => 'Mémoires',
+    'cite' => 'Citer',
+    'citation_copied' => 'Citation copiée !',
+    'consult' => 'Consulter',
+    'download' => 'Télécharger',
+    'no_publication_found' => 'Aucune publication trouvée',
+    'no_publication_desc' => 'Aucun document ne correspond à vos critères de recherche.',
+    'reset_filters' => 'Réinitialiser les filtres',
+    'project_label' => 'Projet :',
+    'read_more' => 'Lire plus',
+    'read_less' => 'Réduire',
+    'tool_badge' => 'Outil',
+    'loading' => 'Chargement...',
     'badge_upcoming' => 'Prochainement',
 
     // Publications scientifiques

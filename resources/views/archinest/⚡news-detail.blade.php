@@ -82,7 +82,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pb-3 mb-4 border-bottom">
                             <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill">
-                                    <i class="fa fa-solid fa-tag me-1 small"></i> {{ $news->category?->name ?? 'Actualité' }}
+                                    <i class="fa fa-solid fa-tag me-1 small"></i> {{ $news->category?->name ?? __('news_opp.tabs.news') }}
                                 </span>
                                 @if ($news->event_date)
                                     <span class="badge bg-light text-dark border px-3 py-1 rounded-pill small">
@@ -99,7 +99,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     </span>
                                 @endif
                                 <span class="text-muted small">
-                                    • <i class="fa fa-regular fa-clock me-1"></i> {{ $this->readingTime }} min de lecture
+                                    • <i class="fa fa-regular fa-clock me-1"></i> {{ $this->readingTime }} {{ __('news_opp.detail.reading_time') }}
                                 </span>
                             </div>
 
@@ -113,17 +113,17 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     setTimeout(() => this.copied = false, 2500);
                                 }
                             }" class="d-flex align-items-center gap-2">
-                                <button type="button" @click="copyLink()" class="btn btn-sm btn-light border rounded-pill px-3" title="Copier le lien">
+                                <button type="button" @click="copyLink()" class="btn btn-sm btn-light border rounded-pill px-3" title="{{ __('news_opp.detail.share') }}">
                                     <i class="fa fa-regular fa-copy me-1"></i>
-                                    <span x-text="copied ? 'Lien copié !' : 'Partager'"></span>
+                                    <span x-text="copied ? '{{ __('news_opp.detail.link_copied') }}' : '{{ __('news_opp.detail.share') }}'"></span>
                                 </button>
-                                <a :href="'https://wa.me/?text=' + encodeURIComponent('{{ $news->title }} - ' + shareUrl)" target="_blank" class="btn btn-sm btn-outline-success rounded-circle p-2" title="Partager sur WhatsApp">
+                                <a :href="'https://wa.me/?text=' + encodeURIComponent('{{ $news->title }} - ' + shareUrl)" target="_blank" class="btn btn-sm btn-outline-success rounded-circle p-2" title="WhatsApp">
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </a>
-                                <a :href="'https://twitter.com/intent/tweet?text=' + encodeURIComponent('{{ $news->title }}') + '&url=' + encodeURIComponent(shareUrl)" target="_blank" class="btn btn-sm btn-outline-dark rounded-circle p-2" title="Partager sur X">
+                                <a :href="'https://twitter.com/intent/tweet?text=' + encodeURIComponent('{{ $news->title }}') + '&url=' + encodeURIComponent(shareUrl)" target="_blank" class="btn btn-sm btn-outline-dark rounded-circle p-2" title="X">
                                     <i class="fa-brands fa-x-twitter"></i>
                                 </a>
-                                <a :href="'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl)" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle p-2" title="Partager sur LinkedIn">
+                                <a :href="'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl)" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle p-2" title="LinkedIn">
                                     <i class="fa-brands fa-linkedin-in"></i>
                                 </a>
                             </div>
@@ -179,10 +179,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                             class="mt-5 p-4 rounded-4 bg-light border">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h3 class="h6 fw-bold text-dark mb-0">
-                                        <i class="fa fa-solid fa-images text-primary me-2"></i> Galerie Photos de terrain
+                                        <i class="fa fa-solid fa-images text-primary me-2"></i> {{ __('news_opp.detail.gallery_title') }}
                                     </h3>
                                     <span class="badge bg-primary-subtle text-primary rounded-pill small">
-                                        {{ $this->galleryMedia->count() }} photo{{ $this->galleryMedia->count() > 1 ? 's' : '' }}
+                                        {{ $this->galleryMedia->count() }} {{ $this->galleryMedia->count() > 1 ? __('news_opp.detail.photos_plural') : __('news_opp.detail.photos') }}
                                     </span>
                                 </div>
                                 <div class="row g-3">
@@ -223,7 +223,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         @if ($this->documentMedia->isNotEmpty())
                             <div class="mt-4 p-4 rounded-4 bg-white border">
                                 <h3 class="h6 fw-bold text-dark mb-3">
-                                    <i class="fa fa-solid fa-paperclip text-primary me-2"></i> Documents & Fichiers Associés
+                                    <i class="fa fa-solid fa-paperclip text-primary me-2"></i> {{ __('news_opp.detail.docs_title') }}
                                 </h3>
                                 <div class="d-flex flex-column gap-2">
                                     @foreach ($this->documentMedia as $doc)
@@ -236,7 +236,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                                 </div>
                                             </div>
                                             <a href="{{ $doc->getUrl() }}" download class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                                <i class="fa fa-solid fa-download me-1"></i> Télécharger
+                                                <i class="fa fa-solid fa-download me-1"></i> {{ __('news_opp.detail.download') }}
                                             </a>
                                         </div>
                                     @endforeach
@@ -248,11 +248,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                         @if ($news->relatedBlogPost)
                             <div class="mt-5 p-4 rounded-4 bg-light border d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                                 <div>
-                                    <span class="badge bg-primary text-white rounded-pill mb-1">Article de fond associé</span>
+                                    <span class="badge bg-primary text-white rounded-pill mb-1">{{ __('news_opp.detail.related_article') }}</span>
                                     <h4 class="h6 fw-bold text-dark mb-0">{{ $news->relatedBlogPost->title }}</h4>
                                 </div>
                                 <a href="{{ route('about') }}" class="btn btn-primary btn-sm rounded-pill px-4 align-self-start align-self-md-center text-nowrap">
-                                    Lire l'article complet <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                    {{ __('news_opp.detail.read_full_article') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                                 </a>
                             </div>
                         @endif
@@ -260,10 +260,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <!-- Bouton Retour -->
                         <div class="mt-5 pt-4 border-top d-flex justify-content-between align-items-center">
                             <a href="{{ route('actu-opportunites') }}" class="btn btn-outline-secondary rounded-pill px-4">
-                                <i class="fa fa-solid fa-arrow-left me-1"></i> Retour aux actualités
+                                <i class="fa fa-solid fa-arrow-left me-1"></i> {{ __('news_opp.detail.back_to_news') }}
                             </a>
                             <a href="{{ route('contact') }}" class="btn btn-primary rounded-pill px-4">
-                                Collaborer avec CARICS <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                {{ __('news_opp.detail.collaborate_btn') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </article>
@@ -277,12 +277,12 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white bg-opacity-20 text-white fw-semibold small mb-3">
                                 <i class="fa fa-solid fa-shield-halved"></i> CARICS-Togo
                             </div>
-                            <h3 class="h5 fw-bold text-white mb-2">Recherche, Innovation & Santé Publique</h3>
+                            <h3 class="h5 fw-bold text-white mb-2">{{ __('news_opp.detail.org_side_title') }}</h3>
                             <p class="text-white-50 small mb-3">
-                                Centre d'Appui à la Recherche Interdisciplinaire et Communautaire en Santé.
+                                {{ __('news_opp.detail.org_side_desc') }}
                             </p>
                             <a href="{{ route('about') }}" class="btn btn-light rounded-pill btn-sm fw-semibold text-primary align-self-start">
-                                Découvrir le centre <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                {{ __('news_opp.detail.discover_center') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                             </a>
                         </div>
 
@@ -290,7 +290,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         @if ($recentNews->isNotEmpty())
                             <div class="card p-4 border rounded-4 shadow-sm bg-white">
                                 <h3 class="h6 fw-bold text-dark mb-3 pb-2 border-bottom">
-                                    <i class="fa fa-solid fa-newspaper text-primary me-2"></i> Actualités récentes
+                                    <i class="fa fa-solid fa-newspaper text-primary me-2"></i> {{ __('news_opp.detail.recent_news') }}
                                 </h3>
                                 <div class="d-flex flex-column gap-3">
                                     @foreach ($recentNews as $recent)
@@ -321,10 +321,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <!-- Bloc Newsletter -->
                         <div class="card p-4 border rounded-4 shadow-sm bg-white">
                             <h3 class="h6 fw-bold text-dark mb-2">
-                                <i class="fa fa-regular fa-paper-plane text-primary me-2"></i> Lettre d'information
+                                <i class="fa fa-regular fa-paper-plane text-primary me-2"></i> {{ __('news_opp.detail.newsletter_title') }}
                             </h3>
                             <p class="text-muted small mb-3">
-                                Recevez nos derniers rapports de recherche et avis d'opportunités.
+                                {{ __('news_opp.detail.newsletter_desc') }}
                             </p>
                             <livewire:archinest.⚡newsletter-form />
                         </div>

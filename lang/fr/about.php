@@ -5,18 +5,23 @@ return [
 
     // Section Qui sommes-nous
     'who_we_are' => [
+        'badge' => 'Institution Scientifique & Indépendante',
         'title' => 'Qui sommes-nous ?',
         'intro' => 'Le Centre Africain d\'Action pour la Recherche et l\'Innovation Communautaire en Santé (CARICS-Togo) est un centre indépendant de recherche, d\'innovation et d\'action en santé publique basé au Togo.',
         'history_title' => 'Historique',
+        'history_badge' => 'Dapaong, Région des Savanes',
         'history_text' => 'Créé en 2026 à Dapaong, dans la Région des Savanes, CARICS-Togo a été fondé par des chercheurs, professionnels de santé et spécialistes du développement partageant une conviction commune : les décisions en santé publique doivent être guidées par des données fiables, contextualisées et utiles à l\'action.',
         'status_title' => 'Statut Juridique',
+        'status_badge' => 'Association à but non lucratif',
         'status_text' => 'Constitué sous la forme juridique d\'une association à but non lucratif, CARICS-Togo agit comme une plateforme de recherche appliquée, de collaboration scientifique et d\'innovation au service des communautés, des institutions publiques et des partenaires du développement.',
         'ambitions_title' => 'Ambitions',
+        'ambitions_badge' => 'Togo & Afrique de l\'Ouest',
         'ambitions_text' => 'Notre ambition est de contribuer à l\'amélioration durable de la santé des populations africaines en rapprochant la recherche, l\'innovation et l\'action.',
     ],
 
     // Section Approche
     'approach' => [
+        'badge' => 'Modèle Intégré',
         'title' => 'Recherche – Innovation – Action',
         'subtitle' => 'CARICS-Togo repose sur trois piliers complémentaires qui guident l\'ensemble de ses activités.',
         'pillar_1_title' => 'Recherche',
@@ -35,6 +40,7 @@ return [
 
     // Section Valeurs
     'values' => [
+        'badge' => 'Culture & Éthique',
         'title' => 'L\'intégrité au cœur de notre démarche',
         'intro' => 'Les valeurs guident nos actions et nos décisions. Elles définissent la culture de notre organisation et orientent nos interactions avec nos partenaires, nos bailleurs et les communautés que nous servons.',
         'val_1_title' => 'Excellence scientifique',
@@ -53,12 +59,14 @@ return [
 
     // Gouvernance & Leadership
     'governance' => [
-        'title' => 'Gouvernance & <br> Leadership',
+        'badge' => 'Leadership Scientifique',
+        'title' => 'Gouvernance & Leadership',
         'description' => 'CARICS-Togo est dirigé par un Bureau Exécutif élu conformément à ses statuts. Celui-ci assure la gouvernance stratégique, administrative, financière et scientifique de l\'organisation.',
     ],
 
     // Collaboration & Réseaux
     'collaboration' => [
+        'badge' => 'Partenariats Stratégiques',
         'title' => 'Collaboration et Réseaux',
         'paragraph_1' => 'CARICS-Togo développe des collaborations avec des universités, instituts de recherche, ministères de la santé, organisations non gouvernementales, agences de développement et partenaires techniques et financiers partageant son engagement pour une santé publique fondée sur les données probantes.',
         'paragraph_2' => 'L\'organisation est ouverte aux partenariats scientifiques, aux projets de recherche collaboratifs, aux évaluations de programmes de santé, aux activités de formation et au développement de solutions innovantes adaptées aux contextes africains.',
@@ -66,7 +74,9 @@ return [
 
     // CARICS en Bref / Stats
     'in_brief' => [
+        'badge' => 'Repères Clés',
         'title' => 'CARICS en bref.',
+        'subtitle' => 'Un aperçu synthétique de notre organisation et de son dynamisme opérationnel au Togo.',
         'item_1_title' => 'Création',
         'item_1_text' => 'Créé en 2026 à Dapaong, Région des Savanes (Togo).',
         'item_2_title' => 'Statut',
@@ -77,5 +87,6 @@ return [
         'item_4_text' => '1 projet de recherche financé à l\'international actuellement en cours.',
         'item_5_title' => 'Ambition',
         'item_5_text' => 'Interventions au Togo avec une vocation régionale africaine.',
+        'consult_projects' => 'Consulter nos projets',
     ],
 ];

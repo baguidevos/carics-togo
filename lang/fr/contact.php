@@ -31,6 +31,7 @@ return [
         'privacy_agree' => 'J’accepte que CARICS-Togo traite mes données personnelles dans le cadre de cette prise de contact, conformément à la',
         'privacy_link' => 'politique de confidentialité',
         'send_btn' => 'Envoyer le message',
+        'sending' => 'Envoi en cours...',
         'success_title' => 'Message envoyé avec succès',
         'success_text' => 'Votre message a bien été envoyé. L’équipe CARICS-Togo vous répondra dans les meilleurs délais, généralement sous 3 à 5 jours ouvrables.',
         'required_field' => 'Ce champ est obligatoire.',
@@ -56,6 +57,7 @@ return [
     'specialized' => [
         'eyebrow' => 'Formulaires spécialisés',
         'title' => 'Demandes spécifiques',
+        'sending' => 'Envoi...',
         'collaboration' => [
             'title' => 'Proposer une collaboration',
             'desc' => 'Vous souhaitez initier un projet collaboratif, rejoindre un consortium ou proposer une co-supervision ? Décrivez votre projet et joignez une note conceptuelle.',
@@ -93,6 +95,16 @@ return [
             'submit' => 'Envoyer la demande',
             'success' => 'Demande envoyée avec succès !',
         ],
+    ],
+
+    // Newsletter
+    'newsletter' => [
+        'placeholder' => 'Votre adresse email...',
+        'aria_label' => 'Votre email',
+        'subscribe_btn' => 'S\'abonner',
+        'already_subscribed' => 'Vous êtes déjà inscrit à notre newsletter.',
+        'reactivated' => 'Votre inscription a été réactivée avec succès.',
+        'thank_you' => 'Merci pour votre inscription à la lettre d\'information CARICS.',
     ],
 
     // FAQ

@@ -2,48 +2,48 @@
     $slides = [
         [
             'image' => asset('images/banners/ban2.webp'),
-            'badge' => 'Centre de Recherche & d\'Action en Santé Publique',
-            'title' => __('home.hero.title'),
-            'description' => __('home.hero.description'),
+            'badge' => __('hero.slides.slide_1.badge'),
+            'title' => __('hero.slides.slide_1.title'),
+            'description' => __('hero.slides.slide_1.description'),
             'primary_cta' => [
-                'label' => __('home.hero.our_projects'),
+                'label' => __('hero.slides.slide_1.primary_cta'),
                 'route' => route('recherche-expertize-projet'),
                 'icon' => 'fa-solid fa-flask-vial',
             ],
             'secondary_cta' => [
-                'label' => __('navigation.menu.about'),
+                'label' => __('hero.slides.slide_1.secondary_cta'),
                 'route' => route('about'),
                 'icon' => 'fa-solid fa-circle-info',
             ],
         ],
         [
             'image' => asset('images/banners/ban3.webp'),
-            'badge' => 'Innovation & Sciences de la Mise en Œuvre',
-            'title' => 'Des Données Probantes pour l\'Action.',
-            'description' => 'Documenter les interventions sous conditions réelles pour renforcer la qualité et la durabilité des soins.',
+            'badge' => __('hero.slides.slide_2.badge'),
+            'title' => __('hero.slides.slide_2.title'),
+            'description' => __('hero.slides.slide_2.description'),
             'primary_cta' => [
-                'label' => 'Nos Domaines d\'Expertise',
+                'label' => __('hero.slides.slide_2.primary_cta'),
                 'route' => route('recherche-expertize-projet'),
                 'icon' => 'fa-solid fa-microscope',
             ],
             'secondary_cta' => [
-                'label' => 'Rejoindre notre réseau',
+                'label' => __('hero.slides.slide_2.secondary_cta'),
                 'route' => route('contact'),
                 'icon' => 'fa-solid fa-handshake',
             ],
         ],
         [
             'image' => asset('images/banners/ban1.webp'),
-            'badge' => 'Ancrage Communautaire & Vocation Africaine',
-            'title' => 'Rapprocher la Recherche des Communautés.',
-            'description' => 'Concevoir des approches innovantes avec les acteurs locaux pour relever les défis prioritaires de santé.',
+            'badge' => __('hero.slides.slide_3.badge'),
+            'title' => __('hero.slides.slide_3.title'),
+            'description' => __('hero.slides.slide_3.description'),
             'primary_cta' => [
-                'label' => 'Découvrir nos publications',
+                'label' => __('hero.slides.slide_3.primary_cta'),
                 'route' => route('ressource-publication'),
                 'icon' => 'fa-solid fa-book-open',
             ],
             'secondary_cta' => [
-                'label' => 'Contactez-nous',
+                'label' => __('hero.slides.slide_3.secondary_cta'),
                 'route' => route('contact'),
                 'icon' => 'fa-solid fa-paper-plane',
             ],
@@ -86,9 +86,9 @@
 
                                 <div class="col-lg-3 col-xl-4 d-none d-lg-block text-end">
                                     <div class="p-4 rounded-3 border-success border-opacity-20 d-inline-block text-start text-white shadow-lg" style="backdrop-filter: blur(8px); max-width: 260px; background-color: #19875447;">
-                                        <div class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold mb-2">2026</div>
-                                        <div class="small text-white-50 mb-1">Fondé à Dapaong</div>
-                                        <div class="fw-bold text-white fs-6">Centre Scientifique & Communautaire</div>
+                                        <div class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold mb-2">{{ __('hero.badge_year') }}</div>
+                                        <div class="small text-white-50 mb-1">{{ __('hero.founded_in') }}</div>
+                                        <div class="fw-bold text-white fs-6">{{ __('hero.badge_count') }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -100,10 +100,10 @@
 
         <!-- Flèches de navigation du slider -->
         <div class="d-none d-md-flex align-items-center gap-2 position-absolute bottom-0 end-0 me-5 mb-4" style="z-index: 10;">
-            <button class="array-prev btn btn-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;" title="Précédent">
+            <button class="array-prev btn btn-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;" title="{{ __('hero.prev') }}">
                 <i class="fa fa-solid fa-arrow-left"></i>
             </button>
-            <button class="array-next btn btn-primary rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;" title="Suivant">
+            <button class="array-next btn btn-primary rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;" title="{{ __('hero.next') }}">
                 <i class="fa fa-solid fa-arrow-right"></i>
             </button>
         </div>

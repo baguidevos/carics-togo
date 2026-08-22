@@ -41,7 +41,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <i class="fa fa-solid fa-bullseye text-warning"></i>
                             </div>
                             <div class="badge bg-success text-white p-2 rounded-pill small mb-2">
-                                Engagement & Action
+                                {{ __('home.mission.badge') }}
                             </div>
                             <h2 class="h3 fw-bold text-white mb-3">{{ __('home.mission.title') }}</h2>
                             <p class="text-white-50 lead mb-0" style="font-size: 1.05rem; line-height: 1.7;">
@@ -49,9 +49,9 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-4 mt-4 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
-                            <span class="small text-white-50">Impact durable & équitable</span>
+                            <span class="small text-white-50">{{ __('home.mission.footer_text') }}</span>
                             <a href="{{ route('about') }}" class="text-white text-decoration-none fw-semibold small">
-                                En savoir plus <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                {{ __('navigation.actions.learn_more') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <i class="fa fa-solid fa-eye text-warning"></i>
                             </div>
                             <div class="badge bg-primary text-white p-2 rounded-pill small mb-2">
-                                Perspective Régionale
+                                {{ __('home.vision.badge') }}
                             </div>
                             <h2 class="h3 fw-bold text-white mb-3">{{ __('home.vision.title') }}</h2>
                             <p class="text-white-50 lead mb-0" style="font-size: 1.05rem; line-height: 1.7;">
@@ -73,9 +73,9 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-4 mt-4 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
-                            <span class="small text-white-50">Systèmes de santé résilients</span>
+                            <span class="small text-white-50">{{ __('home.vision.footer_text') }}</span>
                             <a href="{{ route('about') }}" class="text-white text-decoration-none fw-semibold small">
-                                Découvrir notre approche <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                {{ __('home.vision.discover_approach') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             <div class="row align-items-end mb-5">
                 <div class="col-lg-8">
                     <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                        <i class="fa fa-solid fa-flask-vial"></i> Expertise Scientifique
+                        <i class="fa fa-solid fa-flask-vial"></i> {{ __('home.interventions.badge') }}
                     </div>
                     <h2 class="h2 fw-bold text-dark mb-2">{{ __('home.interventions.title') }}</h2>
                     <p class="text-secondary lead mb-0" style="font-size: 1.1rem;">
@@ -99,7 +99,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 </div>
                 <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
                     <a href="{{ route('recherche-expertize-projet') }}" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold shadow-sm">
-                        <span>Explorer les projets</span>
+                        <span>{{ __('home.interventions.explore_projects') }}</span>
                         <i class="fa fa-solid fa-arrow-right ms-2"></i>
                     </a>
                 </div>
@@ -113,11 +113,11 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.3) 100%);"></div>
                         <div class="position-relative p-4 text-white d-flex flex-column justify-content-end h-100" style="z-index: 2;">
                             <div class="badge bg-primary text-white rounded-pill px-3 py-1 small mb-2 d-inline-block align-self-start">
-                                <i class="fa fa-solid fa-map-location-dot me-1"></i> Ancrage Terrain
+                                <i class="fa fa-solid fa-map-location-dot me-1"></i> {{ __('home.interventions.field_anchor_badge') }}
                             </div>
-                            <h3 class="h5 fw-bold text-white mb-2">Sciences de la Mise en Œuvre & Action Communautaire</h3>
+                            <h3 class="h5 fw-bold text-white mb-2">{{ __('home.interventions.field_anchor_title') }}</h3>
                             <p class="text-white-50 small mb-0" style="line-height: 1.6;">
-                                Des recherches contextualisées au plus près des besoins des populations vulnérables et des formations sanitaires.
+                                {{ __('home.interventions.field_anchor_desc') }}
                             </p>
                         </div>
                     </div>
@@ -253,7 +253,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </div>
                             <div class="col-sm-6">
                                 <div class="p-2 bg-white rounded-3 border small">
-                                    <span class="text-muted"><i class="fa fa-solid fa-hand-holding-dollar text-success me-1"></i> Financement :</span>
+                                    <span class="text-muted"><i class="fa fa-solid fa-hand-holding-dollar text-success me-1"></i> {{ __('home.featured_project.funding_label') }} :</span>
                                     <strong class="text-dark ms-1">{{ $featuredProject?->funder ?? 'RSTMH' }}</strong>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <i class="fa fa-solid fa-arrow-right ms-2"></i>
                             </a>
                             <a href="{{ route('contact') }}" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold">
-                                <i class="fa fa-solid fa-handshake me-1"></i> Collaborer
+                                <i class="fa fa-solid fa-handshake me-1"></i> {{ __('navigation.actions.collaborate') }}
                             </a>
                         </div>
                     </div>
@@ -281,11 +281,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                             <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to top, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0) 100%);"></div>
                             <div class="position-relative p-4 text-white d-flex flex-column justify-content-end h-100" style="z-index: 2;">
                                 <div class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold small align-self-start mb-2">
-                                    Impact Région des Savanes
+                                    {{ __('home.featured_project.savanes_impact') }}
                                 </div>
-                                {{-- <div class="small text-white-50">
-                                    ChimioPrévention Saisonnière du Paludisme (CPS) en contexte transfrontalier.
-                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -299,7 +296,7 @@ new #[Layout('layouts::archinest')] class extends Component {
         <div class="container">
             <div class="text-center max-w-700 mx-auto mb-5">
                 <div class="d-inline-flex align-items-center gap-2 bg-success text-white px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                    <i class="fa fa-solid fa-chart-line"></i> Résultats & Métriques
+                    <i class="fa fa-solid fa-chart-line"></i> {{ __('home.stats.badge') }}
                 </div>
                 <h2 class="h3 fw-bold text-white mb-2">{{ __('home.stats.section_title') }}</h2>
             </div>
@@ -327,7 +324,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="display-5 fw-bold text-success mb-1">
                             {{ max(5, $statsPublications) }}+
                         </div>
-                        <h3 class="h6 fw-semibold text-secondary mb-0">Publications & Rapports</h3>
+                        <h3 class="h6 fw-semibold text-secondary mb-0">{{ __('home.stats.publications_reports') }}</h3>
                     </div>
                 </div>
 
@@ -353,7 +350,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="display-5 fw-bold text-warning-emphasis mb-1">
                             {{ max(4, $statsMembers) }}
                         </div>
-                        <h3 class="h6 fw-semibold text-secondary mb-0">Experts & Chercheurs</h3>
+                        <h3 class="h6 fw-semibold text-secondary mb-0">{{ __('home.stats.experts_researchers') }}</h3>
                     </div>
                 </div>
             </div>
@@ -367,14 +364,14 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="row align-items-end mb-4">
                     <div class="col-lg-8">
                         <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                            <i class="fa fa-solid fa-users-gear"></i> Direction & Conseil
+                            <i class="fa fa-solid fa-users-gear"></i> {{ __('home.leadership.badge') }}
                         </div>
                         <h2 class="h3 fw-bold text-dark mb-2">{{ __('home.leadership.title') }}</h2>
-                        <p class="text-muted mb-0">Des chercheurs et praticiens engagés pour l'excellence et la rigueur scientifique.</p>
+                        <p class="text-muted mb-0">{{ __('home.leadership.subtitle') }}</p>
                     </div>
                     <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
                         <a href="{{ route('equipe') }}" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold">
-                            <span>Découvrir toute l'équipe</span>
+                            <span>{{ __('home.leadership.discover_team') }}</span>
                             <i class="fa fa-solid fa-arrow-right ms-2"></i>
                         </a>
                     </div>
@@ -429,14 +426,14 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="row align-items-end mb-4">
                     <div class="col-lg-8">
                         <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success-subtle text-success fw-semibold small mb-2">
-                            <i class="fa fa-solid fa-newspaper"></i> Actualités Récentes
+                            <i class="fa fa-solid fa-newspaper"></i> {{ __('home.news.badge') }}
                         </div>
-                        <h2 class="h3 fw-bold text-dark mb-2">Dernières nouvelles du terrain & de la recherche</h2>
-                        <p class="text-muted mb-0">Suivez les avancées scientifiques, les ateliers de formation et les interventions communautaires du CARICS.</p>
+                        <h2 class="h3 fw-bold text-dark mb-2">{{ __('home.news.title') }}</h2>
+                        <p class="text-muted mb-0">{{ __('home.news.subtitle') }}</p>
                     </div>
                     <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
                         <a href="{{ route('actu-opportunites') }}" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold">
-                            <span>Toutes les actualités</span>
+                            <span>{{ __('home.news.all_news') }}</span>
                             <i class="fa fa-solid fa-arrow-right ms-2"></i>
                         </a>
                     </div>
@@ -459,7 +456,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     @endif
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <span class="badge bg-light text-primary border px-2 py-1 rounded-pill small">
-                                            {{ $newsItem->category?->name ?? 'Actualité' }}
+                                            {{ $newsItem->category?->name ?? __('navigation.footer.news') }}
                                         </span>
                                         @if ($newsItem->published_date)
                                             <span class="text-muted small">
@@ -478,7 +475,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 </div>
                                 <div class="pt-3 border-top">
                                     <a href="{{ route('news-detail', ['slug' => $newsItem->slug]) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                        Lire l'article <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                        {{ __('home.news.read_article') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
                                     </a>
                                 </div>
                             </div>

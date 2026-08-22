@@ -29,13 +29,13 @@ new #[Layout('layouts::archinest')] class extends Component {
     </section>
     <!-- end main-content -->
 
-    <!-- ============ SECTION 1 : QUI SOMMES-NOUS ? (BENTO STORYTELLING) ============ -->
+    <!-- ============ SECTION 1 : QUI SOMMES-NOUS ? ============ -->
     <section class="section py-5" style="background: #ffffff;">
         <div class="container">
             <div class="row align-items-center mb-5">
                 <div class="col-lg-8">
                     <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                        <i class="fa fa-solid fa-building-columns"></i> Institution Scientifique & Indépendante
+                        <i class="fa fa-solid fa-building-columns"></i> {{ __('about.who_we_are.badge') }}
                     </div>
                     <h2 class="h2 fw-bold text-dark mb-2">{{ __('about.who_we_are.title') }}</h2>
                     <p class="text-secondary lead mb-0" style="font-size: 1.1rem; line-height: 1.7;">
@@ -65,7 +65,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-primary small fw-semibold">
-                            <i class="fa fa-solid fa-location-dot me-1 text-danger"></i> Dapaong, Région des Savanes
+                            <i class="fa fa-solid fa-location-dot me-1 text-danger"></i> {{ __('about.who_we_are.history_badge') }}
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top text-success small fw-semibold">
-                            <i class="fa fa-solid fa-shield-check me-1"></i> Association à but non lucratif
+                            <i class="fa fa-solid fa-shield-check me-1"></i> {{ __('about.who_we_are.status_badge') }}
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </p>
                         </div>
                         <div class="pt-3 mt-3 border-top border-white border-opacity-10 text-white small fw-semibold">
-                            <i class="fa fa-solid fa-arrows-to-dot me-1 text-warning"></i> Togo & Afrique de l'Ouest
+                            <i class="fa fa-solid fa-arrows-to-dot me-1 text-warning"></i> {{ __('about.who_we_are.ambitions_badge') }}
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ new #[Layout('layouts::archinest')] class extends Component {
         <div class="container">
             <div class="text-center max-w-700 mx-auto mb-5">
                 <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                    <i class="fa fa-solid fa-cubes-stacked"></i> Modèle Intégré
+                    <i class="fa fa-solid fa-cubes-stacked"></i> {{ __('about.approach.badge') }}
                 </div>
                 <h2 class="h3 fw-bold text-dark mb-2">{{ __('about.approach.title') }}</h2>
                 <p class="text-muted">
@@ -210,7 +210,7 @@ new #[Layout('layouts::archinest')] class extends Component {
         <div class="container">
             <div class="text-center max-w-700 mx-auto mb-5">
                 <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success-subtle text-success fw-semibold small mb-2">
-                    <i class="fa fa-solid fa-heart-pulse"></i> Culture & Éthique
+                    <i class="fa fa-solid fa-heart-pulse"></i> {{ __('about.values.badge') }}
                 </div>
                 <h2 class="h3 fw-bold text-dark mb-2">{{ __('about.values.title') }}</h2>
                 <p class="text-muted">
@@ -236,7 +236,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <!-- Valeur 2 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-success-subtle text-success mb-3" style="width: 44px; background: #ede9fe; height: 44px; font-size: 1.2rem;">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-success-subtle text-success mb-3" style="width: 44px; height: 44px; font-size: 1.2rem;">
                             <i class="fa fa-solid fa-shield"></i>
                         </div>
                         <h3 class="h5 fw-bold text-dark mb-2">{{ __('about.values.val_2_title') }}</h3>
@@ -249,7 +249,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <!-- Valeur 3 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-warning-subtle text-warning-emphasis mb-3" style="width: 44px; background: #ede9fe; height: 44px; font-size: 1.2rem;">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-warning-subtle text-warning-emphasis mb-3" style="width: 44px; height: 44px; font-size: 1.2rem;">
                             <i class="fa fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <h3 class="h5 fw-bold text-dark mb-2">{{ __('about.values.val_3_title') }}</h3>
@@ -262,7 +262,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <!-- Valeur 4 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-info-subtle text-info mb-3" style="width: 44px; background: #ede9fe; height: 44px; font-size: 1.2rem;">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-info-subtle text-info mb-3" style="width: 44px; height: 44px; font-size: 1.2rem;">
                             <i class="fa fa-solid fa-handshake"></i>
                         </div>
                         <h3 class="h5 fw-bold text-dark mb-2">{{ __('about.values.val_4_title') }}</h3>
@@ -275,7 +275,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <!-- Valeur 5 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 p-4 border rounded-4 shadow-sm bg-white hover-shadow transition-all">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-danger-subtle text-danger mb-3" style="width: 44px; background: #ede9fe; height: 44px; font-size: 1.2rem;">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-danger-subtle text-danger mb-3" style="width: 44px; height: 44px; font-size: 1.2rem;">
                             <i class="fa fa-solid fa-eye"></i>
                         </div>
                         <h3 class="h5 fw-bold text-dark mb-2">{{ __('about.values.val_5_title') }}</h3>
@@ -308,16 +308,16 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="row align-items-center g-4 mb-4">
                     <div class="col-lg-6">
                         <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success bg-opacity-20 text-white fw-semibold small mb-2">
-                            <i class="fa fa-solid fa-chart-line"></i> Repères Clés
+                            <i class="fa fa-solid fa-chart-line"></i> {{ __('about.in_brief.badge') }}
                         </div>
                         <h3 class="h2 fw-bold text-white mb-2">{{ __('about.in_brief.title') }}</h3>
                         <p class="text-white-50 mb-0">
-                            Un aperçu synthétique de notre organisation et de son dynamisme opérationnel au Togo.
+                            {{ __('about.in_brief.subtitle') }}
                         </p>
                     </div>
                     <div class="col-lg-6 text-lg-end">
                         <a href="{{ route('recherche-expertize-projet') }}" class="btn btn-light rounded-pill px-4 py-2 fw-semibold text-primary">
-                            Consulter nos projets <i class="fa fa-solid fa-arrow-right ms-2"></i>
+                            {{ __('about.in_brief.consult_projects') }} <i class="fa fa-solid fa-arrow-right ms-2"></i>
                         </a>
                     </div>
                 </div>
@@ -358,7 +358,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                     <!-- Item 4 : Projets -->
                     <div class="col-md-6 col-sm-6">
-                        <div class="p-3 rounded-3 #ede9febg-opacity-10 border border-white border-opacity-10 h-100" style="background-color: #1b3a6b36;">
+                        <div class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100" style="background-color: #1b3a6b36;">
                             <div class="d-flex align-items-center gap-2 mb-2">
                                 <i class="fa fa-solid fa-flask-vial text-warning"></i>
                                 <strong class="text-white small">{{ __('about.in_brief.item_4_title') }}</strong>
@@ -389,7 +389,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                 <div class="row align-items-end mb-4">
                     <div class="col-lg-8">
                         <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary fw-semibold small mb-2">
-                            <i class="fa fa-solid fa-users-gear"></i> Leadership Scientifique
+                            <i class="fa fa-solid fa-users-gear"></i> {{ __('about.governance.badge') }}
                         </div>
                         <h2 class="h3 fw-bold text-dark mb-2">{!! __('about.governance.title') !!}</h2>
                         <p class="text-muted mb-0">
@@ -398,7 +398,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     </div>
                     <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
                         <a href="{{ route('equipe') }}" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold">
-                            <span>{{ __('navigation.actions.view_more') }}</span>
+                            <span>{{ __('home.leadership.discover_team') }}</span>
                             <i class="fa fa-solid fa-arrow-right ms-2"></i>
                         </a>
                     </div>
@@ -435,7 +435,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
                                 <div class="pt-2 border-top">
                                     <a href="{{ route('team-detail', ['slug' => $member->slug]) }}" class="btn btn-sm btn-light border rounded-pill w-100 text-primary fw-medium">
-                                        Voir profil <i class="fa fa-solid fa-arrow-right ms-1 small"></i>
+                                        {{ __('navigation.actions.view_profile') }} <i class="fa fa-solid fa-arrow-right ms-1 small"></i>
                                     </a>
                                 </div>
                             </div>
@@ -451,7 +451,7 @@ new #[Layout('layouts::archinest')] class extends Component {
         <div class="container">
             <div class="card border-0 rounded-4 shadow-sm p-4 p-lg-5 bg-white text-center">
                 <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-success-subtle text-success fw-semibold small mb-3 mx-auto">
-                    <i class="fa fa-solid fa-handshake"></i> Partenariats Stratégiques
+                    <i class="fa fa-solid fa-handshake"></i> {{ __('about.collaboration.badge') }}
                 </div>
                 <h2 class="h3 fw-bold text-dark mb-3">{{ __('about.collaboration.title') }}</h2>
                 <div class="max-w-700 mx-auto text-secondary mb-4" style="line-height: 1.8;">

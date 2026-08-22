@@ -12,18 +12,28 @@ return [
 
     // Pillars: Mission & Vision
     'mission' => [
+        'badge' => 'Commitment & Action',
         'title' => 'Our Mission',
         'description' => 'Generate evidence in public health and translate it into concrete actions to sustainably improve population health, particularly for the most vulnerable.',
+        'footer_text' => 'Sustainable & equitable impact',
     ],
     'vision' => [
+        'badge' => 'Regional Perspective',
         'title' => 'Our Vision',
         'description' => 'Contribute to building more resilient, equitable, and evidence-informed health systems across Africa.',
+        'footer_text' => 'Resilient health systems',
+        'discover_approach' => 'Discover our approach',
     ],
 
     // Areas of Intervention
     'interventions' => [
+        'badge' => 'Scientific Expertise',
         'title' => 'Our Areas of Intervention.',
         'subtitle' => 'We primarily intervene across several key domains of public health.',
+        'explore_projects' => 'Explore projects',
+        'field_anchor_badge' => 'Field Anchoring',
+        'field_anchor_title' => 'Implementation Science & Community Action',
+        'field_anchor_desc' => 'Contextualized research aligned with the needs of vulnerable populations and frontline health facilities.',
         'item_1' => 'Public Health and Epidemiology',
         'item_2' => 'Operational Research and Implementation Science',
         'item_3' => 'Community Health',
@@ -37,27 +47,44 @@ return [
         'section_title' => 'Featured Project',
         'period_label' => 'Period',
         'period_value' => '2026-2027',
+        'funding_label' => 'Funding:',
         'zone_label' => 'Location',
         'zone_value' => 'Savanes Region, Togo',
         'status_label' => 'Status',
         'status_ongoing' => 'Ongoing',
         'title' => 'Strengthening the Implementation of Seasonal Malaria Chemoprevention in a Cross-Border Insecure Context in Northern Togo',
         'description' => 'A project funded by the Royal Society of Tropical Medicine and Hygiene (RSTMH) aimed at documenting the implementation challenges of SMC in the Savanes Region and generating evidence-based recommendations to strengthen malaria control programs.',
+        'savanes_impact' => 'Savanes Region Impact',
     ],
 
     // Key Statistics
     'stats' => [
+        'badge' => 'Results & Metrics',
         'section_title' => 'Our Key Figures in 2026',
         'research_centers' => 'Research Center',
         'funded_projects' => 'Funded Research Project',
-        'intervention_regions' => 'Intervention Region',
+        'publications_reports' => 'Publications & Reports',
+        'intervention_regions' => 'Intervention Regions',
         'founding_members' => 'Founding Members',
+        'experts_researchers' => 'Experts & Researchers',
         'international_partnerships' => 'International Scientific Partnership',
     ],
 
     // Leadership
     'leadership' => [
+        'badge' => 'Leadership & Board',
         'title' => 'Leadership & Governance',
+        'subtitle' => 'Researchers and practitioners committed to scientific excellence and rigor.',
+        'discover_team' => 'Discover the whole team',
+    ],
+
+    // Recent news
+    'news' => [
+        'badge' => 'Recent News',
+        'title' => 'Latest news from the field & research',
+        'subtitle' => 'Follow CARICS scientific advancements, training workshops, and community interventions.',
+        'all_news' => 'All news',
+        'read_article' => 'Read article',
     ],
 
     // Work Together Section

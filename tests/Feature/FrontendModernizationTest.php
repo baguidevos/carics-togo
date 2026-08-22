@@ -12,9 +12,9 @@ test('la page ressource publication est accessible et affiche le hub de publicat
         'status' => 'publie',
     ]);
 
-    $response = $this->get(route('ressource-publication'));
+    $response = $this->withSession(['locale' => 'fr'])->get(route('ressource-publication'));
     $response->assertOk();
-    $response->assertSee('Centre de Ressources Scientifiques');
+    $response->assertSee(__('resources.badge_center', [], 'fr'));
     $response->assertSee('Étude épidémiologique paludisme Togo');
 });
 
@@ -26,10 +26,10 @@ test('la page recherche expertize et projet est accessible avec la carte interac
         'intervention_zones' => ['Sokodé', 'Tchamba'],
     ]);
 
-    $response = $this->get(route('recherche-expertize-projet'));
+    $response = $this->withSession(['locale' => 'fr'])->get(route('recherche-expertize-projet'));
     $response->assertOk();
-    $response->assertSee('Implantation Territoriale & Sites d\'Intervention', false);
-    $response->assertSee('Tous nos Projets de Recherche');
+    $response->assertSee(e(__('research.map.title', [], 'fr')), false);
+    $response->assertSee(__('research.directory.title', [], 'fr'));
     $response->assertSee('Projet Maternité Sans Risque');
 });
 
@@ -43,7 +43,7 @@ test('la page recherche expertize et projet gère les zones d intervention et re
         'is_featured' => true,
     ]);
 
-    $response = $this->get(route('recherche-expertize-projet'));
+    $response = $this->withSession(['locale' => 'fr'])->get(route('recherche-expertize-projet'));
     $response->assertOk();
     $response->assertSee('Projet CPS Savanes');
     $response->assertSee('Tône, Kpendjal, Cinkassé');
@@ -56,9 +56,9 @@ test('la page actualites et opportunites affiche le bento grid et les opportunit
         'status' => 'ouverte',
     ]);
 
-    $response = $this->get(route('actu-opportunites'));
+    $response = $this->withSession(['locale' => 'fr'])->get(route('actu-opportunites'));
     $response->assertOk();
-    $response->assertSee('Opportunités', false);
+    $response->assertSee(e(__('news_opp.tabs.opportunities', [], 'fr')), false);
 });
 
 test('la page detail actualite est accessible et affiche le contenu complet', function () {
@@ -71,9 +71,9 @@ test('la page detail actualite est accessible et affiche le contenu complet', fu
         'is_published' => true,
     ]);
 
-    $response = $this->get(route('news-detail', ['slug' => $news->slug]));
+    $response = $this->withSession(['locale' => 'fr'])->get(route('news-detail', ['slug' => $news->slug]));
     $response->assertOk();
     $response->assertSee('Formation des assistants de recherche CPS Cinkassé');
     $response->assertSee('Le projet est financé par la RSTMH');
-    $response->assertSee('min de lecture');
+    $response->assertSee(__('news_opp.detail.reading_time', [], 'fr'));
 });

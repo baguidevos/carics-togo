@@ -31,6 +31,7 @@ return [
         'privacy_agree' => 'I agree that CARICS-Togo may process my personal data in connection with this inquiry, in accordance with the',
         'privacy_link' => 'privacy policy',
         'send_btn' => 'Send Message',
+        'sending' => 'Sending...',
         'success_title' => 'Message Sent Successfully',
         'success_text' => 'Your message has been sent successfully. The CARICS-Togo team will reply as soon as possible, typically within 3 to 5 business days.',
         'required_field' => 'This field is required.',
@@ -56,6 +57,7 @@ return [
     'specialized' => [
         'eyebrow' => 'Specialized Forms',
         'title' => 'Specific Requests',
+        'sending' => 'Sending...',
         'collaboration' => [
             'title' => 'Propose a Collaboration',
             'desc' => 'Looking to initiate a collaborative project, join a consortium, or propose co-supervision? Describe your project and attach a concept note.',
@@ -93,6 +95,16 @@ return [
             'submit' => 'Send Request',
             'success' => 'Request sent successfully!',
         ],
+    ],
+
+    // Newsletter
+    'newsletter' => [
+        'placeholder' => 'Your email address...',
+        'aria_label' => 'Your email',
+        'subscribe_btn' => 'Subscribe',
+        'already_subscribed' => 'You are already subscribed to our newsletter.',
+        'reactivated' => 'Your subscription has been successfully reactivated.',
+        'thank_you' => 'Thank you for subscribing to the CARICS newsletter.',
     ],
 
     // FAQ

@@ -19,13 +19,13 @@ new class extends Component {
 
         if ($subscriber) {
             if ($subscriber->is_active) {
-                $this->message = __('Vous êtes déjà inscrit à notre newsletter.');
+                $this->message = __('contact.newsletter.already_subscribed');
             } else {
                 $subscriber->update([
                     'is_active'     => true,
                     'subscribed_at' => now(),
                 ]);
-                $this->message = __('Votre inscription a été réactivée avec succès.');
+                $this->message = __('contact.newsletter.reactivated');
             }
         } else {
             NewsletterSubscriber::create([
@@ -35,7 +35,7 @@ new class extends Component {
                 'subscribed_at'     => now(),
                 'preferences'       => ['recherche', 'actualites', 'opportunites'],
             ]);
-            $this->message = __('Merci pour votre inscription à la lettre d\'information CARICS.');
+            $this->message = __('contact.newsletter.thank_you');
         }
 
         $this->reset('email');
@@ -54,7 +54,7 @@ new class extends Component {
         <form wire:submit="subscribe" class="d-flex flex-column flex-sm-row gap-2">
             <div class="flex-grow-1 position-relative">
                 <input type="email" wire:model="email" class="form-control rounded-pill px-3 py-2 @error('email') is-invalid @enderror"
-                    placeholder="Votre adresse email..." aria-label="Votre email">
+                    placeholder="{{ __('contact.newsletter.placeholder') }}" aria-label="{{ __('contact.newsletter.aria_label') }}">
                 @error('email')
                     <div class="invalid-feedback position-absolute start-0" style="bottom:-20px; font-size:.78rem;">
                         {{ $message }}
@@ -62,7 +62,7 @@ new class extends Component {
                 @enderror
             </div>
             <button type="submit" class="btn btn-primary rounded-pill px-4 py-2 text-nowrap shadow-sm" wire:loading.attr="disabled">
-                <span wire:loading.remove>S'abonner <i class="bi bi-arrow-right ms-1"></i></span>
+                <span wire:loading.remove>{{ __('contact.newsletter.subscribe_btn') }} <i class="bi bi-arrow-right ms-1"></i></span>
                 <span wire:loading><i class="fa fa-spinner fa-spin"></i></span>
             </button>
         </form>

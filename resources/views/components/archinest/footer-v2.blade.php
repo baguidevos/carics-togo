@@ -7,16 +7,16 @@
                 <div class="carics-bento-card d-flex flex-column justify-content-between">
                     <div>
                         <div class="carics-bento-badge">
-                            <span class="pulse-dot me-1"></span> Pôle Scientifique & Communautaire
+                            <span class="pulse-dot me-1"></span> {{ __('navigation.footer.scientific_community_pole') }}
                         </div>
                         <div class="mb-3">
                             <img src="{{ asset('logo_resize.png') }}" alt="CARICS" style="height: 46px; background: rgba(255,255,255,0.92); padding: 4px 10px; border-radius: 10px;">
                         </div>
                         <h4 class="text-white fw-bold mb-3" style="font-family: var(--font-display); font-size: 1.3rem;">
-                            Construire des solutions de santé durables et inclusives.
+                            {{ __('navigation.footer.footer_v2_tagline') }}
                         </h4>
                         <p class="text-muted" style="font-size: 0.9rem; line-height: 1.6;">
-                            Centre indépendant au cœur de la Région des Savanes (Togo), engagé dans la recherche appliquée, la formation et les interventions terrain.
+                            {{ __('navigation.footer.footer_v2_desc') }}
                         </p>
                     </div>
 
@@ -33,7 +33,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="carics-bento-card">
                     <div class="carics-bento-badge">
-                        <i class="fa-regular fa-compass"></i> Navigation
+                        <i class="fa-regular fa-compass"></i> {{ __('navigation.footer.navigation') }}
                     </div>
                     <ul class="list-unstyled mb-0 d-flex flex-column gap-2" style="font-size: 0.9rem;">
                         <li><a href="{{ route('home') }}" class="text-white-50 text-decoration-none hover-text-white d-flex align-items-center justify-content-between py-1 border-bottom border-white border-opacity-5"><span>{{ __('navigation.menu.home') }}</span> <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i></a></li>
@@ -50,12 +50,12 @@
                 <div class="carics-bento-card d-flex flex-column justify-content-between">
                     <div>
                         <div class="carics-bento-badge">
-                            <i class="fa-regular fa-paper-plane"></i> Contact Direct
+                            <i class="fa-regular fa-paper-plane"></i> {{ __('navigation.footer.direct_contact') }}
                         </div>
                         
                         <div class="p-3 rounded-3 mb-3" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
                             <div class="d-flex align-items-center gap-2 mb-1 text-white fw-semibold" style="font-size: 0.88rem;">
-                                <i class="fa-solid fa-location-dot text-accent"></i> Siège Principal :
+                                <i class="fa-solid fa-location-dot text-accent"></i> {{ __('navigation.footer.main_headquarters') }}
                             </div>
                             <p class="text-muted mb-0" style="font-size: 0.82rem;">
                                 {{ config('site.address') }}
@@ -86,16 +86,17 @@
                 <div class="col-md-7 text-muted d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2" style="font-size: 0.85rem;">
                     <span>{{ __('navigation.footer.copyright') }}</span>
                     <span class="d-none d-sm-inline text-muted">•</span>
-                    <span>Développé par <a href="tel:+22892407089" class="text-white text-decoration-none fw-semibold">HIDA Baguibassa David</a> (<a href="tel:+22892407089" class="text-accent text-decoration-none">+228 92 40 70 89</a>)</span>
+                    <span>{{ __('navigation.footer.developed_by') }} <a href="tel:+22892407089" class="text-white text-decoration-none fw-semibold">HIDA Baguibassa David</a> (<a href="tel:+22892407089" class="text-accent text-decoration-none">+228 92 40 70 89</a>)</span>
                 </div>
                 <div class="col-md-5 d-flex justify-content-md-end gap-3 text-muted" style="font-size: 0.85rem;">
-                    <a href="{{ route('home') }}" class="text-muted text-decoration-none hover-text-white">Mentions Légales</a>
+                    <a href="{{ route('home') }}" class="text-muted text-decoration-none hover-text-white">{{ __('navigation.footer.legal_notices') }}</a>
                     <span>•</span>
-                    <a href="{{ route('home') }}" class="text-muted text-decoration-none hover-text-white">Confidentialité</a>
+                    <a href="{{ route('home') }}" class="text-muted text-decoration-none hover-text-white">{{ __('navigation.footer.privacy_short') }}</a>
                     <span>•</span>
-                    <span>Togo 🇹🇬</span>
+                    <span>{{ __('navigation.footer.togo_flag') }}</span>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
