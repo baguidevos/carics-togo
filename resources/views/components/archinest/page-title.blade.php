@@ -31,22 +31,22 @@
     {{-- Mode "Split" : Mise en page 2 colonnes (Format contenu & image encadrée)   --}}
     {{-- ========================================================================= --}}
     <section class="page-title page-title--split position-relative overflow-hidden" 
-             style="padding: 120px 0 80px; min-height: 380px;">
+             style="background: linear-gradient(135deg, #1B3A6B 0%, #008A5E 100%); padding: 120px 0 80px; min-height: 380px;">
         
         <div class="auto-container position-relative" style="z-index: 2;">
             <div class="row align-items-center g-4 g-lg-5">
                 {{-- Colonne Gauche : Titre, sous-titre & fil d'Ariane --}}
                 <div class="col-lg-7 text-start">
                     <ul class="page-breadcrumb d-flex flex-wrap align-items-center gap-2 mb-3 list-unstyled" style="padding-left: 0;">
-                        <li><a href="{{ route($parentRoute) }}">{{ $parentText }}</a></li>
-                        <li class="text-white-50 opacity-50">/</li>
-                        <li class="text-white">{{ $displayBreadcrumb }}</li>
+                        <li><a href="{{ route($parentRoute) }}" class="text-white opacity-75">{{ $parentText }}</a></li>
+                        <li class="text-white opacity-50">/</li>
+                        <li class="text-white fw-medium">{{ $displayBreadcrumb }}</li>
                     </ul>
-                    <h1 class="title mb-3" style="font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15;">
+                    <h1 class="title text-white mb-3" style="font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; font-weight: 700;">
                         {{ $displayTitle }}
                     </h1>
                     @if ($displaySubtitle)
-                        <p class="text-white-50 lead mb-0" style="font-size: 1.05rem; line-height: 1.6; max-width: 620px;">
+                        <p class="text-white lead mb-0 opacity-75" style="font-size: 1.05rem; line-height: 1.6; max-width: 620px;">
                             {{ $displaySubtitle }}
                         </p>
                     @endif
