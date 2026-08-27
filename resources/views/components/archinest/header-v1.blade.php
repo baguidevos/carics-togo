@@ -60,7 +60,7 @@
 
     <!-- Main Navigation Bar -->
     <nav class="carics-navbar-v1" :class="{ 'is-sticky': isScrolled }">
-        <div class="container">
+        <div class="container-fluid px-3 px-xl-5" style="max-width: 1440px;">
             <div class="d-flex align-items-center justify-content-between">
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none">

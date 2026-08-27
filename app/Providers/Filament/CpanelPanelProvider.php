@@ -59,6 +59,12 @@ class CpanelPanelProvider extends PanelProvider
             // ── Notifications (badge simple) ──
             ->databaseNotifications()
 
+            // ── Multilingue / Spatie Translatable ──
+            ->plugin(
+                \LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin::make()
+                    ->defaultLocales(['fr', 'en'])
+            )
+
             // ── Ordre des groupes de navigation ──
             ->navigationGroups([
                 NavigationGroup::make('🔬 Recherche & Projets')
