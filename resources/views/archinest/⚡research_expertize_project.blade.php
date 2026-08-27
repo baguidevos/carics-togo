@@ -56,17 +56,7 @@ new #[Layout('layouts::archinest')] class extends Component {
     }
 }">
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url({{ asset('images/pub.webp') }});">
-        <div class="auto-container">
-            <div class="title-outer text-center">
-                <h1 class="title">{{ __('research.title') }}</h1>
-                <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
-                    <li>{{ __('research.title') }}</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <x-archinest.page-title page="research" :title="__('research.title')" defaultImage="images/pub.webp" />
     <!-- end main-content -->
 
     <!-- ============ SECTION 1 : DOMAINES D'EXPERTISE & PRIORITÉS SCIENTIFIQUES ============ -->

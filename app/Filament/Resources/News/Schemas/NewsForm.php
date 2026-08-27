@@ -65,6 +65,28 @@ class NewsForm
                                         'undo', 'redo',
                                     ])
                                     ->columnSpanFull(),
+                                ToggleButtons::make('hero_media_type')
+                                    ->label('Affichage du média d\'en-tête')
+                                    ->options([
+                                        'image' => 'Image fixe',
+                                        'slider' => 'Slider défilant (Carrousel)',
+                                        'none' => 'Masqué',
+                                    ])
+                                    ->icons([
+                                        'image' => 'heroicon-m-photo',
+                                        'slider' => 'heroicon-m-play-circle',
+                                        'none' => 'heroicon-m-eye-slash',
+                                    ])
+                                    ->colors([
+                                        'image' => 'primary',
+                                        'slider' => 'info',
+                                        'none' => 'gray',
+                                    ])
+                                    ->default('image')
+                                    ->required()
+                                    ->inline()
+                                    ->helperText('En mode "Slider", les images de la galerie défileront automatiquement dans l\'en-tête de l\'article.')
+                                    ->columnSpanFull(),
                                 SpatieMediaLibraryFileUpload::make('cover')
                                     ->label('Image de couverture principale')
                                     ->collection('cover')

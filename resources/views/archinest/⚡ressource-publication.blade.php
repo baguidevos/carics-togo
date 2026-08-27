@@ -72,17 +72,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
 <div>
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url({{ asset('images/banners/ban3.webp') }});">
-        <div class="auto-container">
-            <div class="title-outer text-center">
-                <h1 class="title">{{ __('resources.title') }}</h1>
-                <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
-                    <li>{{ __('resources.title') }}</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <x-archinest.page-title page="resources_publications" :title="__('resources.title')" defaultImage="images/pub.webp" />
 
     <!-- ============ INTRO & BARRE DE RECHERCHE DYNAMIQUE ============ -->
     <section class="section-sm pb-0">

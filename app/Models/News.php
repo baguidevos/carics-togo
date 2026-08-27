@@ -79,10 +79,32 @@ class News extends Model implements HasMedia
         return $this->getCoverImageUrl();
     }
 
+    /**
+     * Retourne la collection de médias pour le slider (galerie + couverture en fallback)
+     */
+    public function getSliderMedia()
+    {
+        $gallery = $this->getMedia('gallery');
+        if ($gallery->isNotEmpty()) {
+            return $gallery;
+        }
+
+        $attachments = $this->getMedia('news_attachments')->filter(function ($media) {
+            return str_starts_with($media->mime_type ?? '', 'image/');
+        });
+
+        if ($attachments->isNotEmpty()) {
+            return $attachments;
+        }
+
+        return $this->getMedia('cover');
+    }
+
     protected $table = 'news';
 
     protected $fillable = [
         'title', 'slug', 'excerpt', 'content', 'cover_image',
+        'hero_media_type',
         'event_date', 'location',
         'category_id', 'blog_post_id',
         'published_date', 'is_featured', 'is_published',

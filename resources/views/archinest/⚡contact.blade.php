@@ -156,17 +156,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 <div>
 
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url({{ asset('images/banners/ban2.webp') }});">
-        <div class="auto-container">
-            <div class="title-outer text-center">
-                <h1 class="title">{{ __('contact.title') }}</h1>
-                <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
-                    <li>{{ __('contact.title') }}</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <x-archinest.page-title page="contact" :title="__('contact.title')" defaultImage="images/contact.webp" />
 
     <!-- ============ FORMULAIRE GÉNÉRAL + COORDONNÉES ============ -->
     <section class="section">

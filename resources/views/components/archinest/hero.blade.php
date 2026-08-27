@@ -1,54 +1,78 @@
 @php
-    $slides = [
-        [
-            'image' => asset('images/banners/ban2.webp'),
-            'badge' => __('hero.slides.slide_1.badge'),
-            'title' => __('hero.slides.slide_1.title'),
-            'description' => __('hero.slides.slide_1.description'),
-            'primary_cta' => [
-                'label' => __('hero.slides.slide_1.primary_cta'),
-                'route' => route('recherche-expertize-projet'),
-                'icon' => 'fa-solid fa-flask-vial',
+    $dbSlides = \App\Models\HeroSlide::active()->ordered()->with('media')->get();
+
+    if ($dbSlides->isNotEmpty()) {
+        $slides = $dbSlides->map(function ($slide) {
+            $imageUrl = $slide->image_url ?: asset('images/banners/ban2.webp');
+            return [
+                'image' => $imageUrl,
+                'badge' => $slide->badge ?: __('hero.slides.slide_1.badge'),
+                'title' => $slide->title,
+                'description' => $slide->description,
+                'primary_cta' => [
+                    'label' => $slide->primary_cta_label ?: __('hero.slides.slide_1.primary_cta'),
+                    'route' => $slide->primary_cta_url ? (str_starts_with($slide->primary_cta_url, 'http') || str_starts_with($slide->primary_cta_url, '/') ? $slide->primary_cta_url : route($slide->primary_cta_url)) : route('recherche-expertize-projet'),
+                    'icon' => $slide->primary_cta_icon ?: 'fa-solid fa-flask-vial',
+                ],
+                'secondary_cta' => [
+                    'label' => $slide->secondary_cta_label ?: __('hero.slides.slide_1.secondary_cta'),
+                    'route' => $slide->secondary_cta_url ? (str_starts_with($slide->secondary_cta_url, 'http') || str_starts_with($slide->secondary_cta_url, '/') ? $slide->secondary_cta_url : route($slide->secondary_cta_url)) : route('about'),
+                    'icon' => $slide->secondary_cta_icon ?: 'fa-solid fa-circle-info',
+                ],
+            ];
+        })->all();
+    } else {
+        $slides = [
+            [
+                'image' => asset('images/banners/ban2.webp'),
+                'badge' => __('hero.slides.slide_1.badge'),
+                'title' => __('hero.slides.slide_1.title'),
+                'description' => __('hero.slides.slide_1.description'),
+                'primary_cta' => [
+                    'label' => __('hero.slides.slide_1.primary_cta'),
+                    'route' => route('recherche-expertize-projet'),
+                    'icon' => 'fa-solid fa-flask-vial',
+                ],
+                'secondary_cta' => [
+                    'label' => __('hero.slides.slide_1.secondary_cta'),
+                    'route' => route('about'),
+                    'icon' => 'fa-solid fa-circle-info',
+                ],
             ],
-            'secondary_cta' => [
-                'label' => __('hero.slides.slide_1.secondary_cta'),
-                'route' => route('about'),
-                'icon' => 'fa-solid fa-circle-info',
+            [
+                'image' => asset('images/banners/ban3.webp'),
+                'badge' => __('hero.slides.slide_2.badge'),
+                'title' => __('hero.slides.slide_2.title'),
+                'description' => __('hero.slides.slide_2.description'),
+                'primary_cta' => [
+                    'label' => __('hero.slides.slide_2.primary_cta'),
+                    'route' => route('recherche-expertize-projet'),
+                    'icon' => 'fa-solid fa-microscope',
+                ],
+                'secondary_cta' => [
+                    'label' => __('hero.slides.slide_2.secondary_cta'),
+                    'route' => route('contact'),
+                    'icon' => 'fa-solid fa-handshake',
+                ],
             ],
-        ],
-        [
-            'image' => asset('images/banners/ban3.webp'),
-            'badge' => __('hero.slides.slide_2.badge'),
-            'title' => __('hero.slides.slide_2.title'),
-            'description' => __('hero.slides.slide_2.description'),
-            'primary_cta' => [
-                'label' => __('hero.slides.slide_2.primary_cta'),
-                'route' => route('recherche-expertize-projet'),
-                'icon' => 'fa-solid fa-microscope',
+            [
+                'image' => asset('images/banners/ban1.webp'),
+                'badge' => __('hero.slides.slide_3.badge'),
+                'title' => __('hero.slides.slide_3.title'),
+                'description' => __('hero.slides.slide_3.description'),
+                'primary_cta' => [
+                    'label' => __('hero.slides.slide_3.primary_cta'),
+                    'route' => route('ressource-publication'),
+                    'icon' => 'fa-solid fa-book-open',
+                ],
+                'secondary_cta' => [
+                    'label' => __('hero.slides.slide_3.secondary_cta'),
+                    'route' => route('contact'),
+                    'icon' => 'fa-solid fa-paper-plane',
+                ],
             ],
-            'secondary_cta' => [
-                'label' => __('hero.slides.slide_2.secondary_cta'),
-                'route' => route('contact'),
-                'icon' => 'fa-solid fa-handshake',
-            ],
-        ],
-        [
-            'image' => asset('images/banners/ban1.webp'),
-            'badge' => __('hero.slides.slide_3.badge'),
-            'title' => __('hero.slides.slide_3.title'),
-            'description' => __('hero.slides.slide_3.description'),
-            'primary_cta' => [
-                'label' => __('hero.slides.slide_3.primary_cta'),
-                'route' => route('ressource-publication'),
-                'icon' => 'fa-solid fa-book-open',
-            ],
-            'secondary_cta' => [
-                'label' => __('hero.slides.slide_3.secondary_cta'),
-                'route' => route('contact'),
-                'icon' => 'fa-solid fa-paper-plane',
-            ],
-        ],
-    ];
+        ];
+    }
 @endphp
 
 <section class="banner-section-three position-relative overflow-hidden">

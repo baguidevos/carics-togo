@@ -129,14 +129,45 @@ class BlogPostForm
                                 Grid::make(['default' => 1, 'lg' => 2])
                                     ->schema([
                                         Section::make('Couverture & Illustration')
-                                            ->description('Image principale de l\'article')
+                                            ->description('Média principal et galerie de l\'article')
                                             ->schema([
+                                                ToggleButtons::make('hero_media_type')
+                                                    ->label('Affichage du média d\'en-tête')
+                                                    ->options([
+                                                        'image' => 'Image fixe',
+                                                        'slider' => 'Slider défilant (Carrousel)',
+                                                        'none' => 'Masqué',
+                                                    ])
+                                                    ->icons([
+                                                        'image' => 'heroicon-m-photo',
+                                                        'slider' => 'heroicon-m-play-circle',
+                                                        'none' => 'heroicon-m-eye-slash',
+                                                    ])
+                                                    ->colors([
+                                                        'image' => 'primary',
+                                                        'slider' => 'info',
+                                                        'none' => 'gray',
+                                                    ])
+                                                    ->default('image')
+                                                    ->required()
+                                                    ->inline()
+                                                    ->columnSpanFull(),
+
                                                 SpatieMediaLibraryFileUpload::make('cover')
                                                     ->label('Image de mise en avant')
                                                     ->collection('cover')
                                                     ->image()
                                                     ->imageEditor()
                                                     ->imageEditorAspectRatios(['16:9', '4:3', '1:1'])
+                                                    ->columnSpanFull(),
+
+                                                SpatieMediaLibraryFileUpload::make('gallery')
+                                                    ->label('Photos de la galerie / Slider')
+                                                    ->collection('gallery')
+                                                    ->multiple()
+                                                    ->reorderable()
+                                                    ->image()
+                                                    ->imageEditor()
                                                     ->columnSpanFull(),
                                             ]),
 

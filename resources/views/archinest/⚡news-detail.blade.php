@@ -37,6 +37,12 @@ new #[Layout('layouts::archinest')] class extends Component {
         return max(1, (int) ceil($wordCount / 200));
     }
 
+    /** Collection pour le slider d'en-tête */
+    public function getSliderMediaProperty()
+    {
+        return $this->news->getSliderMedia();
+    }
+
     /** Photos de la galerie (collection 'gallery' et images) */
     public function getGalleryMediaProperty()
     {
@@ -135,8 +141,111 @@ new #[Layout('layouts::archinest')] class extends Component {
                             </div>
                         </div>
 
-                        <!-- Image de couverture principale (Gérée par Spatie Media Library) -->
-                        @if ($news->cover_image_url)
+                        <!-- Média d'en-tête : Slider défilant ou Image fixe -->
+                        @if (($news->hero_media_type ?? 'image') === 'slider' && $this->sliderMedia->isNotEmpty())
+                            @php
+                                $slides = $this->sliderMedia->map(fn($m) => [
+                                    'url' => $m->getUrl('large') ?: $m->getUrl(),
+                                    'thumb' => $m->getUrl('thumb') ?: $m->getUrl(),
+                                    'caption' => $m->getCustomProperty('caption') ?: null,
+                                    'alt' => $m->getCustomProperty('alt') ?: $news->title,
+                                ])->values();
+                            @endphp
+                            <div x-data="{
+                                current: 0,
+                                total: {{ $slides->count() }},
+                                slides: {{ Js::from($slides) }},
+                                autoplay: true,
+                                timer: null,
+                                startAutoplay() {
+                                    if (this.total > 1) {
+                                        this.timer = setInterval(() => {
+                                            if (this.autoplay) this.next();
+                                        }, 4500);
+                                    }
+                                },
+                                stopAutoplay() {
+                                    if (this.timer) clearInterval(this.timer);
+                                },
+                                next() {
+                                    this.current = (this.current + 1) % this.total;
+                                },
+                                prev() {
+                                    this.current = (this.current - 1 + this.total) % this.total;
+                                },
+                                goTo(index) {
+                                    this.current = index;
+                                }
+                            }" 
+                            x-init="startAutoplay()"
+                            @mouseenter="autoplay = false"
+                            @mouseleave="autoplay = true"
+                            class="position-relative mb-4 rounded-4 overflow-hidden shadow-sm border bg-dark" 
+                            style="height: 460px; max-height: 70vh;">
+
+                                <!-- Diapositives -->
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <div x-show="current === index" 
+                                         x-transition:enter="transition ease-out duration-500"
+                                         x-transition:enter-start="opacity-0 scale-95"
+                                         x-transition:enter-end="opacity-100 scale-100"
+                                         x-transition:leave="transition ease-in duration-300"
+                                         x-transition:leave-start="opacity-100"
+                                         x-transition:leave-end="opacity-0"
+                                         class="w-100 h-100 position-absolute top-0 start-0">
+                                        <img :src="slide.url" 
+                                             :alt="slide.alt" 
+                                             loading="lazy" 
+                                             decoding="async" 
+                                             class="w-100 h-100" 
+                                             style="object-fit: cover;">
+                                        
+                                        <!-- Légende en bas de diapositive -->
+                                        <div x-show="slide.caption" 
+                                             class="position-absolute bottom-0 start-0 end-0 p-3 text-white" 
+                                             style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);">
+                                            <p class="small mb-0 text-white text-opacity-90 text-center" x-text="slide.caption"></p>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                @if ($slides->count() > 1)
+                                    <!-- Boutons de navigation Précédent / Suivant -->
+                                    <button type="button" 
+                                            @click="prev()" 
+                                            class="btn btn-sm btn-light bg-white bg-opacity-75 rounded-circle position-absolute top-50 start-0 translate-middle-y ms-3 p-2 shadow-sm d-flex align-items-center justify-content-center" 
+                                            style="width: 42px; height: 42px; z-index: 10;" 
+                                            title="Précédent">
+                                        <i class="fa fa-solid fa-chevron-left text-dark"></i>
+                                    </button>
+                                    <button type="button" 
+                                            @click="next()" 
+                                            class="btn btn-sm btn-light bg-white bg-opacity-75 rounded-circle position-absolute top-50 end-0 translate-middle-y me-3 p-2 shadow-sm d-flex align-items-center justify-content-center" 
+                                            style="width: 42px; height: 42px; z-index: 10;" 
+                                            title="Suivant">
+                                        <i class="fa fa-solid fa-chevron-right text-dark"></i>
+                                    </button>
+
+                                    <!-- Compteur & Indicateurs de pagination -->
+                                    <div class="position-absolute top-0 end-0 m-3 px-3 py-1 rounded-pill bg-dark bg-opacity-60 text-white small fw-semibold" style="z-index: 10; font-size: 0.8rem;">
+                                        <i class="fa fa-solid fa-images me-1 text-accent"></i>
+                                        <span x-text="(current + 1) + ' / ' + total"></span>
+                                    </div>
+
+                                    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-3 d-flex gap-2" style="z-index: 10;">
+                                        <template x-for="(slide, index) in slides" :key="'dot-' + index">
+                                            <button type="button" 
+                                                    @click="goTo(index)" 
+                                                    class="rounded-circle border-0 transition-all p-0" 
+                                                    :style="current === index ? 'width: 24px; height: 8px; border-radius: 4px; background: #ffffff;' : 'width: 8px; height: 8px; background: rgba(255,255,255,0.5);'" 
+                                                    :title="'Slide ' + (index + 1)">
+                                            </button>
+                                        </template>
+                                    </div>
+                                @endif
+                            </div>
+                        @elseif (($news->hero_media_type ?? 'image') === 'image' && $news->cover_image_url)
+                            <!-- Image de couverture fixe classique -->
                             <figure class="mb-4 rounded-4 overflow-hidden shadow-sm border" style="max-height: 480px; background: #f8fafc;">
                                 <img src="{{ $news->getCoverImageUrl('large') }}" 
                                      alt="{{ $news->getFirstMedia('cover')?->getCustomProperty('alt') ?: $news->title }}" 

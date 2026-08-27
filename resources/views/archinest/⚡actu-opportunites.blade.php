@@ -54,17 +54,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 <div>
 
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url({{ asset('images/1.jpg') }});">
-        <div class="auto-container">
-            <div class="title-outer text-center">
-                <h1 class="title">{{ __('news_opp.title') }}</h1>
-                <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
-                    <li>{{ __('news_opp.title') }}</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <x-archinest.page-title page="news_opportunities" :title="__('news_opp.title')" defaultImage="images/1.jpg" />
 
     <!-- ============ TABS & FILTRES LIVEWIRE ============ -->
     <section class="section-sm pb-0" style="background:var(--white); border-bottom:1px solid var(--line);">

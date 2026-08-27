@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             OpportunitySeeder::class,
             ResourceSeeder::class,
             SiteSettingSeeder::class,
+            HeroSlideSeeder::class,
+            PageBannerSeeder::class,
         ]);
     }
 }

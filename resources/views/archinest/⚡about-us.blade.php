@@ -16,17 +16,7 @@ new #[Layout('layouts::archinest')] class extends Component {
 
 <div>
     <!-- Start main-content / Hero Banner -->
-    <section class="page-title" style="background-image: url({{ asset('images/banners/ban2.webp') }});">
-        <div class="auto-container">
-            <div class="title-outer text-center">
-                <h1 class="title">{{ __('about.title') }}</h1>
-                <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">{{ __('navigation.menu.home') }}</a></li>
-                    <li>{{ __('about.title') }}</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <x-archinest.page-title page="about" :title="__('about.title')" defaultImage="images/abouts.webp" />
     <!-- end main-content -->
 
     <!-- ============ SECTION 1 : QUI SOMMES-NOUS ? ============ -->

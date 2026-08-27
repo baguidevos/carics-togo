@@ -34,6 +34,9 @@ class BlogPost extends Model implements HasMedia
             ->singleFile()
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
 
+        $this->addMediaCollection('gallery')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+
         $this->addMediaCollection('body_attachments');
     }
 
@@ -64,8 +67,30 @@ class BlogPost extends Model implements HasMedia
         return $this->cover_image_url;
     }
 
+    /**
+     * Retourne la collection de médias pour le slider (galerie + couverture en fallback)
+     */
+    public function getSliderMedia()
+    {
+        $gallery = $this->getMedia('gallery');
+        if ($gallery->isNotEmpty()) {
+            return $gallery;
+        }
+
+        $attachments = $this->getMedia('body_attachments')->filter(function ($media) {
+            return str_starts_with($media->mime_type ?? '', 'image/');
+        });
+
+        if ($attachments->isNotEmpty()) {
+            return $attachments;
+        }
+
+        return $this->getMedia('cover');
+    }
+
     protected $fillable = [
         'title', 'slug', 'type', 'excerpt', 'body', 'cover_image',
+        'hero_media_type',
         'author_id', 'category_id', 'research_project_id',
         'reading_time_minutes', 'references',
         'meta_title', 'meta_description',
