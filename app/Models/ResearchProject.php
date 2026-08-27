@@ -14,12 +14,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Translatable\HasTranslations;
 
 class ResearchProject extends Model implements HasMedia, HasRichContent
 {
     use HasFactory;
+    use HasTranslations;
     use InteractsWithMedia;
     use InteractsWithRichContent;
+
+    public array $translatable = [
+        'title',
+        'slug',
+        'context',
+        'objective',
+        'methodology',
+    ];
 
     public function setUpRichContent(): void
     {

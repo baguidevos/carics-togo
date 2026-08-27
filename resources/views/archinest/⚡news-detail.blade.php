@@ -14,7 +14,13 @@ new #[Layout('layouts::archinest')] class extends Component {
         $this->slug = $slug;
         $this->news = News::published()
             ->with(['category', 'relatedBlogPost', 'media'])
-            ->where('slug', $slug)
+            ->where(function ($query) use ($slug) {
+                $locale = app()->getLocale();
+                $query->where("slug->{$locale}", $slug)
+                    ->orWhere('slug->fr', $slug)
+                    ->orWhere('slug->en', $slug)
+                    ->orWhere('slug', $slug);
+            })
             ->firstOrFail();
 
         $this->recentNews = News::published()

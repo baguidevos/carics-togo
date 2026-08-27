@@ -14,12 +14,23 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Translatable\HasTranslations;
 
 class BlogPost extends Model implements HasMedia, HasRichContent
 {
     use HasFactory;
+    use HasTranslations;
     use InteractsWithMedia;
     use InteractsWithRichContent;
+
+    public array $translatable = [
+        'title',
+        'slug',
+        'excerpt',
+        'body',
+        'meta_title',
+        'meta_description',
+    ];
 
     public function setUpRichContent(): void
     {

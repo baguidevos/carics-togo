@@ -9,11 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Translatable\HasTranslations;
 
 class Publication extends Model implements HasMedia
 {
     use HasFactory;
+    use HasTranslations;
     use InteractsWithMedia;
+
+    public array $translatable = [
+        'title',
+        'abstract',
+    ];
 
     public function registerMediaCollections(): void
     {

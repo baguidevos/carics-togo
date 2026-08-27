@@ -14,10 +14,13 @@ use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 use UnitEnum;
 
 class BlogPostResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = BlogPost::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-newspaper';

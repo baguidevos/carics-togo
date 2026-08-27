@@ -14,12 +14,23 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Translatable\HasTranslations;
 
 class TeamMember extends Model implements HasMedia, HasRichContent
 {
     use HasFactory;
+    use HasTranslations;
     use InteractsWithMedia;
     use InteractsWithRichContent;
+
+    public array $translatable = [
+        'role_title',
+        'bio_short',
+        'bio_full',
+        'bio_quote',
+        'mission_text',
+        'current_position',
+    ];
 
     public function setUpRichContent(): void
     {

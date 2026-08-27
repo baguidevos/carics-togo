@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Translatable\HasTranslations;
 
 class Opportunity extends Model
 {
     use HasFactory;
+    use HasTranslations;
+
+    public array $translatable = [
+        'title',
+        'description',
+        'location',
+    ];
 
     protected $fillable = [
         'title', 'category_id', 'description', 'requirements',

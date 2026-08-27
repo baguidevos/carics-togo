@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;
+use Spatie\Translatable\HasTranslations;
 
 /**
  * Catégorie polymorphique.
@@ -25,6 +26,13 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
     use HasFactory;
+    use HasTranslations;
+
+    public array $translatable = [
+        'name',
+        'slug',
+        'description',
+    ];
 
     protected $fillable = [
         'name', 'slug', 'color_class', 'description',
