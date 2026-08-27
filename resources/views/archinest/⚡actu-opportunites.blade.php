@@ -17,7 +17,8 @@ new #[Layout('layouts::archinest')] class extends Component {
 
     public function with(): array
     {
-        $featuredNews = News::published()->featured()->with(['category', 'media'])->first() ?? News::published()->recent()->with(['category', 'media'])->first();
+        $latestNews = News::published()->recent()->with(['category', 'media'])->first();
+        $featuredNews = News::published()->featured()->with(['category', 'media'])->first() ?? $latestNews;
         $otherNews = News::published()->recent()->with(['category', 'media'])
             ->when($featuredNews, fn($q) => $q->where('id', '!=', $featuredNews->id))
             ->take(6)
@@ -38,6 +39,7 @@ new #[Layout('layouts::archinest')] class extends Component {
             ->orderBy('deadline', 'asc');
 
         return [
+            'latestNews'     => $latestNews,
             'featuredNews'   => $featuredNews,
             'otherNews'      => $otherNews,
             'blogPosts'      => $blogPosts,
@@ -101,12 +103,23 @@ new #[Layout('layouts::archinest')] class extends Component {
             <!-- ── TAB 1 : ACTUALITÉS & BLOG (Bento Grid) ── -->
             @if ($activeTab === 'actu')
                 <div>
-                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-2 border-bottom">
                         <div>
                             <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill small mb-1">
                                 {{ __('news_opp.feed.badge') }}
                             </span>
-                            <h2 class="h3 fw-bold text-dark mb-0">{{ __('news_opp.feed.title') }}</h2>
+                            <h2 class="h3 fw-bold text-dark mb-2">{{ __('news_opp.feed.title') }}</h2>
+                            @if ($latestNews)
+                                <div class="d-flex align-items-center gap-2 flex-wrap text-secondary small">
+                                    <span class="badge bg-warning text-dark px-2.5 py-1 rounded-pill fw-bold d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.75rem;">
+                                        <i class="fa fa-solid fa-bolt"></i> {{ __('news_opp.feed.latest_badge') }}
+                                    </span>
+                                    <a href="{{ route('news-detail', ['slug' => $latestNews->slug]) }}" class="text-dark fw-semibold text-decoration-none hover-primary transition-all d-inline-flex align-items-center gap-1">
+                                        <span>{{ $latestNews->title }}</span>
+                                        <i class="fa fa-solid fa-arrow-right text-primary small ms-1"></i>
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
 

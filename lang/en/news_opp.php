@@ -17,6 +17,7 @@ return [
     'feed' => [
         'badge' => 'Publications & Events',
         'title' => 'Scientific & Community News Feed',
+        'latest_badge' => 'Latest News',
         'featured_badge' => 'Featured',
         'read_release' => 'Read press release',
         'watch_badge' => 'Intelligence & Knowledge',

@@ -12,18 +12,21 @@ test('about page renders dynamic banner from database', function () {
         ['page_key' => 'about'],
         [
             'title' => [
-                'fr' => 'Notre Histoire & Vision Personnalisée',
-                'en' => 'Our History & Custom Vision',
+                'fr' => 'Notre Histoire et Vision Personnalisée',
+                'en' => 'Our History and Custom Vision',
             ],
             'hero_media_type' => 'image',
             'is_active' => true,
         ]
     );
 
-    $response = $this->get(route('about'));
+    app()->setLocale('fr');
+    $responseFr = $this->get(route('about'));
+    $responseFr->assertOk()->assertSee('Notre Histoire et Vision Personnalisée');
 
-    $response->assertOk()
-        ->assertSee('Notre Histoire & Vision Personnalisée');
+    app()->setLocale('en');
+    $responseEn = $this->get(route('about'));
+    $responseEn->assertOk()->assertSee('Our History and Custom Vision');
 });
 
 test('filament page banners pages load successfully', function () {

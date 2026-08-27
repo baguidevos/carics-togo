@@ -17,6 +17,7 @@ return [
     'feed' => [
         'badge' => 'Publications & Événements',
         'title' => 'Fil d\'actualité scientifique & communautaire',
+        'latest_badge' => 'Dernière actualité',
         'featured_badge' => 'À la une',
         'read_release' => 'Lire le communiqué',
         'watch_badge' => 'Veille & Savoirs',

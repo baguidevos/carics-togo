@@ -30,10 +30,13 @@ test('homepage renders hero slide from database', function () {
         'display_order' => 1,
     ]);
 
-    $response = $this->get(route('home'));
+    app()->setLocale('fr');
+    $responseFr = $this->get(route('home'));
+    $responseFr->assertOk()->assertSee('Titre de Test Hero Slide');
 
-    $response->assertOk()
-        ->assertSee('Titre de Test Hero Slide');
+    app()->setLocale('en');
+    $responseEn = $this->get(route('home'));
+    $responseEn->assertOk()->assertSee('Test Hero Slide Title');
 });
 
 test('filament hero slides pages load successfully', function () {
