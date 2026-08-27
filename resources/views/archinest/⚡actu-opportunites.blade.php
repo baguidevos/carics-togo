@@ -58,6 +58,25 @@ new #[Layout('layouts::archinest')] class extends Component {
     <!-- Start main-content -->
     <x-archinest.page-title page="news_opportunities" :title="__('news_opp.title')" defaultImage="images/1.jpg" />
 
+    <!-- ============ BANDEAU FLASH INFO (SOUS LA BANNIÈRE) ============ -->
+    @if ($latestNews)
+        <div class="py-4 px-3 text-white shadow-sm position-relative" style="background: linear-gradient(90deg, #1B3A6B 0%, #0f274d 40%, #008A5E 100%); z-index: 5;">
+            <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-2.5 overflow-hidden flex-grow-1" style="min-width: 0;">
+                    <span class="badge bg-warning text-dark px-2.5 py-1 fw-bold rounded-pill text-uppercase small d-inline-flex align-items-center gap-1 shadow-sm flex-shrink-0" style="font-size: 0.75rem; letter-spacing: 0.03em;">
+                        <i class="fa fa-solid fa-bolt"></i> {{ __('news_opp.feed.latest_badge') }}
+                    </span>
+                    <span class="small fw-semibold text-white text-truncate" style="letter-spacing: -0.01em;">
+                        {{ $latestNews->title }}
+                    </span>
+                </div>
+                <a href="{{ route('news-detail', ['slug' => $latestNews->slug]) }}" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 fw-semibold small text-nowrap flex-shrink-0 ms-auto shadow-sm" style="font-size: 0.8rem;">
+                    {{ __('news_opp.feed.read_release') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    @endif
+
     <!-- ============ TABS & FILTRES LIVEWIRE ============ -->
     <section class="section-sm pb-0" style="background:var(--white); border-bottom:1px solid var(--line);">
         <div class="container">
@@ -103,25 +122,51 @@ new #[Layout('layouts::archinest')] class extends Component {
             <!-- ── TAB 1 : ACTUALITÉS & BLOG (Bento Grid) ── -->
             @if ($activeTab === 'actu')
                 <div>
+                    <!-- En-tête de Section -->
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-2 border-bottom">
                         <div>
                             <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill small mb-1">
                                 {{ __('news_opp.feed.badge') }}
                             </span>
-                            <h2 class="h3 fw-bold text-dark mb-2">{{ __('news_opp.feed.title') }}</h2>
-                            @if ($latestNews)
-                                <div class="d-flex align-items-center gap-2 flex-wrap text-secondary small">
-                                    <span class="badge bg-warning text-dark px-2.5 py-1 rounded-pill fw-bold d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.75rem;">
-                                        <i class="fa fa-solid fa-bolt"></i> {{ __('news_opp.feed.latest_badge') }}
-                                    </span>
-                                    <a href="{{ route('news-detail', ['slug' => $latestNews->slug]) }}" class="text-dark fw-semibold text-decoration-none hover-primary transition-all d-inline-flex align-items-center gap-1">
-                                        <span>{{ $latestNews->title }}</span>
-                                        <i class="fa fa-solid fa-arrow-right text-primary small ms-1"></i>
-                                    </a>
-                                </div>
-                            @endif
+                            <h2 class="h3 fw-bold text-dark mb-0">{{ __('news_opp.feed.title') }}</h2>
                         </div>
                     </div>
+
+                    <!-- BANDEAU / CARTE SOUS LE TITRE DE SECTION -->
+                    @if ($latestNews)
+                        <div class="card border-0 rounded-4 shadow-sm mb-4 text-white overflow-hidden" style="background: linear-gradient(135deg, #1B3A6B 0%, #153664 60%, #008A5E 100%);">
+                            <div class="card-body p-3 p-md-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-circle bg-warning bg-opacity-20 text-warning d-flex align-items-center justify-content-center flex-shrink-0" style="width: 46px; height: 46px; font-size: 1.25rem;">
+                                        <i class="fa fa-solid fa-bolt"></i>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                                            <span class="badge bg-warning text-dark fw-bold text-uppercase px-2.5 py-0.5 rounded-pill" style="font-size: 0.72rem;">
+                                                {{ __('news_opp.feed.latest_badge') }}
+                                            </span>
+                                            @if ($latestNews->published_date)
+                                                <span class="text-white-50 small">
+                                                    <i class="fa fa-regular fa-calendar me-1"></i> {{ $latestNews->published_date->format('d/m/Y') }}
+                                                </span>
+                                            @endif
+                                            @if ($latestNews->category)
+                                                <span class="text-white-50 small">
+                                                    • {{ $latestNews->category->name }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <h3 class="h5 fw-bold text-white mb-0" style="line-height: 1.35;">
+                                            {{ $latestNews->title }}
+                                        </h3>
+                                    </div>
+                                </div>
+                                <a href="{{ route('news-detail', ['slug' => $latestNews->slug]) }}" class="btn btn-warning text-dark rounded-pill px-4 py-2 fw-bold small text-nowrap flex-shrink-0 shadow-sm align-self-start align-self-md-center">
+                                    {{ __('news_opp.feed.read_release') }} <i class="fa fa-solid fa-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
 
                     <!-- Bento Grid -->
                     <div class="row g-4">
