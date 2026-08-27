@@ -137,7 +137,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         <div class="card border-0 rounded-4 shadow-sm mb-4 text-white overflow-hidden" style="background: linear-gradient(135deg, #1B3A6B 0%, #153664 60%, #008A5E 100%);">
                             <div class="card-body p-3 p-md-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="rounded-circle bg-warning bg-opacity-20 text-warning d-flex align-items-center justify-content-center flex-shrink-0" style="width: 46px; height: 46px; font-size: 1.25rem;">
+                                    <div class="rounded-circle bg-warning bg-opacity-20 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 46px; height: 46px; font-size: 1.25rem;">
                                         <i class="fa fa-solid fa-bolt"></i>
                                     </div>
                                     <div>
