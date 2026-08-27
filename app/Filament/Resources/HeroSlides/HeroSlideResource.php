@@ -24,8 +24,9 @@ class HeroSlideResource extends Resource
     protected static ?string $model = HeroSlide::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-presentation-chart-bar';
+    
+    protected static string|UnitEnum|null $navigationGroup = '⚙️ Paramètres & Structure';
 
-    protected static string|UnitEnum|null $navigationGroup = '📰 Communication & Blog';
 
     protected static ?string $navigationLabel = 'Diapositives Accueil';
 
