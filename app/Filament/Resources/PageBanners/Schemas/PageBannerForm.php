@@ -50,6 +50,25 @@ class PageBannerForm
                                     ->label('Libellé fil d\'Ariane (optionnel)')
                                     ->placeholder('Laissez vide pour conserver la valeur par défaut'),
 
+                                ToggleButtons::make('layout_type')
+                                    ->label('Format de mise en page')
+                                    ->options([
+                                        'full' => 'Plein écran (Hero étiré)',
+                                        'split' => 'Split (2 colonnes / Encadré)',
+                                    ])
+                                    ->icons([
+                                        'full' => 'heroicon-m-arrows-pointing-out',
+                                        'split' => 'heroicon-m-view-columns',
+                                    ])
+                                    ->colors([
+                                        'full' => 'primary',
+                                        'split' => 'warning',
+                                    ])
+                                    ->default('full')
+                                    ->required()
+                                    ->inline()
+                                    ->helperText('Le format "Split" est parfait pour les photos de moyenne résolution ou avec des sujets précis : l\'image reste nette et encadrée à côté du titre.'),
+
                                 ToggleButtons::make('hero_media_type')
                                     ->label('Mode d\'affichage du média d\'en-tête')
                                     ->options([
@@ -67,24 +86,40 @@ class PageBannerForm
                                     ->default('image')
                                     ->required()
                                     ->inline()
-                                    ->helperText('En mode "Slider", les photos téléversées dans la Galerie ci-contre défileront automatiquement en fond de l\'en-tête.'),
+                                    ->helperText('En mode "Slider", les photos téléversées dans la Galerie ci-contre défileront automatiquement.'),
                             ]),
 
                         // ─── Colonne Droite (Médias & Statut) ───────────────────────
                         Grid::make(1)
                             ->columnSpan(['default' => 1, 'lg' => 1])
                             ->schema([
-                                Section::make('Médias de la bannière')
+                                Section::make('Médias & Cadrage')
                                     ->icon('heroicon-m-photo')
                                     ->schema([
+                                        Select::make('image_position')
+                                            ->label('Cadrage / Point focal')
+                                            ->options([
+                                                'center' => '🎯 Centré (Par défaut)',
+                                                'top' => '⬆️ Haut (Top)',
+                                                'center 25%' => '↗️ Haut intermédiaire (25%)',
+                                                'bottom' => '⬇️ Bas (Bottom)',
+                                                'center 75%' => '↘️ Bas intermédiaire (75%)',
+                                                'left center' => '⬅️ Gauche',
+                                                'right center' => '➡️ Droite',
+                                            ])
+                                            ->default('center')
+                                            ->required()
+                                            ->native(false)
+                                            ->helperText('Contrôle la zone visible de l\'image dans le cadre sans déformation.'),
+
                                         SpatieMediaLibraryFileUpload::make('cover')
                                             ->label('Image de couverture fixe')
                                             ->collection('cover')
                                             ->disk('public')
                                             ->image()
                                             ->imageEditor()
-                                            ->imageEditorAspectRatios(['16:9', '21:9'])
-                                            ->helperText('Image principale d\'arrière-plan (1920×800px).'),
+                                            ->imageEditorAspectRatios(['16:9', '21:9', '4:3'])
+                                            ->helperText('Image principale d\'arrière-plan (1920×800px ou format 16:9).'),
 
                                         SpatieMediaLibraryFileUpload::make('gallery')
                                             ->label('Photos du Slider (si mode Slider)')

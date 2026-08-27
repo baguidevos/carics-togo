@@ -18,9 +18,16 @@ class PageBannerInfolist
                     ->placeholder('-'),
                 TextEntry::make('subtitle')
                     ->placeholder('-'),
-                TextEntry::make('breadcrumb_title')
-                    ->placeholder('-'),
-                TextEntry::make('hero_media_type'),
+                TextEntry::make('layout_type')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'split' => 'warning',
+                        default => 'primary',
+                    }),
+                TextEntry::make('image_position')
+                    ->badge(),
+                TextEntry::make('hero_media_type')
+                    ->badge(),
                 ImageEntry::make('image')
                     ->placeholder('-'),
                 IconEntry::make('is_active')

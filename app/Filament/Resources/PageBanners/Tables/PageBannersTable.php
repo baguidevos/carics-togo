@@ -47,16 +47,28 @@ class PageBannersTable
                     ->searchable()
                     ->limit(40),
 
+                TextColumn::make('layout_type')
+                    ->label('Format')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'split' => 'warning',
+                        default => 'primary',
+                    })
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'split' => 'Split (2 col.)',
+                        default => 'Plein écran',
+                    }),
+
                 TextColumn::make('hero_media_type')
-                    ->label('Mode')
+                    ->label('Média')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'slider' => 'info',
                         default => 'gray',
                     })
                     ->formatStateUsing(fn (string $state): string => match ($state) {
-                        'slider' => 'Slider (Carrousel)',
-                        default => 'Image fixe',
+                        'slider' => 'Slider',
+                        default => 'Image',
                     }),
 
                 ToggleColumn::make('is_active')

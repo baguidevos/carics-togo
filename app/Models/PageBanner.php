@@ -74,8 +74,17 @@ class PageBanner extends Model implements HasMedia
         'subtitle',
         'breadcrumb_title',
         'hero_media_type',
+        'layout_type',
+        'image_position',
         'image',
         'is_active',
+    ];
+
+    protected $attributes = [
+        'hero_media_type' => 'image',
+        'layout_type' => 'full',
+        'image_position' => 'center',
+        'is_active' => true,
     ];
 
     protected function casts(): array
