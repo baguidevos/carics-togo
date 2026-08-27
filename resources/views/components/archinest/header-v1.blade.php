@@ -1,3 +1,12 @@
+@php
+    $siteEmail = \App\Models\SiteSetting::get('email_contact', config('site.email'));
+    $sitePhone1 = \App\Models\SiteSetting::get('phone_1', config('site.phone1'));
+    $siteFacebook = \App\Models\SiteSetting::get('facebook_url', 'https://facebook.com');
+    $siteTwitter = \App\Models\SiteSetting::get('twitter_url', 'https://x.com');
+    $siteLinkedin = \App\Models\SiteSetting::get('linkedin_url', 'https://linkedin.com');
+    $siteTagline = \App\Models\SiteSetting::get('tagline', __('navigation.header.slogan'));
+@endphp
+
 <header class="carics-header-v1" x-data="{ mobileOpen: false, searchOpen: false, isScrolled: false }" @scroll.window="isScrolled = (window.pageYOffset > 50)">
     <!-- Topbar Institutionnelle -->
     <div class="carics-topbar-v1 d-none d-lg-block">
@@ -11,22 +20,22 @@
                         <span>{{ __('navigation.header.location_topbar') }}</span>
                     </span>
                     <span class="text-white-50">|</span>
-                    <a href="{{ config('site.href_email') }}" class="d-flex align-items-center gap-2">
+                    <a href="mailto:{{ $siteEmail }}" class="d-flex align-items-center gap-2">
                         <i class="fa-regular fa-envelope text-white-50"></i>
-                        <span>{{ config('site.email') }}</span>
+                        <span>{{ $siteEmail }}</span>
                     </a>
                 </div>
 
                 <!-- Centre : Slogan -->
                 <div class="d-none d-xl-block text-white-50" style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">
-                    {{ __('navigation.header.slogan') }}
+                    {{ $siteTagline }}
                 </div>
 
                 <!-- Droite : Téléphone, Langue & Réseaux -->
                 <div class="d-flex align-items-center gap-3">
-                    <a href="{{ config('site.href_phone1') }}" class="d-flex align-items-center gap-2 fw-semibold">
+                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $sitePhone1) }}" class="d-flex align-items-center gap-2 fw-semibold">
                         <i class="fa-solid fa-phone-volume text-accent"></i>
-                        <span>{{ config('site.phone1') }}</span>
+                        <span>{{ $sitePhone1 }}</span>
                     </a>
 
                     <span class="text-white-50">|</span>
@@ -49,9 +58,15 @@
 
                     <!-- Réseaux Sociaux -->
                     <div class="d-flex align-items-center gap-2 ms-2">
-                        <a href="https://facebook.com" target="_blank" class="text-white-50 hover-text-white" style="font-size: 0.85rem;"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://twitter.com" target="_blank" class="text-white-50 hover-text-white" style="font-size: 0.85rem;"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="text-white-50 hover-text-white" style="font-size: 0.85rem;"><i class="fa-brands fa-linkedin-in"></i></a>
+                        @if ($siteFacebook)
+                            <a href="{{ $siteFacebook }}" target="_blank" class="text-white-50 hover-text-white" style="font-size: 0.85rem;"><i class="fa-brands fa-facebook-f"></i></a>
+                        @endif
+                        @if ($siteTwitter)
+                            <a href="{{ $siteTwitter }}" target="_blank" class="text-white-50 hover-text-white" style="font-size: 0.85rem;"><i class="fa-brands fa-x-twitter"></i></a>
+                        @endif
+                        @if ($siteLinkedin)
+                            <a href="{{ $siteLinkedin }}" target="_blank" class="text-white-50 hover-text-white" style="font-size: 0.85rem;"><i class="fa-brands fa-linkedin-in"></i></a>
+                        @endif
                     </div>
                 </div>
             </div>

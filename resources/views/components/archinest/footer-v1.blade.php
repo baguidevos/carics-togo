@@ -1,3 +1,14 @@
+@php
+    $siteAddress = \App\Models\SiteSetting::get('address', config('site.address'));
+    $sitePhone1 = \App\Models\SiteSetting::get('phone_1', config('site.phone1'));
+    $sitePhone2 = \App\Models\SiteSetting::get('phone_2', config('site.phone2'));
+    $siteEmail = \App\Models\SiteSetting::get('email_contact', config('site.email'));
+    $siteFacebook = \App\Models\SiteSetting::get('facebook_url', 'https://facebook.com');
+    $siteTwitter = \App\Models\SiteSetting::get('twitter_url', 'https://x.com');
+    $siteLinkedin = \App\Models\SiteSetting::get('linkedin_url', 'https://linkedin.com');
+    $siteMission = \App\Models\SiteSetting::get('mission_text', __('navigation.footer.org_desc'));
+@endphp
+
 <footer class="carics-footer-v1 pt-5 pb-4">
     <div class="container">
         <!-- Pre-Footer CTA Banner -->
@@ -36,13 +47,18 @@
                     </a>
                 </div>
                 <p class="text-white-50 mb-3" style="font-size: 0.88rem; line-height: 1.6;">
-                    {{ __('navigation.footer.org_desc') }}
+                    {{ $siteMission }}
                 </p>
                 <div class="d-flex align-items-center gap-2">
-                    <a href="https://facebook.com" target="_blank" class="carics-social-circle" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" target="_blank" class="carics-social-circle" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="carics-social-circle" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://instagram.com" target="_blank" class="carics-social-circle" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    @if ($siteFacebook)
+                        <a href="{{ $siteFacebook }}" target="_blank" class="carics-social-circle" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    @endif
+                    @if ($siteTwitter)
+                        <a href="{{ $siteTwitter }}" target="_blank" class="carics-social-circle" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    @endif
+                    @if ($siteLinkedin)
+                        <a href="{{ $siteLinkedin }}" target="_blank" class="carics-social-circle" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    @endif
                 </div>
             </div>
 
@@ -75,22 +91,24 @@
                 <div class="d-flex flex-column gap-2" style="font-size: 0.88rem;">
                     <div class="d-flex align-items-start gap-2 text-white-50">
                         <i class="fa-solid fa-location-dot text-accent mt-1"></i>
-                        <span>{{ config('site.address') }}</span>
+                        <span>{{ $siteAddress }}</span>
                     </div>
 
                     <div class="d-flex align-items-center gap-2">
                         <i class="fa-solid fa-phone text-accent"></i>
-                        <a href="{{ config('site.href_phone1') }}" class="text-white-50">{{ config('site.phone1') }}</a>
+                        <a href="tel:{{ preg_replace('/[^0-9+]/', '', $sitePhone1) }}" class="text-white-50">{{ $sitePhone1 }}</a>
                     </div>
 
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-phone-office text-accent"></i>
-                        <a href="{{ config('site.href_phone2') }}" class="text-white-50">{{ config('site.phone2') }}</a>
-                    </div>
+                    @if ($sitePhone2)
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-phone-office text-accent"></i>
+                            <a href="tel:{{ preg_replace('/[^0-9+]/', '', $sitePhone2) }}" class="text-white-50">{{ $sitePhone2 }}</a>
+                        </div>
+                    @endif
 
                     <div class="d-flex align-items-center gap-2">
                         <i class="fa-regular fa-envelope text-accent"></i>
-                        <a href="{{ config('site.href_email') }}" class="text-white-50">{{ config('site.email') }}</a>
+                        <a href="mailto:{{ $siteEmail }}" class="text-white-50">{{ $siteEmail }}</a>
                     </div>
                 </div>
             </div>

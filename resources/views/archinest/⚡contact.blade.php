@@ -252,6 +252,12 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <div class="eyebrow">{{ __('contact.info.eyebrow') }}</div>
                     <h2 class="section-title mb-4">{{ __('contact.info.title') }}</h2>
 
+                    @php
+                        $cEmail = \App\Models\SiteSetting::get('email_contact', 'contact@carics-togo.org');
+                        $cPhone1 = \App\Models\SiteSetting::get('phone_1', '+228 90 99 18 59');
+                        $cPhone2 = \App\Models\SiteSetting::get('phone_2', '+228 99 56 10 55');
+                        $cAddress = \App\Models\SiteSetting::get('address', __('contact.info.address_value'));
+                    @endphp
                     <div class="d-flex flex-column gap-3 mb-4">
                         <div class="card-soft d-flex gap-3 align-items-start" style="padding:1.1rem 1.3rem;">
                             <div class="icon-tile flex-shrink-0"
@@ -261,8 +267,8 @@ new #[Layout('layouts::archinest')] class extends Component {
                                 <div class="text-muted-2 mb-1"
                                     style="font-size:.78rem; font-family:var(--font-mono); letter-spacing:.08em; text-transform:uppercase;">
                                     {{ __('contact.info.email_label') }}</div>
-                                <a href="mailto:contact@carics-togo.org" class="fw-semibold text-decoration-none"
-                                    style="color:var(--ink);">contact@carics-togo.org</a>
+                                <a href="mailto:{{ $cEmail }}" class="fw-semibold text-decoration-none"
+                                    style="color:var(--ink);">{{ $cEmail }}</a>
                             </div>
                         </div>
 
@@ -275,9 +281,10 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     style="font-size:.78rem; font-family:var(--font-mono); letter-spacing:.08em; text-transform:uppercase;">
                                     {{ __('contact.info.phone_label') }}</div>
                                 <div class="fw-semibold" style="color:var(--ink); line-height:1.8;">
-                                    +228 90 99 18 59<br>
-                                    +228 99 56 10 55<br>
-                                    +228 91 37 21 34
+                                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $cPhone1) }}" class="text-decoration-none" style="color:var(--ink);">{{ $cPhone1 }}</a>
+                                    @if ($cPhone2)
+                                        <br><a href="tel:{{ preg_replace('/[^0-9+]/', '', $cPhone2) }}" class="text-decoration-none" style="color:var(--ink);">{{ $cPhone2 }}</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -291,7 +298,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     style="font-size:.78rem; font-family:var(--font-mono); letter-spacing:.08em; text-transform:uppercase;">
                                     {{ __('contact.info.address_label') }}</div>
                                 <address class="mb-0 fw-normal" style="color:var(--ink); font-style:normal;">
-                                    {!! __('contact.info.address_value') !!}
+                                    {!! nl2br(e($cAddress)) !!}
                                 </address>
                             </div>
                         </div>

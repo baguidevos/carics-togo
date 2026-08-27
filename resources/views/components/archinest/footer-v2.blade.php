@@ -1,3 +1,14 @@
+@php
+    $siteAddress = \App\Models\SiteSetting::get('address', config('site.address'));
+    $sitePhone1 = \App\Models\SiteSetting::get('phone_1', config('site.phone1'));
+    $siteEmail = \App\Models\SiteSetting::get('email_contact', config('site.email'));
+    $siteFacebook = \App\Models\SiteSetting::get('facebook_url', 'https://facebook.com');
+    $siteTwitter = \App\Models\SiteSetting::get('twitter_url', 'https://x.com');
+    $siteLinkedin = \App\Models\SiteSetting::get('linkedin_url', 'https://linkedin.com');
+    $siteTagline = \App\Models\SiteSetting::get('tagline', __('navigation.footer.footer_v2_tagline'));
+    $siteMission = \App\Models\SiteSetting::get('mission_text', __('navigation.footer.footer_v2_desc'));
+@endphp
+
 <footer class="carics-footer-v2">
     <div class="container">
         <!-- Bento Grid Structure -->
@@ -13,18 +24,23 @@
                             <img src="{{ asset('logo_resize.png') }}" alt="CARICS" style="height: 46px; background: rgba(255,255,255,0.92); padding: 4px 10px; border-radius: 10px;">
                         </div>
                         <h4 class="text-white fw-bold mb-3" style="font-family: var(--font-display); font-size: 1.3rem;">
-                            {{ __('navigation.footer.footer_v2_tagline') }}
+                            {{ $siteTagline }}
                         </h4>
                         <p class="text-muted" style="font-size: 0.9rem; line-height: 1.6;">
-                            {{ __('navigation.footer.footer_v2_desc') }}
+                            {{ $siteMission }}
                         </p>
                     </div>
 
                     <div class="d-flex align-items-center gap-2 pt-3 border-top border-white border-opacity-10 mt-3">
-                        <a href="https://facebook.com" target="_blank" class="carics-social-circle"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://twitter.com" target="_blank" class="carics-social-circle"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="carics-social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://instagram.com" target="_blank" class="carics-social-circle"><i class="fa-brands fa-instagram"></i></a>
+                        @if ($siteFacebook)
+                            <a href="{{ $siteFacebook }}" target="_blank" class="carics-social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                        @endif
+                        @if ($siteTwitter)
+                            <a href="{{ $siteTwitter }}" target="_blank" class="carics-social-circle"><i class="fa-brands fa-x-twitter"></i></a>
+                        @endif
+                        @if ($siteLinkedin)
+                            <a href="{{ $siteLinkedin }}" target="_blank" class="carics-social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -58,16 +74,16 @@
                                 <i class="fa-solid fa-location-dot text-accent"></i> {{ __('navigation.footer.main_headquarters') }}
                             </div>
                             <p class="text-muted mb-0" style="font-size: 0.82rem;">
-                                {{ config('site.address') }}
+                                {{ $siteAddress }}
                             </p>
                         </div>
 
                         <div class="d-flex flex-column gap-2 mb-3" style="font-size: 0.85rem;">
-                            <a href="{{ config('site.href_phone1') }}" class="text-white-50 text-decoration-none d-flex align-items-center gap-2 hover-text-white">
-                                <i class="fa-solid fa-phone-volume text-accent"></i> {{ config('site.phone1') }}
+                            <a href="tel:{{ preg_replace('/[^0-9+]/', '', $sitePhone1) }}" class="text-white-50 text-decoration-none d-flex align-items-center gap-2 hover-text-white">
+                                <i class="fa-solid fa-phone-volume text-accent"></i> {{ $sitePhone1 }}
                             </a>
-                            <a href="{{ config('site.href_email') }}" class="text-white-50 text-decoration-none d-flex align-items-center gap-2 hover-text-white">
-                                <i class="fa-regular fa-envelope text-accent"></i> {{ config('site.email') }}
+                            <a href="mailto:{{ $siteEmail }}" class="text-white-50 text-decoration-none d-flex align-items-center gap-2 hover-text-white">
+                                <i class="fa-regular fa-envelope text-accent"></i> {{ $siteEmail }}
                             </a>
                         </div>
                     </div>
