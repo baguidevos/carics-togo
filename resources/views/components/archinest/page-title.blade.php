@@ -48,7 +48,7 @@
                  }
              }"
              x-init="start()"
-             @mouseenter="autoplay = false"
+             @mouseenter="autoplay = true"
              @mouseleave="autoplay = true">
 
         {{-- Diapositives d'arrière-plan avec transition fluide --}}
