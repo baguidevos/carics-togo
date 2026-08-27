@@ -237,7 +237,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">1</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_1') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_1') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -245,7 +245,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">2</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_2') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_2') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -253,7 +253,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">3</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_3') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_3') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -261,7 +261,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">4</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_4') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_4') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -269,7 +269,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">5</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_5') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_5') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -277,7 +277,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">6</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_6') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_6') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -285,7 +285,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">7</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_7') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_7') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -293,7 +293,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     class="p-3 rounded-3 bg-opacity-10 border border-white border-opacity-10 h-100 d-flex align-items-start gap-2">
                                     <span class="badge bg-white text-dark rounded-circle p-2 fw-bold"
                                         style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .75rem;">8</span>
-                                    <span class="small text-white">{{ __('research.domains.priority_8') }}</span>
+                                    <span class="small text-white">{{ __('research.axes.priority_8') }}</span>
                                 </div>
                             </div>
                         </div>
