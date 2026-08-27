@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
-use Filament\Forms\Components\RichEditor\Models\Concerns\InteractsWithRichContent;
-use Filament\Forms\Components\RichEditor\Models\Contracts\HasRichContent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,12 +13,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class BlogPost extends Model implements HasMedia, HasRichContent
+class BlogPost extends Model implements HasMedia
 {
     use HasFactory;
     use HasTranslations;
     use InteractsWithMedia;
-    use InteractsWithRichContent;
 
     public array $translatable = [
         'title',
@@ -31,15 +27,6 @@ class BlogPost extends Model implements HasMedia, HasRichContent
         'meta_title',
         'meta_description',
     ];
-
-    public function setUpRichContent(): void
-    {
-        $this->registerRichContent('body')
-            ->fileAttachmentProvider(
-                SpatieMediaLibraryFileAttachmentProvider::make()
-                    ->collection('body_attachments')
-            );
-    }
 
     public function registerMediaCollections(): void
     {

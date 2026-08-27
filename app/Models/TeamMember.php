@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
-use Filament\Forms\Components\RichEditor\Models\Concerns\InteractsWithRichContent;
-use Filament\Forms\Components\RichEditor\Models\Contracts\HasRichContent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,12 +13,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class TeamMember extends Model implements HasMedia, HasRichContent
+class TeamMember extends Model implements HasMedia
 {
     use HasFactory;
     use HasTranslations;
     use InteractsWithMedia;
-    use InteractsWithRichContent;
 
     public array $translatable = [
         'role_title',
@@ -31,15 +27,6 @@ class TeamMember extends Model implements HasMedia, HasRichContent
         'mission_text',
         'current_position',
     ];
-
-    public function setUpRichContent(): void
-    {
-        $this->registerRichContent('bio_full')
-            ->fileAttachmentProvider(
-                SpatieMediaLibraryFileAttachmentProvider::make()
-                    ->collection('bio_attachments')
-            );
-    }
 
     public function registerMediaCollections(): void
     {
