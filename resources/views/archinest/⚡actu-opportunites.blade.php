@@ -66,7 +66,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                     <span class="badge bg-warning text-dark px-2.5 py-1 fw-bold rounded-pill text-uppercase small d-inline-flex align-items-center gap-1 shadow-sm flex-shrink-0" style="font-size: 0.75rem; letter-spacing: 0.03em;">
                         <i class="fa fa-solid fa-bolt"></i> {{ __('news_opp.feed.latest_badge') }}
                     </span>
-                    <span class="small fw-semibold text-white text-truncate" style="letter-spacing: -0.01em;">
+                    <span class="small fw-semibold text-white" style="letter-spacing: -0.01em;">
                         {{ $latestNews->title }}
                     </span>
                 </div>
