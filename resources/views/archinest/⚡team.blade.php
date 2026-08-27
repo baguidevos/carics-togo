@@ -99,30 +99,29 @@ new #[Layout('layouts::archinest')] class extends Component {
         <!-- ============ GRILLE DES MEMBRES ============ -->
         <section class="section pt-0">
             <div class="container">
-                <div class="row g-4">
-                    @forelse ($members as $member)
+                <div class="row g-4">                    @forelse ($members as $member)
                         <div class="col-md-6 col-lg-4 col-xl-3">
-                            <a href="{{ route('team-detail', ['slug' => $member['slug']]) }}" class="text-decoration-none text-reset d-block h-100">
+                            <a href="{{ route('team-detail', ['slug' => $member->slug]) }}" class="text-decoration-none text-reset d-block h-100">
                                 <div class="team-card h-100 d-flex flex-column justify-content-between p-3 border rounded-4  shadow-sm hover-shadow transition-all">
                                     <div>
                                         <div class="team-photo mb-3 rounded-3 overflow-hidden position-relative" style="height: 230px; background: #f1f5f9;">
                                             @if ($member->avatar_url)
                                                 <img src="{{ str_starts_with($member->avatar_url, 'http') ? $member->avatar_url : asset($member->avatar_url) }}" 
-                                                     alt="{{ $member['fullName'] }}" 
+                                                     alt="{{ $member->full_name }}" 
                                                      loading="lazy" 
                                                      decoding="async" 
                                                      class="w-100 h-100 object-fit-cover" 
                                                      style="object-fit: cover;">
-                                            @elseif (!empty($member['imageName']))
-                                                <img src="{{ asset('images/equipes/' . $member['imageName']) }}" 
-                                                     alt="{{ $member['fullName'] }}" 
+                                            @elseif (!empty($member->photo))
+                                                <img src="{{ asset('images/equipes/' . $member->photo) }}" 
+                                                     alt="{{ $member->full_name }}" 
                                                      loading="lazy" 
                                                      decoding="async" 
                                                      class="w-100 h-100 object-fit-cover" 
                                                      style="object-fit: cover;">
                                             @else
                                                 <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-primary text-white fs-1 fw-bold">
-                                                    {{ $member['initials'] }}
+                                                    {{ $member->initials }}
                                                 </div>
                                             @endif
 
@@ -133,23 +132,23 @@ new #[Layout('layouts::archinest')] class extends Component {
                                             @endif
                                         </div>
                                         <div class="team-body">
-                                            <h3 class="h6 fw-bold text-dark mb-1">{{ $member['fullName'] }}</h3>
-                                            <div class="text-primary small fw-semibold mb-2">{{ $member['roleTitle'] }}</div>
-                                            @if (!empty($member['current_position']))
+                                            <h3 class="h6 fw-bold text-dark mb-1">{{ $member->full_name }}</h3>
+                                            <div class="text-primary small fw-semibold mb-2">{{ $member->role_title }}</div>
+                                            @if (!empty($member->current_position))
                                                 <div class="text-muted small mb-2" style="font-size: .82rem;">
-                                                    <i class="fa fa-solid fa-briefcase text-secondary me-1"></i> {{ Str::limit($member['current_position'], 55) }}
+                                                    <i class="fa fa-solid fa-briefcase text-secondary me-1"></i> {{ Str::limit($member->current_position, 55) }}
                                                 </div>
                                             @endif
                                             <p class="text-secondary small mb-3" style="font-size: .88rem; line-height: 1.5;">
-                                                {{ Str::limit($member['bioShort'], 110) }}
+                                                {{ Str::limit($member->bio_short, 110) }}
                                             </p>
 
                                             <!-- Mini-tags expertises (2 max) -->
-                                            @if (!empty($member['expertises']) && is_array($member['expertises']))
+                                            @if (!empty($member->expertises) && is_array($member->expertises))
                                                 <div class="d-flex flex-wrap gap-1 mb-2">
-                                                    @foreach (array_slice($member['expertises'], 0, 2) as $exp)
+                                                    @foreach (array_slice($member->expertises, 0, 2) as $exp)
                                                         <span class="badge bg-light text-secondary border small" style="font-size: .72rem;">
-                                                            {{ $exp }}
+                                                             {{ $exp }}
                                                         </span>
                                                     @endforeach
                                                 </div>
@@ -158,7 +157,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                                     </div>
                                     <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
                                         <span class="text-primary fw-medium small">{{ __('team.view_profile') }}</span>
-                                        <i class="fa-solid fa-arrow-right text-primary small"></i>
+                                        <i class="fa fa-solid fa-arrow-right text-primary small"></i>
                                     </div>
                                 </div>
                             </a>

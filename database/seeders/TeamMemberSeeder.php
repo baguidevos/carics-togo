@@ -206,6 +206,10 @@ class TeamMemberSeeder extends Seeder
         ];
 
         foreach ($members as $data) {
+            if (isset($data['bio_full']) && is_array($data['bio_full']) && array_is_list($data['bio_full'])) {
+                $data['bio_full'] = implode('', array_map(fn ($p) => '<p>'.$p.'</p>', $data['bio_full']));
+            }
+
             TeamMember::updateOrCreate(
                 ['slug' => $data['slug']],
                 $data
