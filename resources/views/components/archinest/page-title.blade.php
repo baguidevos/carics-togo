@@ -60,8 +60,8 @@
                  x-transition:leave="transition ease-in duration-700"
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
-                 class="position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center"
-                 :style="'background-image: url(' + img + '); background-size: cover; background-position: center;'">
+                 class="position-absolute top-0 start-0 w-100 h-100 bg-cover bg-top"
+                 :style="'background-image: url(' + img + '); background-size: cover; background-position: top;'">
             </div>
         </template>
 
@@ -100,7 +100,7 @@
     </section>
 @else
     {{-- Version En-tête avec Image Fixe --}}
-    <section class="page-title position-relative" style="background-image: url('{{ $singleImageUrl }}'); background-size: cover; background-position: center;">
+    <section class="page-title position-relative" style="background-image: url('{{ $singleImageUrl }}'); background-size: cover; background-position: top;">
         <div class="auto-container position-relative" style="z-index: 2;">
             <div class="title-outer text-center">
                 <h1 class="title">{{ $displayTitle }}</h1>
