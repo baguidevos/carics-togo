@@ -126,7 +126,7 @@ new #[Layout('layouts::archinest')] class extends Component {
                         @if ($featuredNews)
                             <div class="col-lg-8">
                                 <div class="card h-100 border-0 rounded-4 overflow-hidden shadow-sm position-relative text-white p-4 p-md-5 d-flex flex-column justify-content-end" 
-                                     style="min-height: 380px; background: linear-gradient(180deg, rgba(27,58,107,0.3) 0%, rgba(27,58,107,0.95) 100%), url('{{ $featuredNews->cover_image_url ?? asset('archinest/images/resource/faq-h2-1.jpg') }}') center/cover no-repeat;">
+                                     style="min-height: 380px; background: linear-gradient(180deg, rgba(27,58,107,0) 0%, rgba(27,58,107,0) 100%), url('{{ $featuredNews->cover_image_url ?? asset('archinest/images/resource/faq-h2-1.jpg') }}') center/cover no-repeat;">
                                     <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
                                         <span class="badge bg-primary px-3 py-1 rounded-pill fw-medium">
                                             {{ $featuredNews->category?->name ?? __('news_opp.feed.featured_badge') }}

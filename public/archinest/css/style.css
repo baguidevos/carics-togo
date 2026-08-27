@@ -362,7 +362,7 @@ section > .container-fluid {
   margin: 0 auto;
   width: 100%;
 }
-
+ 
 .small-container {
   position: static;
   max-width: var(--small-container-width);
@@ -19311,7 +19311,7 @@ Page Title
   background-color: var(--theme-color2);
   position: relative;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
   background-size: cover;
   padding: 150px 0 110px;
   display: -webkit-box;
@@ -19328,8 +19328,8 @@ Page Title
   left: 0;
   top: 0;
   bottom: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(transparent));
-  background: linear-gradient(180deg, rgb(0, 0, 0), transparent);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.062)), to(transparent));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.103), transparent);
 }
 .page-title .title {
   font-size: 64px;
