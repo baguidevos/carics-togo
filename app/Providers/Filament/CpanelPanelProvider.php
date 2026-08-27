@@ -13,12 +13,14 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Support\Enums\Width;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 
 class CpanelPanelProvider extends PanelProvider
 {
@@ -53,15 +55,19 @@ class CpanelPanelProvider extends PanelProvider
                 'panels::sidebar.expand-button' => 'heroicon-o-chevron-double-right',
             ])
 
-            // ── Global Search ──
+            // ── Global Search & Topbar Actions ──
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
+            ->renderHook(
+                PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
+                fn () => view('filament.hooks.back-to-website'),
+            )
 
             // ── Notifications (badge simple) ──
             ->databaseNotifications()
 
             // ── Multilingue / Spatie Translatable ──
             ->plugin(
-                \LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin::make()
+                SpatieTranslatablePlugin::make()
                     ->defaultLocales(['fr', 'en'])
             )
 
