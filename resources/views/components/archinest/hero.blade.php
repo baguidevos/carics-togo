@@ -80,7 +80,7 @@
         <div class="swiper-wrapper">
             @foreach ($slides as $slide)
                 <div class="swiper-slide position-relative">
-                    <div class="bg bg-image position-absolute top-0 start-0 w-100 h-100" style="background-image: url('{{ $slide['image'] }}'); background-size: cover; background-position: center;"></div>
+                    <div class="bg bg-image position-absolute top-0 start-0 w-100 h-100" style="background-image: url('{{ $slide['image'] }}'); background-size: cover; background-position: center 25%;"></div>
                     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.315) 0%, rgba(15, 23, 42, 0.70) 100%);"></div>
                     
                     <div class="auto-container position-relative py-5" style="z-index: 2; min-height: 540px; display: flex; align-items: center;">
