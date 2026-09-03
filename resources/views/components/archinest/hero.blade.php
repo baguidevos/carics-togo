@@ -123,13 +123,24 @@
         </div>
 
         <!-- Flèches de navigation du slider -->
-        <div class="d-none d-md-flex align-items-center gap-2 position-absolute bottom-0 end-0 me-5 mb-4" style="z-index: 10;">
+        <div class="d-none d-md-flex align-items-center gap-2 position-absolute bottom-0 end-0 me-5" style="z-index: 10; margin-bottom: 5rem;">
             <button class="array-prev btn btn-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;" title="{{ __('hero.prev') }}">
                 <i class="fa fa-solid fa-arrow-left"></i>
             </button>
             <button class="array-next btn btn-primary rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;" title="{{ __('hero.next') }}">
                 <i class="fa fa-solid fa-arrow-right"></i>
             </button>
+        </div>
+    </div>
+
+    <!-- Definition Banner -->
+    <div class="position-absolute bottom-0 start-0 w-100" style="z-index: 11; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="auto-container py-3">
+            <div class="d-flex align-items-center justify-content-center">
+                <span class="text-warning fw-bold text-uppercase text-center text-lg-start" style="letter-spacing: 2px; font-size: 1.1rem;">
+                    Centre Africain d'Action pour la Recherche et l'Innovation Communautaire en Santé
+                </span>
+            </div>
         </div>
     </div>
 </section>
