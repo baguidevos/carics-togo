@@ -378,7 +378,7 @@ var THEMEMASCOT = {};
 			slidesPerView: 1,
 			effect: 'fade',
 			autoplay: {
-				delay: 3000,
+				delay: 7000,
 				disableOnInteraction: false,
 				pauseOnMouseEnter: false,
 			},

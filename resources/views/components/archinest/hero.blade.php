@@ -75,6 +75,33 @@
     }
 @endphp
 
+<style>
+    .hero-slide-elem {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .swiper-slide-active .hero-slide-elem {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .swiper-slide-active .delay-1 { transition-delay: 0.2s; }
+    .swiper-slide-active .delay-2 { transition-delay: 0.35s; }
+    .swiper-slide-active .delay-3 { transition-delay: 0.5s; }
+    .swiper-slide-active .delay-4 { transition-delay: 0.65s; }
+
+    .hero-slide-elem-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .swiper-slide-active .hero-slide-elem-right {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 0.65s;
+    }
+</style>
+
 <section class="banner-section-three position-relative overflow-hidden">
     <div class="banner-active swiper">
         <div class="swiper-wrapper">
@@ -88,20 +115,20 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-9 col-xl-8">
                                     <div class="content-box text-white">
-                                        <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-opacity-15 text-white fw-semibold small mb-3 border border-white border-opacity-20 backdrop-blur">
+                                        <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-opacity-15 text-white fw-semibold small mb-3 border border-white border-opacity-20 backdrop-blur hero-slide-elem delay-1">
                                             <i class="fa fa-solid fa-microscope text-warning"></i> {{ $slide['badge'] }}
                                         </div>
-                                        <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.2; letter-spacing: -0.02em;">
+                                        <h1 class="display-4 fw-bold text-white mb-3 hero-slide-elem delay-2" style="line-height: 1.2; letter-spacing: -0.02em;">
                                             {{ $slide['title'] }}
                                         </h1>
-                                        <p class="lead text-white-50 mb-4" style="font-size: 1.15rem; line-height: 1.7; max-width: 680px;">
+                                        <p class="lead text-white-50 mb-4 hero-slide-elem delay-3" style="font-size: 1.15rem; line-height: 1.7; max-width: 680px;">
                                             {{ $slide['description'] }}
                                         </p>
-                                        <div class="d-flex flex-wrap gap-3 align-items-center">
-                                            <a href="{{ $slide['primary_cta']['route'] }}" class="btn btn-primary rounded-pill px-4 py-3 fw-semibold shadow">
+                                        <div class="d-flex flex-wrap gap-3 align-items-center hero-slide-elem delay-4">
+                                            <a href="{{ $slide['primary_cta']['route'] }}" class="btn btn-primary rounded-pill px-4 py-1 fw-semibold shadow">
                                                 <i class="{{ $slide['primary_cta']['icon'] }} me-2"></i> {{ $slide['primary_cta']['label'] }}
                                             </a>
-                                            <a href="{{ $slide['secondary_cta']['route'] }}" class="btn btn-outline-light rounded-pill px-4 py-3 fw-semibold">
+                                            <a href="{{ $slide['secondary_cta']['route'] }}" class="btn btn-outline-light rounded-pill px-4 py-1 fw-semibold">
                                                 <i class="{{ $slide['secondary_cta']['icon'] }} me-2"></i> {{ $slide['secondary_cta']['label'] }}
                                             </a>
                                         </div>
@@ -109,7 +136,7 @@
                                 </div>
 
                                 <div class="col-lg-3 col-xl-4 d-none d-lg-block text-end">
-                                    <div class="p-4 rounded-3 border-success border-opacity-20 d-inline-block text-start text-white shadow-lg" style="backdrop-filter: blur(8px); max-width: 260px; background-color: #19875447;">
+                                    <div class="p-4 rounded-3 border-success border-opacity-20 d-inline-block text-start text-white shadow-lg hero-slide-elem-right" style="backdrop-filter: blur(8px); max-width: 260px; background-color: #19875447;">
                                         <div class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold mb-2">{{ __('hero.badge_year') }}</div>
                                         <div class="small text-white-50 mb-1">{{ __('hero.founded_in') }}</div>
                                         <div class="fw-bold text-white fs-6">{{ __('hero.badge_count') }}</div>
