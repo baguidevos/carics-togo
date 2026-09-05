@@ -128,9 +128,9 @@
                                             <a href="{{ $slide['primary_cta']['route'] }}" class="btn btn-primary rounded-pill px-4 py-1 fw-semibold shadow">
                                                 <i class="{{ $slide['primary_cta']['icon'] }} me-2"></i> {{ $slide['primary_cta']['label'] }}
                                             </a>
-                                            <a href="{{ $slide['secondary_cta']['route'] }}" class="btn btn-outline-light rounded-pill px-4 py-1 fw-semibold">
+                                            {{-- <a href="{{ $slide['secondary_cta']['route'] }}" class="btn btn-outline-light rounded-pill px-4 py-1 fw-semibold">
                                                 <i class="{{ $slide['secondary_cta']['icon'] }} me-2"></i> {{ $slide['secondary_cta']['label'] }}
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     </div>
                                 </div>
